@@ -8,5 +8,5 @@ class Zamestnanci extends Model
 {
     protected $table='zamestnanci';
 
-    protected  $fillable = ['meno', 'priezvisko', 'email', 'heslo', 'vek', 'telefón'];
+    protected  $fillable = ['meno', 'priezvisko', 'email', 'heslo', 'vek', 'telefón', 'titul'];
 }
