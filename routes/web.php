@@ -15,4 +15,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('/UKF', 'UKFController');
+Route::resource('UKF', 'UKFController');
+
+Route::get('/login', [
+    'as' => 'login', 'uses' => 'UKFController@login'
+]);
+
+Route::get('/prihlas', [
+    'as' => 'prihlas', 'uses' => 'UKFController@prihlas'
+]);

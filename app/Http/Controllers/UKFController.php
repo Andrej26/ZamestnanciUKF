@@ -7,7 +7,7 @@
  */
 
 namespace App\Http\Controllers;
-use App\Model\Zamestnanci;
+/*use App\Model\Zamestnanci;*/
 
 
 class UKFController extends Controller
@@ -15,8 +15,18 @@ class UKFController extends Controller
 
     public function index()
     {
-        $table = Zamestnanci::all();
-        return view('DBControl.index',['zamestnanci' =>$table]);
+        /*$table = Zamestnanci::all();*/
+        return view('index'/*,['zamestnanci' =>$table]*/);
+    }
+
+    public function login()
+    {
+        return view('login');
+    }
+
+    public function prihlas(Request $request)
+    {
+
     }
 
     public function create()
