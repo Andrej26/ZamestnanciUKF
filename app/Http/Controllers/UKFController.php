@@ -30,11 +30,12 @@ class UKFController extends Controller
         $username = $request->get('email');
         $password = $request->get('heslo');
 
-        $checkuser = Zamestnanci::selectRaw("Count(*) as Total")->where('email','=',$username)->first();
+        $checkuser = Zamestnanci::selectRaw("Count(*) as Total")->from('Zamestnanec')->where('email','=',$username)->first();
+
 
         if(intval($checkuser->Total) > 0){
 
-            $getpassword = Zamestnanci::select("Heslo")->where('Email','=',$username)->first();
+            $getpassword = Zamestnanci::select('heslo')->where('heslo','=',$username)->first();
 
             if(password_verify($password,$getpassword->Password)){
                 $request->session()->set('username',$username);
@@ -45,7 +46,9 @@ class UKFController extends Controller
             }
 
         }else{
-            return redirect('login');
+           // return redirect('login');
+
+            echo "nie je tu nic";
         }
 
     }
