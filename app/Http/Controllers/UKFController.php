@@ -7,9 +7,6 @@
  */
 
 namespace App\Http\Controllers;
-/*use App\Model\Zamestnanci;*/
-
-
 use App\Model\Zamestnanci;
 use Illuminate\Http\Request;
 
