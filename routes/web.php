@@ -17,3 +17,11 @@ Route::get('/', function () {
 
 Route::resource('UKF', 'UKFController');
 
+Route::get('/login', [
+    'as' => 'login', 'uses' => 'UKFController@login'
+]);
+
+Route::get('/prihlas', [
+    'as' => 'prihlas', 'uses' => 'UKFController@prihlas'
+]);
+
