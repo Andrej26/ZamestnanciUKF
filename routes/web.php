@@ -21,7 +21,7 @@ Route::get('/login', [
     'as' => 'login', 'uses' => 'UKFController@login'
 ]);
 
-Route::get('/prihlas', [
+Route::post('/prihlas', [
     'as' => 'prihlas', 'uses' => 'UKFController@prihlas'
 ]);
 

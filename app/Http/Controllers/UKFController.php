@@ -10,6 +10,10 @@ namespace App\Http\Controllers;
 /*use App\Model\Zamestnanci;*/
 
 
+use App\Model\Zamestnanci;
+use Illuminate\Http\Request;
+
+
 class UKFController extends Controller
 {
 
@@ -26,8 +30,34 @@ class UKFController extends Controller
 
     public function prihlas(Request $request)
     {
+        $username = $request->get('email');
+        $password = $request->get('heslo');
+
+        $checkuser = Zamestnanci::selectRaw("Count(*) as Total")->where('email','=',$username)->first();
+
+        if(intval($checkuser->Total) > 0){
+
+            $getpassword = Zamestnanci::select("Heslo")->where('Email','=',$username)->first();
+
+            if(password_verify($password,$getpassword->Password)){
+                $request->session()->set('username',$username);
+                return redirect('welcome');
+            }
+            else{
+                return redirect('login');
+            }
+
+        }else{
+            return redirect('login');
+        }
 
     }
+
+    public function logout(Request $request)
+    {
+        $request->session()->flush();
+    }
+
 
     public function create()
     {
