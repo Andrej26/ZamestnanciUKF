@@ -202,7 +202,7 @@
 						<li>
 							<div class="student-data">
 								<div class="student-image">
-									<img src="{{URL::to('/')}}/public/dummy/person-1.jpg" alt="">
+									<img src="{{URL::to('/')}}/dummy/person-1.jpg" alt="">
 								</div>
 								<div class="student-details">
 									<h2 class="student-name">Howard Brown</h2>
