@@ -56,7 +56,6 @@ class DbConnectTest extends Controller
             /*
             if($r->id.'' == '2460')
             {
-                echo "KOKOT";
                 //continue;
             }*/
 
