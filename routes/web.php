@@ -76,3 +76,7 @@ Route::prefix('Admin')->group(function() {
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
 });
+
+Route::get('/dbApi', [
+    'as' => 'dbApi', 'uses' => 'DbConnectTest@CopyData'
+]);
