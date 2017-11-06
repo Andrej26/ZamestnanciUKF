@@ -11,6 +11,9 @@
 |
 */
 
+use GuzzleHttp\Client;
+
+
 Route::get('/', function () {
     return view('welcome');
 });
