@@ -7,17 +7,9 @@
  */
 
 namespace App\Http\Controllers\DBControllers;
+
 use App\Http\Controllers\Controller;
-use App\Zamestnanec;
-use App\Model\Titul;
-use App\Model\Rola;
-use App\Model\Publikacia;
-use App\Model\Projekt;
-use App\Model\Pracovisko;
-use App\Model\KategoriaTitulu;
-use App\Model\Kancelaria;
-use App\Model\ClenstvoVOrganizacii;
-use App\Model\VzdelanieAPrax;
+use App\Model\Zamestnanec;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -41,15 +33,17 @@ class DBZamestnanci extends Controller
 
     {
         $this->validate($request,[
-            'name' => 'required|max:20',
-            'email' => 'required|max:50',
-            'password' => 'required|max:20',
+            'meno' => 'required|max:50',
+            'email' => 'required|max:60',
+            'heslo' => 'required|max:22',
+            'profil' => 'required|max:50',
         ]);
 
         Zamestnanec::create([
-            'name' => $request->name,
+            'meno' => $request->meno,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'heslo' => Hash::make($request->heslo),
+            'profil' => $request->profil,
             'stav' => 1,
             ]);
         return redirect()->route('TabZamestnanci.index')
@@ -73,10 +67,17 @@ class DBZamestnanci extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'name' => 'required|max:20',
-            'email' => 'required|max:50',
+            'meno' => 'required|max:50',
+            'email' => 'required|max:60',
+            'heslo' => 'required|max:22',
+            'profil' => 'required|max:50',
         ]);
-        Zamestnanec::find($id)->update($request->all());
+        Zamestnanec::find($id)->update([
+            'meno' => $request->meno,
+            'email' => $request->email,
+            'heslo' => Hash::make($request->heslo),
+            'profil' => $request->profil,]
+        );
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Upraveny zamestnanec');
     }

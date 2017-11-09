@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Zamestnanec;
+use App\Model\Zamestnanec;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
@@ -23,22 +23,25 @@ class ZamestnanecLoginController extends Controller
     {
         $this->validate($request,[
             'email' => 'required|email',
-            'password' => 'required|min:6'
+            'heslo' => 'required|min:6'
         ]);
 
+
         $zames_stav = Zamestnanec::select('stav')->where('email', $request->email)->first();
+        $id=Zamestnanec::select('idzamestnanec')->where('email', $request->email)->first();
+        $rola = Zamestnanec::find($id['idzamestnanec']);
 
         if($zames_stav['stav'] == 1){
-           if(Auth::guard('zame')->attempt(['email' => $request->email, 'password' => $request->password], $request->remember))
+           if(Auth::guard('zame')->attempt(['email' => $request->email, 'password' => $request->heslo], $request->remember))
            {
-               return redirect()->intended(route('zames.dashboard'));
+               echo 01;//return redirect()->intended(route('zames.dashboard'));
             }
 
-            return redirect()->back()->withImput($request->only('email','remember'))->with('danger','Zle ste zadali email alebo heslo.');
+           return $rola; //return redirect()->back()->withImput($request->only('email','remember'))->with('danger','Zle ste zadali email alebo heslo.');
         }
         else
             {
-                return redirect()->route('ukf')->with('danger','Dobrý deň. Vaše konto bolo zablokované. Pre odblokovanie kontaktujte administrátora.');
+                echo 02;//return redirect()->route('ukf')->with('danger','Dobrý deň. Vaše konto bolo zablokované. Pre odblokovanie kontaktujte administrátora.');
             }
     }
 

@@ -89,7 +89,7 @@ return [
         ],
         'zames' => [
             'driver' => 'eloquent',
-            'model' => App\Zamestnanec::class,
+            'model' => App\Model\Zamestnanec::class,
         ],
         'admins' => [
             'driver' => 'eloquent',

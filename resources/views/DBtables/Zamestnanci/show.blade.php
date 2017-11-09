@@ -17,7 +17,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Meno:</strong>
-                {{$zam->name}}
+                {{$zam->meno}}
             </div>
         </div>
 
@@ -29,10 +29,35 @@
             </div>
         </div>
 
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Najvyžší titul:</strong>
+                {{$zam->profil}}
+            </div>
+        </div>
+
+
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Heslo: </strong>
-                {{$zam->password}}
+                {{$zam->heslo}}
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Katedra: </strong>
+                {{$zam->heslo}}
+            </div>
+        </div>
+
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Rola používateľa: </strong>
+                {{$zam->heslo}}
             </div>
         </div>
 

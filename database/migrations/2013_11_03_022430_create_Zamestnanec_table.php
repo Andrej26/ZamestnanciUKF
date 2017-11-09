@@ -23,6 +23,8 @@ class CreateZamestnanecTable extends Migration
             $table->string('heslo');
             $table->string('profil');
             $table->string('email')->nullable();
+            $table->integer('stav');
+            $table->rememberToken();
 
             //Foreign key
             $table->integer('Katedra_idKatedra')->unsigned();
