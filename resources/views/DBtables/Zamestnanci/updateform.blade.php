@@ -30,8 +30,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Katedra:</strong>
-            {!! Form::text('profil', null, array('placeholder' => 'titul','class' => 'form-control','required')) !!}
-            {!! Form::select('nazov',$zam02,null ['Under 18', '19 to 30', 'Over 30']) !!}
+            {!! Form::select('nazov',$zam02,$zam01->Katedra_idKatedra, ['class' => 'form-control']) !!}
         </div>
     </div>
 

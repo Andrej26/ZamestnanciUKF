@@ -9,7 +9,9 @@
 namespace App\Http\Controllers\DBControllers;
 
 use App\Http\Controllers\Controller;
+use App\Model\Katedra;
 use App\Model\Zamestnanec;
+use App\Model\RolaPouzivatela;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -30,7 +32,7 @@ class DBZamestnanci extends Controller
 
     public function create()
     {
-        return view('DBtables.Zamestnanci.create');
+        return view('DBtables.Zamestnanci.create',['katedra' =>$this->katedry(), 'rola' => $this->roly()]);
     }
 
     public function store(Request $request)
@@ -41,6 +43,8 @@ class DBZamestnanci extends Controller
             'email' => 'required|max:60',
             'heslo' => 'required|max:22',
             'profil' => 'required|max:50',
+            //'katedra' => 'required|max:100',
+           // 'rola' => 'required|max:30',
         ]);
 
         Zamestnanec::create([
@@ -49,6 +53,8 @@ class DBZamestnanci extends Controller
             'heslo' => Hash::make($request->heslo),
             'profil' => $request->profil,
             'stav' => 1,
+            'Katedra_idKatedra' => $request->katedra,
+            'rolaPouzivatela_idrolaPouzivatela' => $request->rola,
             ]);
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Zamestnanec bol vytvorený.');
@@ -65,15 +71,42 @@ class DBZamestnanci extends Controller
         return view('DBtables.Zamestnanci.show',compact('zam'));
     }
 
+    public function katedry()
+    {
+        $zam02 =[];
+
+        $zam03 =Katedra::select('idKatedra' , 'nazov')
+            ->groupBy('nazov','idKatedra')
+            // ->orderBy('nazov', 'asc')
+            ->get();
+
+        foreach ( $zam03 as $katedra):
+            $zam02[$katedra->idKatedra] = $katedra->nazov;
+        endforeach;
+
+        return $zam02;
+    }
+
+    public function roly()
+    {
+        $rola01 =[];
+
+        $rola02 =RolaPouzivatela::select('idrolaPouzivatela' , 'rola')
+            ->get();
+
+        foreach ( $rola02 as $rola):
+            $rola01[$rola->idrolaPouzivatela] = $rola->rola;
+        endforeach;
+
+        return $rola01;
+    }
+
 
     public function edit($id)
     {
         $zam01 = Zamestnanec::find($id);
-        $zam02 =Zamestnanec::select('nazov')
-            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
-            ->orderBy('nazov', 'asc')
-            ->get();
-        return view('DBtables.Zamestnanci.edit',compact('zam01', '$zam02'));
+
+        return view('DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry()]);
     }
 
     public function update(Request $request, $id)
@@ -83,12 +116,14 @@ class DBZamestnanci extends Controller
             'email' => 'required|max:60',
             'heslo' => 'required|max:22',
             'profil' => 'required|max:50',
+            'nazov' => 'required|max:100',
         ]);
         Zamestnanec::find($id)->update([
             'meno' => $request->meno,
             'email' => $request->email,
             'heslo' => Hash::make($request->heslo),
-            'profil' => $request->profil,]
+            'profil' => $request->profil,
+            'Katedra_idKatedra' => $request->nazov,]
         );
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Upraveny zamestnanec');

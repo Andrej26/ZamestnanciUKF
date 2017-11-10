@@ -27,4 +27,18 @@
         </div>
     </div>
 
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Katedra:</strong>
+            {!! Form::select('katedra',$katedra,null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Rola používateľa:</strong>
+            {!! Form::select('rola',$rola,null, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+
 </div>

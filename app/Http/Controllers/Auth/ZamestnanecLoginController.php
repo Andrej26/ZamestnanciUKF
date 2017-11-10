@@ -30,9 +30,6 @@ class ZamestnanecLoginController extends Controller
         $rola = Zamestnanec::select('rola')
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->where('email', $request->email)->first();
-        $admin = Zamestnanec::select('*')
-            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
-            ->where('rolaPouzivatela_idrolaPouzivatela', '3')->get();
 
 
 
@@ -45,10 +42,10 @@ class ZamestnanecLoginController extends Controller
                 if($zames_stav['stav'] == 1){
                     if(Auth::guard('zame')->attempt(['email' => $request->email, 'password' => $request->heslo], $request->remember))
                     {
-                       // return redirect()->intended(route('zames.dashboard'));
+                        return redirect()->intended(route('zames.dashboard'));
                     }
 
-                    return $admin; // return redirect()->back()->withImput($request->only('email','remember'))->with('danger','Zle ste zadali email alebo heslo.');
+                        return redirect()->back()->withImput($request->only('email','remember'))->with('danger','Zle ste zadali email alebo heslo.');
                 }
                 else
                 {
