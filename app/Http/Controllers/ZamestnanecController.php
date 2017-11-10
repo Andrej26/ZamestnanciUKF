@@ -28,6 +28,7 @@ class ZamestnanecController extends Controller
         return view('zamestnanec');
     }
 
+
     public function logout()
     {
         Auth::guard('zame')->logout();

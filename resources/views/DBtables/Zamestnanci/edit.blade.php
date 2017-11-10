@@ -25,7 +25,7 @@
         </div>
     @endif
 
-    {!! Form::model($zam01, ['method' => 'PATCH','route' => ['TabZamestnanci.update', $zam01->idzamestnanec]]) !!}
+    {!! Form::model($zam01,$zam02, ['method' => 'PATCH','route' => ['TabZamestnanci.update', $zam01->idzamestnanec]]) !!}
     @include('DBtables.Zamestnanci.updateform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         {!! Form::submit('Upravenie zamestnanca',['class' => 'btn btn-primary']) !!}

@@ -49,7 +49,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Katedra: </strong>
-                {{$zam->heslo}}
+                {{$zam->nazov}}
             </div>
         </div>
 
@@ -57,7 +57,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Rola používateľa: </strong>
-                {{$zam->heslo}}
+                {{$zam->rola}}
             </div>
         </div>
 

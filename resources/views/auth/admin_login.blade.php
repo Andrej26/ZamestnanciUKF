@@ -43,7 +43,7 @@
 
                                 <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                     <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-                                    <input id="password" type="password" class="form-control" name="password" required>
+                                    <input id="password" type="password" class="form-control" name="heslo" required>
 
                                     @if ($errors->has('password'))
                                         <span class="help-block">

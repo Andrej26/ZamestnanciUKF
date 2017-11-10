@@ -16,14 +16,22 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Heslo:</strong>
-            {!! Form::text('password', null, array('placeholder' => 'Heslo','class' => 'form-control','required')) !!}
+            {!! Form::text('heslo', null, array('placeholder' => 'Heslo','class' => 'form-control','required')) !!}
         </div>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Najvyžší titul:</strong>
+            <strong>Najvyžší titul(profil zamestnanca):</strong>
             {!! Form::text('profil', null, array('placeholder' => 'titul','class' => 'form-control','required')) !!}
+        </div>
+    </div>
+
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Katedra:</strong>
+            {!! Form::text('profil', null, array('placeholder' => 'titul','class' => 'form-control','required')) !!}
+            {!! Form::select('nazov',$zam02,null ['Under 18', '19 to 30', 'Over 30']) !!}
         </div>
     </div>
 

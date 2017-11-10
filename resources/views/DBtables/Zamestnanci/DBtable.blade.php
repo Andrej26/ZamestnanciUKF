@@ -29,6 +29,7 @@
         <th style="text-align: center; vertical-align: middle;">email</th>
         <th style="text-align: center; vertical-align: middle;">titul</th>
         <th style="text-align: center; vertical-align: middle;">Rola</th>
+        <th style="text-align: center; vertical-align: middle;">Katedra</th>
         <th style="text-align: center; vertical-align: middle;">stav</th>
         <th style="text-align: center; vertical-align: middle;" width="280px">Action</th>
     </tr>
@@ -39,7 +40,8 @@
             <td style="text-align: center; vertical-align: middle;">{{ $zam->meno}}</td>
             <td style="text-align: center; vertical-align: middle;">{{ $zam->email}}</td>
             <td style="text-align: center; vertical-align: middle;">{{ $zam->profil}}</td>
-            <td style="text-align: center; vertical-align: middle;">{{ $zam->rolaPouzivatela->rola}}</td>
+            <td style="text-align: center; vertical-align: middle;">{{ $zam->rola}}</td>
+            <td style="text-align: center; vertical-align: middle;">{{ $zam->nazov}}</td>
             <td style="text-align: center; vertical-align: middle;">{{ $zam->stav}}</td>
             <td class="btn-group" >
 

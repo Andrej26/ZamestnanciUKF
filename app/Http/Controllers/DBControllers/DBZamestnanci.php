@@ -11,6 +11,7 @@ namespace App\Http\Controllers\DBControllers;
 use App\Http\Controllers\Controller;
 use App\Model\Zamestnanec;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -19,7 +20,10 @@ class DBZamestnanci extends Controller
 
     public function index()
     {
-        $table = Zamestnanec::all();
+        $table = Zamestnanec::select('*')
+        ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+                ->get();
         return view('DBtables.Zamestnanci.DBtable',['zamestnanciss' =>$table]);
     }
 
@@ -53,7 +57,11 @@ class DBZamestnanci extends Controller
 
     public function show($id)
     {
-        $zam = Zamestnanec::find($id);
+        $zam = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->where('idzamestnanec', $id)
+            ->first();
         return view('DBtables.Zamestnanci.show',compact('zam'));
     }
 
@@ -61,7 +69,11 @@ class DBZamestnanci extends Controller
     public function edit($id)
     {
         $zam01 = Zamestnanec::find($id);
-        return view('DBtables.Zamestnanci.edit',compact('zam01'));
+        $zam02 =Zamestnanec::select('nazov')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('nazov', 'asc')
+            ->get();
+        return view('DBtables.Zamestnanci.edit',compact('zam01', '$zam02'));
     }
 
     public function update(Request $request, $id)
@@ -110,6 +122,14 @@ class DBZamestnanci extends Controller
             return redirect()->route('TabZamestnanci.index')
                 ->with('success','Zamestnanec sa už môže prihlásiť do systému.');
         }
+    }
+
+
+    public function RolaJoin($id)
+    {
+       return Zamestnanec::select('rola')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->where('idzamestnanec', $id->idzamestnanec)->first();
     }
 
 }
