@@ -73,6 +73,15 @@ Route::prefix('Admin')->group(function() {
     Route::match(['put','patch'],'/TabZamestnanci/{id}', 'DBControllers\DBZamestnanci@update')->name('TabZamestnanci.update');
     Route::get('/TabZamestnanci/{id}/Úprava_zamestnanca', 'DBControllers\DBZamestnanci@edit')->name('TabZamestnanci.edit');
 
+    //Tablulka rolý
+    Route::get('/TabRola', 'DBControllers\DBRola@index')->name('TabRola.index');
+    Route::post('/TabRola', 'DBControllers\DBRola@store')->name('TabRola.store');
+    Route::get('/TabRola/Vytvorenie_role', 'DBControllers\DBRola@create')->name('TabRola.create');
+    Route::get('/TabRola/{id}', 'DBControllers\DBRola@show')->name('TabRola.show');
+    Route::match(['put','patch'],'/TabRola/{id}', 'DBControllers\DBRola@update')->name('TabRola.update');
+    Route::get('/TabRola/{id}/Úprava_role', 'DBControllers\DBRola@edit')->name('TabRola.edit');
+    Route::delete('/TabRola/{id}', 'DBControllers\DBRola@destroy')->name('TabRola.delete');
+
     //Prihlasenie admin
     Route::get('/logout', 'AdminController@logout')->name('admin.logout');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
