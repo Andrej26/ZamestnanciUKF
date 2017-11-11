@@ -25,7 +25,8 @@ class DBZamestnanci extends Controller
         $table = Zamestnanec::select('*')
         ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
-                ->get();
+                ->orderBy('idzamestnanec', 'asc')
+                    ->get();
         return view('DBtables.Zamestnanci.DBtable',['zamestnanciss' =>$table]);
     }
 

@@ -91,6 +91,15 @@ Route::prefix('Admin')->group(function() {
     Route::get('/TabFakulta/{id}/Úprava_fakulty', 'DBControllers\DBFakulta@edit')->name('TabFakulta.edit');
     Route::delete('/TabFakulta/{id}', 'DBControllers\DBFakulta@destroy')->name('TabFakulta.delete');
 
+    //Tablulka katedier
+    Route::get('/TabKatedra', 'DBControllers\DBKatedra@index')->name('TabKatedra.index');
+    Route::post('/TabKatedra', 'DBControllers\DBKatedra@store')->name('TabKatedra.store');
+    Route::get('/TabKatedra/Vytvorenie_katedry', 'DBControllers\DBKatedra@create')->name('TabKatedra.create');
+    Route::get('/TabKatedra/{id}', 'DBControllers\DBKatedra@show')->name('TabKatedra.show');
+    Route::match(['put','patch'],'/TabKatedra/{id}', 'DBControllers\DBKatedra@update')->name('TabKatedra.update');
+    Route::get('/TabKatedra/{id}/Úprava_katedry', 'DBControllers\DBKatedra@edit')->name('TabKatedra.edit');
+    Route::delete('/TabKatedra/{id}', 'DBControllers\DBKatedra@destroy')->name('TabKatedra.delete');
+
     //Prihlasenie admin
     Route::get('/logout', 'AdminController@logout')->name('admin.logout');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
