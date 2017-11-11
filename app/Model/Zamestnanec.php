@@ -12,7 +12,7 @@ class Zamestnanec extends Model
     // MASS ASSIGNMENT -------------------------------------------------------
     // define which attributes are mass assignable (for security)
     // we only want these 3 attributes able to be filled
-    protected $fillable = array('idzamestnanec', 'meno', 'heslo', 'profil', 'Katedra_idKatedra', 'rolaPouzivatela_idrolaPouzivatela', 'email');
+    protected $fillable = array('idzamestnanec', 'meno', 'heslo', 'profil', 'Katedra_idKatedra', 'rolaPouzivatela_idrolaPouzivatela', 'email', 'aktivny');
 
     // LINK THIS MODEL TO OUR DATABASE TABLE ---------------------------------
     // since the plural of fish isnt what we named our database table we have to define it
