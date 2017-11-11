@@ -34,4 +34,11 @@
         </div>
     </div>
 
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Rola používateľa:</strong>
+            {!! Form::select('rola',$zam03,$zam01->rolaPouzivatela_idrolaPouzivatela, ['class' => 'form-control']) !!}
+        </div>
+    </div>
+
 </div>

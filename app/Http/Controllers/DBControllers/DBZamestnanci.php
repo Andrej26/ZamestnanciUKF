@@ -48,6 +48,7 @@ class DBZamestnanci extends Controller
         ]);
 
         Zamestnanec::create([
+            'idzamestnanec' => $this->idgenerator(),
             'meno' => $request->meno,
             'email' => $request->email,
             'heslo' => Hash::make($request->heslo),
@@ -71,42 +72,12 @@ class DBZamestnanci extends Controller
         return view('DBtables.Zamestnanci.show',compact('zam'));
     }
 
-    public function katedry()
-    {
-        $zam02 =[];
-
-        $zam03 =Katedra::select('idKatedra' , 'nazov')
-            ->groupBy('nazov','idKatedra')
-            // ->orderBy('nazov', 'asc')
-            ->get();
-
-        foreach ( $zam03 as $katedra):
-            $zam02[$katedra->idKatedra] = $katedra->nazov;
-        endforeach;
-
-        return $zam02;
-    }
-
-    public function roly()
-    {
-        $rola01 =[];
-
-        $rola02 =RolaPouzivatela::select('idrolaPouzivatela' , 'rola')
-            ->get();
-
-        foreach ( $rola02 as $rola):
-            $rola01[$rola->idrolaPouzivatela] = $rola->rola;
-        endforeach;
-
-        return $rola01;
-    }
-
 
     public function edit($id)
     {
         $zam01 = Zamestnanec::find($id);
 
-        return view('DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry()]);
+        return view('DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly()]);
     }
 
     public function update(Request $request, $id)
@@ -118,12 +89,14 @@ class DBZamestnanci extends Controller
             'profil' => 'required|max:50',
             'nazov' => 'required|max:100',
         ]);
+
         Zamestnanec::find($id)->update([
             'meno' => $request->meno,
             'email' => $request->email,
             'heslo' => Hash::make($request->heslo),
             'profil' => $request->profil,
-            'Katedra_idKatedra' => $request->nazov,]
+            'Katedra_idKatedra' => $request->nazov,
+            'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]
         );
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Upraveny zamestnanec');
@@ -160,11 +133,40 @@ class DBZamestnanci extends Controller
     }
 
 
-    public function RolaJoin($id)
+    public function katedry()
     {
-       return Zamestnanec::select('rola')
-            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
-            ->where('idzamestnanec', $id->idzamestnanec)->first();
+        $zam01 =[];
+
+        $zam02 =Katedra::select('idKatedra' , 'nazov')
+            ->groupBy('nazov','idKatedra')
+            // ->orderBy('nazov', 'asc')
+            ->get();
+
+        foreach ( $zam02 as $katedra):
+            $zam01[$katedra->idKatedra] = $katedra->nazov;
+        endforeach;
+
+        return $zam01;
     }
 
+    public function roly()
+    {
+        $rola01 =[];
+
+        $rola02 =RolaPouzivatela::select('idrolaPouzivatela' , 'rola')
+            ->get();
+
+        foreach ( $rola02 as $rola):
+            $rola01[$rola->idrolaPouzivatela] = $rola->rola;
+        endforeach;
+
+        return $rola01;
+    }
+
+    public function idgenerator()
+    {
+        $idgen01=Zamestnanec::max('idzamestnanec');
+        $idgen02=$idgen01+1;
+        return $idgen02;
+    }
 }
