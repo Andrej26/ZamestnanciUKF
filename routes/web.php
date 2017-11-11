@@ -82,6 +82,15 @@ Route::prefix('Admin')->group(function() {
     Route::get('/TabRola/{id}/Úprava_role', 'DBControllers\DBRola@edit')->name('TabRola.edit');
     Route::delete('/TabRola/{id}', 'DBControllers\DBRola@destroy')->name('TabRola.delete');
 
+    //Tablulka fakúlt
+    Route::get('/TabFakulta', 'DBControllers\DBFakulta@index')->name('TabFakulta.index');
+    Route::post('/TabFakulta', 'DBControllers\DBFakulta@store')->name('TabFakulta.store');
+    Route::get('/TabFakulta/Vytvorenie_role', 'DBControllers\DBFakulta@create')->name('TabFakulta.create');
+    Route::get('/TabFakulta/{id}', 'DBControllers\DBFakulta@show')->name('TabFakulta.show');
+    Route::match(['put','patch'],'/TabFakulta/{id}', 'DBControllers\DBFakulta@update')->name('TabFakulta.update');
+    Route::get('/TabFakulta/{id}/Úprava_fakulty', 'DBControllers\DBFakulta@edit')->name('TabFakulta.edit');
+    Route::delete('/TabFakulta/{id}', 'DBControllers\DBFakulta@destroy')->name('TabFakulta.delete');
+
     //Prihlasenie admin
     Route::get('/logout', 'AdminController@logout')->name('admin.logout');
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
