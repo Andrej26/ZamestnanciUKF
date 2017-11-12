@@ -33,7 +33,7 @@ Route::get('Zmena_stavu1/{id}',[
     'as'=>'zmena_stavu1', 'uses'=>'DBControllers\DBZamestnanci@unhide'
 ]);
 
-//dalsie tabulkz este nie su...
+
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -51,6 +51,8 @@ Route::get('/picture/{filename}', function ($filename)
     return $response;
 })->name('picture');
 
+
+
 // Prihlasenie
 ////////////////////////////////////////////////////////////////
 Auth::routes();
@@ -63,6 +65,8 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/', 'ZamestnanecController@index')->name('zames.dashboard');
 });
 
+
+
 Route::prefix('Admin')->group(function() {
 
     //Tablulka zamestnancov
@@ -72,6 +76,15 @@ Route::prefix('Admin')->group(function() {
     Route::get('/TabZamestnanci/{id}', 'DBControllers\DBZamestnanci@show')->name('TabZamestnanci.show');
     Route::match(['put','patch'],'/TabZamestnanci/{id}', 'DBControllers\DBZamestnanci@update')->name('TabZamestnanci.update');
     Route::get('/TabZamestnanci/{id}/Úprava_zamestnanca', 'DBControllers\DBZamestnanci@edit')->name('TabZamestnanci.edit');
+
+    Route::get('Zmena_stavu0/{id}',[
+        'as'=>'zmena_stavu0', 'uses'=>'DBControllers\DBZamestnanci@hide'
+    ]);
+
+    Route::get('Zmena_stavu1/{id}',[
+        'as'=>'zmena_stavu1', 'uses'=>'DBControllers\DBZamestnanci@unhide'
+    ]);
+
 
     //Tablulka rolý
     Route::get('/TabRola', 'DBControllers\DBRola@index')->name('TabRola.index');
@@ -106,6 +119,8 @@ Route::prefix('Admin')->group(function() {
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
     Route::get('/', 'AdminController@index')->name('admin.dashboard');
 });
+
+
 
 Route::get('/dbApi', [
     'as' => 'dbApi', 'uses' => 'DbConnectTest@CopyData'
