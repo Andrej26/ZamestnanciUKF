@@ -42,7 +42,7 @@
             <td style="text-align: center; vertical-align: middle;">{{ $zam->profil}}</td>
             <td style="text-align: center; vertical-align: middle;">{{ $zam->rola}}</td>
             <td style="text-align: center; vertical-align: middle;">{{ $zam->nazov}}</td>
-            <td style="text-align: center; vertical-align: middle;">{{ $zam->stav}}</td>
+            <td style="text-align: center; vertical-align: middle;">{{ $zam->aktivny}}</td>
             <td class="btn-group" >
 
                 <a class="btn btn-info" href="{{ route('TabZamestnanci.show', $zam->idzamestnanec) }}">Ukáž</a>

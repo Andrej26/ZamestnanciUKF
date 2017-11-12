@@ -26,7 +26,7 @@ class ZamestnanecLoginController extends Controller
             'heslo' => 'required|min:6'
         ]);
 
-        $zames_stav = Zamestnanec::select('stav')->where('email', $request->email)->first();
+        $zames_stav = Zamestnanec::select('aktivny')->where('email', $request->email)->first();
         $rola = Zamestnanec::select('rola')
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->where('email', $request->email)->first();
@@ -39,7 +39,7 @@ class ZamestnanecLoginController extends Controller
           // }
        // else
           //  {
-                if($zames_stav['stav'] == 1){
+                if($zames_stav['aktivny'] == 1){
                     if(Auth::guard('zame')->attempt(['email' => $request->email, 'password' => $request->heslo], $request->remember))
                     {
                         return redirect()->intended(route('zames.dashboard'));

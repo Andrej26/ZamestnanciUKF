@@ -54,7 +54,7 @@ class DBZamestnanci extends Controller
             'email' => $request->email,
             'heslo' => Hash::make($request->heslo),
             'profil' => $request->profil,
-            'stav' => 1,
+            'aktivny' => '1',
             'Katedra_idKatedra' => $request->katedra,
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,
             ]);
@@ -105,14 +105,14 @@ class DBZamestnanci extends Controller
 
     public function hide($id)
     {
-        $pom=Zamestnanec::find($id,['stav']);
+        $pom=Zamestnanec::find($id,['aktivny']);
 
-        if ($pom['stav'] == '0'){
+        if ($pom['aktivny'] == '0'){
             return redirect()->route('TabZamestnanci.index')
                 ->with('success','Daný zamestnanec už nemá možnosť prihlásiť sa do systému.');
         }
         else {
-            Zamestnanec::find($id)->update(['stav'=>'0']);
+            Zamestnanec::find($id)->update(['aktivny'=>'0']);
             return redirect()->route('TabZamestnanci.index')
                 ->with('success','Zamestnanec sa už nemôže prihlásiť do systému.');
         }
@@ -120,14 +120,14 @@ class DBZamestnanci extends Controller
 
     public function unhide($id)
     {
-        $pom=Zamestnanec::find($id,['stav']);
+        $pom=Zamestnanec::find($id,['aktivny']);
 
-        if ($pom['stav'] == '1'){
+        if ($pom['aktivny'] == '1'){
             return redirect()->route('TabZamestnanci.index')
                 ->with('success','Daný zamestnanec už má možnosť prihlásiť sa do systému.');
         }
         else {
-            Zamestnanec::find($id)->update(['stav'=>'1']);
+            Zamestnanec::find($id)->update(['aktivny'=>'1']);
             return redirect()->route('TabZamestnanci.index')
                 ->with('success','Zamestnanec sa už môže prihlásiť do systému.');
         }
