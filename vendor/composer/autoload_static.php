@@ -18,9 +18,9 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
+        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
-        'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -350,6 +350,9 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ZamestnanecLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ZamestnanecLoginController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\DBControllers\\DBFakulta' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBFakulta.php',
+        'App\\Http\\Controllers\\DBControllers\\DBKatedra' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBKatedra.php',
+        'App\\Http\\Controllers\\DBControllers\\DBRola' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBRola.php',
         'App\\Http\\Controllers\\DBControllers\\DBZamestnanci' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBZamestnanci.php',
         'App\\Http\\Controllers\\DbConnectTest' => __DIR__ . '/../..' . '/app/Http/Controllers/DbConnectTest.php',
         'App\\Http\\Controllers\\UKFController' => __DIR__ . '/../..' . '/app/Http/Controllers/UKFController.php',
@@ -365,7 +368,6 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         'App\\Model\\Projekt' => __DIR__ . '/../..' . '/app/Model/Projekt.php',
         'App\\Model\\Publikacia' => __DIR__ . '/../..' . '/app/Model/Publikacia.php',
         'App\\Model\\RolaPouzivatela' => __DIR__ . '/../..' . '/app/Model/RolaPouzivatela.php',
-        'App\\Model\\Zamestnanci' => __DIR__ . '/../..' . '/app/Model/Zamestnanci.php',
         'App\\Model\\Zamestnanec' => __DIR__ . '/../..' . '/app/Model/Zamestnanec.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
@@ -1487,6 +1489,7 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithContainer' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithContainer.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithDatabase' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithDatabase.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithExceptionHandling' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithExceptionHandling.php',
+        'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithRedis' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithRedis.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\InteractsWithSession' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/InteractsWithSession.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\MakesHttpRequests' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MakesHttpRequests.php',
         'Illuminate\\Foundation\\Testing\\Concerns\\MocksApplicationServices' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/Testing/Concerns/MocksApplicationServices.php',

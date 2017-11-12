@@ -38,7 +38,7 @@ trait Authenticatable
      */
     public function getAuthPassword()
     {
-        return $this->heslo;
+        return $this->password;
     }
 
     /**

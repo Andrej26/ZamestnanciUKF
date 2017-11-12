@@ -23,7 +23,7 @@ class CreateZamestnanecTable extends Migration
             $table->string('heslo');
             $table->string('profil');
             $table->string('email')->nullable();
-            $table->integer('stav');
+            $table->boolean('aktivny');
             $table->rememberToken();
 
             //Foreign key

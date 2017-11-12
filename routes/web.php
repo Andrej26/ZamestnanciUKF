@@ -125,3 +125,7 @@ Route::prefix('Admin')->group(function() {
 Route::get('/dbApi', [
     'as' => 'dbApi', 'uses' => 'DbConnectTest@CopyData'
 ]);
+
+Route::get('/parseTest', [
+        'as' => 'parseTest', 'uses' => 'DbConnectTest@RozparsujMenoNaMail'
+        ]);

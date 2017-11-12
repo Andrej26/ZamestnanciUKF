@@ -17,7 +17,9 @@ use App\Model\Zamestnanec;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use DB;
-
+use Illuminate\Support\Facades\Hash;
+use Normalizer;
+use Transliterator;
 
 
 class DbConnectTest extends Controller
@@ -28,14 +30,14 @@ class DbConnectTest extends Controller
     public function CopyData()
     {
         // nastavenie maximalneho limitu na vykonanie tohto phpcka
-        set_time_limit(600);
+        set_time_limit(3600);
 
 
         $client = new Client([
             // Base URI is used with relative requests
             'base_uri' => 'https://ukfprofil.teacher.sk',
             // You can set any number of default request options.
-            'timeout'  => 2.0,
+            'timeout'  => 4.0,
         ]);
 
         // vlozenie zakladnych 3 roli do databazy
@@ -53,12 +55,11 @@ class DbConnectTest extends Controller
         // dany zaznam ulozeny v premennej $r
         foreach ($decoded as $r)
         {
-            /*
-            if($r->id.'' == '2460')
+            //pokazeny uzivatel
+            if ($r->id.'' == '2416')
             {
-
-                //continue;
-            }*/
+                continue;
+            }
 
             // zavolanie metody firstorcreate na modeli Fakulta, ak este zaznam neexistuje tak sa vytvori,
             // ak zaznam existuje tak sa vrati hodnota null
@@ -81,10 +82,12 @@ class DbConnectTest extends Controller
             Zamestnanec::firstOrCreate([
                 'idzamestnanec' => $r->id,
                 'meno' => $r->name,
-                'heslo' => 'passwd',
+                'heslo' => Hash::make('passwd'),
                 'profil' => $r->description,
                 'rolaPouzivatela_idrolaPouzivatela' => 1,
-                'Katedra_idKatedra' => $idKat -> idKatedra
+                'Katedra_idKatedra' => $idKat -> idKatedra,
+                'aktivny' => true,
+                'email' => $this->RozparsujMenoNaMail($r->name)
             ]);
 
             //poslane getu na detaily zamestnanca a projekty zamestnanca do getu hlavicky samozrehme vlozime idcko a ako
@@ -128,6 +131,48 @@ class DbConnectTest extends Controller
 
     }
 
+    public function RozparsujMenoNaMail($meno)
+     {
+         $name = "prof. PaedDr. Zdenka Gadušová, CSc.";
+         $splitBySpace = explode(" ", $meno);
+         $krstMeno ="";
+         $strMeno ="";
+         $priezMeno ="";
+
+         foreach ($splitBySpace as $item)
+         {
+             if (strpos($item, '.') == false) {
+                 // ak sa nenachadza v retazci bodka
+                 if($krstMeno=="")
+                     $krstMeno = $item;
+                 else if($strMeno == "")
+                     $strMeno = $item;
+                 else if($priezMeno == "")
+                     $priezMeno = $item;
+
+             }
+
+        }
+         // vymazanie ciarky za menom ak tam nejaka je
+         if(substr($strMeno, -1) == ',')
+                $strMeno = rtrim($strMeno, ',');
+         else if(substr($priezMeno, -1) == ',')
+                $priezMeno = rtrim($priezMeno, ',');
+
+         $vysledok = "";
+         if($priezMeno != "")
+                $vysledok = $krstMeno[0].$priezMeno;
+         else
+             $vysledok = $krstMeno[0].$strMeno;
+
+         $vysledok = mb_strtolower($vysledok);
+         $vysledok = $this->normalize($vysledok);
+
+         $vysledok = $vysledok."@ukf.sk";
+
+         return $vysledok;
+     }
+
     // vlozenie roli pouzivatelov ktore budeme pouzivate tj admin navstevnik a zamestnanec
     public function VlozenieZakladnychRoli()
     {
@@ -141,4 +186,19 @@ class DbConnectTest extends Controller
             'rola' => 'admin',
         ]);
     }
+
+    function normalize ($string) {
+                $table = array(
+                        'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
+                        'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+                        'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O',
+                        'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss',
+                        'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e',
+                        'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o',
+                        'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
+                        'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r', 'ň'=>'n', 'ť'=>'t', 'Ľ'=>'L',
+                    );
+
+                return strtr($string, $table);
+     }
 }

@@ -19,7 +19,7 @@ class Zamestnanec extends Authenticatable
 
 
     protected $fillable = ['idzamestnanec', 'meno', 'heslo', 'profil',
-        'Katedra_idKatedra', 'rolaPouzivatela_idrolaPouzivatela', 'email','stav'];
+        'Katedra_idKatedra', 'rolaPouzivatela_idrolaPouzivatela', 'email','aktivky'];
 
     protected $hidden = [
         'heslo', 'remember_token',
