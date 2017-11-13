@@ -38,7 +38,7 @@
         <div style="float: right">
             <a class="btn btn-success" style="display: inline-block; margin-left: 10px" href="{{ route('ukf') }}">Späť na hlavnú stránku</a>
 
-            <a class="btn btn-dark" style="display: inline-block" href="{{ route('admin.logout') }}">Odhasit</a>
+            <a class="btn btn-dark" style="display: inline-block" href="{{ route('zames.logout') }}">Odhasit</a>
         </div>
 
     </div>

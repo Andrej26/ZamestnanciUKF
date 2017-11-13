@@ -100,7 +100,7 @@ class DBZamestnanci extends Controller
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]
         );
         return redirect()->route('TabZamestnanci.index')
-            ->with('success','Upraveny zamestnanec');
+            ->with('success','Zamestnanec bol úspešne upravený');
     }
 
     public function hide($id)
