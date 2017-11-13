@@ -28,16 +28,17 @@
             </li>
         </ul>  -->
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
-                <!--  <span class="fa fa-search" aria-hidden="true"></span>   -->
-                Search
-            </button>
-        </form>
-        <div style="float: right">
-            <a class="btn btn-success" style="display: inline-block; margin-left: 10px" href="{{ route('ukf') }}">Späť na hlavnú stránku</a>
+       <div style=' margin-left: auto;'>
+            <form class="form-inline my-2 my-lg-0">
+                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                 <button class="btn btn-outline-warning my-2 my-sm-0" type="submit">
+                   <!--  <span class="fa fa-search" aria-hidden="true"></span>   -->
+                  Search
+                 </button>
+            </form>
+       </div>
 
+        <div style='float: right; margin-left: auto;'>
             <a class="btn btn-dark" style="display: inline-block" href="{{ route('zames.logout') }}">Odhasit</a>
         </div>
 

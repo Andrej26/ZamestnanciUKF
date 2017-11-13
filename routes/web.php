@@ -122,6 +122,15 @@ Route::prefix('Admin')->group(function() {
     Route::get('/TabProjekt/{id}/Úprava_projektu', 'DBControllers\DBProjekty@edit')->name('TabProjekt.edit');
     Route::delete('/TabProjekt/{id}', 'DBControllers\DBProjekty@destroy')->name('TabProjekt.delete');
 
+    //Tablulka publikácií
+    Route::get('/TabPublikacia', 'DBControllers\DBPublikacie@index')->name('TabPublikacia.index');
+    Route::post('/TabPublikacia', 'DBControllers\DBPublikacie@store')->name('TabPublikacia.store');
+    Route::get('/TabPublikacia/Vytvorenie_publikácie', 'DBControllers\DBPublikacie@create')->name('TabPublikacia.create');
+    Route::get('/TabPublikacia/{id}', 'DBControllers\DBPublikacie@show')->name('TabPublikacia.show');
+    Route::match(['put','patch'],'/TabPublikacia/{id}', 'DBControllers\DBPublikacie@update')->name('TabPublikacia.update');
+    Route::get('/TabPublikacia/{id}/Úprava_publikácie', 'DBControllers\DBPublikacie@edit')->name('TabPublikacia.edit');
+    Route::delete('/TabPublikacia/{id}', 'DBControllers\DBPublikacie@destroy')->name('TabPublikacia.delete');
+
     //Prihlasenie admin
     Route::get('/', 'ZamestnanecController@adminn')->name('admin.dashboard');
 });

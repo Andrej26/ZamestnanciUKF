@@ -64,6 +64,10 @@
     @endforeach
 </table>
 
+<div class="text-center clearfix col-md-12">
+    {{ $zamestnanciss->links() }}
+</div>
+
 <script>
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();
