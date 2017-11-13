@@ -113,6 +113,15 @@ Route::prefix('Admin')->group(function() {
     Route::get('/TabKatedra/{id}/Úprava_katedry', 'DBControllers\DBKatedra@edit')->name('TabKatedra.edit');
     Route::delete('/TabKatedra/{id}', 'DBControllers\DBKatedra@destroy')->name('TabKatedra.delete');
 
+    //Tablulka projektov
+    Route::get('/TabProjekt', 'DBControllers\DBProjekty@index')->name('TabProjekt.index');
+    Route::post('/TabProjekt', 'DBControllers\DBProjekty@store')->name('TabProjekt.store');
+    Route::get('/TabProjekt/Vytvorenie_projektu', 'DBControllers\DBProjekty@create')->name('TabProjekt.create');
+    Route::get('/TabProjekt/{id}', 'DBControllers\DBProjekty@show')->name('TabProjekt.show');
+    Route::match(['put','patch'],'/TabProjekt/{id}', 'DBControllers\DBProjekty@update')->name('TabProjekt.update');
+    Route::get('/TabProjekt/{id}/Úprava_projektu', 'DBControllers\DBProjekty@edit')->name('TabProjekt.edit');
+    Route::delete('/TabProjekt/{id}', 'DBControllers\DBProjekty@destroy')->name('TabProjekt.delete');
+
     //Prihlasenie admin
     Route::get('/', 'ZamestnanecController@adminn')->name('admin.dashboard');
 });
