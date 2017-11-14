@@ -32,8 +32,8 @@
                 <div class="row">
                     <div class="col-md-8">
                         <div class="feature rounded-icon">
-                            <div class="feature-icon"><i class="icon-owl"></i></div>
-                            <h3 class="feature-title">Fakulta prírodných vied </h3>
+                            <a href="#"> <div class="feature-icon"><i class="icon-owl"></i></div>
+                            <h3 class="feature-title">Fakulta prírodných vied </h3> </a>
                             <p>Fakulta prírodných vied</p>
 
                         </div>
@@ -44,8 +44,8 @@
                     <div class="col-md-8">
 
                         <div class="feature rounded-icon">
-                            <div class="feature-icon"><i class="icon-bus"></i></div>
-                            <h3 class="feature-title">Fakulta sociálnych vied a zdravotníctva </h3>
+                            <a href="#"><div class="feature-icon"><i class="icon-bus"></i></div>
+                                <h3 class="feature-title">Fakulta sociálnych vied a zdravotníctva </h3> </a>
                             <p>Fakulta sociálnych vied a zdravotníctva</p>
                         </div>
                     </div>
@@ -54,8 +54,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="feature rounded-icon">
-                            <div class="feature-icon"><i class="icon-school"></i></div>
-                            <h3 class="feature-title">Fakulta stredoeurópskych študií</h3>
+                            <a href="#"> <div class="feature-icon"><i class="icon-school"></i></div>
+                                <h3 class="feature-title">Fakulta stredoeurópskych študií</h3> </a>
                             <p>Fakulta stredoeurópskych študií</p>
                         </div>
                     </div>
@@ -65,8 +65,8 @@
                     <div class="col-md-6">
 
                         <div class="feature rounded-icon">
-                            <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                            <h3 class="feature-title">Filozofická fakulta </h3>
+                            <a href="#"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
+                                <h3 class="feature-title">Filozofická fakulta </h3> </a>
                             <p>Filozofická fakulta</p>
                         </div>
 
@@ -77,8 +77,8 @@
                     <div class="col-md-6">
 
                         <div class="feature rounded-icon">
-                            <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                            <h3 class="feature-title">Pedagogická fakulta </h3>
+                            <a href="#"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
+                                <h3 class="feature-title">Pedagogická fakulta </h3> </a>
                             <p>Pedagogická fakulta</p>
                         </div>
 
