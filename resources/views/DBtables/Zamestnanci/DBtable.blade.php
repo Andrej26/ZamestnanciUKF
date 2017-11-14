@@ -64,9 +64,9 @@
     @endforeach
 </table>
 
-<div class="text-center clearfix col-md-12">
-    {{ $zamestnanciss->links() }}
-</div>
+    <div class='col-xs-12 col-sm-12 col-md-12'>
+        {{ $zamestnanciss->links('vendor.pagination.bootstrap-4') }}
+    </div>
 
 <script>
     $(document).ready(function(){

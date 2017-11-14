@@ -24,7 +24,7 @@ class DBPublikacie extends Controller
         $table = Publikacia::select('*')
         ->join('zamestnanec', 'idzamestnanec', '=', 'Zamestnanec_idzamestnanec')
                 ->orderBy('idPublikacia', 'asc')
-                    ->get();
+                    ->paginate(15);
 
         return view('DBtables.Publikacie.DBtable',['publikacis' =>$table]);
     }
