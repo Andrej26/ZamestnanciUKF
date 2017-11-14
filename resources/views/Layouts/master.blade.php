@@ -28,11 +28,16 @@
     <![endif]-->
 
     <style>
+        .paginate-box{
+            margin: auto;
+            width: 50%;
+        }
 
         .zarovnanie{
-            border: 1px solid #ccc;
-            text-align: center;
-        }
+             border: 1px solid #ccc;
+             text-align: center;
+         }
+
         .but01{
             margin:3px;
         }

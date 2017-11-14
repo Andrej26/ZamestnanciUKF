@@ -49,6 +49,11 @@
     @endforeach
 </table>
 
+<div class='col-xs-12 col-sm-12 col-md-12'>
+    {{ $projektis->links('vendor.pagination.bootstrap-4') }}
+</div>
+
+
 <script>
     $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip();

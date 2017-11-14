@@ -23,7 +23,7 @@ class DBKatedra extends Controller
         $table = Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
             ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
                 ->orderBy('idKatedra', 'asc')
-                    ->get();
+                    ->paginate(15);
         return view('DBtables.Katedry.DBtable',['katedres' =>$table]);
     }
 

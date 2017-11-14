@@ -24,7 +24,7 @@ class DBProjekty extends Controller
         $table = Projekt::select('*')
         ->join('zamestnanec', 'idzamestnanec', '=', 'Zamestnanec_idzamestnanec')
                 ->orderBy('idProjekt', 'asc')
-                    ->get();
+                    ->paginate(15);
         return view('DBtables.Projekty.DBtable',['projektis' =>$table]);
     }
 
