@@ -14,7 +14,7 @@ class Zamestnanec extends Authenticatable
     protected $guard = 'zame';
 
     protected $table = 'zamestnanec';
-    protected $primaryKey = 'idzamestnanec'; // or null
+    protected $primaryKey = 'idzamestnanec';
     public $incrementing = false;
 
 

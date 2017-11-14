@@ -26,7 +26,7 @@ class DBZamestnanci extends Controller
         ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
                 ->orderBy('idzamestnanec', 'asc')
-                    ->get();
+                    ->paginate(8);
         return view('DBtables.Zamestnanci.DBtable',['zamestnanciss' =>$table]);
     }
 
@@ -100,7 +100,7 @@ class DBZamestnanci extends Controller
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]
         );
         return redirect()->route('TabZamestnanci.index')
-            ->with('success','Upraveny zamestnanec');
+            ->with('success','Zamestnanec bol úspešne upravený');
     }
 
     public function hide($id)

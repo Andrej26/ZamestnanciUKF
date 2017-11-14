@@ -22,5 +22,13 @@
             <input  src="{{URL::to('/')}}/images/katedra.png" alt="Tabulka01" type="image" class="img-thumbnail_01" />
         </a>
 
+        <a class="btn btn-outline-dark but01" href="{{ url('Admin/TabProjekt') }}">
+            <input  src="{{URL::to('/')}}/images/projekt.png" alt="Tabulka01" type="image" class="img-thumbnail_01" />
+        </a>
+
+        <a class="btn btn-outline-dark but01" href="{{ url('Admin/TabPublikacia') }}">
+            <input  src="{{URL::to('/')}}/images/publikacie.png" alt="Tabulka01" type="image" class="img-thumbnail_01" />
+        </a>
+
     </div>
 @endsection

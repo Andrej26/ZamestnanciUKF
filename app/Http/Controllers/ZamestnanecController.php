@@ -28,6 +28,11 @@ class ZamestnanecController extends Controller
         return view('zamestnanec');
     }
 
+    public function adminn()
+    {
+        return view('admin');
+    }
+
 
     public function logout()
     {

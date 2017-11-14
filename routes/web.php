@@ -113,11 +113,26 @@ Route::prefix('Admin')->group(function() {
     Route::get('/TabKatedra/{id}/Úprava_katedry', 'DBControllers\DBKatedra@edit')->name('TabKatedra.edit');
     Route::delete('/TabKatedra/{id}', 'DBControllers\DBKatedra@destroy')->name('TabKatedra.delete');
 
+    //Tablulka projektov
+    Route::get('/TabProjekt', 'DBControllers\DBProjekty@index')->name('TabProjekt.index');
+    Route::post('/TabProjekt', 'DBControllers\DBProjekty@store')->name('TabProjekt.store');
+    Route::get('/TabProjekt/Vytvorenie_projektu', 'DBControllers\DBProjekty@create')->name('TabProjekt.create');
+    Route::get('/TabProjekt/{id}', 'DBControllers\DBProjekty@show')->name('TabProjekt.show');
+    Route::match(['put','patch'],'/TabProjekt/{id}', 'DBControllers\DBProjekty@update')->name('TabProjekt.update');
+    Route::get('/TabProjekt/{id}/Úprava_projektu', 'DBControllers\DBProjekty@edit')->name('TabProjekt.edit');
+    Route::delete('/TabProjekt/{id}', 'DBControllers\DBProjekty@destroy')->name('TabProjekt.delete');
+
+    //Tablulka publikácií
+    Route::get('/TabPublikacia', 'DBControllers\DBPublikacie@index')->name('TabPublikacia.index');
+    Route::post('/TabPublikacia', 'DBControllers\DBPublikacie@store')->name('TabPublikacia.store');
+    Route::get('/TabPublikacia/Vytvorenie_publikácie', 'DBControllers\DBPublikacie@create')->name('TabPublikacia.create');
+    Route::get('/TabPublikacia/{id}', 'DBControllers\DBPublikacie@show')->name('TabPublikacia.show');
+    Route::match(['put','patch'],'/TabPublikacia/{id}', 'DBControllers\DBPublikacie@update')->name('TabPublikacia.update');
+    Route::get('/TabPublikacia/{id}/Úprava_publikácie', 'DBControllers\DBPublikacie@edit')->name('TabPublikacia.edit');
+    Route::delete('/TabPublikacia/{id}', 'DBControllers\DBPublikacie@destroy')->name('TabPublikacia.delete');
+
     //Prihlasenie admin
-    Route::get('/logout', 'AdminController@logout')->name('admin.logout');
-    Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
-    Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.login.submit');
-    Route::get('/', 'AdminController@index')->name('admin.dashboard');
+    Route::get('/', 'ZamestnanecController@adminn')->name('admin.dashboard');
 });
 
 

@@ -33,12 +33,19 @@ class ZamestnanecLoginController extends Controller
 
 
 
-      //  if($rola['rola'] == 'admin')
-           // {
-         //   return redirect()->intended(route('admin.dashboard'));
-          // }
-       // else
-          //  {
+        if($rola['rola'] == 'admin')
+            {
+
+                    if(Auth::guard('zame')->attempt(['email' => $request->email, 'password' => $request->heslo], $request->remember))
+                    {
+                        return redirect()->intended(route('admin.dashboard'));
+                    }
+
+                    return redirect()->back()->withImput($request->only('email','remember'))->with('danger','Zle ste zadali email alebo heslo.');
+
+           }
+        else
+            {
                 if($zames_stav['aktivny'] == 1){
                     if(Auth::guard('zame')->attempt(['email' => $request->email, 'password' => $request->heslo], $request->remember))
                     {
@@ -51,7 +58,7 @@ class ZamestnanecLoginController extends Controller
                 {
                         return redirect()->route('ukf')->with('danger','Dobrý deň. Vaše konto bolo zablokované. Pre odblokovanie kontaktujte administrátora.');
                 }
-        //    }
+            }
 
     }
 
