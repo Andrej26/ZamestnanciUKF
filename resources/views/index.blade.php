@@ -19,8 +19,8 @@
                 <header class="site-header">
                     <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo.png" alt=""></a>
                     <div class="header-type">
-                        <h1>Choose your future today!</h1>
-                        <p>Dolores et quas molestias excepturi sint occaecati cupiditate non provident similique sunt in culpa qui officia deserunt mollitia animi est laborum dolorum.</p>
+                        <h2>Univerzita Konštantína Filozofa v Nitre</h2>
+
                     </div>
                 </header> <!-- .site-header -->
 
@@ -28,157 +28,91 @@
                     <img src="{{URL::to('/')}}/dummy/banner.jpg" alt="Banner">
                 </div>
 
-                <h2>What is so cool in our college?</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum maxime explicabo architecto illo itaque expedita eaque harum illum perferendis, accusantium dolores, culpa alias. At impedit labore, quidem suscipit cumque sapiente!</p>
-                <div>dfsdfsdfsdfsd</div>
+                <h2>Fakulty: </h2>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="feature rounded-icon">
                             <div class="feature-icon"><i class="icon-owl"></i></div>
-                            <h3 class="feature-title">Ducimus blanditiis praesentium </h3>
-                            <p>Accusamus iusto odio dignissimos ducimus qui blanditiis praesentium.</p>
+                            <h3 class="feature-title">Fakulta prírodných vied </h3>
+                            <p>Fakulta prírodných vied</p>
+
                         </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
 
                         <div class="feature rounded-icon">
                             <div class="feature-icon"><i class="icon-bus"></i></div>
-                            <h3 class="feature-title">Adipiscing eiusmod incididunt </h3>
-                            <p>Labore et dolore magna aliqua ad minim veniam exercitation ullamco.</p>
+                            <h3 class="feature-title">Fakulta sociálnych vied a zdravotníctva </h3>
+                            <p>Fakulta sociálnych vied a zdravotníctva</p>
                         </div>
                     </div>
+                </div>
+
+                <div class="row">
                     <div class="col-md-6">
                         <div class="feature rounded-icon">
                             <div class="feature-icon"><i class="icon-school"></i></div>
-                            <h3 class="feature-title">Nemo enim ipsam voluptatem</h3>
-                            <p>Accusamus iusto odio dignissimos ducimus qui blanditiis praesentium.</p>
+                            <h3 class="feature-title">Fakulta stredoeurópskych študií</h3>
+                            <p>Fakulta stredoeurópskych študií</p>
                         </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
 
                         <div class="feature rounded-icon">
                             <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                            <h3 class="feature-title">Nam libero tempore soluta nobis </h3>
-                            <p>Labore et dolore magna aliqua ad minim veniam exercitation ullamco.</p>
+                            <h3 class="feature-title">Filozofická fakulta </h3>
+                            <p>Filozofická fakulta</p>
                         </div>
+
                     </div>
                 </div>
 
-                <div class="features">
-                    <div class="feature">
-                        <div class="feature-icon large"><i class="icon-archive"></i></div>
-                        <h2 class="feature-title">Accusamus iusto dignissimos ducimus</h2>
-                        <p>Ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon large"><i class="icon-book"></i></div>
-                        <h2 class="feature-title">Neque porro quisquam est dolorem</h2>
-                        <p>Ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia.</p>
-                    </div>
-                    <div class="feature">
-                        <div class="feature-icon large"><i class="icon-badge"></i></div>
-                        <h2 class="feature-title">Lorem ipsum dolor sit amet consectetur</h2>
-                        <p>Ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia.</p>
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="feature rounded-icon">
+                            <div class="feature-icon"><i class="icon-foot-ball"></i></div>
+                            <h3 class="feature-title">Pedagogická fakulta </h3>
+                            <p>Pedagogická fakulta</p>
+                        </div>
+
                     </div>
                 </div>
+
+
             </div>
             <div class="aside">
                 <form action="#" class="signup-form">
                     <div class="form-header">
-                        <h2>Zamestnanci UKF</h2>
-                        <p>Accusantium doloremque laudantium totam rem aperiam eaque ipsa quae inventore veritatis dolor architecto.</p>
+                        <h2>Vyhľadávanie zamestnancov univerzity</h2>
                     </div>
                     <div class="form-content">
-                        <p><input type="text" placeholder="First name..."></p>
-                        <p><input type="text" placeholder="Last name..."></p>
-                        <p><input type="text" placeholder="Email address..."></p>
-                        <p><input type="text" placeholder="Phone number..."></p>
-                        <p><input type="text" placeholder="Street..."></p>
-                        <p class="columned">
-                            <input type="text" placeholder="City...">
-                            <input type="text" placeholder="Zip" class="small">
-                        </p>
-                        <p>
-									<span class="select control">
-										<select name="" id="">
-											<option value="#">Choose education level</option>
-											<option value="#"></option>
-											<option value="#"></option>
-										</select>
-									</span>
-                        </p>
-                        <p>
-									<span class="select control">
-										<select name="" id="">
-											<option value="#">Choose Course</option>
-											<option value="#"></option>
-											<option value="#"></option>
-										</select>
-									</span>
-                        </p>
+                        <p><input type="text" placeholder="Meno"></p>
+                        <p><input type="text" placeholder="Priezvisko"></p>
+                        <p><input type="text" placeholder="Fakulta"></p>
+                        <p><input type="text" placeholder="Katedra"></p>
 
-                        <h4>When do you want to join?</h4>
-                        <div class="row">
-                            <div class="col-sm-6">
-										<span class="radio control">
-											<input type="radio" name="month" id="jan">
-											<label for="jan">January</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="feb">
-											<label for="feb">February</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="mar">
-											<label for="mar">March</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="apr">
-											<label for="apr">April</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="may">
-											<label for="may">May</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="jun">
-											<label for="jun">Jun</label>
-										</span>
-                            </div>
-                            <div class="col-sm-6">
-										<span class="radio control">
-											<input type="radio" name="month" id="jul">
-											<label for="jul">July</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="aug">
-											<label for="aug">August</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="sep">
-											<label for="sep">September</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="oct">
-											<label for="oct">October</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="nov">
-											<label for="nov">November</label>
-										</span>
-                                <span class="radio control">
-											<input type="radio" name="month" id="dec">
-											<label for="dec">December</label>
-										</span>
-                            </div>
+
+                        <div class="form-group">
+                           <!-- <label for="sel1">Titul:</label> -->
+                            <select class="form-control" id="sel1">
+                                <option>Titul</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
                         </div>
-                        <p>
-									<span class="radio control">
-										<input type="radio" name="month" id="ny">
-										<label for="ny">Not within the next year</label>
-									</span>
-                        </p>
 
                         <p>
-                            <input type="submit" value="get the program information">
+                            <input type="submit" value="Vyhľadať">
                         </p>
-                        <p class="info">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est numquam vitae nemo</p>
+                        <p class="info">Vyhľadanie zamestnanca na základe vyplnených políčok</p>
                     </div>
                 </form>
             </div>

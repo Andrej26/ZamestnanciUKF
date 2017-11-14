@@ -7,7 +7,7 @@
 
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <!--<li class="nav-item active">
                 <a class="nav-link" href="{{ route('admin.login') }}">Admin prihlásenie <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
@@ -26,20 +26,23 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link " href="#">Another info</a>
-            </li>
+            </li>-->
+
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Hľadať" aria-label="Search">
+                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+                        <!--  <span class="fa fa-search" aria-hidden="true"></span>   -->
+                        Vyhľadať
+                    </button>
+                </form>
+
         </ul>
 
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
-                <!--  <span class="fa fa-search" aria-hidden="true"></span>   -->
-                Search
-            </button>
-        </form>
+
 
         <ul class="navbar-nav">
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle btn-outline-dark btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Prihlásenie
                 </a>
                 <ul class="dropdown-menu dropdown-menu-right" style="padding: 15px; min-width: 250px;">
