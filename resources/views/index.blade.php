@@ -19,7 +19,7 @@
                 <header class="site-header">
                     <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo.png" alt=""></a>
                     <div class="header-type">
-                        <h2>Univerzita Konštantína Filozofa v Nitre</h2>
+                        <h1 class="nadpis">Univerzita Konštantína Filozofa v Nitre</h1>
 
                     </div>
                 </header> <!-- .site-header -->

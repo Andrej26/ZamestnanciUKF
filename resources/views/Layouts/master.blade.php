@@ -52,6 +52,20 @@
             text-align: right;
         }
 
+        .info
+        {
+            text-align: center;
+        }
+
+        .nadpis {
+            font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
+            font-size: 24px;
+            font-style: normal;
+            font-variant: normal;
+            font-weight: 500;
+            line-height: 26.4px;
+        }
+
     </style>
 
 </head>
