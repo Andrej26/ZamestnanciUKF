@@ -29,6 +29,16 @@ class UKFController extends Controller
         return view('index');
     }
 
+    public function profil()
+    {
+        return view('UKF.profil');
+    }
+
+    public function zprofil()
+    {
+        return view('UKF.ZProfilov');
+    }
+
 
 
 }

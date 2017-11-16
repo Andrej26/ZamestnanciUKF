@@ -18,9 +18,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('UKF', 'UKFController@index')->name('ukf');
-
-
+Route::prefix('UKF')->group(function() {
+    Route::get('/', 'UKFController@index')->name('ukf');
+    Route::get('/Profil', 'UKFController@profil')->name('profil');
+    Route::get('/ZProfil', 'UKFController@zprofil')->name('zprofil');
+});
 
 // Admin tables!!!!!
 //////////////////////////////////////////////////////////////////////
@@ -57,12 +59,22 @@ Route::get('/picture/{filename}', function ($filename)
 ////////////////////////////////////////////////////////////////
 Auth::routes();
 
+
+
 Route::prefix('Zamestnanec')->group(function(){
 
     //Prihlasenie zamestnanec
     Route::get('/logout', 'ZamestnanecController@logout')->name('zames.logout');
     Route::post('/login', 'Auth\ZamestnanecLoginController@login')->name('zames.login');
     Route::get('/', 'ZamestnanecController@index')->name('zames.dashboard');
+    Route::get('/profil', 'ZamestnanecController@profil')->name('zames.profil');
+    Route::get('/publikacie', 'ZamestnanecController@publikacie')->name('zames.publikacie');
+    Route::get('/FPV', 'ZamestnanecController@fpv')->name('Katedry.FPV');
+    Route::get('/FF', 'ZamestnanecController@ff')->name('Katedry.FF');
+    Route::get('/FSVaZ', 'ZamestnanecController@fsvaz')->name('Katedry.FSVaZ');
+    Route::get('/FSŠ', 'ZamestnanecController@fsš')->name('Katedry.FSŠ');
+    Route::get('/PF', 'ZamestnanecController@pf')->name('Katedry.PF');
+    Route::get('/Ostatne', 'ZamestnanecController@ostatne')->name('Katedry.Ostatne');
 });
 
 
@@ -144,10 +156,3 @@ Route::get('/dbApi', [
 Route::get('/parseTest', [
         'as' => 'parseTest', 'uses' => 'DbConnectTest@RozparsujMenoNaMail'
         ]);
-
-
-
-
-
-
-

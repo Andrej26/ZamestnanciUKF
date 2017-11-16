@@ -39,4 +39,44 @@ class ZamestnanecController extends Controller
         Auth::guard('zame')->logout();
         return redirect(route('ukf'));
     }
+
+    public function profil()
+    {
+        return view('Zam.profil');
+    }
+
+    public function publikacie()
+    {
+        return view('Zam.publikacie');
+    }
+
+    public function fpv()
+    {
+        return view('Katedry.FPV');
+    }
+
+    public function ff()
+    {
+        return view('Katedry.FF');
+    }
+
+    public function fsvaz()
+    {
+        return view('Katedry.FSVaZ');
+    }
+
+    public function fsš()
+    {
+        return view('Katedry.FSŠ');
+    }
+
+    public function pf()
+    {
+        return view('Katedry.PF');
+    }
+
+    public function ostatne()
+    {
+        return view('Katedry.Ostatne');
+    }
 }

@@ -16,10 +16,10 @@
             </button>
         </form>
 
-        <div style='float: right; margin-left: auto;'>
-            <a class="btn btn-dark float-right" href="{{ route('zames.logout') }}">Odhasit</a>
-        </div>
-
+        <h5>.         </h5>
+        <a class="btn btn-success float-right"  href="{{ route('zames.profil') }}">Profil</a>
+        <h5>         .</h5>
+        <a class="btn btn-dark float-right"  href="{{ route('zames.logout') }}">Odhasit</a>
 
     </div>
 </nav>
