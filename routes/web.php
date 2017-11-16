@@ -144,3 +144,10 @@ Route::get('/dbApi', [
 Route::get('/parseTest', [
         'as' => 'parseTest', 'uses' => 'DbConnectTest@RozparsujMenoNaMail'
         ]);
+
+
+
+
+
+
+
