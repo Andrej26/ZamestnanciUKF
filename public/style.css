@@ -944,8 +944,6 @@ form textarea {
 
   .col-lg-offset-12 {
     margin-left: 100%; } }
-@-ms-viewport {
-  width: device-width; }
 .visible-xs, .visible-sm, .visible-md, .visible-lg {
   display: none !important; }
 
@@ -1595,6 +1593,7 @@ form textarea {
    color: white;
    text-align: center;
  }
+
 
 #style-1::-webkit-scrollbar-track
 {
