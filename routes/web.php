@@ -22,6 +22,8 @@ Route::prefix('UKF')->group(function() {
     Route::get('/', 'UKFController@index')->name('ukf');
     Route::get('/Profil', 'UKFController@profil')->name('profil');
     Route::get('/ZProfil', 'UKFController@zprofil')->name('zprofil');
+    Route::get('/Zmenahesla','UKFController@formpasw')->name('formhesla');
+    Route::post('/Zmenahesla','UKFController@changepasw')->name('zmenahesla');
 });
 
 // Admin tables!!!!!
@@ -79,6 +81,12 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/FSŠ', 'ZamestnanecController@fsš')->name('Katedry.FSŠ');
     Route::get('/PF', 'ZamestnanecController@pf')->name('Katedry.PF');
     Route::get('/Ostatne', 'ZamestnanecController@ostatne')->name('Katedry.Ostatne');
+
+    //Zmena hesla
+    Route::post('/heslo/email', 'Auth\ZamestnanecForgotPasswordController@sendResetLinkEmail')->name('zame.password.email');
+    Route::get('/heslo/reset', 'Auth\ZamestnanecForgotPasswordController@showLinkRequestForm')->name('zame.password.request');
+    Route::post('/heslo/reset', 'Auth\ZamestnanecResetPasswordController@reset');
+    Route::get('/heslo/reset/{token}', 'Auth\ZamestnanecResetPasswordController@showResetForm')->name('zame.password.reset');
 });
 
 

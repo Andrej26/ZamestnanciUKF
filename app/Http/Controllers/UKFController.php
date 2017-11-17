@@ -47,4 +47,14 @@ class UKFController extends Controller
         return $fak01;
     }
 
+    public function changepasw()
+    {
+        echo "ahoj";
+    }
+
+    public function formpasw()
+    {
+        return view('Layouts.forgotpassword');
+    }
+
 }

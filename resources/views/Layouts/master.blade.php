@@ -77,6 +77,13 @@
             font-size: 135%;
         }
 
+        .site-footer
+        {
+            text-align: center;
+            background-color: whitesmoke;
+            border-radius:  6px 6px 0px 0px
+        }
+
         .fixed-bg {
             background-image: url("{{URL::to('/')}}/images/Green.jpg");
             min-height: 500px;
@@ -91,7 +98,7 @@
 </head>
 
 <body class="fixed-bg">
-<div class="container" style="background-color: white">
+<div class="container" style="background-color: white; border-radius: 0px 0px 6px 6px">
     <div class="page-header">
         @yield('header')
     </div>
@@ -99,8 +106,7 @@
     @yield('content')
 
 
-
-<footer class="site-footer" style="background-color: whitesmoke">
+<footer class="site-footer">
     <p>Copyright &copy; 2017 Company Name. Designed by A-Team. All rights reserved</p>
 
     <div class="social-links">

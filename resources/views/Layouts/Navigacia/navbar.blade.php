@@ -54,11 +54,6 @@
                                         @endif
                                     </div>
 
-                                   <!-- <div class="form-group">
-                                        <label class="heslo01" for="exampleInputPassword2">Heslo:</label>
-                                        <input type="password" class="form-control" id="heslo" placeholder="Heslo" required>
-                                    </div> -->
-
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" name="remember" {{ old('remember') ? 'checked' : ''}}>
@@ -70,7 +65,7 @@
                                         <button type="submit" class="btn btn-success btn-block">Prihlásiť</button>
                                     </div>
 
-                                    <a class="btn btn-link" href="{{route('ukf')}}">
+                                    <a class="btn btn-link" href="{{ route('zame.password.request')}}">
                                         Zabudli ste heslo? (nefunguje ešte)
                                     </a>
 
@@ -79,15 +74,7 @@
                             </div>
                         </div>
                     </li>
-                    <!--   <li class="dropdown-divider"></li>
-                     <a class="dropdown-item" href="#">New around here? Sign up</a> -->
-                    <!--    <a class="dropdown-item" href="#">Zabudli ste heslo?</a>
-                     <!--     <li class="divider"></li>
-                           <li>
-                               <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
-                               <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
-                           </li>
-                       -->
+
                 </ul>
             </li>
         </ul>
