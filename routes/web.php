@@ -67,8 +67,12 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/logout', 'ZamestnanecController@logout')->name('zames.logout');
     Route::post('/login', 'Auth\ZamestnanecLoginController@login')->name('zames.login');
     Route::get('/', 'ZamestnanecController@index')->name('zames.dashboard');
+
+    //Ostatné možnosti
     Route::get('/profil', 'ZamestnanecController@profil')->name('zames.profil');
     Route::get('/publikacie', 'ZamestnanecController@publikacie')->name('zames.publikacie');
+
+    //Zobrazenie Katedier
     Route::get('/FPV', 'ZamestnanecController@fpv')->name('Katedry.FPV');
     Route::get('/FF', 'ZamestnanecController@ff')->name('Katedry.FF');
     Route::get('/FSVaZ', 'ZamestnanecController@fsvaz')->name('Katedry.FSVaZ');

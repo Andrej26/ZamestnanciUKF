@@ -12,83 +12,108 @@
             <main class="main-content">
                 <div class="content">
                     <header class="site-header">
-                        <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_UKF5.png" alt=""></a>
-                        <div class="header-type">
-                            <h1><strong>Univerzita Konštantína Filozofa v Nitre</strong></h1>
-                        </div>
+                        <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_UKF.png" alt=""></a>
                     </header> <!-- .site-header -->
 
                     <div class="banner">
                         <img src="{{URL::to('/')}}/images/UKF_mesto.jpg" alt="">
                     </div>
 
-                    <h2>Prehľad Fakúlt Univerzity</h2>
+                    <h2>Fakulty Univerzity</h2>
                     <div class="row">
-                        <div class="col-md-6" >
+
+                        <div class="col-md-7">
                             <div class="feature rounded-icon">
-                                <div class="feature-icon" ><a href="{{ route('Katedry.FPV') }}"><i class="icon-owl"></i></div>
-                                <h3 class="feature-title">Fakulta Prírodných Vied </h3>
+                                <a href="{{ route('Katedry.FPV') }}">
+                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <h3 class="feature-title">Fakulta Prírodných Vied </h3>
+                                </a>
                                 <p>FPV</p>
                             </div>
 
                             <div class="feature rounded-icon">
-                                <div class="feature-icon"><a href="{{ route('Katedry.FSVaZ') }}"><i class="icon-bus"></i></div>
-                                <h3 class="feature-title">Fakulta Sociálnych Vied a Zdravotníctva </h3>
+                                <a href="{{ route('Katedry.FSVaZ') }}">
+                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <h3 class="feature-title">Fakulta Sociálnych Vied a Zdravotníctva </h3>
+                                </a>
                                 <p>FSVaZ</p>
                             </div>
+
                             <div class="feature rounded-icon">
-                                <div class="feature-icon"><a href="{{ route('Katedry.FSŠ') }}"><i class="icon-school"></i></div>
-                                <h3 class="feature-title">Fakulta Stredoeurópskych Štúdií </h3>
+                                <a href="{{ route('Katedry.FSŠ') }}">
+                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <h3 class="feature-title">Fakulta Stredoeurópskych Štúdií </h3>
+                                </a>
                                 <p>FSŠ</p>
                             </div>
                         </div>
-                        <div class="col-md-6">
+
+                        <div class="col-md-5">
                             <div class="feature rounded-icon">
-                                <div class="feature-icon"><a href="{{ route('Katedry.FF') }}"><i class="icon-foot-ball"></i></div>
-                                <h3 class="feature-title">Filozofická Fakulta </h3>
+                                <a href="{{ route('Katedry.FF') }}">
+                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <h3 class="feature-title">Filozofická Fakulta </h3>
+                                </a>
                                 <p>FF</p>
                             </div>
 
                             <div class="feature rounded-icon">
-                                <div class="feature-icon"><a href="{{ route('Katedry.PF') }}"><i class="icon-foot-ball"></i></div>
-                                <h3 class="feature-title">Pedagogická Fakulta </h3>
+                                <a href="{{ route('Katedry.PF') }}">
+                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <h3 class="feature-title">Pedagogická Fakulta </h3>
+                                </a>
                                 <p>PF</p>
                             </div>
 
                             <div class="feature rounded-icon">
-                                <div class="feature-icon" ><a href="{{ route('Katedry.Ostatne') }}"><i class="icon-owl"></i></div>
-                                <h3 class="feature-title">Ostatné </h3>
-                                <p>Ostatné</p>
+                                <a href="{{ route('Katedry.Ostatne') }}">
+                                    <div class="feature-icon" ><i class="icon-owl"></i></div>
+                                    <h3 class="feature-title">Ostatné časti </h3>
+                                </a>
+                                <p>Univerzity</p>
                             </div>
                         </div>
+
+                    </div>
+                </div>
+
+                <!-- Vyhladavaci formular -->
+                <div class="signup-form">
+                    <div class="form-header">
+                        <h2>Vyhľadávanie zamestnancov univerzity</h2>
                     </div>
 
-                </div>
-                <!-- Vyhladavanie -->
-                <div class="aside">
-                    <form action="#" class="signup-form">
-                        <div class="form-header">
-                            <h3>Vyhľadávanie zamestnancov UKF</h3>
+                    {!! Form::open(array('route' => 'TabKatedra.store','method'=>'POST')) !!}
+                    <div class="form-content">
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong class="vyhladanie">Meno:</strong>
+                                {!! Form::text('meno', null, array('placeholder' => 'meno','class' => 'form-control')) !!}
+                            </div>
                         </div>
-                        <div class="form-content">
-                            <p><input type="text" placeholder="Meno..."></p>
-                            <p><input type="text" placeholder="Priezvisko..."></p>
-                            <p></p>
-                            <p><span class="Fakulta">
-										<select name="" id="">
-                                            <option value="#">Fakulta...</option>
-											<option value="#">Fakulta Prírodných Vied</option>
-											<option value="#">Fakulta Sociálnych Vied a Zdravotníctva</option>
-                                            <option value="#">Fakulta Stredoeurópskych Štúdií</option>
-                                            <option value="#">Filozofická Fakulta</option>
-                                            <option value="#">Pedagogická Fakulta</option>
-										</select>
-									</span></p>
-                            <p>
-                                <input type="submit" value="Hľadať">
-                            </p>
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong class="vyhladanie">Priezvisko:</strong>
+                                {!! Form::text('priezvisko', null, array('placeholder' => 'priezvisko','class' => 'form-control')) !!}
+                            </div>
                         </div>
-                    </form>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong class="vyhladanie">Fakulta:</strong>
+                                {!! Form::select('fakulta',$fakulta,null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="padding: 0% 30% 0% 30%; margin-bottom: 5% ">
+                        {!! Form::submit('Hľadať',['class' => 'btn btn-info']) !!}
+                    </div>
+                    {!! Form::close() !!}
+
+                    <p class="info">Vyhľadanie zamestnanca na základe vyplnených políčok</p>
                 </div>
             </main>
 

@@ -7,8 +7,15 @@
 @section('content')
     <!-- Toto vypisuje hlasku, ked je zablokovaný prístup k zamestancovmu kontu -->
     @if ($message = Session::get('danger'))
-        <div class="alert alert-danger">
-            <p>{{ $message }}</p>
+        <div class="alert alert-danger" style="text-align: center">
+            <p class="message">{{ $message }}</p>
+        </div>
+    @endif
+
+    <!-- Toto vypisuje hlasku, ked je niečo dobre alebo sa zamestnanec odhlási. -->
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success" style="text-align: center">
+            <p class="message">{{ $message }}</p>
         </div>
     @endif
 
@@ -17,104 +24,117 @@
         <main class="main-content">
             <div class="content">
                 <header class="site-header">
-                    <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo.png" alt=""></a>
-                    <div class="header-type">
-                        <h1 class="nadpis" style="font-size: 400%">Univerzita Konštantína Filozofa v Nitre</h1>
-
-                    </div>
+                    <a class="logo" href="{{route('ukf')}}" ><img  src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
                 </header> <!-- .site-header -->
 
                 <div class="banner">
                     <img src="{{URL::to('/')}}/dummy/banner.jpg" alt="Banner">
                 </div>
 
-                <h2>Fakulty: </h2>
+                <h2>Fakulty Univerzity</h2>
                 <div class="row">
-                    <div class="col-md-8">
+
+
+                    <div class="col-md-7">
                         <div class="feature rounded-icon">
-                            <a href="#"> <div class="feature-icon"><i class="icon-owl"></i></div>
-                            <h3 class="feature-title">Fakulta prírodných vied </h3> </a>
-                            <p>Fakulta prírodných vied</p>
+                            <a href="#">
+                                <div class="feature-icon"><i class="icon-owl"></i></div>
+                                <h3 class="feature-title">Fakulta Prírodných Vied </h3>
+                            </a>
+                            <p>FPV</p>
+
+                        </div>
+
+                        <div class="feature rounded-icon">
+                            <a href="#">
+                                <div class="feature-icon"><i class="icon-owl"></i></div>
+                                <h3 class="feature-title">Fakulta Sociálnych Vied a Zdravotníctva </h3>
+                            </a>
+                            <p>FSVaZ</p>
+
+                        </div>
+
+                        <div class="feature rounded-icon">
+                            <a href="#">
+                                <div class="feature-icon"><i class="icon-owl"></i></div>
+                                <h3 class="feature-title">Fakulta Stredoeurópskych Štúdií </h3>
+                            </a>
+                            <p>FSŠ</p>
 
                         </div>
                     </div>
-                </div>
 
-                <div class="row">
-                    <div class="col-md-8">
 
+                    <div class="col-md-5">
                         <div class="feature rounded-icon">
-                            <a href="#"><div class="feature-icon"><i class="icon-bus"></i></div>
-                                <h3 class="feature-title">Fakulta sociálnych vied a zdravotníctva </h3> </a>
-                            <p>Fakulta sociálnych vied a zdravotníctva</p>
-                        </div>
-                    </div>
-                </div>
+                            <a href="#">
+                                <div class="feature-icon"><i class="icon-owl"></i></div>
+                                <h3 class="feature-title">Filozofická Fakulta </h3>
+                            </a>
+                            <p>FF</p>
 
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="feature rounded-icon">
-                            <a href="#"> <div class="feature-icon"><i class="icon-school"></i></div>
-                                <h3 class="feature-title">Fakulta stredoeurópskych študií</h3> </a>
-                            <p>Fakulta stredoeurópskych študií</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-
-                        <div class="feature rounded-icon">
-                            <a href="#"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                <h3 class="feature-title">Filozofická fakulta </h3> </a>
-                            <p>Filozofická fakulta</p>
                         </div>
 
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-md-6">
-
                         <div class="feature rounded-icon">
-                            <a href="#"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                <h3 class="feature-title">Pedagogická fakulta </h3> </a>
-                            <p>Pedagogická fakulta</p>
+                            <a href="#">
+                                <div class="feature-icon"><i class="icon-owl"></i></div>
+                                <h3 class="feature-title">Pedagogická Fakulta </h3>
+                            </a>
+                            <p>PF</p>
+
                         </div>
 
-                    </div>
-                </div>
+                        <div class="feature rounded-icon">
+                            <a href="#">
+                                <div class="feature-icon" ><i class="icon-owl"></i></div>
+                                <h3 class="feature-title">Ostatné časti </h3>
+                            </a>
+                            <p>Univerzity</p>
 
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
-            <div class="aside">
-                <form action="#" class="signup-form">
+
+            <!-- Vyhladavaci formular -->
+            <div class="signup-form">
                     <div class="form-header">
                         <h2>Vyhľadávanie zamestnancov univerzity</h2>
                     </div>
+
+                    {!! Form::open(array('route' => 'TabKatedra.store','method'=>'POST')) !!}
                     <div class="form-content">
-                        <p><input type="text" placeholder="Meno"></p>
-                        <p><input type="text" placeholder="Priezvisko"></p>
-                        <p><input type="text" placeholder="Fakulta"></p>
-                        <p><input type="text" placeholder="Katedra"></p>
-
-
-                        <div class="form-group">
-                           <!-- <label for="sel1">Titul:</label> -->
-                            <select class="form-control" id="sel1">
-                                <option>Titul</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                            </select>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong class="vyhladanie">Meno:</strong>
+                                {!! Form::text('meno', null, array('placeholder' => 'meno','class' => 'form-control')) !!}
+                            </div>
                         </div>
 
-                        <p>
-                            <input type="submit" value="Vyhľadať">
-                        </p>
-                        <p class="info">Vyhľadanie zamestnanca na základe vyplnených políčok</p>
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong class="vyhladanie">Priezvisko:</strong>
+                                {!! Form::text('priezvisko', null, array('placeholder' => 'priezvisko','class' => 'form-control')) !!}
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-12">
+                            <div class="form-group">
+                                <strong class="vyhladanie">Fakulta:</strong>
+                                {!! Form::select('fakulta',$fakulta,null, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+
                     </div>
-                </form>
+                    <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="padding: 0% 30% 0% 30%; margin-bottom: 5% ">
+                        {!! Form::submit('Hľadať',['class' => 'btn btn-info']) !!}
+                    </div>
+                    {!! Form::close() !!}
+
+                        <p class="info">Vyhľadanie zamestnanca na základe vyplnených políčok</p>
             </div>
         </main>
 

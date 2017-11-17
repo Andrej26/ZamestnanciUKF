@@ -7,17 +7,7 @@
  */
 
 namespace App\Http\Controllers;
-use App\Model\Zamestnanci;
-use App\Zamestnanec;
-use App\Model\Titul;
-use App\Model\Rola;
-use App\Model\Publikacia;
-use App\Model\Projekt;
-use App\Model\Pracovisko;
-use App\Model\KategoriaTitulu;
-use App\Model\Kancelaria;
-use App\Model\ClenstvoVOrganizacii;
-use App\Model\VzdelanieAPrax;
+use App\Model\Fakulta;
 use Illuminate\Http\Request;
 
 
@@ -26,7 +16,7 @@ class UKFController extends Controller
 
     public function index()
     {
-        return view('index');
+        return view('index', ['fakulta' =>$this->fakulty()]);
     }
 
     public function profil()
@@ -39,6 +29,22 @@ class UKFController extends Controller
         return view('UKF.ZProfilov');
     }
 
+    public function fakulty()
+    {
+        $fak01 =[];
 
+        $fak02 =Fakulta::select('idFakulta' , 'nazov')
+            ->groupBy('nazov','idFakulta')
+            ->limit('5')
+            ->get();
+
+        $fak01[0] = '...';
+
+        foreach ( $fak02 as $fakulta):
+            $fak01[$fakulta->idFakulta] = $fakulta->nazov;
+        endforeach;
+
+        return $fak01;
+    }
 
 }

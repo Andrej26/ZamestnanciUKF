@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #288bd7">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3a454b; border-radius: 0px 0px 6px 6px">
     <a class="navbar-brand" href="{{ route('admin.dashboard') }}">Domov</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -6,27 +6,6 @@
     </button>
 
    <div class="collapse navbar-collapse nav02" id="navbarTogglerDemo02">
-       <!--<ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Tabulka01</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav02" href="#">Tabulka02</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav03" href="#">Tabulka03</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav04" href="#">Tabulka04</a>
-            </li>
-
-            <li class="nav-item">
-                <a class="nav05" href="#">Tabulka05</a>
-            </li>
-        </ul>  -->
 
        <div style=' margin-left: auto;'>
             <form class="form-inline my-2 my-lg-0">

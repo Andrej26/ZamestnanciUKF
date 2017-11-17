@@ -55,30 +55,52 @@
         .info
         {
             text-align: center;
+            margin:  5% 10%;
         }
 
-        .nadpis {
-            font-family: Garamond, Baskerville, "Baskerville Old Face", "Hoefler Text", "Times New Roman", serif;
-            font-style: normal;
-            font-variant: normal;
-            text-align: center;
+        .logo
+        {
+            height: 30%;
+            width: 30%;
+            margin-bottom: -4%;
+        }
+
+        .vyhladanie
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 135%;
+        }
+
+        .message
+        {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 135%;
+        }
+
+        .fixed-bg {
+            background-image: url("{{URL::to('/')}}/images/Green.jpg");
+            min-height: 500px;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
 
     </style>
 
 </head>
 
-<body>
-<div class="container">
+<body class="fixed-bg">
+<div class="container" style="background-color: white">
     <div class="page-header">
         @yield('header')
     </div>
 
     @yield('content')
 
-</div>
 
-<footer class="site-footer">
+
+<footer class="site-footer" style="background-color: whitesmoke">
     <p>Copyright &copy; 2017 Company Name. Designed by A-Team. All rights reserved</p>
 
     <div class="social-links">
@@ -89,6 +111,7 @@
     </div>
 </footer>
 
+</div>
 </body>
 
 </html>
