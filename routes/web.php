@@ -18,31 +18,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('UKF', 'UKFController@index')->name('ukf');
-
-// View-y Fakúlt
-/////////////////////////////////////////////////////////////////////
-
-Route::get('fpv', function(){
-    return View('fakulta_fpv'); // Your Blade template name
+Route::prefix('UKF')->group(function() {
+    Route::get('/', 'UKFController@index')->name('ukf');
+    Route::get('/Profil', 'UKFController@profil')->name('profil');
+    Route::get('/ZProfil', 'UKFController@zprofil')->name('zprofil');
+    Route::get('/Zmenahesla','UKFController@formpasw')->name('formhesla');
+    Route::post('/Zmenahesla','UKFController@changepasw')->name('zmenahesla');
 });
-
-Route::get('ff', function(){
-    return View('fakulta_ff'); // Your Blade template name
-});
-
-Route::get('fss', function(){
-    return View('fakulta_fss'); // Your Blade template name
-});
-
-Route::get('fsvz', function(){
-    return View('fakulta_fsvz'); // Your Blade template name
-});
-
-Route::get('pf', function(){
-    return View('fakulta_pf'); // Your Blade template name
-});
-
 
 // Admin tables!!!!!
 //////////////////////////////////////////////////////////////////////
@@ -79,12 +61,32 @@ Route::get('/picture/{filename}', function ($filename)
 ////////////////////////////////////////////////////////////////
 Auth::routes();
 
+
+
 Route::prefix('Zamestnanec')->group(function(){
 
     //Prihlasenie zamestnanec
     Route::get('/logout', 'ZamestnanecController@logout')->name('zames.logout');
     Route::post('/login', 'Auth\ZamestnanecLoginController@login')->name('zames.login');
     Route::get('/', 'ZamestnanecController@index')->name('zames.dashboard');
+
+    //Ostatné možnosti
+    Route::get('/profil', 'ZamestnanecController@profil')->name('zames.profil');
+    Route::get('/publikacie', 'ZamestnanecController@publikacie')->name('zames.publikacie');
+
+    //Zobrazenie Katedier
+    Route::get('/FPV', 'ZamestnanecController@fpv')->name('Katedry.FPV');
+    Route::get('/FF', 'ZamestnanecController@ff')->name('Katedry.FF');
+    Route::get('/FSVaZ', 'ZamestnanecController@fsvaz')->name('Katedry.FSVaZ');
+    Route::get('/FSŠ', 'ZamestnanecController@fsš')->name('Katedry.FSŠ');
+    Route::get('/PF', 'ZamestnanecController@pf')->name('Katedry.PF');
+    Route::get('/Ostatne', 'ZamestnanecController@ostatne')->name('Katedry.Ostatne');
+
+    //Zmena hesla
+    Route::post('/heslo/email', 'Auth\ZamestnanecForgotPasswordController@sendResetLinkEmail')->name('zame.password.email');
+    Route::get('/heslo/reset', 'Auth\ZamestnanecForgotPasswordController@showLinkRequestForm')->name('zame.password.request');
+    Route::post('/heslo/reset', 'Auth\ZamestnanecResetPasswordController@reset');
+    Route::get('/heslo/reset/{token}', 'Auth\ZamestnanecResetPasswordController@showResetForm')->name('zame.password.reset');
 });
 
 

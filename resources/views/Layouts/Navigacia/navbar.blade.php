@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #288bd7">
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3a454b; border-radius: 0px 0px 6px 6px">
     <a class="navbar-brand" href="{{route('ukf')}}">Domov</a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
 
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search" placeholder="Hľadať" aria-label="Search">
-                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit">
+                    <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
                         <!--  <span class="fa fa-search" aria-hidden="true"></span>   -->
                         Vyhľadať
                     </button>
@@ -54,11 +54,6 @@
                                         @endif
                                     </div>
 
-                                   <!-- <div class="form-group">
-                                        <label class="heslo01" for="exampleInputPassword2">Heslo:</label>
-                                        <input type="password" class="form-control" id="heslo" placeholder="Heslo" required>
-                                    </div> -->
-
                                     <div class="form-check">
                                         <label class="form-check-label">
                                             <input type="checkbox" class="form-check-input" name="remember" {{ old('remember') ? 'checked' : ''}}>
@@ -70,7 +65,7 @@
                                         <button type="submit" class="btn btn-success btn-block">Prihlásiť</button>
                                     </div>
 
-                                    <a class="btn btn-link" href="{{route('ukf')}}">
+                                    <a class="btn btn-link" href="{{ route('zame.password.request')}}">
                                         Zabudli ste heslo? (nefunguje ešte)
                                     </a>
 
@@ -79,15 +74,7 @@
                             </div>
                         </div>
                     </li>
-                    <!--   <li class="dropdown-divider"></li>
-                     <a class="dropdown-item" href="#">New around here? Sign up</a> -->
-                    <!--    <a class="dropdown-item" href="#">Zabudli ste heslo?</a>
-                     <!--     <li class="divider"></li>
-                           <li>
-                               <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
-                               <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
-                           </li>
-                       -->
+
                 </ul>
             </li>
         </ul>

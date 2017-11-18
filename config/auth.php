@@ -113,7 +113,7 @@ return [
         'zames' => [
             'provider' => 'zames',
             'table' => 'password_resets',
-            'expire' => 60,
+            'expire' => 15,
         ],
     ],
 
