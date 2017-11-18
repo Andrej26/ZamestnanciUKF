@@ -24,6 +24,30 @@ Route::prefix('UKF')->group(function() {
     Route::get('/ZProfil', 'UKFController@zprofil')->name('zprofil');
     Route::get('/Zmenahesla','UKFController@formpasw')->name('formhesla');
     Route::post('/Zmenahesla','UKFController@changepasw')->name('zmenahesla');
+
+    // View-y Fakúlt
+/////////////////////////////////////////////////////////////////////
+
+    Route::get('fpv', function(){
+        return View('fakulta_fpv'); // Your Blade template name
+    });
+
+    Route::get('ff', function(){
+        return View('fakulta_ff'); // Your Blade template name
+    });
+
+    Route::get('fss', function(){
+        return View('fakulta_fss'); // Your Blade template name
+    });
+
+    Route::get('fsvz', function(){
+        return View('fakulta_fsvz'); // Your Blade template name
+    });
+
+    Route::get('pf', function(){
+        return View('fakulta_pf'); // Your Blade template name
+    });
+
 });
 
 // Admin tables!!!!!

@@ -37,7 +37,7 @@
 
                     <div class="col-md-7">
                         <div class="feature rounded-icon">
-                            <a href="#">
+                            <a href="{{URL::to('fakulta_fpv')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Fakulta Prírodných Vied </h3>
                             </a>
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="feature rounded-icon">
-                            <a href="#">
+                            <a href="{{URL::to('fakulta_fsvz')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Fakulta Sociálnych Vied a Zdravotníctva </h3>
                             </a>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="feature rounded-icon">
-                            <a href="#">
+                            <a href="{{URL::to('fakulta_fss')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Fakulta Stredoeurópskych Štúdií </h3>
                             </a>
@@ -67,7 +67,7 @@
 
                     <div class="col-md-5">
                         <div class="feature rounded-icon">
-                            <a href="#">
+                            <a href="{{URL::to('fakulta_ff')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Filozofická Fakulta </h3>
                             </a>
@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="feature rounded-icon">
-                            <a href="#">
+                            <a href="{{URL::to('fakulta_pf')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Pedagogická Fakulta </h3>
                             </a>
