@@ -81,13 +81,10 @@
             </main>
 
 
-
-            <div class="row">
-                <div class="col-md-10">
-                    <button type="button" class="btn btn-primary">Štatistiky</button>
-                    <button type="button" class="btn btn-primary">Zamestnanci</button>
+            <div class="col-md-10">
+                    <a class="btn btn-link" href="#">Štatistiky</a>
+                    <a class="btn btn-link" href="{{ route('zprofil', 5)}}">Zamestnanecké profily</a>
                 </div>
-            </div>
 
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -108,9 +105,6 @@ Fakulta sa v rámci svojej činnosti venuje aj propagácii prírodných vied, ma
         </div>
 
     </div>
-
-
-
 
     <script src="{{URL::to('/')}}/js/jquery-1.11.1.min.js"></script>
     <script src="{{URL::to('/')}}/js/plugins.js"></script>

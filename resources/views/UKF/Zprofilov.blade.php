@@ -11,68 +11,88 @@
                 <div class="content">
                     <header class="site-header">
                         <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
-                        <div class="header-type">
-                            <h1>Choose your future today!</h1>
-                            <p>Dolores et quas molestias excepturi sint occaecati cupiditate non provident similique sunt in culpa qui officia deserunt mollitia animi est laborum dolorum.</p>
-                        </div>
+
                     </header> <!-- .site-header -->
 
                     <div class="banner">
                         <img src="{{URL::to('/')}}/dummy/banner.jpg" alt="Banner">
                     </div>
                 </div>
+
+                <div class="row">
+
+                    <div class="border_links01">
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <a href="{{URL::to('UKF/fpv')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
+                                    <h4 >Fakulta prírodných vied</h4>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <a href="{{URL::to('UKF/fsvz')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
+                                    <h4 >Fakulta sociálnych vied a zdravotníctva</h4>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <a href="{{URL::to('UKF/fss')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
+                                    <h4 >Fakulta stredoeurópskych štúdií</h4>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <a href="{{URL::to('UKF/ff')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
+                                    <h4 >Filozofická fakulta</h4>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-10">
+                                <a href="{{URL::to('UKF/pf')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
+                                    <h4 >Pedagogická fakulta</h4>
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </main>
             <h1>Zoznam Profilov</h1>
             <div class="profil">
-                <ul class="slides">
-                    <div class="student-data">
-                        <div class="student-image">
-                            <a href="{{URL::to("/")}}/Profil"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="50%" width="auto"></a>
-                        </div>
-                        <div class="student-details">
-                            <a href="{{URL::to("/")}}/Profil"><h2 class="student-name">Meno Priezvisko</h2></a>
-                            <ul class="student-info">
-                                <li>e-mail: <strong><a href="mailto:m.priezvisko@ukf.sk">m.priezvisko@ukf.sk</a></strong></li>
-                                <li>katedra: <strong>Katedra Informatiky FPV</strong></li>
-                                <li>Mobilne cislo: <strong>999 999 999</strong></li>
-                            </ul>
-                            <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Ipsam officiis delectus vel vitae nulla modi rerum.Ipsam officiis delectus vel vitae nulla modi rerum.Ipsam officiis delectus vel vitae nulla modi rerum. </p>
-                        </div>
-                    </div>
-                    </li>
-                </ul>
-                <ul class="slides">
-                    <div class="student-image">
-                        <a href="{{URL::to("/")}}/Profil"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="50%" width="auto"></a>
-                    </div>
-                    <div class="student-details">
-                        <a href="{{URL::to("/")}}/Profil"><h2 class="student-name">Meno Priezvisko</h2></a>
-                            <ul class="student-info">
-                                <li>e-mail: <strong><a href="mailto:m.priezvisko@ukf.sk">m.priezvisko@ukf.sk</a></strong></li>
-                                <li>katedra: <strong>Katedra Informatiky FPV</strong></li>
-                                <li>Mobilne cislo: <strong>999 999 999</strong></li>
-                            </ul>
-                            <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Ipsam officiis delectus vel vitae nulla modi rerum.Ipsam officiis delectus vel vitae nulla modi rerum.Ipsam officiis delectus vel vitae nulla modi rerum. </p>
-                    </div>
-                    </ul>
+
+                @foreach ($zamestnanec as $zam)
                     <ul class="slides">
-                        <div class="student-data">
-                            <div class="student-image">
-                                <a href="{{URL::to("/")}}/Profil"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="50%" width="auto"></a>
+                            <div class="student-data">
+                                <div class="student-image">
+                                    <a href="{{URL::to("/")}}/Profil"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="50%" width="auto"></a>
+                                </div>
+                                <div class="student-details">
+                                    <a href="{{URL::to("/")}}/Profil"><h2 class="student-name">{{ $zam['meno']}}</h2></a>
+                                    <ul class="student-info">
+                                        <li>e-mail: <strong>{{ $zam['email']}}</strong></li>
+                                        <li>Rola: <strong>{{ $zam['rola']}}</strong></li>
+                                        <li>Katedra: <strong>{{ $zam['katedra']}}</strong></li>
+                                    </ul>
+                                    <p> {{ $zam['profil']}} </p>
+                                </div>
                             </div>
-                            <div class="student-details">
-                                <a href="{{URL::to("/")}}/Profil"><h2 class="student-name">Meno Priezvisko</h2></a>
-                                <ul class="student-info">
-                                    <li>e-mail: <strong><a href="mailto:m.priezvisko@ukf.sk">m.priezvisko@ukf.sk</a></strong></li>
-                                    <li>katedra: <strong>Katedra Informatiky FPV</strong></li>
-                                    <li>Mobilne cislo: <strong>999 999 999</strong></li>
-                                </ul>
-                                <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Ipsam officiis delectus vel vitae nulla modi rerum.Ipsam officiis delectus vel vitae nulla modi rerum.Ipsam officiis delectus vel vitae nulla modi rerum. </p>
-                            </div>
-                        </div>
-                        </li>
-                    </ul>
+                            </li>
+                        </ul>
+                @endforeach
+
             </div>
+
         </div>
     </div>
     <script src="{{URL::to('/')}}/js/Image-modal.js"></script>

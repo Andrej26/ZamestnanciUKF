@@ -27,7 +27,7 @@ class Zamestnanec extends Authenticatable
 
 
     public function rolaPouzivatela(){
-        return $this->belongsTo('App\Model\RolaPouzivatela');
+        return $this->belongsTo('App\Model\RolaPouzivatela','rolaPouzivatela_idrolaPouzivatela');
     }
 
 

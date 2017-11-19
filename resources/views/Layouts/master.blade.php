@@ -112,7 +112,7 @@
 
         .border_links01
         {
-            background-image: url("{{URL::to('/')}}/images/bluebackground.png");
+            background-image: url("{{URL::to('/')}}/images/bluebackground.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             border: 3px solid #59c1d1;
@@ -124,7 +124,7 @@
 
         .border_text01
         {
-            background-image: url("{{URL::to('/')}}/images/textbackground.png");
+            background-image: url("{{URL::to('/')}}/images/textbackground.jpg");
             background-repeat: no-repeat;
             background-size: cover;
             background-position: center;

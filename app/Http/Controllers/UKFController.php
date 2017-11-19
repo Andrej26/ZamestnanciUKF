@@ -8,6 +8,8 @@
 
 namespace App\Http\Controllers;
 use App\Model\Fakulta;
+use App\Model\Katedra;
+use App\Model\Zamestnanec;
 use Illuminate\Http\Request;
 
 
@@ -24,9 +26,27 @@ class UKFController extends Controller
         return view('UKF.profil');
     }
 
-    public function zprofil()
+    public function zprofil($idkatedra)
     {
-        return view('UKF.ZProfilov');
+        switch ($idkatedra) {
+            case "1":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1)]);
+                break;
+            case "2":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(2)]);
+                break;
+            case "3":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(3)]);
+                break;
+            case "4":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(4)]);
+                break;
+            case "5":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(5)]);
+                break;
+            default:
+              //  echo "Your favorite color is neither red, blue, nor green!";
+        }
     }
 
     public function fakulty()
@@ -47,10 +67,37 @@ class UKFController extends Controller
         return $fak01;
     }
 
-    public function changepasw()
+    public function katedry($id)
     {
-        echo "ahoj";
+        $kat02 =Katedra::all();
+        $kat01=[];
+        $pom=[];
+
+        foreach ( $kat02 as $katedra):
+            if($katedra['Fakulta_idFakulta'] == $id)
+            {
+                $kat01[$katedra->idKatedra] = $katedra->nazov;
+            }
+        endforeach;
+
+        $zames = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+            ->get();
+
+        foreach ($zames as $zam):
+            foreach ($kat01 as $kats):
+                if($kats == $zam['nazov'])
+                {
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil];
+                }
+            endforeach;
+        endforeach;
+
+        return $pom;
     }
+
 
     public function formpasw()
     {

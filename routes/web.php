@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::prefix('UKF')->group(function() {
     Route::get('/', 'UKFController@index')->name('ukf');
     Route::get('/Profil', 'UKFController@profil')->name('profil');
-    Route::get('/ZProfil', 'UKFController@zprofil')->name('zprofil');
+    Route::get('/ZProfil/{id}', 'UKFController@zprofil')->name('zprofil');
     Route::get('/Zmenahesla','UKFController@formpasw')->name('formhesla');
     Route::post('/Zmenahesla','UKFController@changepasw')->name('zmenahesla');
 
