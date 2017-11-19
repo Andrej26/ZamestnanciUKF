@@ -37,7 +37,7 @@
 
                     <div class="col-md-7">
                         <div class="feature rounded-icon">
-                            <a href="{{URL::to('fakulta_fpv')}}">
+                            <a href="{{url::to('UKF/fpv')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Fakulta Prírodných Vied </h3>
                             </a>
@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="feature rounded-icon">
-                            <a href="{{URL::to('fakulta_fsvz')}}">
+                            <a href="{{URL::to('UKF/fsvz')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Fakulta Sociálnych Vied a Zdravotníctva </h3>
                             </a>
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="feature rounded-icon">
-                            <a href="{{URL::to('fakulta_fss')}}">
+                            <a href="{{URL::to('UKF/fss')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Fakulta Stredoeurópskych Štúdií </h3>
                             </a>
@@ -67,7 +67,7 @@
 
                     <div class="col-md-5">
                         <div class="feature rounded-icon">
-                            <a href="{{URL::to('fakulta_ff')}}">
+                            <a href="{{URL::to('UKF/ff')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Filozofická Fakulta </h3>
                             </a>
@@ -76,7 +76,7 @@
                         </div>
 
                         <div class="feature rounded-icon">
-                            <a href="{{URL::to('fakulta_pf')}}">
+                            <a href="{{URL::to('UKF/pf')}}">
                                 <div class="feature-icon"><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Pedagogická Fakulta </h3>
                             </a>

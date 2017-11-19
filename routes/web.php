@@ -28,24 +28,24 @@ Route::prefix('UKF')->group(function() {
     // View-y Fakúlt
 /////////////////////////////////////////////////////////////////////
 
-    Route::get('fpv', function(){
-        return View('fakulta_fpv'); // Your Blade template name
+    Route::get('/fpv', function(){
+        return view('UKF/Fakulty/fakulta_fpv'); // Your Blade template name
     });
 
-    Route::get('ff', function(){
-        return View('fakulta_ff'); // Your Blade template name
+    Route::get('/ff', function(){
+        return view('UKF/Fakulty/fakulta_ff'); // Your Blade template name
     });
 
-    Route::get('fss', function(){
-        return View('fakulta_fss'); // Your Blade template name
+    Route::get('/fss', function(){
+        return View('UKF/Fakulty/fakulta_fss'); // Your Blade template name
     });
 
-    Route::get('fsvz', function(){
-        return View('fakulta_fsvz'); // Your Blade template name
+    Route::get('/fsvz', function(){
+        return View('UKF/Fakulty/fakulta_fsvz'); // Your Blade template name
     });
 
-    Route::get('pf', function(){
-        return View('fakulta_pf'); // Your Blade template name
+    Route::get('/pf', function(){
+        return View('UKF/Fakulty/fakulta_pf'); // Your Blade template name
     });
 
 });
