@@ -68,6 +68,7 @@
                 </div>
 
             </main>
+
             <h1>Zoznam Profilov</h1>
             <div class="profil">
 
@@ -75,10 +76,10 @@
                     <ul class="slides">
                             <div class="student-data">
                                 <div class="student-image">
-                                    <a href="{{URL::to("/")}}/Profil"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="50%" width="auto"></a>
+                                    <a href="{{URL::to("UKF/Profil")}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="50%" width="auto"></a>
                                 </div>
                                 <div class="student-details">
-                                    <a href="{{URL::to("/")}}/Profil"><h2 class="student-name">{{ $zam['meno']}}</h2></a>
+                                    <a href="{{URL::to("UKF/Profil")}}"><h2 class="student-name">{{ $zam['meno']}}</h2></a>
                                     <ul class="student-info">
                                         <li>e-mail: <strong>{{ $zam['email']}}</strong></li>
                                         <li>Rola: <strong>{{ $zam['rola']}}</strong></li>
