@@ -1219,7 +1219,7 @@ form textarea {
     padding-left: 0;
     text-align: center; }
     .graduates .student-image img {
-      max-width: 100%; }
+      max-width: 50%; }
   .graduates .student-name {
     font-size: 30px;
     font-size: 2em;
@@ -1266,6 +1266,7 @@ form textarea {
   border-radius: 5px;
   overflow: auto;
   padding: 30px;
+  margin-right: 3% ;
   position: relative;
   height: 500px;
 }
@@ -1284,7 +1285,7 @@ form textarea {
   content: " ";
   clear: both;
   display: block;
-  overflow: auto;
+  overflow: hidden;
   height: 0; }
 .profil .student-image {
   padding-left: 0;
@@ -1575,6 +1576,7 @@ form textarea {
  }
  .komentare{
    width: 100%;
+   margin-right: 5%;
  }
  .komentare .koment{
    width: 100%;
@@ -1587,7 +1589,7 @@ form textarea {
    resize: none;
 
  }
- .komentare .button_k{
+  .button_k{
    background-color: #28b8ce;
    box-shadow: #2a2a2a;
    box-sizing: border-box;
@@ -1595,6 +1597,130 @@ form textarea {
    border-radius: 2px;
    color: white;
    text-align: center;
+ }
+
+.paginate-box{
+  margin: auto;
+  width: 50%;
+}
+
+.zarovnanie{
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.but01{
+  margin:3px;
+}
+
+.img-thumbnail_01{
+  display: inline-block;
+  width: 330px;
+  height: 310px;
+  margin: 1px;
+}
+.odh {
+  text-align: right;
+}
+
+.info
+{
+  text-align: center;
+  margin:  5% 10%;
+}
+
+.logo
+{
+  height: 30%;
+  width: 30%;
+  margin-bottom: -4%;
+}
+
+.vyhladanie
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 135%;
+}
+
+.message
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 135%;
+}
+
+.site-footer
+{
+  text-align: center;
+  background-color: whitesmoke;
+  border-radius:  6px 6px 0px 0px
+}
+
+.fixed-bg {
+  background-image: url("{{URL::to('/')}}/images/Green.jpg");
+  min-height: 500px;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nadpis_fakult
+{
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 300%;
+  color: #4a4a4a;
+  text-align: center;
+  text-shadow: 3px 2px #d0d0d0;
+}
+
+.nadpis_fakult01
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 300%;
+  color: black;
+  text-align: center;
+}
+
+.border_links01
+{
+
+  background-color: #3a454b;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  height: 100%;
+  color: white;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-left: 10%;
+  padding-left: 10%;
+  text-align: center;
+}
+
+.border_text01
+{
+  background-image: url("{{URL::to('/')}}/images/textbackground.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: black;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+  margin-left: -2.5%;
+  margin-top: -3%;
+  font-size: 115%;
+}
+
+.oddelovacia_ciara
+{
+  margin-top: 2%;
+  margin-bottom: -2%
+}
+
+ .columns{
+   overflow: auto;
  }
 
 

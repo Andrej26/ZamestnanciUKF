@@ -24,12 +24,6 @@
                     <p> </p>
 
 
-                        <a class="btn btn-success "  href="{{ route('zames.dashboard') }}">Upraviť osobné informácie</a>
-
-                        <a class="btn btn-success "  href="{{ route('zames.publikacie') }}"> Moje publikácie</a>
-
-
-
 
                 </div>
                 <!-- Vyhladavanie -->
@@ -61,25 +55,27 @@
 
             </main>
 
-            <div class="graduates">
-                    <li>
-                        <div class="student-data">
+            <div class="profil">
+                        <div class="slides">
                             <div class="student-image">
                                 <img src="{{URL::to('/')}}/dummy/person-1.jpg" alt="">
                             </div>
                             <div class="student-details">
+                                <button type="submit" class="button_k" >Upravit osobne informacie</button>
+                                <button type="submit" class="button_k"><a href="{{URL::to('/')}}/Zamestnanec/publikacie">Moje publikacie</a></button>
                                 <h2 class="student-name">Meno Priezvisko</h2>
                                 <ul class="student-info">
                                     <li>Fakulta: <strong>FPV</strong></li>
                                     <li>Katedra: <strong>Informatiky</strong></li>
                                     <li>Publikácie: <strong>X Y</strong></li>
+
                                 </ul>
 
                                 <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum.</p>
                             </div>
 
                         </div>
-                    </li>
+
             </div>
         </div>
 

@@ -18,6 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/Charts','UKFController@chart')->name('charts');
 Route::prefix('UKF')->group(function() {
     Route::get('/', 'UKFController@index')->name('ukf');
     Route::get('/Profil', 'UKFController@profil')->name('profil');

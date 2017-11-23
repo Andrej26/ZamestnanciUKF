@@ -29,53 +29,6 @@
                     </div>
 
                 </div>
-                <div class="row">
-
-                    <div class="border_links01">
-
-                    <div class="row">
-                        <div class="col-md-10">
-                                <a href="{{URL::to('UKF/fpv')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Fakulta prírodných vied</h4>
-                                </a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-10">
-                            <a href="{{URL::to('UKF/fsvz')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                <h4 >Fakulta sociálnych vied a zdravotníctva</h4>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-10">
-                            <a href="{{URL::to('UKF/fss')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                <h4 >Fakulta stredoeurópskych štúdií</h4>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-10">
-                            <a href="{{URL::to('UKF/ff')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                <h4 >Filozofická fakulta</h4>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-10">
-                            <a href="{{URL::to('UKF/pf')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                <h4 >Pedagogická fakulta</h4>
-                            </a>
-                        </div>
-                    </div>
-
-                    </div>
-
-                </div>
 
 
             </main>

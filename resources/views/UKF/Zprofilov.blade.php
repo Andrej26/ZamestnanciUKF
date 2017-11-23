@@ -19,55 +19,26 @@
                     </div>
                 </div>
 
-                <div class="row">
 
-                    <div class="border_links01">
 
-                        <div class="row">
-                            <div class="col-md-10">
-                                <a href="{{URL::to('UKF/fpv')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Fakulta prírodných vied</h4>
-                                </a>
-                            </div>
-                        </div>
 
-                        <div class="row">
-                            <div class="col-md-10">
-                                <a href="{{URL::to('UKF/fsvz')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Fakulta sociálnych vied a zdravotníctva</h4>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-10">
-                                <a href="{{URL::to('UKF/fss')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Fakulta stredoeurópskych štúdií</h4>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-10">
-                                <a href="{{URL::to('UKF/ff')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Filozofická fakulta</h4>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-10">
-                                <a href="{{URL::to('UKF/pf')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Pedagogická fakulta</h4>
-                                </a>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
 
             </main>
+            @if($ifakulta == 1)
+                <h1>Zoznam Profilov zamestnancov Filozofickej Fakulty</h1>
+            @endif
+            @if($ifakulta == 3)
+                <h1>Zoznam Profilov zamestnancov Pedagogickej Fakulty</h1>
+            @endif
+            @if($ifakulta == 2)
+                <h1>Zoznam Profilov zamestnancov Fakulty stredoeuropskych studii</h1>
+            @endif
+            @if($ifakulta == 4)
+                <h1>Zoznam Profilov zamestnancov Fakulty Prirodnych vied</h1>
+            @endif
+            @if($ifakulta == 5)
+                <h1>Zoznam Profilov zamestnancov Fakulta socialnych vied a zdravotnictva</h1>
+            @endif
 
             <h1>Zoznam Profilov</h1>
             <div class="profil">
@@ -95,7 +66,6 @@
                     <p>Nenašli sa žiadni zamestnanci, ktorý by obsahovali informácie podľa zadaných parametrov.</p>
             @endif
             </div>
-
         </div>
     </div>
 
