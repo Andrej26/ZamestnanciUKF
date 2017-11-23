@@ -24,6 +24,11 @@
 
 
             </main>
+
+            @if($ifakulta == 0)
+                <h1>Zoznam Profilov zamestnancov univerzity</h1>
+            @endif
+
             @if($ifakulta == 1)
                 <h1>Zoznam Profilov zamestnancov Filozofickej Fakulty</h1>
             @endif
@@ -40,9 +45,8 @@
                 <h1>Zoznam Profilov zamestnancov Fakulta socialnych vied a zdravotnictva</h1>
             @endif
 
-            <h1>Zoznam Profilov</h1>
             <div class="profil">
-            @if($test != 1)
+            @if($test === 1)
                 @foreach ($zamestnanec as $zam)
                     <ul class="slides">
                             <div class="student-data">
@@ -62,9 +66,10 @@
                             </li>
                         </ul>
                 @endforeach
-            @else
+                @endif
+                @if($test === 0)
                     <p>Nenašli sa žiadni zamestnanci, ktorý by obsahovali informácie podľa zadaných parametrov.</p>
-            @endif
+                @endif
             </div>
         </div>
     </div>

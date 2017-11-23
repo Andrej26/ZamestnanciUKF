@@ -36,20 +36,19 @@ class UKFController extends Controller
 
         switch ($idkatedra) {
             case "1":
-                $fakulta = Fakulta::where('idFakulta','=',$idkatedra);
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1)],['ifakulta'=>1]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1]);
                 break;
             case "2":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2, 'test'=> 1]);
                 break;
             case "3":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3, 'test'=> 1]);
                 break;
             case "5":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4, 'test'=> 1]);
                 break;
             case "7":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1]);
                 break;
             default:
               //  echo "Your favorite color is neither red, blue, nor green!";

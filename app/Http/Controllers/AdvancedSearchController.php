@@ -19,22 +19,21 @@ class AdvancedSearchController extends Controller
         $finaltable=[];
         $test=0;
 
-
         if($meno !== null) {
             $test=1;
             foreach ($searchtable as $stable):
                 $pomocna=stripos($stable['meno'],$meno);
-                if($pomocna === true) {
-                    $finaltable[] = ['id' => $stable->idzamestnanec, 'meno' => $stable->meno,
-                        'email' => $stable->email, 'katedra' => $stable->nazov, 'rola' => $stable->rola,
-                        'profil' => $stable->profil, 'fakulta' => $stable->nazov01];
+                if($pomocna == true) {
+                    $finaltable[] = ['id' => $stable->idzamestnanec, 'meno' => $stable->meno, 'email' => $stable->email, 'katedra' => $stable->nazov, 'rola' => $stable->rola, 'profil' => $stable->profil];
                 }
             endforeach;
+
         }
         else{
-            return view('UKF.ZProfilov',['test' => $test]);
+            return $pom=1;
+           // return view('UKF.ZProfilov',['test' => $test, 'ifakulta'=>0]);
         }
-        return view('UKF.ZProfilov',['zamestnanec' => $finaltable, 'test' => $test]);
+        return view('UKF.ZProfilov',['zamestnanec' => $finaltable, 'test' => $test, 'ifakulta'=>0]);
     }
 
 
@@ -56,9 +55,7 @@ class AdvancedSearchController extends Controller
         foreach ($zames as $zam):
             foreach ($kat01 as $kat):
                 if($kat['nazov'] == $zam['nazov']) {
-                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno,
-                        'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola,
-                        'profil'=> $zam->profil, 'fakulta'=>$kat->nazov01];
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil, 'fakulta'=>$kat->nazov01];
                 }
             endforeach;
         endforeach;
