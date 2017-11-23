@@ -15,12 +15,17 @@
 </div>
 <br>
 
+
 <!-- Toto vypisuje hlasku, ked sa vsetko podari -->
+
 @if ($message = Session::get('success'))
-    <div class="alert alert-success" style="text-align: center">
+    <div class="alert alert-success alert-block">
+        <button type="button" class="close" >x</button>
+        <span class="close">&times;</span>
         <p class="message">{{ $message }}</p>
     </div>
 @endif
+
 
 <table class="table table-bordered col-xs-12 col-sm-12 col-md-12 text-center">
     <tr>

@@ -30,7 +30,7 @@ class UKFController extends Controller
     {
         switch ($idkatedra) {
             case "1":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1)]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1), 'fakulta'=>1]);
                 break;
             case "2":
                 return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(2)]);
@@ -45,7 +45,6 @@ class UKFController extends Controller
                 return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(5)]);
                 break;
             default:
-              //  echo "Your favorite color is neither red, blue, nor green!";
         }
     }
 
@@ -63,20 +62,26 @@ class UKFController extends Controller
         foreach ( $fak02 as $fakulta):
             $fak01[$fakulta->idFakulta] = $fakulta->nazov;
         endforeach;
+        $fak01[6] = 'Ostatné pozície na ukf';
 
         return $fak01;
     }
 
     public function katedry($id)
     {
-        $kat02 =Katedra::all();
+        $kat02 = Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
+            ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
+            ->orderBy('idKatedra', 'asc')
+            ->get();
         $kat01=[];
         $pom=[];
+        $fakulta='';
+
 
         foreach ( $kat02 as $katedra):
-            if($katedra['Fakulta_idFakulta'] == $id)
-            {
+            if($katedra['Fakulta_idFakulta'] == $id) {
                 $kat01[$katedra->idKatedra] = $katedra->nazov;
+                $fakulta=$katedra->nazov01;
             }
         endforeach;
 
@@ -88,9 +93,8 @@ class UKFController extends Controller
 
         foreach ($zames as $zam):
             foreach ($kat01 as $kats):
-                if($kats == $zam['nazov'])
-                {
-                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil];
+                if($kats == $zam['nazov']) {
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil, 'fakulta' =>$fakulta];
                 }
             endforeach;
         endforeach;

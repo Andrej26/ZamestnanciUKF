@@ -42,7 +42,7 @@ class DBZamestnanci extends Controller
         $this->validate($request,[
             'meno' => 'required|max:50',
             'email' => 'required|max:60',
-            'heslo' => 'required|max:22',
+            'password' => 'required|max:22',
             'profil' => 'required|max:50',
             //'katedra' => 'required|max:100',
            // 'rola' => 'required|max:30',
@@ -52,7 +52,7 @@ class DBZamestnanci extends Controller
             'idzamestnanec' => $this->idgenerator(),
             'meno' => $request->meno,
             'email' => $request->email,
-            'heslo' => Hash::make($request->heslo),
+            'password' => Hash::make($request->heslo),
             'profil' => $request->profil,
             'aktivny' => '1',
             'Katedra_idKatedra' => $request->katedra,
@@ -86,7 +86,7 @@ class DBZamestnanci extends Controller
         request()->validate([
             'meno' => 'required|max:50',
             'email' => 'required|max:60',
-            'heslo' => 'required|max:22',
+            'password' => 'required|max:22',
             'profil' => 'required|max:50',
             'nazov' => 'required|max:100',
         ]);
@@ -94,7 +94,7 @@ class DBZamestnanci extends Controller
         Zamestnanec::find($id)->update([
             'meno' => $request->meno,
             'email' => $request->email,
-            'heslo' => Hash::make($request->heslo),
+            'password' => Hash::make($request->heslo),
             'profil' => $request->profil,
             'Katedra_idKatedra' => $request->nazov,
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]

@@ -16,11 +16,11 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         'e7223560d890eab89cda23685e711e2c' => __DIR__ . '/..' . '/psy/psysh/src/Psy/functions.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
+        'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
+        '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
         'f18cc91337d49233e5754e93f3ed9ec3' => __DIR__ . '/..' . '/laravelcollective/html/src/helpers.php',
-        'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
-        '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -79,6 +79,7 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         array (
             'League\\Flysystem\\' => 17,
             'Laravel\\Tinker\\' => 15,
+            'LaravelNews\\Presets\\BootstrapFour\\' => 34,
         ),
         'I' => 
         array (
@@ -237,6 +238,10 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
+        'LaravelNews\\Presets\\BootstrapFour\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/laravelnews/laravel-twbs4/src',
+        ),
         'Illuminate\\' => 
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
@@ -339,19 +344,20 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
     );
 
     public static $classMap = array (
-        'App\\Admin' => __DIR__ . '/../..' . '/app/Admin.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
-        'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
-        'App\\Http\\Controllers\\Auth\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminLoginController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Auth\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisterController.php',
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
+        'App\\Http\\Controllers\\Auth\\ZamestnanecForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ZamestnanecForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\ZamestnanecLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ZamestnanecLoginController.php',
+        'App\\Http\\Controllers\\Auth\\ZamestnanecResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ZamestnanecResetPasswordController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DBControllers\\DBFakulta' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBFakulta.php',
         'App\\Http\\Controllers\\DBControllers\\DBKatedra' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBKatedra.php',
+        'App\\Http\\Controllers\\DBControllers\\DBProjekty' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBProjekty.php',
+        'App\\Http\\Controllers\\DBControllers\\DBPublikacie' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBPublikacie.php',
         'App\\Http\\Controllers\\DBControllers\\DBRola' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBRola.php',
         'App\\Http\\Controllers\\DBControllers\\DBZamestnanci' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBZamestnanci.php',
         'App\\Http\\Controllers\\DbConnectTest' => __DIR__ . '/../..' . '/app/Http/Controllers/DbConnectTest.php',
@@ -369,13 +375,13 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         'App\\Model\\Publikacia' => __DIR__ . '/../..' . '/app/Model/Publikacia.php',
         'App\\Model\\RolaPouzivatela' => __DIR__ . '/../..' . '/app/Model/RolaPouzivatela.php',
         'App\\Model\\Zamestnanec' => __DIR__ . '/../..' . '/app/Model/Zamestnanec.php',
+        'App\\Notifications\\ZamesResetPasswordNotification' => __DIR__ . '/../..' . '/app/Notifications/ZamesResetPasswordNotification.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
         'App\\Providers\\BroadcastServiceProvider' => __DIR__ . '/../..' . '/app/Providers/BroadcastServiceProvider.php',
         'App\\Providers\\EventServiceProvider' => __DIR__ . '/../..' . '/app/Providers/EventServiceProvider.php',
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
-        'App\\Zamestnanec' => __DIR__ . '/../..' . '/app/Zamestnanec.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
         'Carbon\\CarbonInterval' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/CarbonInterval.php',
         'Carbon\\Exceptions\\InvalidDateException' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Exceptions/InvalidDateException.php',
@@ -1841,6 +1847,8 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         'JakubOnderka\\PhpConsoleColor\\ConsoleColor' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/ConsoleColor.php',
         'JakubOnderka\\PhpConsoleColor\\InvalidStyleException' => __DIR__ . '/..' . '/jakub-onderka/php-console-color/src/JakubOnderka/PhpConsoleColor/InvalidStyleException.php',
         'JakubOnderka\\PhpConsoleHighlighter\\Highlighter' => __DIR__ . '/..' . '/jakub-onderka/php-console-highlighter/src/JakubOnderka/PhpConsoleHighlighter/Highlighter.php',
+        'LaravelNews\\Presets\\BootstrapFour\\BootstrapPreset' => __DIR__ . '/..' . '/laravelnews/laravel-twbs4/src/BootstrapPreset.php',
+        'LaravelNews\\Presets\\BootstrapFour\\BootstrapPresetServiceProvider' => __DIR__ . '/..' . '/laravelnews/laravel-twbs4/src/BootstrapPresetServiceProvider.php',
         'Laravel\\Tinker\\ClassAliasAutoloader' => __DIR__ . '/..' . '/laravel/tinker/src/ClassAliasAutoloader.php',
         'Laravel\\Tinker\\Console\\TinkerCommand' => __DIR__ . '/..' . '/laravel/tinker/src/Console/TinkerCommand.php',
         'Laravel\\Tinker\\TinkerCaster' => __DIR__ . '/..' . '/laravel/tinker/src/TinkerCaster.php',

@@ -104,7 +104,7 @@
                         <h2>Vyhľadávanie zamestnancov univerzity</h2>
                     </div>
 
-                    {!! Form::open(array('route' => 'TabKatedra.store','method'=>'POST')) !!}
+                    {!! Form::open(array('route' => 'advanced_search','method'=>'POST')) !!}
                     <div class="form-content">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">

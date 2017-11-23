@@ -71,7 +71,7 @@
 
             <h1>Zoznam Profilov</h1>
             <div class="profil">
-
+            @if($test != 1)
                 @foreach ($zamestnanec as $zam)
                     <ul class="slides">
                             <div class="student-data">
@@ -91,11 +91,14 @@
                             </li>
                         </ul>
                 @endforeach
-
+            @else
+                    <p>Nenašli sa žiadni zamestnanci, ktorý by obsahovali informácie podľa zadaných parametrov.</p>
+            @endif
             </div>
 
         </div>
     </div>
+
     <script src="{{URL::to('/')}}/js/Image-modal.js"></script>
 
 @endsection

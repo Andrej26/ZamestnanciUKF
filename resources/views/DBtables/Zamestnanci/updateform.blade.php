@@ -16,7 +16,7 @@
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Heslo:</strong>
-            {!! Form::text('heslo', null, array('placeholder' => 'Heslo','class' => 'form-control','required')) !!}
+            {!! Form::text('password', null, array('placeholder' => 'Heslo','class' => 'form-control','required')) !!}
         </div>
     </div>
 

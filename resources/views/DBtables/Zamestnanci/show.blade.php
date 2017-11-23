@@ -3,7 +3,7 @@
 @section('content')
     <br>
     <div class="col-lg-12 margin-tb">
-        <div class="float-left">
+        <div class="float-left" >
             <h2>Prifil zamestnanca</h2>
         </div>
 
@@ -41,7 +41,7 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Heslo: </strong>
-                {{$zam->heslo}}
+                {{$zam->password}}
             </div>
         </div>
 
