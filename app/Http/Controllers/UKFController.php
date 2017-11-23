@@ -26,23 +26,30 @@ class UKFController extends Controller
         return view('UKF.profil');
     }
 
+    public function chart()
+    {
+        return view('charts');
+    }
+
     public function zprofil($idkatedra)
     {
+
         switch ($idkatedra) {
             case "1":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1)]);
+                $fakulta = Fakulta::where('idFakulta','=',$idkatedra);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1)],['ifakulta'=>1]);
                 break;
             case "2":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(2)]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2]);
                 break;
             case "3":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(3)]);
-                break;
-            case "4":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(4)]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3]);
                 break;
             case "5":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(5)]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4]);
+                break;
+            case "7":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5]);
                 break;
             default:
               //  echo "Your favorite color is neither red, blue, nor green!";
@@ -67,6 +74,10 @@ class UKFController extends Controller
         return $fak01;
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function katedry($id)
     {
         $kat02 =Katedra::all();
@@ -97,6 +108,15 @@ class UKFController extends Controller
 
         return $pom;
     }
+
+   /**public function profil($id)
+    {
+        $zam = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+            ->get();
+    }*/
 
 
     public function formpasw()
