@@ -82,8 +82,9 @@
                             <div id="projDrop" class="proj-dropdown-content">
                                 @foreach($projekt as $proj)
                                     <ul class="projekt-info">
-                                        <li>{{$proj['nazov']}}</li>
-                                        <li>Od: {{$proj['zaciatok']}} - do: {{$proj['koniec']}}</li>
+                                        <li><strong>Názov projektu: </strong>{{$proj['nazov']}}</li>
+                                        <li><strong>Od: </strong>{{$proj['zaciatok']}} - <strong>do: </strong>{{$proj['koniec']}}</li>
+                                        <li><strong>Registračné číslo: </strong> {{$proj['reg']}}</li>
                                     </ul>
                                 @endforeach
                             </div>

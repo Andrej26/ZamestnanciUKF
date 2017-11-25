@@ -49,9 +49,9 @@
                                     <a href="{{route('profil', $zam['id'])}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="25%" width="auto"></a>
                                 </div>
                                 <div class="student-details">
-                                    <a href="{{route('profil', $zam['id'])}}"><h2 class="student-name">{{ $zam['meno']}}</h2></a>
+                                    <a href="{{route('profil', $zam['id'])}}" style="color: inherit;"><h2 class="student-name" >{{ $zam['meno']}}</h2></a>
                                     <ul class="student-info">
-                                        <li>e-mail: <strong>{{ $zam['email']}}</strong></li>
+                                        <li style="color: inherit;">e-mail: <strong>{{ $zam['email']}}</strong></li>
                                         <li>Rola: <strong>{{ $zam['rola']}}</strong></li>
                                         <li>Katedra: <strong>{{ $zam['katedra']}}</strong></li>
                                     </ul>
