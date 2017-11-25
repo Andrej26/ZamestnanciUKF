@@ -1264,12 +1264,12 @@ form textarea {
 .profil {
   background: #e2e2e2;
   border-radius: 5px;
-  overflow: hidden;
+  overflow: auto;
   padding: 30px;
   margin-right: 3% ;
   position: relative;
-  height: auto;
-  min-height: 100%;
+  height: 700px;
+  /*min-height: 700px;*/
 }
 .profil .slides {
   list-style: none;
@@ -1305,7 +1305,7 @@ form textarea {
   padding: 15px 0;
   margin-bottom: 30px; }
 .profil .student-info strong {
-  color: #28b8ce; }
+  color: inherit; }
 .profil .flex-direction-nav {
   position: absolute;
   top: 30px;
@@ -1314,7 +1314,9 @@ form textarea {
   list-style: none; }
 .profil .flex-direction-nav li {
   display: inline-block;
-  margin-left: 5px; }
+  margin-left: 5px;
+  color: inherit;
+}
 .profil .flex-direction-nav li a {
   padding-top: 3px;
   display: block;

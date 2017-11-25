@@ -6,10 +6,10 @@ function publikacieFunc() {
     var pbbutton = document.getElementsByClassName("publ-dropdown");
     var prbutton = document.getElementsByClassName("proj-dropdown");
 
-        publ.style.display = "block";
-        proj.style.display = "none";
-        pbbutton[0].style.backgroundColor= "#656c71";
-        prbutton[0].style.backgroundColor = "#959ca1";
+    publ.style.display = "block";
+    proj.style.display = "none";
+    pbbutton[0].style.backgroundColor= "#656c71";
+    prbutton[0].style.backgroundColor = "#959ca1";
 
 }
 function projektyFunc() {

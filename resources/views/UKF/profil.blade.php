@@ -21,7 +21,7 @@
             </main>
 
             <h1>Profil</h1>
-            <div class="profil">
+            <div class="profil" style="overflow: hidden; height: auto;">
                 @foreach($profils as $prof)
                 <ul class="slides02">
                     <li>
@@ -37,7 +37,7 @@
                             <div class="student-details">
                                 <h2 class="student-name">{{$prof['mena']}}</h2>
                                 <ul class="student-info">
-                                    <li>e-mail: <strong><a href="mailto:m.priezvisko@ukf.sk">m.priezvisko@ukf.sk</a></strong></li>
+                                    <li>e-mail: <strong><a href="mailto:m.priezvisko@ukf.sk" style="color: inherit;">m.priezvisko@ukf.sk</a></strong></li>
                                     <li>katedra: <strong>{{$prof['katedra1']}}</strong></li>
                                     <li>Rola:
                                         <strong>
