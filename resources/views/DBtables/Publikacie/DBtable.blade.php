@@ -1,4 +1,4 @@
-@extends('Layouts.master')
+    @extends('Layouts.master')
 
 @section('header')
     @include('Layouts.Navigacia.admin_navbar')

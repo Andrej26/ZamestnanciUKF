@@ -56,7 +56,7 @@
             </main>
 
             <div class="profil">
-                        <div class="slides">
+                <div class="slides">
                             <div class="student-image">
                                 <img src="{{URL::to('/')}}/dummy/person-1.jpg" alt="">
                             </div>

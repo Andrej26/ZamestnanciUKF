@@ -29,7 +29,7 @@
 </head>
 
 <body class="fixed-bg">
-<div class="container" style="background-color: white; border-radius: 0px 0px 6px 6px">
+<div class="container" style="background-color: white; border-radius: 0px 0px 6px 6px; box-shadow: 0px 0px 20px 10px #2F3133">
     <div class="page-header">
         @yield('header')
     </div>

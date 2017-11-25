@@ -18,59 +18,12 @@
                         <img src="{{URL::to('/')}}/dummy/banner.jpg" alt="Banner">
                     </div>
                 </div>
-
-                    <div class="row">
-
-                        <div class="border_links01">
-
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <a href="{{URL::to('UKF/fpv')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                        <h4 >Fakulta prírodných vied</h4>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <a href="{{URL::to('UKF/fsvz')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                        <h4 >Fakulta sociálnych vied a zdravotníctva</h4>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <a href="{{URL::to('UKF/fss')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                        <h4 >Fakulta stredoeurópskych štúdií</h4>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <a href="{{URL::to('UKF/ff')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                        <h4 >Filozofická fakulta</h4>
-                                    </a>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-10">
-                                    <a href="{{URL::to('UKF/pf')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                        <h4 >Pedagogická fakulta</h4>
-                                    </a>
-                                </div>
-                            </div>
-
-                        </div>
-
-                    </div>
             </main>
 
             <h1>Profil</h1>
             <div class="profil">
-                <ul class="slides">
+                @foreach($profils as $prof)
+                <ul class="slides02">
                     <li>
                         <div class="student-data">
                             <div class="student-image">
@@ -82,28 +35,62 @@
                                 </div>
                             </div>
                             <div class="student-details">
-                                <h2 class="student-name">Meno Priezvisko</h2>
+                                <h2 class="student-name">{{$prof['mena']}}</h2>
                                 <ul class="student-info">
                                     <li>e-mail: <strong><a href="mailto:m.priezvisko@ukf.sk">m.priezvisko@ukf.sk</a></strong></li>
-                                    <li>katedra: <strong>Katedra Informatiky FPV</strong></li>
-                                    <li>Mobilne cislo: <strong>999 999 999</strong></li>
+                                    <li>katedra: <strong>{{$prof['katedra1']}}</strong></li>
+                                    <li>Rola:
+                                        <strong>
+                                            @if($prof['rol']==1)
+                                                Zamestnanec
+                                            @endif
+                                            @if($prof['rol']==2)
+                                                Navstevnik
+                                            @endif
+                                            @if($prof['rol']==3)
+                                                Administrator
+                                             @endif
+                                        </strong>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
                         <div class ="popis">
                             <h2>Popis:</h2>
-                            <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum?
-                                Ipsam officiis delectus vel vitae nulla modi rerum.
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum?
-                                Ipsam officiis delectus vel vitae nulla modi rerum. Ipsam officiis delectus vel vitae nulla modi rerum.
-                                Ipsam officiis delectus vel vitae nulla modi rerum.Ipsam officiis delectus vel vitae nulla modi rerum.
-                                Ipsam officiis delectus vel vitae nulla modi rerum.Ipsam officiis delectus vel vitae nulla modi rerum.
-                                Ipsam officiis delectus vel vitae nulla modi rerum. Ipsam officiis delectus vel vitae nulla modi rerum.
-                                Ipsam officiis delectus vel vitae nulla modi rerum. Ipsam officiis delectus vel vitae nulla modi rerum.</p>
+                            <p>{{$prof['rola1']}}</p>
                         </div>
+                        <div class ="popis">
+                            <button onclick="publikacieFunc()" class="publ-dropdown">Publikacie</button>
+                            <button onclick="projektyFunc()" class="proj-dropdown">Projekty</button>
+                            <div id="publDrop" class="publ-dropdown-content">
+                            @foreach($publikacia as $publ)
+                            <ul class="publikacie-info">
+                                <li><strong>Názov: </strong>{{$publ['nazov']}}</li>
+                                @if($publ['isbn']!= null)
+                                    <li><strong>ISBN: </strong>{{$publ['isbn']}}</li>
+                                @endif
+                                <li><strong>Autori: </strong>{{$publ['autori']}}</li>
+                                @if($publ['podtitulok']!= null)
+                                    <li><strong>Podtitulok: </strong>{{$publ['podtitulok']}}</li>
+                                @endif
+                                @if($publ['vydavatel']!=null)
+                                    <li><strong>Vydavateľ: </strong>{{$publ['vydavatel']}}</li>
+                                @endif
+                            </ul>
+                            @endforeach
+                        </div>
+                            <div id="projDrop" class="proj-dropdown-content">
+                                @foreach($projekt as $proj)
+                                    <ul class="projekt-info">
+                                        <li>{{$proj['nazov']}}</li>
+                                        <li>Od: {{$proj['zaciatok']}} - do: {{$proj['koniec']}}</li>
+                                    </ul>
+                                @endforeach
+                            </div>
+
                     </li>
                 </ul>
+                @endforeach
             </div>
             <div class="komentare">
                 <h1>Komentáre</h1>
@@ -112,6 +99,6 @@
             </div>
         </div>
     </div>
-<script src="{{URL::to('/')}}/js/Image-modal.js"></script>
-
+    <script type="text/javascript" src="{{URL::to('/')}}/js/Image-modal.js"></script>
+    <script type="text/javascript" src="{{URL::to('/')}}/js/dropdownScript.js"></script>
 @endsection

@@ -9,6 +9,8 @@
 namespace App\Http\Controllers;
 use App\Model\Fakulta;
 use App\Model\Katedra;
+use App\Model\Projekt;
+use App\Model\Publikacia;
 use App\Model\Zamestnanec;
 use Illuminate\Http\Request;
 
@@ -21,9 +23,10 @@ class UKFController extends Controller
         return view('index', ['fakulta' =>$this->fakulty()]);
     }
 
-    public function profil()
+    public function profil($idprofil)
     {
-        return view('UKF.profil');
+        return view('UKF.Profil',['profils' =>$this->profily($idprofil)],['publikacia'=>$this->publikacie($idprofil),'projekt'=>$this->projekty($idprofil)]);
+
     }
 
     public function chart()
@@ -109,16 +112,49 @@ class UKFController extends Controller
         return $pom;
     }
 
-   /**public function profil($id)
+   public function profily($id)
     {
-        $zam = Zamestnanec::select('*')
-            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
-            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
-            ->orderBy('idzamestnanec', 'asc')
+        $pm=[];
+        $profl = Zamestnanec::select('*','katedra.nazov as nazov01')
+            /*->join('publikacia','publikacia.Zamestnanec_idzamestnanec','=','zamestnanec.idzamestnanec')*/
+            ->join('katedra','idKatedra','=','Katedra_idKatedra')
             ->get();
-    }*/
 
+        foreach ($profl as $prof):
+            if ($prof['idzamestnanec'] == $id) {
+                $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela];
+            }
+        endforeach;
+        return $pm;
+    }
+    public function publikacie($ids)
+    {
+        $pm=[];
+        $publ = Publikacia::select('*')
+            ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
+            ->get();
 
+        foreach ($publ as $pub):
+            if  ($pub['Zamestnanec_idzamestnanec'] == $ids) {
+                $pm[] = ['nazov' => $pub->nazov, 'isbn' => $pub->isbn, 'autori' => $pub->autori, 'vydavatel' => $pub->vydavatel, 'podtitulok' => $pub->podtitulok];
+            }
+            endforeach;
+        return $pm;
+    }
+    public function projekty($idss)
+    {
+        $pm=[];
+        $publ = Projekt::select('*')
+            ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
+            ->get();
+
+        foreach ($publ as $pub):
+            if  ($pub['Zamestnanec_idzamestnanec'] == $idss) {
+                $pm[] = ['nazov' => $pub->nazov, 'zaciatok' => $pub->zaciatok, 'koniec' => $pub->koniec,'reg'=>$pub->regCislo];
+            }
+        endforeach;
+        return $pm;
+    }
     public function formpasw()
     {
         return view('Layouts.forgotpassword');

@@ -21,9 +21,9 @@ Route::get('/', function () {
 Route::get('/Charts','UKFController@chart')->name('charts');
 Route::prefix('UKF')->group(function() {
     Route::get('/', 'UKFController@index')->name('ukf');
-    Route::get('/Profil', 'UKFController@profil')->name('profil');
+    Route::get('/Profil/{id}', 'UKFController@profil')->name('profil');
     Route::get('/ZProfil/{id}', 'UKFController@zprofil')->name('zprofil');
-    Route::get('/Zmenahesla','UKFController@formpasw')->name('formhesla');
+    Route::get('/Zmenahesla','UKFController@formpasw')->name('formhes1la');
     Route::post('/Zmenahesla','UKFController@changepasw')->name('zmenahesla');
 
     // View-y Fakúlt
