@@ -16,45 +16,45 @@
                     </button>
                 </form>
             </li>
-            <li class="nav-item dropdown dropdown-menu-left">
+            <li class="nav-item dropdown dropdown-menu-left" >
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Fakulty
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #2a2a2a; box-shadow: 0px 0px 5px #2a2a2a;">
                     <div class="row" style="padding: 0px 15px 0px 15px; min-width: 300px;">
                     <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
-                        <div class="row" >
+                        <div class="row"  >
                             <div class="col-md-10">
                                 <a href="{{URL::to('UKF/fpv')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Fakulta prírodných vied</h4>
+                                    <h4 style="color: white;">Fakulta prírodných vied</h4>
                                 </a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-10">
                                 <a href="{{URL::to('UKF/fsvz')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Fakulta sociálnych vied a zdravotníctva</h4>
+                                    <h4 style="color: white;">Fakulta sociálnych vied a zdravotníctva</h4>
                                 </a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-10">
                                 <a href="{{URL::to('UKF/fss')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Fakulta stredoeurópskych štúdií</h4>
+                                    <h4 style="color: white;">Fakulta stredoeurópskych štúdií</h4>
                                 </a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-10">
                                 <a href="{{URL::to('UKF/ff')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Filozofická fakulta</h4>
+                                    <h4 style="color: white;">Filozofická fakulta</h4>
                                 </a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-10">
                                 <a href="{{URL::to('UKF/pf')}}"> <div class="feature-icon"><i class="icon-foot-ball"></i></div>
-                                    <h4 >Pedagogická fakulta</h4>
+                                    <h4 style="color: white;">Pedagogická fakulta</h4>
                                 </a>
                             </div>
                         </div>
@@ -68,11 +68,10 @@
                 <a class="nav-link dropdown-toggle btn-outline-dark btn" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Prihlásenie
                 </a>
-                <ul class="dropdown-menu dropdown-menu-right" style="padding: 15px; min-width: 250px;">
+                    <ul class="dropdown-menu dropdown-menu-right" style="padding: 15px; min-width: 250px;box-shadow: 0px 0px 10px 2px #3a3a3a">
                     <li>
                         <div class="row">
                             <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12">
-
                                 <form class="form" role="form" method="POST" action="{{ route('zames.login') }}" accept-charset="UTF-8" id="login-nav">
                                     {{ csrf_field() }}
 
@@ -106,17 +105,13 @@
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success btn-block">Prihlásiť</button>
                                     </div>
-
                                     <a class="btn btn-link" href="{{ route('zame.password.request')}}">
                                         Zabudli ste heslo? (nefunguje ešte)
                                     </a>
-
                                 </form>
-
                             </div>
                         </div>
                     </li>
-
                 </ul>
             </li>
         </ul>
