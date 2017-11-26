@@ -33,7 +33,6 @@ class UKFController extends Controller
 
     public function zprofil($idkatedra)
     {
-
         switch ($idkatedra) {
             case "1":
                 return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1]);
@@ -75,16 +74,26 @@ class UKFController extends Controller
 
     public function katedry($id)
     {
-        $kat02 =Katedra::all();
+        $kat= Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
+            ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
+            ->orderBy('idKatedra', 'asc')
+            ->get();
         $kat01=[];
         $pom=[];
 
-        foreach ( $kat02 as $katedra):
+        foreach ( $kat as $katedra):
             if($katedra['Fakulta_idFakulta'] == $id)
             {
-                $kat01[$katedra->idKatedra] = $katedra->nazov;
+                $kat01[] = ['katedra'=>$katedra->nazov, 'fakulta'=>$katedra->nazov01];
             }
         endforeach;
+
+        foreach (Fakulta::all() as $fakulta):
+            if($fakulta['idFakulta'] == $id)
+            {
+                $fak01[$fakulta->idFakulta] = $fakulta->nazov;
+            }
+            endforeach;
 
         $zames = Zamestnanec::select('*')
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
@@ -94,9 +103,9 @@ class UKFController extends Controller
 
         foreach ($zames as $zam):
             foreach ($kat01 as $kats):
-                if($kats == $zam['nazov'])
+                if($kats['katedra'] == $zam['nazov'])
                 {
-                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil];
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil, 'fakulta'=> $kats['fakulta'] ];
                 }
             endforeach;
         endforeach;

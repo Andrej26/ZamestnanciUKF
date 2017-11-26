@@ -29,6 +29,123 @@
     <script src="{{URL::to('/')}}/js/ie-support/html5.js"></script>
     <script src="{{URL::to('/')}}/js/ie-support/respond.js"></script>
     <![endif]-->
+<style>
+    .paginate-box{
+                margin: auto;
+                width: 50%;
+            }
+
+            .zarovnanie{
+                 border: 1px solid #ccc;
+                 text-align: center;
+             }
+
+            .but01{
+                margin:3px;
+            }
+
+            .img-thumbnail_01{
+                display: inline-block;
+                width: 330px;
+                height: 310px;
+                margin: 1px;
+            }
+            .odh {
+                text-align: right;
+            }
+
+            .info
+            {
+                text-align: center;
+                margin:  5% 10%;
+            }
+
+            .logo
+            {
+                height: 30%;
+                width: 30%;
+                margin-bottom: -4%;
+            }
+
+            .vyhladanie
+            {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 135%;
+            }
+
+            .message
+            {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 135%;
+            }
+
+            .site-footer
+            {
+                text-align: center;
+                background-color: whitesmoke;
+                border-radius:  6px 6px 0px 0px
+            }
+
+            .fixed-bg {
+                background-image: url("{{URL::to('/')}}/images/Green.jpg");
+                min-height: 500px;
+                background-attachment: fixed;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+
+            .nadpis_fakult
+            {
+                font-family: Verdana, Geneva, sans-serif;
+                font-size: 300%;
+                color: #4a4a4a;
+                text-align: center;
+                text-shadow: 3px 2px #d0d0d0;
+            }
+
+            .nadpis_fakult01
+            {
+                font-family: Arial, Helvetica, sans-serif;
+                font-size: 300%;
+                color: black;
+                text-align: center;
+            }
+
+            .border_links01
+            {
+                background-image: url("{{URL::to('/')}}/images/bluebackground.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                border: 3px solid #59c1d1;
+                border-radius: 30px;
+                margin-left: 10%;
+                padding-left: 10%;
+                text-align: center;
+            }
+
+            .border_text01
+            {
+               background-image: url("{{URL::to('/')}}/images/textbackground.jpg");
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                text-align: center;
+                color: black;
+                padding-left: 2%;
+                padding-right: 2%;
+                padding-top: 2%;
+                margin-left: -2.5%;
+                margin-top: -3%;
+                font-size: 115%;
+            }
+
+            .oddelovacia_ciara
+            {
+                margin-top: 2%;
+                margin-bottom: -2%
+            }
+</style>
 </head>
 
 <body class="fixed-bg">

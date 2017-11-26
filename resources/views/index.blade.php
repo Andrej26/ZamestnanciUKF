@@ -108,15 +108,15 @@
                     <div class="form-content">
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong class="vyhladanie">Meno:</strong>
-                                {!! Form::text('meno', null, array('placeholder' => 'meno','class' => 'form-control')) !!}
+                                <strong class="vyhladanie">Meno,Priezvisko:</strong>
+                                {!! Form::text('meno', null, array('placeholder' => 'meno/priezvisko','class' => 'form-control')) !!}
                             </div>
                         </div>
 
                         <div class="col-xs-12 col-sm-12 col-md-12">
                             <div class="form-group">
-                                <strong class="vyhladanie">Priezvisko:</strong>
-                                {!! Form::text('priezvisko', null, array('placeholder' => 'priezvisko','class' => 'form-control')) !!}
+                                <strong class="vyhladanie">Katedra:</strong>
+                                {!! Form::text('katedra', null, array('placeholder' => 'katedra','class' => 'form-control')) !!}
                             </div>
                         </div>
 

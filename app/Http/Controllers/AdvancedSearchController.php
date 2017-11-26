@@ -13,28 +13,69 @@ class AdvancedSearchController extends Controller
     {
         $searchtable=$this->spojenie2tabuliek();
         $meno=$request->meno;
-        $priezvisko=$request->priezvisko;
         $katedra=$request->katedra;
         $fakulta=$request->fakulta;
         $finaltable=[];
-        $test=0;
 
-        if($meno !== null) {
-            $test=1;
             foreach ($searchtable as $stable):
-                $pomocna=stripos($stable['meno'],$meno);
-                if($pomocna == true) {
-                    $finaltable[] = ['id' => $stable->idzamestnanec, 'meno' => $stable->meno, 'email' => $stable->email, 'katedra' => $stable->nazov, 'rola' => $stable->rola, 'profil' => $stable->profil];
+                $pomocna01=stripos($stable['meno'],$meno);
+                $pomocna02=stripos($stable['katedra'],$katedra);
+
+                if(($meno !==null) && ($katedra !==null) && ($fakulta !== 0)) {
+                    if (($pomocna01 == true) && ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)) {
+                        $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                            'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                    }
+                }
+                elseif (($meno !==null) && ($katedra !==null)){
+                    if (($pomocna01 == true)  ($pomocna02 == true)) {
+                        $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                            'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                    }
+                }
+                elseif (($katedra !==null) && ($fakulta !== 0)){
+                    if (($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)) {
+                        $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                            'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                    }
+                }
+                elseif (($meno !==null) && ($fakulta !== 0)){
+                    if (($pomocna01 == true) && ($stable['idFakulta'] == $fakulta)) {
+                        $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                            'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                    }
+                }
+
+                elseif (($meno !==null)){
+                    if (($pomocna01 == true)) {
+                        $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                            'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                    }
+                }
+                elseif (($katedra !==null)){
+                    if (($pomocna02 == true)) {
+                        $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                            'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                    }
+                }
+                else {
+                    if (($stable['idFakulta'] == $fakulta)) {
+                        $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                            'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                    }
                 }
             endforeach;
 
-        }
-        else{
-            return $pom=1;
-           // return view('UKF.ZProfilov',['test' => $test, 'ifakulta'=>0]);
-        }
-        return view('UKF.ZProfilov',['zamestnanec' => $finaltable, 'test' => $test, 'ifakulta'=>0]);
-    }
+                if(($meno == null) && ($katedra == null) && ($fakulta == 0)){
+                    return view('UKF.ZProfilov',['zamestnanec' => $searchtable, 'test' => 1, 'ifakulta'=>0]);
+                }
+                elseif(count($finaltable) == 0){
+                    return view('UKF.ZProfilov',[ 'test' => 0, 'ifakulta'=>0]);
+                }
+                else{
+                    return view('UKF.ZProfilov',['zamestnanec' => $finaltable, 'test' => 1, 'ifakulta'=>0]);
+                }
+         }
 
 
     public function spojenie2tabuliek()
@@ -55,7 +96,8 @@ class AdvancedSearchController extends Controller
         foreach ($zames as $zam):
             foreach ($kat01 as $kat):
                 if($kat['nazov'] == $zam['nazov']) {
-                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil, 'fakulta'=>$kat->nazov01];
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov,
+                        'rola'=> $zam->rola, 'profil'=> $zam->profil,'idFakulta'=>$kat->Fakulta_idFakulta,'fakulta'=>$kat->nazov01];
                 }
             endforeach;
         endforeach;

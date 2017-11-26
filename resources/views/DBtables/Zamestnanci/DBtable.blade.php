@@ -19,10 +19,11 @@
 <!-- Toto vypisuje hlasku, ked sa vsetko podari -->
 
 @if ($message = Session::get('success'))
-    <div class="alert alert-success alert-block">
-        <button type="button" class="close" >x</button>
-        <span class="close">&times;</span>
-        <p class="message">{{ $message }}</p>
+    <div class="alert alert-success alert-dismissable"  role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="color: red">
+            <span aria-hidden="true" >&times;</span>
+        </button>
+        <div class="message">{{ $message }}</div>
     </div>
 @endif
 

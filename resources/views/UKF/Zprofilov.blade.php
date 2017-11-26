@@ -59,6 +59,7 @@
                                         <li>e-mail: <strong>{{ $zam['email']}}</strong></li>
                                         <li>Rola: <strong>{{ $zam['rola']}}</strong></li>
                                         <li>Katedra: <strong>{{ $zam['katedra']}}</strong></li>
+                                        <li>Fakulta: <strong>{{ $zam['fakulta']}}</strong></li>
                                     </ul>
                                     <p> {{ $zam['profil']}} </p>
                                 </div>
