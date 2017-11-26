@@ -52,6 +52,18 @@ class ZamestnanecController extends Controller
         return view('Zam.publikacie');
     }
 
+    public function pridaniekomentaru(Request $request)
+    {
+        $this->validate($request,[
+            'text' => required,
+        ]);
+
+        Komentare::create($request->all());
+        return redirect()->route('TabFakulta.index')
+            ->with('success','Nový komentár bol vytvorený.');
+
+    }
+
     public function fpv()
     {
         return view('Katedry.FPV');

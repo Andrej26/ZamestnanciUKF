@@ -23,10 +23,10 @@ class UKFController extends Controller
         return view('index', ['fakulta' =>$this->fakulty()]);
     }
 
-    public function profil()
-    {
-        return view('UKF.profil');
-    }
+     public function profil($idprofil)
+     {
+         return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil)]);
+     }
 
     public function chart()
     {
@@ -55,6 +55,18 @@ class UKFController extends Controller
             default:
               //  echo "Your favorite color is neither red, blue, nor green!";
         }
+    }
+
+    public function pridaniekomentaru(Request $request)
+    {
+        $this->validate($request,[
+            'text' => required,
+        ]);
+
+        Komentare::create($request->all());
+        return redirect()->route('profil')
+            ->with('success','Nový komentár bol vytvorený.');
+
     }
 
     public function fakulty()
@@ -124,17 +136,17 @@ class UKFController extends Controller
     {
         $pm=[];
         $profl = Zamestnanec::select('*','katedra.nazov as nazov01')
-            /*->join('publikacia','publikacia.Zamestnanec_idzamestnanec','=','zamestnanec.idzamestnanec')*/
             ->join('katedra','idKatedra','=','Katedra_idKatedra')
             ->get();
 
-        foreach ($profl as $prof):
-            if ($prof['idzamestnanec'] == $id) {
-                $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela];
-            }
-        endforeach;
-        return $pm;
+         foreach ($profl as $prof):
+                    if ($prof['idzamestnanec'] == $id) {
+                       $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela];
+                    }
+         endforeach;
+         return $pm;
     }
+
     public function publikacie($ids)
     {
         $pm=[];
@@ -149,6 +161,7 @@ class UKFController extends Controller
             endforeach;
         return $pm;
     }
+
     public function projekty($idss)
     {
         $pm=[];

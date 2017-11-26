@@ -93,11 +93,19 @@
                 </ul>
                 @endforeach
             </div>
+            <!-- pridavanie kOmentarov -->
             <div class="komentare">
                 <h1>Komentáre</h1>
-                <textarea class="koment"></textarea>
-                <p><input type="button" class="button_k" value="Pridaj Komentar"></p>
+
+                {!! Form::open(array('route' => 'komentar.store','method'=>'POST')) !!}
+                @include('DBtables.Komentare.createform')
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    {!! Form::submit('Odoslať komentár',['class' => 'btn btn-primary']) !!}
+                </div>
+                {!! Form::close() !!}
+
             </div>
+
         </div>
     </div>
     <script type="text/javascript" src="{{URL::to('/')}}/js/Image-modal.js"></script>

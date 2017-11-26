@@ -21,8 +21,10 @@ Route::get('/', function () {
 Route::get('/Charts','UKFController@chart')->name('charts');
 Route::prefix('UKF')->group(function() {
     Route::get('/', 'UKFController@index')->name('ukf');
-    Route::get('/Profil', 'UKFController@profil')->name('profil');
+    Route::get('/Profil/{id}', 'UKFController@profil')->name('profil');
     Route::get('/ZProfil/{id}', 'UKFController@zprofil')->name('zprofil');
+
+    Route::post('/PridanieKomentaru', 'UKFController@pridaniekomentaru')->name('komentar.store');
 
     Route::post('/search', 'AdvancedSearchController@advancesearch')->name('advanced_search');
 
