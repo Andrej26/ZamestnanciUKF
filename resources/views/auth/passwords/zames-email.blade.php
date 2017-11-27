@@ -5,7 +5,12 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
+                <div class="float-right">
+                    <a class="btn btn-primary" href="{{ route('ukf') }}"> Späť</a>
+                </div>
                 <div class="panel-heading"><h2>Zamestnanec Reset Password</h2></div>
+
+
 
                 <div class="panel-body">
                     @if (session('status'))

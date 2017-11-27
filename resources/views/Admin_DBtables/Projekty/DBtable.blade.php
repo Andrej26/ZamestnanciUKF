@@ -18,6 +18,9 @@
 <!-- Toto vypisuje hlasku, ked sa vsetko podari -->
 @if ($message = Session::get('success'))
     <div class="alert alert-success" style="text-align: center">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="color: red">
+            <span aria-hidden="true" >&times;</span>
+        </button>
         <p class="message">{{ $message }}</p>
     </div>
 @endif
