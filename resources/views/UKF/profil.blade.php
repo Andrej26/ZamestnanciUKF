@@ -37,7 +37,7 @@
                             <div class="student-details">
                                 <h2 class="student-name">{{$prof['mena']}}</h2>
                                 <ul class="student-info">
-                                    <li>e-mail: <strong><a href="mailto:m.priezvisko@ukf.sk" style="color: inherit;">m.priezvisko@ukf.sk</a></strong></li>
+                                    <li>e-mail: <strong><a href="mailto:{{$prof['mail']}}" style="color: inherit;">{{$prof['mail']}}</a></strong></li>
                                     <li>katedra: <strong>{{$prof['katedra1']}}</strong></li>
                                     <li>Rola:
                                         <strong>
@@ -52,12 +52,13 @@
                                              @endif
                                         </strong>
                                     </li>
+                                    <li><h2>Popis:</h2>
+                                        <p>{{$prof['rola1']}}</p></li>
                                 </ul>
                             </div>
                         </div>
                         <div class ="popis">
-                            <h2>Popis:</h2>
-                            <p>{{$prof['rola1']}}</p>
+
                         </div>
                         <div class ="popis">
                             <button onclick="publikacieFunc()" class="publ-dropdown">Publikacie</button>
@@ -69,7 +70,7 @@
                                 @if($publ['isbn']!= null)
                                     <li><strong>ISBN: </strong>{{$publ['isbn']}}</li>
                                 @endif
-                                <li><strong>Autori: </strong>{{$publ['autori']}}</li>
+                                    <li><strong>Autori: </strong>{{$publ['autori']}}</li>
                                 @if($publ['podtitulok']!= null)
                                     <li><strong>Podtitulok: </strong>{{$publ['podtitulok']}}</li>
                                 @endif

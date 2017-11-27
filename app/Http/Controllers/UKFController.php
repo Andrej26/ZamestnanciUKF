@@ -124,15 +124,16 @@ class UKFController extends Controller
     {
         $pm=[];
         $profl = Zamestnanec::select('*','katedra.nazov as nazov01')
+            /*->join('publikacia','publikacia.Zamestnanec_idzamestnanec','=','zamestnanec.idzamestnanec')*/
             ->join('katedra','idKatedra','=','Katedra_idKatedra')
             ->get();
 
-         foreach ($profl as $prof):
-                    if ($prof['idzamestnanec'] == $id) {
-                       $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela];
-                    }
-         endforeach;
-         return $pm;
+        foreach ($profl as $prof):
+            if ($prof['idzamestnanec'] == $id) {
+                $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela, 'mail'=>$prof->email];
+            }
+        endforeach;
+        return $pm;
     }
 
     public function publikacie($ids)
