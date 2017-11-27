@@ -87,8 +87,7 @@
             }
 
             .fixed-bg {
-                background-image: url("{{URL::to('/')}}/images/Green.jpg");
-                min-height: 500px;
+                height: 100%;
                 background-attachment: fixed;
                 background-position: center;
                 background-repeat: no-repeat;
@@ -148,7 +147,7 @@
 </style>
 </head>
 
-<body class="fixed-bg">
+<body class="fixed-bg" style="height: 100%">
 <div class="container" style="background-color: white; border-radius: 0px 0px 6px 6px; box-shadow: 0px 0px 20px 10px #2F3133">
     <div class="page-header">
         @yield('header')

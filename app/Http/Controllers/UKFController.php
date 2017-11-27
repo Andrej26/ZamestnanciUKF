@@ -23,9 +23,9 @@ class UKFController extends Controller
         return view('index', ['fakulta' =>$this->fakulty()]);
     }
 
-    public function profil()
+    public function profil($idprofil)
     {
-        return view('UKF.profil');
+        return view('UKF.Profil',['profils' =>$this->profily($idprofil)],['publikacia'=>$this->publikacie($idprofil),'projekt'=>$this->projekty($idprofil)]);
     }
 
     public function chart()
@@ -130,7 +130,7 @@ class UKFController extends Controller
 
         foreach ($profl as $prof):
             if ($prof['idzamestnanec'] == $id) {
-                $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela];
+                $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela, 'mail'=>$prof->email];
             }
         endforeach;
         return $pm;
