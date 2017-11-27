@@ -19,9 +19,7 @@
                     </div>
                 </div>
 
-
-
-
+                @include('Layouts.search')
 
             </main>
 

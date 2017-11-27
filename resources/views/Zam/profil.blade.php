@@ -5,83 +5,109 @@
 @endsection
 
 @section('content')
-
-
     <div class="site-content">
         <div class="container">
             <main class="main-content">
                 <div class="content">
                     <header class="site-header">
-                        <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_UKF5.png" alt=""></a>
-                        <div class="header-type">
-                            <h1><strong>Univerzita Konštantína Filozofa v Nitre</strong></h1>
-                        </div>
+                        <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
+
                     </header> <!-- .site-header -->
 
                     <div class="banner">
-                        <img src="{{URL::to('/')}}/images/UKF_mesto.jpg" alt="">
+                        <img src="{{URL::to('/')}}/dummy/banner.jpg" alt="Banner">
                     </div>
-                    <p> </p>
-
-
-
                 </div>
-                <!-- Vyhladavanie -->
-                <div class="aside">
-                    <form action="#" class="signup-form">
-                        <div class="form-header">
-                            <h3>Vyhľadávanie zamestnancov UKF</h3>
-                        </div>
-                        <div class="form-content">
-                            <p><input type="text" placeholder="Meno..."></p>
-                            <p><input type="text" placeholder="Priezvisko..."></p>
-                            <p></p>
-                            <p><span class="Fakulta">
-										<select name="" id="">
-                                            <option value="#">Fakulta...</option>
-											<option value="#">Fakulta Prírodných Vied</option>
-											<option value="#">Fakulta Sociálnych Vied a Zdravotníctva</option>
-                                            <option value="#">Fakulta Stredoeurópskych Štúdií</option>
-                                            <option value="#">Filozofická Fakulta</option>
-                                            <option value="#">Pedagogická Fakulta</option>
-										</select>
-									</span></p>
-                            <p>
-                                <input type="submit" value="Hľadať">
-                            </p>
-                        </div>
-                    </form>
-                </div>
-
             </main>
 
-            <div class="profil">
-                <div class="slides">
+            <h1>Profil</h1>
+            <div class="profil" style="overflow: hidden; height: auto;">
+                @foreach($profils as $prof)
+                <ul class="slides02">
+                    <li>
+                        <div class="student-data">
                             <div class="student-image">
-                                <img src="{{URL::to('/')}}/dummy/person-1.jpg" alt="">
+                                <img id="zam-img" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="auto" width="100%">
+                                <div id="zamModal" class="modal">
+                                    <span class="close">&times;</span>
+                                    <img class="modal-content" id="img01">
+                                    <div id="caption"></div>
+                                </div>
                             </div>
                             <div class="student-details">
-                                <button type="submit" class="button_k" >Upravit osobne informacie</button>
-                                <button type="submit" class="button_k"><a href="{{URL::to('/')}}/Zamestnanec/publikacie">Moje publikacie</a></button>
-                                <h2 class="student-name">Meno Priezvisko</h2>
+                                <h2 class="student-name">{{$prof['mena']}}</h2>
                                 <ul class="student-info">
-                                    <li>Fakulta: <strong>FPV</strong></li>
-                                    <li>Katedra: <strong>Informatiky</strong></li>
-                                    <li>Publikácie: <strong>X Y</strong></li>
-
+                                    <li>e-mail: <strong><a href="mailto:m.priezvisko@ukf.sk" style="color: inherit;">m.priezvisko@ukf.sk</a></strong></li>
+                                    <li>katedra: <strong>{{$prof['katedra1']}}</strong></li>
+                                    <li>Rola:
+                                        <strong>
+                                            @if($prof['rol']==1)
+                                                Zamestnanec
+                                            @endif
+                                            @if($prof['rol']==2)
+                                                Navstevnik
+                                            @endif
+                                            @if($prof['rol']==3)
+                                                Administrator
+                                             @endif
+                                        </strong>
+                                    </li>
                                 </ul>
-
-                                <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum.</p>
+                            </div>
+                        </div>
+                        <div class ="popis">
+                            <h2>Popis:</h2>
+                            <p>{{$prof['rola1']}}</p>
+                        </div>
+                        <div class ="popis">
+                            <button onclick="publikacieFunc()" class="publ-dropdown">Publikacie</button>
+                            <button onclick="projektyFunc()" class="proj-dropdown">Projekty</button>
+                            <div id="publDrop" class="publ-dropdown-content">
+                            @foreach($publikacia as $publ)
+                            <ul class="publikacie-info">
+                                <li><strong>Názov: </strong>{{$publ['nazov']}}</li>
+                                @if($publ['isbn']!= null)
+                                    <li><strong>ISBN: </strong>{{$publ['isbn']}}</li>
+                                @endif
+                                <li><strong>Autori: </strong>{{$publ['autori']}}</li>
+                                @if($publ['podtitulok']!= null)
+                                    <li><strong>Podtitulok: </strong>{{$publ['podtitulok']}}</li>
+                                @endif
+                                @if($publ['vydavatel']!=null)
+                                    <li><strong>Vydavateľ: </strong>{{$publ['vydavatel']}}</li>
+                                @endif
+                            </ul>
+                            @endforeach
+                        </div>
+                            <div id="projDrop" class="proj-dropdown-content">
+                                @foreach($projekt as $proj)
+                                    <ul class="projekt-info">
+                                        <li><strong>Názov projektu: </strong>{{$proj['nazov']}}</li>
+                                        <li><strong>Od: </strong>{{$proj['zaciatok']}} - <strong>do: </strong>{{$proj['koniec']}}</li>
+                                        <li><strong>Registračné číslo: </strong> {{$proj['reg']}}</li>
+                                    </ul>
+                                @endforeach
                             </div>
 
-                        </div>
+                    </li>
+                </ul>
 
             </div>
+            <!-- pridavanie kOmentarov -->
+            <div class="komentare">
+                <h1>Komentáre</h1>
+
+                {!! Form::model($profils, ['method' => 'POST','route' => ['komentar.store', $pro['id']]]) !!}
+                @include('DBtables.Komentare.createform')
+                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                    {!! Form::submit('Odoslať komentár',['class' => 'btn btn-primary']) !!}
+                </div>
+                {!! Form::close() !!}
+
+            </div>
+            @endforeach
         </div>
-
     </div>
-
-    <script src="{{URL::to('/')}}/js/jquery-1.11.1.min.js"></script>
-    <script src="{{URL::to('/')}}/js/plugins.js"></script>
-    <script src="{{URL::to('/')}}/js/app.js"></script>
+    <script type="text/javascript" src="{{URL::to('/')}}/js/Image-modal.js"></script>
+    <script type="text/javascript" src="{{URL::to('/')}}/js/dropdownScript.js"></script>
 @endsection

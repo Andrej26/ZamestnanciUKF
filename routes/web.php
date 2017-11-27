@@ -24,7 +24,6 @@ Route::prefix('UKF')->group(function() {
     Route::get('/Profil/{id}', 'UKFController@profil')->name('profil');
     Route::get('/ZProfil/{id}', 'UKFController@zprofil')->name('zprofil');
 
-    Route::post('/PridanieKomentaru', 'UKFController@pridaniekomentaru')->name('komentar.store');
 
     Route::post('/search', 'AdvancedSearchController@advancesearch')->name('advanced_search');
 
@@ -83,8 +82,11 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/', 'ZamestnanecController@index')->name('zames.dashboard');
 
     //Ostatné možnosti
-    Route::get('/profil', 'ZamestnanecController@profil')->name('zames.profil');
+    Route::get('/profil', 'ZamestnanecController@mojprofil')->name('zames.profil');
     Route::get('/publikacie', 'ZamestnanecController@publikacie')->name('zames.publikacie');
+
+    Route::get('/Profil/{id}', 'ZamestnanecController@profil')->name('iny.profil');
+    Route::post('/PridanieKomentaru', 'ZamestnanecController@pridaniekomentaru')->name('komentar.store');
 
     //Zobrazenie Katedier
     Route::get('/FPV', 'ZamestnanecController@fpv')->name('Katedry.FPV');
