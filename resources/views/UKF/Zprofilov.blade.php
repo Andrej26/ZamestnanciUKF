@@ -59,7 +59,7 @@
                                         <li>Katedra: <strong>{{ $zam['katedra']}}</strong></li>
                                         <li>Fakulta: <strong>{{ $zam['fakulta']}}</strong></li>
                                     </ul>
-                                    br>
+                                    <br>
                                     <p>Profil: <strong>{{ $zam['profil']}} </strong></p>
                                 </div>
                             </div>

@@ -79,7 +79,7 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/publikacie', 'ZamestnanecController@publikacie')->name('zames.publikacie');
 
     Route::get('/Profil/{id}', 'ZamestnanecController@profil')->name('iny.profil');
-    Route::get('/ZoznamProfilov/{id}', 'ZamestnanecController@zprofil')->name('zprofil');
+    Route::get('/ZoznamProfilov/{id}', 'ZamestnanecController@zprofil')->name('zozprofil');
     Route::post('/PridanieKomentaru', 'ZamestnanecController@pridaniekomentaru')->name('komentar.store');
 
     //Zobrazenie Katedier
