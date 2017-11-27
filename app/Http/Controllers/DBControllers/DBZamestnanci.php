@@ -27,13 +27,13 @@ class DBZamestnanci extends Controller
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
                 ->orderBy('idzamestnanec', 'asc')
                     ->paginate(15);
-        return view('DBtables.Zamestnanci.DBtable',['zamestnanciss' =>$table]);
+        return view('Admin_DBtables.Zamestnanci.DBtable',['zamestnanciss' =>$table]);
     }
 
 
     public function create()
     {
-        return view('DBtables.Zamestnanci.create',['katedra' =>$this->katedry(), 'rola' => $this->roly()]);
+        return view('Admin_DBtables.Zamestnanci.create',['katedra' =>$this->katedry(), 'rola' => $this->roly()]);
     }
 
     public function store(Request $request)
@@ -70,7 +70,7 @@ class DBZamestnanci extends Controller
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->where('idzamestnanec', $id)
             ->first();
-        return view('DBtables.Zamestnanci.show',compact('zam'));
+        return view('Admin_DBtables.Zamestnanci.show',compact('zam'));
     }
 
 
@@ -78,7 +78,7 @@ class DBZamestnanci extends Controller
     {
         $zam01 = Zamestnanec::find($id);
 
-        return view('DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly()]);
+        return view('Admin_DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly()]);
     }
 
     public function update(Request $request, $id)

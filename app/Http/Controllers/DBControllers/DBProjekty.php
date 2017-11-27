@@ -25,13 +25,13 @@ class DBProjekty extends Controller
         ->join('zamestnanec', 'idzamestnanec', '=', 'Zamestnanec_idzamestnanec')
                 ->orderBy('idProjekt', 'asc')
                     ->paginate(15);
-        return view('DBtables.Projekty.DBtable',['projektis' =>$table]);
+        return view('Admin_DBtables.Projekty.DBtable',['projektis' =>$table]);
     }
 
 
     public function create()
     {
-        return view('DBtables.Projekty.create',['pro02' =>$this->zamestnanci()]);
+        return view('Admin_DBtables.Projekty.create',['pro02' =>$this->zamestnanci()]);
     }
 
     public function store(Request $request)
@@ -62,7 +62,7 @@ class DBProjekty extends Controller
             ->join('zamestnanec', 'idzamestnanec', '=', 'Zamestnanec_idzamestnanec')
             ->where('idProjekt', $id)
             ->first();
-        return view('DBtables.Projekty.show',compact('pro'));
+        return view('Admin_DBtables.Projekty.show',compact('pro'));
     }
 
 
@@ -70,7 +70,7 @@ class DBProjekty extends Controller
     {
         $pro01 = Projekt::find($id);
 
-        return view('DBtables.Projekty.edit',['pro01' =>$pro01, 'pro02' => $this->zamestnanci()]);
+        return view('Admin_DBtables.Projekty.edit',['pro01' =>$pro01, 'pro02' => $this->zamestnanci()]);
     }
 
     public function update(Request $request, $id)

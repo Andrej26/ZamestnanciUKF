@@ -78,6 +78,7 @@
                                 @endif
                             </ul>
                             @endforeach
+                            </div>
                         </div>
                             <div id="projDrop" class="proj-dropdown-content">
                                 @foreach($projekt as $proj)
@@ -88,7 +89,6 @@
                                     </ul>
                                 @endforeach
                             </div>
-
                     </li>
                 </ul>
                 @endforeach
@@ -98,7 +98,7 @@
                 <h1>Komentáre</h1>
 
                 {!! Form::open(array('route' => 'komentar.store','method'=>'POST')) !!}
-                @include('DBtables.Komentare.createform')
+                @include('Admin_DBtables.Komentare.createform')
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     {!! Form::submit('Odoslať komentár',['class' => 'btn btn-primary']) !!}
                 </div>

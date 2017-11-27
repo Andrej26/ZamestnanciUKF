@@ -6,115 +6,101 @@
 
 @section('content')
 
+    <!-- Toto vypisuje hlasku, ked je zablokovaný prístup k zamestancovmu kontu -->
+    @if ($message = Session::get('danger'))
+        <div class="alert alert-danger" style="text-align: center">
+            <p class="message">{{ $message }}</p>
+        </div>
+    @endif
+
+    <!-- Toto vypisuje hlasku, ked je niečo dobre alebo sa zamestnanec odhlási. -->
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success" style="text-align: center">
+            <p class="message">{{ $message }}</p>
+        </div>
+    @endif
 
     <div class="site-content">
         <div class="container">
             <main class="main-content">
                 <div class="content">
                     <header class="site-header">
-                        <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_UKF.png" alt=""></a>
+                        <a class="logo" href="{{route('ukf')}}" ><img  src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
                     </header> <!-- .site-header -->
 
                     <div class="banner">
-                        <img src="{{URL::to('/')}}/images/UKF_mesto.jpg" alt="">
+                        <img src="{{URL::to('/')}}/dummy/banner.jpg" alt="Banner">
                     </div>
 
                     <h2>Fakulty Univerzity</h2>
                     <div class="row">
 
+
                         <div class="col-md-7">
                             <div class="feature rounded-icon">
-                                <a href="{{ route('Katedry.FPV') }}">
+                                <a href="{{url::to('Zamestnanec/fpv')}}">
                                     <div class="feature-icon"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Fakulta Prírodných Vied </h3>
                                 </a>
                                 <p>FPV</p>
+
                             </div>
 
                             <div class="feature rounded-icon">
-                                <a href="{{ route('Katedry.FSVaZ') }}">
+                                <a href="{{URL::to('Zamestnanec/fsvz')}}">
                                     <div class="feature-icon"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Fakulta Sociálnych Vied a Zdravotníctva </h3>
                                 </a>
                                 <p>FSVaZ</p>
+
                             </div>
 
                             <div class="feature rounded-icon">
-                                <a href="{{ route('Katedry.FSŠ') }}">
+                                <a href="{{URL::to('Zamestnanec/fss')}}">
                                     <div class="feature-icon"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Fakulta Stredoeurópskych Štúdií </h3>
                                 </a>
                                 <p>FSŠ</p>
+
                             </div>
                         </div>
 
+
                         <div class="col-md-5">
                             <div class="feature rounded-icon">
-                                <a href="{{ route('Katedry.FF') }}">
+                                <a href="{{URL::to('Zamestnanec/ff')}}">
                                     <div class="feature-icon"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Filozofická Fakulta </h3>
                                 </a>
                                 <p>FF</p>
+
                             </div>
 
                             <div class="feature rounded-icon">
-                                <a href="{{ route('Katedry.PF') }}">
+                                <a href="{{URL::to('Zamestnanec/pf')}}">
                                     <div class="feature-icon"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Pedagogická Fakulta </h3>
                                 </a>
                                 <p>PF</p>
+
                             </div>
 
                             <div class="feature rounded-icon">
-                                <a href="{{ route('Katedry.Ostatne') }}">
+                                <a href="#">
                                     <div class="feature-icon" ><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Ostatné časti </h3>
                                 </a>
                                 <p>Univerzity</p>
+
                             </div>
                         </div>
 
                     </div>
+
                 </div>
 
                 <!-- Vyhladavaci formular -->
-                <div class="signup-form">
-                    <div class="form-header">
-                        <h2>Vyhľadávanie zamestnancov univerzity</h2>
-                    </div>
-
-                    {!! Form::open(array('route' => 'TabKatedra.store','method'=>'POST')) !!}
-                    <div class="form-content">
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong class="vyhladanie">Meno:</strong>
-                                {!! Form::text('meno', null, array('placeholder' => 'meno','class' => 'form-control')) !!}
-                            </div>
-                        </div>
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong class="vyhladanie">Priezvisko:</strong>
-                                {!! Form::text('priezvisko', null, array('placeholder' => 'priezvisko','class' => 'form-control')) !!}
-                            </div>
-                        </div>
-
-
-                        <div class="col-xs-12 col-sm-12 col-md-12">
-                            <div class="form-group">
-                                <strong class="vyhladanie">Fakulta:</strong>
-                                {!! Form::select('fakulta',$fakulta,null, ['class' => 'form-control']) !!}
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="padding: 0% 30% 0% 30%; margin-bottom: 5% ">
-                        {!! Form::submit('Hľadať',['class' => 'btn btn-info']) !!}
-                    </div>
-                    {!! Form::close() !!}
-
-                    <p class="info">Vyhľadanie zamestnanca na základe vyplnených políčok</p>
-                </div>
+                @include('Layouts.search')
             </main>
 
             <div class="graduates">
@@ -122,14 +108,14 @@
                     <li>
                         <div class="student-data">
                             <div class="student-image">
-                                <img src="{{URL::to('/')}}/dummy/person-1.jpg" alt="">
+                                <img src="{{URL::to('/')}}/public/dummy/person-1.jpg" alt="">
                             </div>
                             <div class="student-details">
-                                <h2 class="student-name">Meno Priezvisko</h2>
+                                <h2 class="student-name">Howard Brown</h2>
                                 <ul class="student-info">
-                                    <li>Fakulta: <strong>FPV</strong></li>
-                                    <li>Katedra: <strong>Informatiky</strong></li>
-                                    <li>Publikácie: <strong>X Y</strong></li>
+                                    <li>Graduation: <strong>2011</strong></li>
+                                    <li>Course: <strong>Management</strong></li>
+                                    <li>Current job: <strong>Micro System INC.</strong></li>
                                 </ul>
 
                                 <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum.</p>
@@ -143,11 +129,11 @@
                                 <img src="{{URL::to('/')}}/dummy/person-1.jpg" alt="">
                             </div>
                             <div class="student-details">
-                                <h2 class="student-name">Meno Priezvisko</h2>
+                                <h2 class="student-name">Howard Brown</h2>
                                 <ul class="student-info">
-                                    <li>Fakulta: <strong>FPV</strong></li>
-                                    <li>Katedra: <strong>Informatiky</strong></li>
-                                    <li>Publikácie: <strong>X Y</strong></li>
+                                    <li>Graduation: <strong>2011</strong></li>
+                                    <li>Course: <strong>Management</strong></li>
+                                    <li>Current job: <strong>Micro System INC.</strong></li>
                                 </ul>
 
                                 <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum.</p>
@@ -157,6 +143,7 @@
                     </li>
                 </ul>
             </div>
+
         </div>
 
     </div>

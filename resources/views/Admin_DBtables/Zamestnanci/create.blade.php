@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 margin-tb">
             <div class="float-left">
-                <h2>Pridanie novej katedry</h2>
+                <h2>Pridanie nového Zamestnanca</h2>
             </div>
 
             <div class="float-right">
-                <a class="btn btn-primary" href="{{ route('TabKatedra.index') }}"> Späť</a>
+                <a class="btn btn-primary" href="{{ route('TabZamestnanci.index') }}"> Späť</a>
             </div>
         </div>
     </div>
@@ -25,10 +25,10 @@
         </div>
     @endif
 
-    {!! Form::open(array('route' => 'TabKatedra.store','method'=>'POST')) !!}
-    @include('DBtables.Katedry.createform')
+    {!! Form::open(array('route' => 'TabZamestnanci.store','method'=>'POST')) !!}
+    @include('Admin_DBtables.Zamestnanci.createform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        {!! Form::submit('Pridať novú katedru',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Pridať nového Zamestnanca',['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
 

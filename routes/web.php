@@ -19,31 +19,25 @@ Route::get('/', function () {
 });
 
 Route::get('/Charts','UKFController@chart')->name('charts');
+
 Route::prefix('UKF')->group(function() {
     Route::get('/', 'UKFController@index')->name('ukf');
     Route::get('/Profil/{id}', 'UKFController@profil')->name('profil');
-    Route::get('/ZProfil/{id}', 'UKFController@zprofil')->name('zprofil');
-
+    Route::get('/ZoznamProfilov/{id}', 'UKFController@zprofil')->name('zprofil');
 
     Route::post('/search', 'AdvancedSearchController@advancesearch')->name('advanced_search');
 
     // View-y Fakúlt
     Route::get('/fpv', function(){
-        return view('UKF/Fakulty/fakulta_fpv'); // Your Blade template name
-    });
+        return view('UKF/Fakulty/fakulta_fpv');});
     Route::get('/ff', function(){
-        return view('UKF/Fakulty/fakulta_ff'); // Your Blade template name
-    });
+        return view('UKF/Fakulty/fakulta_ff');});
     Route::get('/fss', function(){
-        return View('UKF/Fakulty/fakulta_fss'); // Your Blade template name
-    });
+        return View('UKF/Fakulty/fakulta_fss');});
     Route::get('/fsvz', function(){
-        return View('UKF/Fakulty/fakulta_fsvz'); // Your Blade template name
-    });
+        return View('UKF/Fakulty/fakulta_fsvz');});
     Route::get('/pf', function(){
-        return View('UKF/Fakulty/fakulta_pf'); // Your Blade template name
-    });
-
+        return View('UKF/Fakulty/fakulta_pf');});
 });
 
 // Admin tables!!!!!
@@ -73,7 +67,6 @@ Route::get('/picture/{filename}', function ($filename)
 Auth::routes();
 
 
-
 Route::prefix('Zamestnanec')->group(function(){
 
     //Prihlasenie zamestnanec
@@ -82,19 +75,32 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/', 'ZamestnanecController@index')->name('zames.dashboard');
 
     //Ostatné možnosti
-    Route::get('/profil', 'ZamestnanecController@mojprofil')->name('zames.profil');
+    Route::get('/moj_profil', 'ZamestnanecController@mojprofil')->name('zames.profil');
     Route::get('/publikacie', 'ZamestnanecController@publikacie')->name('zames.publikacie');
 
     Route::get('/Profil/{id}', 'ZamestnanecController@profil')->name('iny.profil');
+    Route::get('/ZoznamProfilov/{id}', 'ZamestnanecController@zprofil')->name('zprofil');
     Route::post('/PridanieKomentaru', 'ZamestnanecController@pridaniekomentaru')->name('komentar.store');
 
     //Zobrazenie Katedier
-    Route::get('/FPV', 'ZamestnanecController@fpv')->name('Katedry.FPV');
-    Route::get('/FF', 'ZamestnanecController@ff')->name('Katedry.FF');
-    Route::get('/FSVaZ', 'ZamestnanecController@fsvaz')->name('Katedry.FSVaZ');
-    Route::get('/FSŠ', 'ZamestnanecController@fsš')->name('Katedry.FSŠ');
-    Route::get('/PF', 'ZamestnanecController@pf')->name('Katedry.PF');
-    Route::get('/Ostatne', 'ZamestnanecController@ostatne')->name('Katedry.Ostatne');
+    // View-y Fakúlt
+    Route::get('/fpv', function(){
+        return view('Zam/Fakulty/fakulta_fpv');});
+    Route::get('/ff', function(){
+        return view('Zam/Fakulty/fakulta_ff');});
+    Route::get('/fss', function(){
+        return View('Zam/Fakulty/fakulta_fss');});
+    Route::get('/fsvz', function(){
+        return View('Zam/Fakulty/fakulta_fsvz');});
+    Route::get('/pf', function(){
+        return View('Zam/Fakulty/fakulta_pf');});
+
+   // Route::get('/FPV', 'ZamestnanecController@fpv')->name('Katedry.FPV');
+   // Route::get('/FF', 'ZamestnanecController@ff')->name('Katedry.FF');
+   // Route::get('/FSVaZ', 'ZamestnanecController@fsvaz')->name('Katedry.FSVaZ');
+   // Route::get('/FSŠ', 'ZamestnanecController@fsš')->name('Katedry.FSŠ');
+   // Route::get('/PF', 'ZamestnanecController@pf')->name('Katedry.PF');
+   // Route::get('/Ostatne', 'ZamestnanecController@ostatne')->name('Katedry.Ostatne');
 
     //Zmena hesla
     Route::post('/heslo/email', 'Auth\ZamestnanecForgotPasswordController@sendResetLinkEmail')->name('zame.password.email');
@@ -102,7 +108,6 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::post('/heslo/reset', 'Auth\ZamestnanecResetPasswordController@reset');
     Route::get('/heslo/reset/{token}', 'Auth\ZamestnanecResetPasswordController@showResetForm')->name('zame.password.reset');
 });
-
 
 
 Route::prefix('Admin')->group(function() {
@@ -116,12 +121,9 @@ Route::prefix('Admin')->group(function() {
     Route::get('/TabZamestnanci/{id}/Úprava_zamestnanca', 'DBControllers\DBZamestnanci@edit')->name('TabZamestnanci.edit');
 
     Route::get('Zmena_stavu0/{id}',[
-        'as'=>'zmena_stavu0', 'uses'=>'DBControllers\DBZamestnanci@hide'
-    ]);
-
+        'as'=>'zmena_stavu0', 'uses'=>'DBControllers\DBZamestnanci@hide']);
     Route::get('Zmena_stavu1/{id}',[
-        'as'=>'zmena_stavu1', 'uses'=>'DBControllers\DBZamestnanci@unhide'
-    ]);
+        'as'=>'zmena_stavu1', 'uses'=>'DBControllers\DBZamestnanci@unhide']);
 
 
     //Tablulka rolý

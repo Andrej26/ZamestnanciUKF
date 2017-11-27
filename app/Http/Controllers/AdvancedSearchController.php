@@ -19,7 +19,6 @@ class AdvancedSearchController extends Controller
         $finaltable=[];
 
 
-
             foreach ($searchtable as $stable):
                 $pomocna01=stripos($stable['meno'],$meno);
                 $pomocna02=stripos($stable['katedra'],$katedra);
@@ -28,12 +27,9 @@ class AdvancedSearchController extends Controller
                 $cis02=0;
                 $cis03=0;
 
-
-
                 if ($meno != null ){ $cis01=1; }
                 if ($katedra != null ){ $cis02=1; }
                 if ($fakulta != 0 ){ $cis03=1; }
-
 
 
                 if(($cis01==1)&&($cis02==1)&&($cis03==1)) {
@@ -73,7 +69,6 @@ class AdvancedSearchController extends Controller
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
                 }
-
             endforeach;
 
                 if(($meno == null) && ($katedra == null) && ($fakulta == 0)){
@@ -86,7 +81,6 @@ class AdvancedSearchController extends Controller
                     return view('UKF.ZProfilov',['zamestnanec' => $finaltable, 'test' => 1, 'ifakulta'=>0, 'fakulta' =>$this->fakulty()]);
                }
          }
-
 
     public function spojenie2tabuliek()
     {

@@ -1,7 +1,7 @@
 @extends('Layouts.master')
 
 @section('header')
-    @include('Layouts.Navigacia.navbar')
+    @include('Layouts.Navigacia.zamestnanec_navbar')
 @endsection
 
 @section('content')
@@ -49,17 +49,17 @@
                         <ul class="slides">
                             <div class="student-data">
                                 <div class="student-image">
-                                    <a href="{{route('profil', $zam['id'])}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="25%" width="auto"></a>
+                                    <a href="{{route('iny.profil', $zam['id'])}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="25%" width="auto"></a>
                                 </div>
                                 <div class="student-details">
-                                    <a href="{{route('profil', $zam['id'])}}" style="color: inherit;"><h2 class="student-name" >{{ $zam['meno']}}</h2></a>
+                                    <a href="{{route('iny.profil', $zam['id'])}}" style="color: inherit;"><h2 class="student-name" >{{ $zam['meno']}}</h2></a>
                                     <ul class="student-info">
                                         <li style="color: inherit;">e-mail: <strong>{{ $zam['email']}}</strong></li>
                                         <li>Rola: <strong>{{ $zam['rola']}}</strong></li>
                                         <li>Katedra: <strong>{{ $zam['katedra']}}</strong></li>
                                         <li>Fakulta: <strong>{{ $zam['fakulta']}}</strong></li>
                                     </ul>
-                                    br>
+                                    <br>
                                     <p>Profil: <strong>{{ $zam['profil']}} </strong></p>
                                 </div>
                             </div>

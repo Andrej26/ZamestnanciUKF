@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 margin-tb">
             <div class="float-left">
-                <h2>Uprav zamestnanca</h2>
+                <h2>Upravenie publikácie</h2>
             </div>
 
             <div class="float-right">
-                <a class="btn btn-primary" href="{{ route('TabZamestnanci.index') }}"> Späť</a>
+                <a class="btn btn-primary" href="{{ route('TabPublikacia.index') }}"> Späť</a>
             </div>
         </div>
     </div>
@@ -25,10 +25,10 @@
         </div>
     @endif
 
-    {!! Form::model($zam01, ['method' => 'PATCH','route' => ['TabZamestnanci.update', $zam01->idzamestnanec]]) !!}
-    @include('DBtables.Zamestnanci.updateform')
+    {!! Form::model($pub01, ['method' => 'PATCH','route' => ['TabPublikacia.update', $pub01->idPublikacia]]) !!}
+    @include('Admin_DBtables.Publikacie.updateform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        {!! Form::submit('Upravenie zamestnanca',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Upravenie publikácie',['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
 

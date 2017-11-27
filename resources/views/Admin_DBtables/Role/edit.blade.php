@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 margin-tb">
             <div class="float-left">
-                <h2>Pridanie novej role</h2>
+                <h2>Úprava role</h2>
             </div>
 
             <div class="float-right">
@@ -14,9 +14,9 @@
         </div>
     </div>
 
-    @if (count($errors) < 0)
+    @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> Nastala chyba. Zadali ste zle vstupné údaje.<br><br>
+            <strong>Whoops!</strong>Nastala chyba. Zadali ste zle vstupné údaje.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -25,10 +25,10 @@
         </div>
     @endif
 
-    {!! Form::open(array('route' => 'TabRola.store','method'=>'POST')) !!}
-    @include('DBtables.Role.createform')
+    {!! Form::model($rola01, ['method' => 'PATCH','route' => ['TabRola.update', $rola01->idrolaPouzivatela]]) !!}
+    @include('Admin_DBtables.Role.updateform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        {!! Form::submit('Pridať novú rolu',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Upravenie role',['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
 

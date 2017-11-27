@@ -21,13 +21,13 @@ class DBKOmentare extends Controller
     public function index()
     {
         $table = Fakulta::all();
-        return view('DBtables.Fakulty.DBtable',['fakultes' =>$table]);
+        return view('Admin_DBtables.Fakulty.DBtable',['fakultes' =>$table]);
     }
 
 
     public function create()
     {
-        return view('DBtables.Fakulty.create');
+        return view('Admin_DBtables.Fakulty.create');
     }
 
     public function store(Request $request)
@@ -46,7 +46,7 @@ class DBKOmentare extends Controller
     public function show($id)
     {
         $fakulta = Fakulta::find($id);
-        return view('DBtables.Fakulty.show',compact('fakulta'));
+        return view('Admin_DBtables.Fakulty.show',compact('fakulta'));
     }
 
 
@@ -54,7 +54,7 @@ class DBKOmentare extends Controller
     {
         $fakulta01 = Fakulta::find($id);
 
-        return view('DBtables.Fakulty.edit',compact('fakulta01'));
+        return view('Admin_DBtables.Fakulty.edit',compact('fakulta01'));
     }
 
     public function update(Request $request, $id)

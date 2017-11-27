@@ -26,13 +26,13 @@ class DBPublikacie extends Controller
                 ->orderBy('idPublikacia', 'asc')
                     ->paginate(15);
 
-        return view('DBtables.Publikacie.DBtable',['publikacis' =>$table]);
+        return view('Admin_DBtables.Publikacie.DBtable',['publikacis' =>$table]);
     }
 
 
     public function create()
     {
-        return view('DBtables.Publikacie.create',['pub02' =>$this->zamestnanci()]);
+        return view('Admin_DBtables.Publikacie.create',['pub02' =>$this->zamestnanci()]);
     }
 
     public function store(Request $request)
@@ -92,7 +92,7 @@ class DBPublikacie extends Controller
             $rok=$pub['rok'];
         }
 
-        return view('DBtables.Publikacie.show',['pub' => $pub, 'strany'=>$strany, 'rok'=>$rok]);
+        return view('Admin_DBtables.Publikacie.show',['pub' => $pub, 'strany'=>$strany, 'rok'=>$rok]);
     }
 
 
@@ -100,7 +100,7 @@ class DBPublikacie extends Controller
     {
         $pub01 = Publikacia::find($id);
 
-        return view('DBtables.Publikacie.edit',['pub01' =>$pub01, 'pub02' => $this->zamestnanci()]);
+        return view('Admin_DBtables.Publikacie.edit',['pub01' =>$pub01, 'pub02' => $this->zamestnanci()]);
     }
 
     public function update(Request $request, $id)

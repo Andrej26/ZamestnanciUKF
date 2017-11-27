@@ -5,18 +5,18 @@
     <div class="row">
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 margin-tb">
             <div class="float-left">
-                <h2>Upravenie projektu</h2>
+                <h2>Pridanie novej publikácie</h2>
             </div>
 
             <div class="float-right">
-                <a class="btn btn-primary" href="{{ route('TabProjekt.index') }}"> Späť</a>
+                <a class="btn btn-primary" href="{{ route('TabPublikacia.index') }}"> Späť</a>
             </div>
         </div>
     </div>
 
-    @if (count($errors) > 0)
+    @if (count($errors) < 0)
         <div class="alert alert-danger">
-            <strong>Whoops!</strong>Nastala chyba. Zadali ste zle vstupné údaje.<br><br>
+            <strong>Whoops!</strong> Nastala chyba. Zadali ste zle vstupné údaje.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -25,10 +25,10 @@
         </div>
     @endif
 
-    {!! Form::model($pro01, ['method' => 'PATCH','route' => ['TabProjekt.update', $pro01->idProjekt]]) !!}
-    @include('DBtables.Projekty.updateform')
+    {!! Form::open(array('route' => 'TabPublikacia.store','method'=>'POST')) !!}
+    @include('Admin_DBtables.Publikacie.createform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        {!! Form::submit('Upravenie projektu',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Pridať novú Publikáciu',['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
 

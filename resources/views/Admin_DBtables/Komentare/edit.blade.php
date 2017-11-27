@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 margin-tb">
             <div class="float-left">
-                <h2>Pridanie nového Zamestnanca</h2>
+                <h2>Uprav zamestnanca</h2>
             </div>
 
             <div class="float-right">
@@ -14,9 +14,9 @@
         </div>
     </div>
 
-    @if (count($errors) < 0)
+    @if (count($errors) > 0)
         <div class="alert alert-danger">
-            <strong>Whoops!</strong> Nastala chyba. Zadali ste zle vstupné údaje.<br><br>
+            <strong>Whoops!</strong>Nastala chyba. Zadali ste zle vstupné údaje.<br><br>
             <ul>
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
@@ -25,10 +25,10 @@
         </div>
     @endif
 
-    {!! Form::open(array('route' => 'TabZamestnanci.store','method'=>'POST')) !!}
-    @include('DBtables.Zamestnanci.createform')
+    {!! Form::model($zam01, ['method' => 'PATCH','route' => ['TabZamestnanci.update', $zam01->idzamestnanec]]) !!}
+    @include('Admin_DBtables.Zamestnanci.updateform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        {!! Form::submit('Pridať nového Zamestnanca',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Upravenie zamestnanca',['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
 

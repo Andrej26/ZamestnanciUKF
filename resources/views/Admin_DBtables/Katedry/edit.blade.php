@@ -26,7 +26,7 @@
     @endif
 
     {!! Form::model($kat01, ['method' => 'PATCH','route' => ['TabKatedra.update', $kat01->idKatedra]]) !!}
-    @include('DBtables.Katedry.updateform')
+    @include('Admin_DBtables.Katedry.updateform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         {!! Form::submit('Upravenie katedry',['class' => 'btn btn-primary']) !!}
     </div>

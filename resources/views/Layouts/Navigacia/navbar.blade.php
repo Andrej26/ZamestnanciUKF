@@ -106,7 +106,7 @@
                                         <button type="submit" class="btn btn-success btn-block">Prihlásiť</button>
                                     </div>
                                     <a class="btn btn-link" href="{{ route('zame.password.request')}}">
-                                        Zabudli ste heslo? (nefunguje ešte)
+                                        Zabudli ste heslo?
                                     </a>
                                 </form>
                             </div>

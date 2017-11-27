@@ -21,13 +21,13 @@ class DBRola extends Controller
     public function index()
     {
         $table = RolaPouzivatela::all();
-        return view('DBtables.Role.DBtable',['roless' =>$table]);
+        return view('Admin_DBtables.Role.DBtable',['roless' =>$table]);
     }
 
 
     public function create()
     {
-        return view('DBtables.Role.create');
+        return view('Admin_DBtables.Role.create');
     }
 
     public function store(Request $request)
@@ -46,7 +46,7 @@ class DBRola extends Controller
     public function show($id)
     {
         $rola = RolaPouzivatela::find($id);
-        return view('DBtables.Role.show',compact('rola'));
+        return view('Admin_DBtables.Role.show',compact('rola'));
     }
 
 
@@ -54,7 +54,7 @@ class DBRola extends Controller
     {
         $rola01 = RolaPouzivatela::find($id);
 
-        return view('DBtables.Role.edit',compact('rola01'));
+        return view('Admin_DBtables.Role.edit',compact('rola01'));
     }
 
     public function update(Request $request, $id)

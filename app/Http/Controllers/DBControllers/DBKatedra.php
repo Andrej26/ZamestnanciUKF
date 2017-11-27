@@ -24,13 +24,13 @@ class DBKatedra extends Controller
             ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
                 ->orderBy('idKatedra', 'asc')
                     ->paginate(15);
-        return view('DBtables.Katedry.DBtable',['katedres' =>$table]);
+        return view('Admin_DBtables.Katedry.DBtable',['katedres' =>$table]);
     }
 
 
     public function create()
     {
-        return view('DBtables.Katedry.create',['fakulta' =>$this->fakulty()]);
+        return view('Admin_DBtables.Katedry.create',['fakulta' =>$this->fakulty()]);
     }
 
     public function store(Request $request)
@@ -57,7 +57,7 @@ class DBKatedra extends Controller
             ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
             ->where('idKatedra', $id)
             ->first();
-        return view('DBtables.Katedry.show',compact('kat'));
+        return view('Admin_DBtables.Katedry.show',compact('kat'));
     }
 
 
@@ -65,7 +65,7 @@ class DBKatedra extends Controller
     {
         $kat01 = Katedra::find($id);
 
-        return view('DBtables.Katedry.edit',['kat01' =>$kat01, 'kat02' => $this->fakulty()]);
+        return view('Admin_DBtables.Katedry.edit',['kat01' =>$kat01, 'kat02' => $this->fakulty()]);
     }
 
     public function update(Request $request, $id)

@@ -5,11 +5,11 @@
     <div class="row">
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 margin-tb">
             <div class="float-left">
-                <h2>Pridanie novej publikácie</h2>
+                <h2>Pridanie nového Projektu</h2>
             </div>
 
             <div class="float-right">
-                <a class="btn btn-primary" href="{{ route('TabPublikacia.index') }}"> Späť</a>
+                <a class="btn btn-primary" href="{{ route('TabProjekt.index') }}"> Späť</a>
             </div>
         </div>
     </div>
@@ -25,10 +25,10 @@
         </div>
     @endif
 
-    {!! Form::open(array('route' => 'TabPublikacia.store','method'=>'POST')) !!}
-    @include('DBtables.Publikacie.createform')
+    {!! Form::open(array('route' => 'TabProjekt.store','method'=>'POST')) !!}
+    @include('Admin_DBtables.Projekty.createform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        {!! Form::submit('Pridať novú Publikáciu',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Pridať nový Projekt',['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
 

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Model\Fakulta;
 use App\Model\Zamestnanec;
 use App\Model\Projekt;
+use App\Model\Katedra;
 use App\Model\Komentare;
 use App\Http\Controllers\Controller;
 
@@ -53,7 +54,7 @@ class ZamestnanecController extends Controller
 
     public function profil($idprofil)
     {
-        return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil)]);
+        return view('Zam.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil)]);
     }
 
 
@@ -69,6 +70,71 @@ class ZamestnanecController extends Controller
         //Komentare::create($request->all());
       //  return redirect()->route('TabFakulta.index')
           //  ->with('success','Nový komentár bol vytvorený.');
+    }
+
+    public function zprofil($idkatedra)
+    {
+
+        switch ($idkatedra) {
+            case "1":
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                break;
+            case "2":
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                break;
+            case "3":
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                break;
+            case "5":
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                break;
+            case "7":
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                break;
+            default:
+                //  echo "Your favorite color is neither red, blue, nor green!";
+        }
+    }
+
+    public function katedry($id)
+    {
+        $kat= Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
+            ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
+            ->orderBy('idKatedra', 'asc')
+            ->get();
+        $kat01=[];
+        $pom=[];
+
+        foreach ( $kat as $katedra):
+            if($katedra['Fakulta_idFakulta'] == $id)
+            {
+                $kat01[] = ['katedra'=>$katedra->nazov, 'fakulta'=>$katedra->nazov01];
+            }
+        endforeach;
+
+        foreach (Fakulta::all() as $fakulta):
+            if($fakulta['idFakulta'] == $id)
+            {
+                $fak01[$fakulta->idFakulta] = $fakulta->nazov;
+            }
+        endforeach;
+
+        $zames = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+            ->get();
+
+        foreach ($zames as $zam):
+            foreach ($kat01 as $kats):
+                if($kats['katedra'] == $zam['nazov'])
+                {
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil, 'fakulta'=> $kats['fakulta'] ];
+                }
+            endforeach;
+        endforeach;
+
+        return $pom;
     }
 
     public function chart()
@@ -120,40 +186,6 @@ class ZamestnanecController extends Controller
             }
         endforeach;
         return $pm;
-    }
-
-
-
-
-
-    public function fpv()
-    {
-        return view('Katedry.FPV');
-    }
-
-    public function ff()
-    {
-        return view('Katedry.FF');
-    }
-
-    public function fsvaz()
-    {
-        return view('Katedry.FSVaZ');
-    }
-
-    public function fsš()
-    {
-        return view('Katedry.FSŠ');
-    }
-
-    public function pf()
-    {
-        return view('Katedry.PF');
-    }
-
-    public function ostatne()
-    {
-        return view('Katedry.Ostatne');
     }
 
     public function fakulty()
