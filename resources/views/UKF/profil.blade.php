@@ -94,17 +94,23 @@
                 </ul>
                 @endforeach
             </div>
-            <!-- pridavanie kOmentarov -->
-            <div class="komentare">
-                <h1>Komentáre</h1>
 
-                {!! Form::open(array('route' => 'komentar.store','method'=>'POST')) !!}
-                @include('Admin_DBtables.Komentare.createform')
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                    {!! Form::submit('Odoslať komentár',['class' => 'btn btn-primary']) !!}
-                </div>
-                {!! Form::close() !!}
-
+            <!-- Vypis komentarov -->
+            <h1>Komentáre</h1>
+            <div class="profil">
+                @foreach ($komentare as $kom)
+                    <ul class="slides">
+                        <div class="student-data">
+                            <div class="student-details">
+                                <ul class="student-info">
+                                    <li>Autor: <strong>{{ $kom['autor']}}</strong></li>
+                                    <li>Text: <strong>{{ $kom['komentar']}}</strong></li>
+                                </ul>
+                            </div>
+                        </div>
+                        </li>
+                    </ul>
+                @endforeach
             </div>
 
         </div>

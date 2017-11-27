@@ -30,5 +30,9 @@
             <input  src="{{URL::to('/')}}/images/publikacie.png" alt="Tabulka01" type="image" class="img-thumbnail_01" />
         </a>
 
+        <a class="btn btn-outline-dark but01" href="{{ url('Admin/TabKomentar') }}">
+            <input  src="{{URL::to('/')}}/images/komentar.png" alt="Tabulka01" type="image" class="img-thumbnail_01" />
+        </a>
+
     </div>
 @endsection

@@ -5,6 +5,16 @@
 @endsection
 
 @section('content')
+
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success" style="text-align: center">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="color: red">
+                <span aria-hidden="true" >&times;</span>
+            </button>
+            <p class="message">{{ $message }}</p>
+        </div>
+    @endif
+
     <div class="site-content">
         <div class="container">
             <main class="main-content">
@@ -37,7 +47,7 @@
                             <div class="student-details">
                                 <h2 class="student-name">{{$prof['mena']}}</h2>
                                 <ul class="student-info">
-                                    <li>e-mail: <strong><a href="mailto:m.priezvisko@ukf.sk" style="color: inherit;">m.priezvisko@ukf.sk</a></strong></li>
+                                    <li>e-mail: <strong><a href="mailto:{{$prof['mail']}}" style="color: inherit;">{{$prof['mail']}}</a></strong></li>
                                     <li>katedra: <strong>{{$prof['katedra1']}}</strong></li>
                                     <li>Rola:
                                         <strong>
@@ -49,15 +59,13 @@
                                             @endif
                                             @if($prof['rol']==3)
                                                 Administrator
-                                             @endif
+                                            @endif
                                         </strong>
                                     </li>
+                                    <li><h2>Popis:</h2>
+                                        <p>{{$prof['rola1']}}</p></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class ="popis">
-                            <h2>Popis:</h2>
-                            <p>{{$prof['rola1']}}</p>
                         </div>
                         <div class ="popis">
                             <button onclick="publikacieFunc()" class="publ-dropdown">Publikacie</button>
@@ -93,12 +101,31 @@
                 </ul>
 
             </div>
+
+            <!-- Vypis komentarov -->
+            <h1>Komentáre</h1>
+            <div class="profil">
+                    @foreach ($komentare as $kom)
+                        <ul class="slides">
+                            <div class="student-data">
+                                <div class="student-details">
+                                    <ul class="student-info">
+                                        <li>Autor: <strong>{{ $kom['autor']}}</strong></li>
+                                        <li>Text: <strong>{{ $kom['komentar']}}</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            </li>
+                        </ul>
+                    @endforeach
+            </div>
+
             <!-- pridavanie kOmentarov -->
             <div class="komentare">
                 <h1>Komentáre</h1>
 
                 {!! Form::model($prof, ['method' => 'POST','route' => ['komentar.store', $prof['id']]]) !!}
-                @include('Admin_DBtables.Komentare.createform')
+                @include('Zam.Pridavanie_komentarov.createform')
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     {!! Form::submit('Odoslať komentár',['class' => 'btn btn-primary']) !!}
                 </div>

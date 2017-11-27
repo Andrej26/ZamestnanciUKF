@@ -82,6 +82,78 @@ class AdvancedSearchController extends Controller
                }
          }
 
+    public function advancesearch01(Request $request)
+    {
+        $searchtable=$this->spojenie2tabuliek();
+        $meno=$request->meno;
+        $katedra=$request->katedra;
+        $fakulta=$request->fakulta;
+        $finaltable=[];
+
+
+        foreach ($searchtable as $stable):
+            $pomocna01=stripos($stable['meno'],$meno);
+            $pomocna02=stripos($stable['katedra'],$katedra);
+
+            $cis01=0;
+            $cis02=0;
+            $cis03=0;
+
+            if ($meno != null ){ $cis01=1; }
+            if ($katedra != null ){ $cis02=1; }
+            if ($fakulta != 0 ){ $cis03=1; }
+
+
+            if(($cis01==1)&&($cis02==1)&&($cis03==1)) {
+                if (($pomocna01 == true) && ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+            }
+
+            if((($cis01!=1)&&($cis02==1)&&($cis03==1))||(($cis01==1)&&($cis02!=1)&&($cis03==1))||(($cis01==1)&&($cis02==1)&&($cis03!=1))) {
+                if (($pomocna01 == true) && ($pomocna02 == true)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif (($pomocna01 == true) && ($stable['idFakulta'] == $fakulta)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif (($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+            }
+
+            if((($cis01==1)&&($cis02!=1)&&($cis03!=1)))
+            {
+                if (($pomocna01 == true)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif (($pomocna02 == true)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif (($stable['idFakulta'] == $fakulta)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+            }
+        endforeach;
+
+        if(($meno == null) && ($katedra == null) && ($fakulta == 0)){
+            return view('Zam.ZProfilov',['zamestnanec' => $searchtable, 'test' => 1, 'ifakulta'=>0, 'fakulta' =>$this->fakulty()]);
+        }
+        elseif(count($finaltable) == 0){
+            return view('Zam.ZProfilov',[ 'test' => 0, 'ifakulta'=>0, 'fakulta' =>$this->fakulty()]);
+        }
+        else{
+            return view('Zam.ZProfilov',['zamestnanec' => $finaltable, 'test' => 1, 'ifakulta'=>0, 'fakulta' =>$this->fakulty()]);
+        }
+    }
+
     public function spojenie2tabuliek()
     {
         $pom=[];

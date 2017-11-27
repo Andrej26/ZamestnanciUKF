@@ -26,7 +26,7 @@
     @endif
 
     {!! Form::open(array('route' => 'komentar.store','method'=>'POST')) !!}
-    @include('Admin_DBtables.Zamestnanci.createform')
+    @include('Zam.Pridavanie_komentarov.createform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         {!! Form::submit('Pridať nového Zamestnanca',['class' => 'btn btn-primary']) !!}
     </div>

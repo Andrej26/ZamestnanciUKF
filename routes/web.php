@@ -80,9 +80,10 @@ Route::prefix('Zamestnanec')->group(function(){
 
     Route::get('/Profil/{id}', 'ZamestnanecController@profil')->name('iny.profil');
     Route::get('/ZoznamProfilov/{id}', 'ZamestnanecController@zprofil')->name('zozprofil');
-    Route::post('/PridanieKomentaru', 'ZamestnanecController@pridaniekomentaru')->name('komentar.store');
+    Route::post('/PridanieKomentaru/{id}', 'ZamestnanecController@pridaniekomentaru')->name('komentar.store');
 
-    //Zobrazenie Katedier
+    Route::post('/search', 'AdvancedSearchController@advancesearch01')->name('advanced_search_zam');
+
     // View-y Fakúlt
     Route::get('/fpv', function(){
         return view('Zam/Fakulty/fakulta_fpv');});
@@ -170,6 +171,13 @@ Route::prefix('Admin')->group(function() {
     Route::match(['put','patch'],'/TabPublikacia/{id}', 'DBControllers\DBPublikacie@update')->name('TabPublikacia.update');
     Route::get('/TabPublikacia/{id}/Úprava_publikácie', 'DBControllers\DBPublikacie@edit')->name('TabPublikacia.edit');
     Route::delete('/TabPublikacia/{id}', 'DBControllers\DBPublikacie@destroy')->name('TabPublikacia.delete');
+
+    //Tablulka komentárov
+    Route::get('/TabKomentar', 'DBControllers\DBKomentare@index')->name('TabKomentar.index');
+    Route::match(['put','patch'],'/TabKomentar/{id}', 'DBControllers\DBKomentare@update')->name('TabKomentar.update');
+    Route::get('/TabKomentar/{id}/Úprava_komentáru', 'DBControllers\DBKomentare@edit')->name('TabKomentar.edit');
+    Route::get('/TabKomentar/{id}', 'DBControllers\DBKomentare@schvalenie')->name('TabKomentar.schvalenie');
+    Route::delete('/TabKomentar/{id}', 'DBControllers\DBKomentare@destroy')->name('TabKomentar.delete');
 
     //Prihlasenie admin
     Route::get('/', 'ZamestnanecController@adminn')->name('admin.dashboard');

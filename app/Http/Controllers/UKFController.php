@@ -12,6 +12,7 @@ use App\Model\Katedra;
 use App\Model\Projekt;
 use App\Model\Publikacia;
 use App\Model\Zamestnanec;
+use App\Model\Komentare;
 use Illuminate\Http\Request;
 
 
@@ -25,7 +26,7 @@ class UKFController extends Controller
 
      public function profil($idprofil)
      {
-         return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil)]);
+         return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil)]);
      }
 
     public function chart()
@@ -148,6 +149,21 @@ class UKFController extends Controller
                 $pm[] = ['nazov' => $pub->nazov, 'isbn' => $pub->isbn, 'autori' => $pub->autori, 'vydavatel' => $pub->vydavatel, 'podtitulok' => $pub->podtitulok];
             }
             endforeach;
+        return $pm;
+    }
+
+    public function komentare($idprof)
+    {
+        $pm=[];
+        $koment = Komentare::select('*')
+            ->join('zamestnanec','idzamestnanec','=','autor')
+            ->get();
+
+        foreach ($koment as $kom):
+            if  (($kom['okomentovanyId'] == $idprof)&&($kom['odsuhlaseny'] == 1)) {
+                $pm[] = ['komentar' => $kom->komentar, 'autor' => $kom->meno];
+            }
+        endforeach;
         return $pm;
     }
 

@@ -54,22 +54,22 @@ class ZamestnanecController extends Controller
 
     public function profil($idprofil)
     {
-        return view('Zam.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil)]);
+        return view('Zam.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil)]);
     }
 
-
-    public function pridaniekomentaru(Request $request)
+    public function pridaniekomentaru(Request $request, $id)
     {
-        //$this->validate($request,[
-         //   'komentar' => required,
-      //  ]);
+        $id_profilu=$id;
+        $id_komentara=Auth::id();
 
-        echo $request->route('id');
-       // return Auth::id();
-
-        //Komentare::create($request->all());
-      //  return redirect()->route('TabFakulta.index')
-          //  ->with('success','Nový komentár bol vytvorený.');
+        Komentare::create([
+            'komentar' => $request->komentar,
+            'autor' => $id_komentara,
+            'okomentovanyId' => $id_profilu,
+            'odsuhlaseny' => 0,
+        ]);
+        return redirect()->route('iny.profil',$id)
+           ->with('success','Nový komentár bol vytvorený.');
     }
 
     public function zprofil($idkatedra)
@@ -152,7 +152,7 @@ class ZamestnanecController extends Controller
 
         foreach ($profl as $prof):
             if ($prof['idzamestnanec'] == $id) {
-                $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela];
+                $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela, 'mail'=>$prof->email];
             }
         endforeach;
         return $pm;
@@ -183,6 +183,21 @@ class ZamestnanecController extends Controller
         foreach ($publ as $pub):
             if  ($pub['Zamestnanec_idzamestnanec'] == $idss) {
                 $pm[] = ['nazov' => $pub->nazov, 'zaciatok' => $pub->zaciatok, 'koniec' => $pub->koniec,'reg'=>$pub->regCislo];
+            }
+        endforeach;
+        return $pm;
+    }
+
+    public function komentare($idprof)
+    {
+        $pm=[];
+        $koment = Komentare::select('*')
+            ->join('zamestnanec','idzamestnanec','=','autor')
+            ->get();
+
+        foreach ($koment as $kom):
+            if  (($kom['okomentovanyId'] == $idprof)&&($kom['odsuhlaseny'] == 1)) {
+                $pm[] = ['komentar' => $kom->komentar, 'autor' => $kom->meno];
             }
         endforeach;
         return $pm;

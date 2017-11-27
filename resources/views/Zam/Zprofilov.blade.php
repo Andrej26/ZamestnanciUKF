@@ -19,7 +19,7 @@
                     </div>
                 </div>
 
-                @include('Layouts.search')
+                @include('Layouts.zam-search')
 
             </main>
 

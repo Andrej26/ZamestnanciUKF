@@ -106,7 +106,7 @@
                 </div>
 
                 <!-- Vyhladavaci formular -->
-                @include('Layouts.search')
+                @include('Layouts.zam-search')
             </main>
 
             <div class="graduates">
