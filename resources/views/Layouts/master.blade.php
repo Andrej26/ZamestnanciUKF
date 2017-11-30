@@ -5,12 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1">
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" type="text/css">
+
+
 
 
     <!-- CSRF Token -->
@@ -144,6 +146,45 @@
                 margin-top: 2%;
                 margin-bottom: -2%
             }
+
+
+
+
+    /* highlight results */
+    .ui-autocomplete span.hl_results {
+        background-color: #ffff66;
+    }
+
+    /* loading - the AJAX indicator */
+    .ui-autocomplete-loading {
+        background: white url('../img/ui-anim_basic_16x16.gif') right center no-repeat;
+    }
+
+    /* scroll results */
+    .ui-autocomplete {
+        max-height: 250px;
+        overflow-y: auto;
+        /* prevent horizontal scrollbar */
+        overflow-x: hidden;
+        /* add padding for vertical scrollbar */
+        padding-right: 5px;
+    }
+
+    .ui-autocomplete li {
+        font-size: 16px;
+    }
+
+    /* IE 6 doesn't support max-height
+    * we use height instead, but this forces the menu to always be this tall
+    */
+     html .ui-autocomplete {
+        height: 250px;
+    }
+
+
+
+
+
 </style>
 </head>
 
@@ -168,6 +209,53 @@
 </footer>
 
 </div>
+
+
+
+
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+
+
+
+<script>
+    $(function() {
+
+        $("#tags" ).autocomplete({
+            source: function( request, response ) {
+                //tu definujete kde ma ten autocomplete hladat data
+                //v nasom pripade volame PHP script na URL domena.sk/order-pipeline/search
+                $.ajax({
+                    url : '/TimovyProjekt/ZamestnanciUKF/public/UKF/fulltextsearch',
+                    type    : 'GET',
+                    dataType: "json",
+                    data: {
+                        search: request.term,
+
+                    },
+                    success: function( data ) {
+                        response(data);
+                    },
+                    error   : function( xhr, err ) {
+                        alert('Error:' + err);
+                    }
+                });
+            },
+            autoFocus: true,
+            minLength: 3,
+            delay: 1000,
+            select:function (key,value) {
+
+            }
+
+
+        });
+    });
+
+</script>
 </body>
 
 </html>

@@ -26,6 +26,7 @@ Route::prefix('UKF')->group(function() {
     Route::get('/ZoznamProfilov/{id}', 'UKFController@zprofil')->name('zprofil');
 
     Route::post('/search', 'AdvancedSearchController@advancesearch')->name('advanced_search');
+    Route::get('/fulltextsearch', 'VyhladajZamestnancaC@fulltext')->name('fulltextsearch');
 
     // View-y Fakúlt
     Route::get('/fpv', function(){
@@ -42,6 +43,9 @@ Route::prefix('UKF')->group(function() {
 
 // Admin tables!!!!!
 //////////////////////////////////////////////////////////////////////
+
+
+
 
 
 //////////////////////////////////////////////////////////////////////////
