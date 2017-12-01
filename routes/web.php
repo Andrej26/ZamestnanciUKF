@@ -183,6 +183,16 @@ Route::prefix('Admin')->group(function() {
     Route::get('/TabKomentar/{id}', 'DBControllers\DBKomentare@schvalenie')->name('TabKomentar.schvalenie');
     Route::delete('/TabKomentar/{id}', 'DBControllers\DBKomentare@destroy')->name('TabKomentar.delete');
 
+    //Tablulka tagov
+    Route::get('/TabTag', 'DBControllers\DBTag@index')->name('TabTag.index');
+    Route::post('/TabTag', 'DBControllers\DBTag@store')->name('TabTag.store');
+    Route::get('/TabTag/Vytvorenie_tagu', 'DBControllers\DBTag@create')->name('TabTag.create');
+    Route::get('/TabTag/{id}', 'DBControllers\DBTag@show')->name('TabTag.show');
+    Route::match(['put','patch'],'/TabTag/{id}', 'DBControllers\DBTag@update')->name('TabTag.update');
+    Route::get('/TabTag/{id}/Úprava_tagu', 'DBControllers\DBTag@edit')->name('TabTag.edit');
+    Route::delete('/TabTag/{id}', 'DBControllers\DBTag@destroy')->name('TabTag.delete');
+
+
     //Prihlasenie admin
     Route::get('/', 'ZamestnanecController@adminn')->name('admin.dashboard');
 });
