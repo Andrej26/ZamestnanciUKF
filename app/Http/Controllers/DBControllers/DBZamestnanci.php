@@ -71,7 +71,6 @@ class DBZamestnanci extends Controller
         }
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Zamestnanec bol vytvorený.');
-
     }
 
     public function show($id)
@@ -127,10 +126,11 @@ class DBZamestnanci extends Controller
         for ($i=0;$i<count($request->tagy);$i++)
         {
             Zamestnanec_tag::create([
-                'zamestnanec_id' => $this->idback(),
+                'zamestnanec_id' => $id,
                 'tag_id' => $request->tagy[$i],
             ]);
         }
+
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Zamestnanec bol úspešne upravený');
     }
