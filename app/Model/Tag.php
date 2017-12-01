@@ -14,6 +14,6 @@ class Tag extends Model
 
     public function zamestnanci()
     {
-        return $this->belongsToMany('App\Model\Zamestnanec', 'post_tag');
+        return $this->belongsToMany('App\Model\Zamestnanec', 'zamestnanec_tag', 'tag_id', 'zamestnanec_id');
     }
 }

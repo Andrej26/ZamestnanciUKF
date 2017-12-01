@@ -14,6 +14,7 @@ use App\Model\Zamestnanec;
 use App\Model\RolaPouzivatela;
 use Illuminate\Http\Request;
 use App\Model\Tag;
+use App\Model\Zamestnanec_tag;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -33,7 +34,8 @@ class DBZamestnanci extends Controller
 
     public function create()
     {
-        return view('Admin_DBtables.Zamestnanci.create',['katedra' =>$this->katedry(), 'rola' => $this->roly(), 'tagy'=> $this->tagy()]);
+        $tag=Tag::all();
+        return view('Admin_DBtables.Zamestnanci.create',['katedra' =>$this->katedry(), 'rola' => $this->roly(), 'tags'=> $tag]);
     }
 
     public function store(Request $request)
@@ -48,9 +50,7 @@ class DBZamestnanci extends Controller
            // 'rola' => 'required|max:30',
         ]);
 
-        $zam= new Zamestnanec;
-
-        $zam::create([
+         Zamestnanec::create([
             'idzamestnanec' => $this->idgenerator(),
             'meno' => $request->meno,
             'email' => $request->email,
@@ -60,8 +60,14 @@ class DBZamestnanci extends Controller
             'Katedra_idKatedra' => $request->katedra,
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,
             ]);
-        $zam->tags()->sync($request->tag,false);
 
+        for ($i=1;$i<=count($request->tagy);$i++)
+        {
+            Zamestnanec_tag::create([
+                'zamestnanec_id' => $this->idback(),
+                'tag_id' => $request->tagy[$i],
+            ]);
+        }
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Zamestnanec bol vytvorený.');
 
@@ -168,25 +174,17 @@ class DBZamestnanci extends Controller
         return $rola01;
     }
 
-    public function tagy()
-    {
-        $tag01 =[];
-
-        $tag02 =tag::select('id' , 'name')
-            ->groupBy('name','id')
-            ->get();
-
-        foreach ( $tag02 as $tagy):
-            $tag01[$tagy->id] = $tagy->name;
-        endforeach;
-
-        return $tag01;
-    }
-
     public function idgenerator()
     {
         $idgen01=Zamestnanec::max('idzamestnanec');
         $idgen02=$idgen01+1;
         return $idgen02;
     }
+
+    public function idback()
+    {
+        $idgen01=Zamestnanec::max('idzamestnanec');
+        return $idgen01;
+    }
+
 }

@@ -32,7 +32,7 @@ class Zamestnanec extends Authenticatable
 
     public function tags()
     {
-        return $this->belongsToMany('App\Tag');
+        return $this->belongsToMany('App\Model\Tag', 'zamestnanec_tag', 'zamestnanec_id', 'tag_id');
     }
 
     public function sendPasswordResetNotification($token)
