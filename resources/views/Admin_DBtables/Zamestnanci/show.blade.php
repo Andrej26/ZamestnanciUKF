@@ -64,8 +64,26 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Stav: </strong>
-                {{$zam->aktivny}}
+                @if($zam->aktivny !=0)
+                    <strong>Stav: </strong>
+                    <span>zamestnanecké konto je aktívne</span>
+                @else
+                    <strong>Stav: </strong>
+                    <span>zamestnanecké konto je deaktivované</span>
+                @endif
+            </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                @if(count($tag)!=0)
+                    <strong>Tagy: </strong>
+                    @foreach($tag as $ta)
+                        <span class="badge badge-primary">{{$ta->name}}</span>
+                    @endforeach
+                @else
+                    <strong>Tagy: </strong>  <span>žiadne</span>
+                @endif
             </div>
         </div>
 

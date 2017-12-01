@@ -41,4 +41,7 @@
 
 @section('script')
     {!! Html::script('js/select2.min.js') !!}
+    <script>
+        $('.select2-multi').select2();
+    </script>
 @endsection

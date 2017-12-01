@@ -16,6 +16,7 @@ use Illuminate\Http\Request;
 use App\Model\Tag;
 use App\Model\Zamestnanec_tag;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 
 class DBZamestnanci extends Controller
@@ -61,7 +62,7 @@ class DBZamestnanci extends Controller
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,
             ]);
 
-        for ($i=1;$i<=count($request->tagy);$i++)
+        for ($i=0;$i<count($request->tagy);$i++)
         {
             Zamestnanec_tag::create([
                 'zamestnanec_id' => $this->idback(),
@@ -80,7 +81,13 @@ class DBZamestnanci extends Controller
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->where('idzamestnanec', $id)
             ->first();
-        return view('Admin_DBtables.Zamestnanci.show',compact('zam'));
+
+        $tag =Zamestnanec_tag::select('tags.*')
+            ->join('tags','tags.id','=','tag_id')
+            ->where('zamestnanec_id',$id)
+            ->get();
+
+        return view('Admin_DBtables.Zamestnanci.show',['zam' =>$zam, 'tag' => $tag]);
     }
 
 
@@ -88,7 +95,10 @@ class DBZamestnanci extends Controller
     {
         $zam01 = Zamestnanec::find($id);
 
-        return view('Admin_DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly()]);
+        $tags=Tag::all();
+
+
+        return view('Admin_DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly(), 'tags'=> $tags,]);
     }
 
     public function update(Request $request, $id)
@@ -109,6 +119,18 @@ class DBZamestnanci extends Controller
             'Katedra_idKatedra' => $request->nazov,
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]
         );
+
+        Zamestnanec_tag::select('*')
+           ->where('zamestnanec_id', $id)
+           ->delete();
+
+        for ($i=0;$i<count($request->tagy);$i++)
+        {
+            Zamestnanec_tag::create([
+                'zamestnanec_id' => $this->idback(),
+                'tag_id' => $request->tagy[$i],
+            ]);
+        }
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Zamestnanec bol úspešne upravený');
     }
