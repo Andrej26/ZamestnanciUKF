@@ -41,15 +41,10 @@
         </div>
     </div>
 
-
     <div class="col-xs-12 col-sm-12 col-md-12">
-        <div class="form-group" >
-            {{Form::label('tags', 'Tagy:')}}
-            <select class = 'form-control select2-multi' name = 'tagy[]' multiple = 'multiple'>
-                @foreach($tags as $tag)
-                    <option value="{{ $tag->id }}">{{$tag->name}}</option>
-                @endforeach
-            </select>
+        <div class="form-group">
+            <strong class="vyhladanie">Fakulta:</strong>
+            {!! Form::select('tagy[]',$tags,$select, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) !!}
         </div>
     </div>
 

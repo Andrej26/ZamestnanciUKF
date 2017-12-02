@@ -28,10 +28,25 @@ class DBZamestnanci extends Controller
         ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
                 ->orderBy('idzamestnanec', 'asc')
-                    ->paginate(15);
+                        ->paginate(15);
         return view('Admin_DBtables.Zamestnanci.DBtable',['zamestnanciss' =>$table]);
     }
 
+// DOKONCIT SEARCH PRE ADMINA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public function search(Request $request){
+        $katedra=$request->katedra;
+
+       // $pomocna01=stripos(,$katedra);
+        $table = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+           // ->where('Katedra_idKatedra',)
+           // ->paginate(15);
+            ->get();
+
+        return view('Admin_DBtables.Zamestnanci.DBtable',['zamestnanciss' =>$table]);
+    }
 
     public function create()
     {
@@ -94,10 +109,13 @@ class DBZamestnanci extends Controller
     {
         $zam01 = Zamestnanec::find($id);
 
-        $tags=Tag::all();
+        $tag02=Tag::all();
+        $tag=[];
+        foreach ($tag02 as $t) {
+            $tag[$t->id]= $t->name;
+        }
 
-
-        return view('Admin_DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly(), 'tags'=> $tags,]);
+        return view('Admin_DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly(), 'tags'=> $tag, 'select'=> $this->tagy($id)]);
     }
 
     public function update(Request $request, $id)
@@ -194,6 +212,23 @@ class DBZamestnanci extends Controller
         endforeach;
 
         return $rola01;
+    }
+
+    public function tagy($id){
+        $tag =Zamestnanec_tag::select('*')
+            ->join('tags','tags.id','=','tag_id')
+            ->get();
+
+        $tagy01=[];
+
+            foreach ($tag as $ta):{
+                if($ta->zamestnanec_id == $id){
+                    $tagy01[]= $ta->tag_id;
+                }
+            }
+            endforeach;
+
+        return $tagy01;
     }
 
     public function idgenerator()
