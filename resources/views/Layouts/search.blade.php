@@ -26,6 +26,14 @@
             </div>
         </div>
 
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong class="vyhladanie">Fakulta:</strong>
+                {!! Form::select('tagy[]',$tags,null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) !!}
+            </div>
+        </div>
+
+
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="padding: 0% 30% 0% 30%; margin-bottom: 5% ">
         {!! Form::submit('Hľadať',['class' => 'btn btn-info']) !!}

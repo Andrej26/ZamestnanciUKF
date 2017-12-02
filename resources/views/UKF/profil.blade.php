@@ -52,8 +52,22 @@
                                              @endif
                                         </strong>
                                     </li>
-                                    <li><h2>Popis:</h2>
-                                        <p>{{$prof['rola1']}}</p></li>
+
+                                    <li>Tagy: <strong>
+                                            <?php $i = 0; ?>
+                                            @foreach($tagy as $ta)
+                                                @if((count($ta)!=0)&&($prof['id']== $ta['id']))
+                                                    <?php $i = 1; ?>
+                                                    <span class="badge badge-primary">{{$ta['name']}}</span>
+                                                @endif
+                                            @endforeach
+                                            @if($i == 0)
+                                                <span>žiadne</span>
+                                            @endif
+                                        </strong>
+                                    </li>
+                                    <br/>
+                                    <li><p>Profil: <strong>{{ $prof['rola1']}} </strong></p></li>
                                 </ul>
                             </div>
                         </div>

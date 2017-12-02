@@ -26,6 +26,8 @@
             </div>
         </div>
 
+
+
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center" style="padding: 0% 30% 0% 30%; margin-bottom: 5% ">
         {!! Form::submit('Hľadať',['class' => 'btn btn-info']) !!}

@@ -55,7 +55,7 @@ class DBZamestnanci extends Controller
             'idzamestnanec' => $this->idgenerator(),
             'meno' => $request->meno,
             'email' => $request->email,
-            'password' => Hash::make($request->heslo),
+            'password' => Hash::make($request->password),
             'profil' => $request->profil,
             'aktivny' => '1',
             'Katedra_idKatedra' => $request->katedra,
@@ -113,7 +113,7 @@ class DBZamestnanci extends Controller
         Zamestnanec::find($id)->update([
             'meno' => $request->meno,
             'email' => $request->email,
-            'password' => Hash::make($request->heslo),
+            'password' => Hash::make($request->password),
             'profil' => $request->profil,
             'Katedra_idKatedra' => $request->nazov,
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]

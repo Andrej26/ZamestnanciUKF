@@ -58,6 +58,19 @@
                                         <li>Rola: <strong>{{ $zam['rola']}}</strong></li>
                                         <li>Katedra: <strong>{{ $zam['katedra']}}</strong></li>
                                         <li>Fakulta: <strong>{{ $zam['fakulta']}}</strong></li>
+                                        <li>Tagy: <strong>
+                                                <?php $i = 0; ?>
+                                                @foreach($tagy as $ta)
+                                                    @if((count($ta)!=0)&&($zam['id']== $ta['id']))
+                                                        <?php $i = 1; ?>
+                                                        <span class="badge badge-primary">{{$ta['name']}}</span>
+                                                    @endif
+                                                @endforeach
+                                                @if($i == 0)
+                                                    <span>žiadne</span>
+                                                @endif
+                                            </strong>
+                                        </li>
                                     </ul>
                                     <br>
                                     <p>Profil: <strong>{{ $zam['profil']}} </strong></p>

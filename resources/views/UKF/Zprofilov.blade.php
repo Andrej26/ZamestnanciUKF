@@ -1,5 +1,9 @@
 @extends('Layouts.master')
 
+@section('stylesheet')
+    {!! Html::style('css/select2.min.css') !!}
+@endsection
+
 @section('header')
     @include('Layouts.Navigacia.navbar')
 @endsection
@@ -65,14 +69,11 @@
                                                     @if((count($ta)!=0)&&($zam['id']== $ta['id']))
                                                             <?php $i = 1; ?>
                                                         <span class="badge badge-primary">{{$ta['name']}}</span>
-
                                                 @endif
                                                 @endforeach
                                                     @if($i == 0)
                                                     <span>žiadne</span>
-                                                        @endif
-
-
+                                                    @endif
                                             </strong>
                                         </li>
                                     </ul>
@@ -93,4 +94,11 @@
 
     <script src="{{URL::to('/')}}/js/Image-modal.js"></script>
 
+@endsection
+
+@section('script')
+    {!! Html::script('js/select2.min.js') !!}
+    <script>
+        $('.select2-multi').select2();
+    </script>
 @endsection

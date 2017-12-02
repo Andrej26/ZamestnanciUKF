@@ -10,6 +10,7 @@ use App\Model\Zamestnanec;
 use App\Model\Projekt;
 use App\Model\Katedra;
 use App\Model\Komentare;
+use App\Model\Zamestnanec_tag;
 use App\Http\Controllers\Controller;
 
 class ZamestnanecController extends Controller
@@ -54,7 +55,7 @@ class ZamestnanecController extends Controller
 
     public function profil($idprofil)
     {
-        return view('Zam.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil)]);
+        return view('Zam.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil), 'tagy'=>$this->tagy()]);
     }
 
     public function pridaniekomentaru(Request $request, $id)
@@ -77,19 +78,19 @@ class ZamestnanecController extends Controller
 
         switch ($idkatedra) {
             case "1":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             case "2":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             case "3":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             case "5":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             case "7":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             default:
                 //  echo "Your favorite color is neither red, blue, nor green!";
@@ -142,6 +143,25 @@ class ZamestnanecController extends Controller
         return view('charts');
     }
 
+    public function tagy(){
+        $tag =Zamestnanec_tag::select('*')
+            ->join('tags','tags.id','=','tag_id')
+            ->get();
+
+        $tagy=[];
+
+        foreach (Zamestnanec::all() as $zam): {
+            foreach ($tag as $ta):{
+                if($ta->zamestnanec_id == $zam->idzamestnanec){
+                    $tagy[]= ['id'=>$zam->idzamestnanec, 'name'=>$ta->name];
+                }
+            }
+            endforeach;
+        }
+        endforeach;
+
+        return $tagy;
+    }
 
     public function profily($id)
     {

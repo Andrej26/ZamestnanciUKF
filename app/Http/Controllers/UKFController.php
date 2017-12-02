@@ -13,6 +13,7 @@ use App\Model\Projekt;
 use App\Model\Publikacia;
 use App\Model\Zamestnanec;
 use App\Model\Komentare;
+use App\Model\Tag;
 use App\Model\Zamestnanec_tag;
 use Illuminate\Http\Request;
 
@@ -22,12 +23,17 @@ class UKFController extends Controller
 
     public function index()
     {
-        return view('index', ['fakulta' =>$this->fakulty()]);
+        $tag02=Tag::all();
+        $tag=[];
+        foreach ($tag02 as $t) {
+            $tag[$t->id]= $t->name;
+        }
+        return view('index', ['fakulta' =>$this->fakulty(),'tags'=> $tag]);
     }
 
      public function profil($idprofil)
      {
-         return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil)]);
+         return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil), 'tagy'=>$this->tagy()]);
      }
 
     public function chart()
