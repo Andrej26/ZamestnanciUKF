@@ -10,6 +10,7 @@ use App\Model\Zamestnanec;
 use App\Model\Projekt;
 use App\Model\Katedra;
 use App\Model\Komentare;
+use App\Model\Tag;
 use App\Model\Zamestnanec_tag;
 use App\Http\Controllers\Controller;
 
@@ -32,7 +33,12 @@ class ZamestnanecController extends Controller
      */
     public function index()
     {
-        return view('zamestnanec', ['fakulta' =>$this->fakulty()]);
+        $tag02=Tag::all();
+        $tag=[];
+        foreach ($tag02 as $t) {
+            $tag[$t->id]= $t->name;
+        }
+        return view('zamestnanec', ['fakulta' =>$this->fakulty(), 'tags' => $tag]);
     }
 
     public function adminn()

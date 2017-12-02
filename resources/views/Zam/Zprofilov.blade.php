@@ -1,5 +1,9 @@
 @extends('Layouts.master')
 
+@section('stylesheet')
+    {!! Html::style('css/select2.min.css') !!}
+@endsection
+
 @section('header')
     @include('Layouts.Navigacia.zamestnanec_navbar')
 @endsection
@@ -89,4 +93,11 @@
 
     <script src="{{URL::to('/')}}/js/Image-modal.js"></script>
 
+@endsection
+
+@section('script')
+    {!! Html::script('js/select2.min.js') !!}
+    <script>
+        $('.select2-multi').select2();
+    </script>
 @endsection

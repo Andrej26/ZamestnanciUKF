@@ -192,7 +192,6 @@ Route::prefix('Admin')->group(function() {
     Route::get('/TabTag/{id}/Úprava_tagu', 'DBControllers\DBTag@edit')->name('TabTag.edit');
     Route::delete('/TabTag/{id}', 'DBControllers\DBTag@destroy')->name('TabTag.delete');
 
-
     //Prihlasenie admin
     Route::get('/', 'ZamestnanecController@adminn')->name('admin.dashboard');
 });

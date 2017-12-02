@@ -48,8 +48,7 @@ class AdvancedSearchController extends Controller
                     }
 
                 if(($cis01==1)&&($cis02==1)&&($cis03==1)&&($cis04==1)) {
-                    if ( ($pomocna01 == true) && ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)&&
-                         (($result_tagy == null)||(($result_tagy !=null)&&(count($tagy)!=count($result_tagy)))) )
+                    if ( ($pomocna01 == true) && ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta) && ($result_tagy == null) )
                     {
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
@@ -65,15 +64,15 @@ class AdvancedSearchController extends Controller
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
-                    elseif ( ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)&&(($result_tagy == null)||(($result_tagy !=null)&&(count($tagy)!=count($result_tagy)))) ) {
+                    elseif ( ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)&&(($result_tagy == null)) ) {
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
-                    elseif (($pomocna01 == true) && ($stable['idFakulta'] == $fakulta) && (($result_tagy == null)||(($result_tagy !=null)&&(count($tagy)!=count($result_tagy)))) ) {
+                    elseif (($pomocna01 == true) && ($stable['idFakulta'] == $fakulta) && (($result_tagy == null)) ) {
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
-                    elseif (($pomocna01 == true) && ($pomocna02 == true) && (($result_tagy == null)||(($result_tagy !=null)&&(count($tagy)!=count($result_tagy)))) ) {
+                    elseif (($pomocna01 == true) && ($pomocna02 == true) && (($result_tagy == null)) ) {
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
@@ -87,32 +86,26 @@ class AdvancedSearchController extends Controller
                     (($cis01==1)&&($cis02==1)&&($cis03!=1)&&($cis04!=1)) )
                 {
                     if (($pomocna01 == true) && ($pomocna02 == true)) {
-                        return '01';
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
                     elseif (($pomocna01 == true) && ($stable['idFakulta'] == $fakulta)) {
-                        return '02';
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
-                    elseif ( ($pomocna01 == true) && (($result_tagy == null)||(($result_tagy !=null)&&(count($tagy)!=count($result_tagy))&&($result_tagy != -1))) ) {
-                        return '03';
+                    elseif ( ($pomocna01 == true) && (($result_tagy == null)) ) {
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
                     elseif ( ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)) {
-                        return '04';
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
-                    elseif (($pomocna02 == true) && (($result_tagy == null)||(($result_tagy !=null)&&(count($tagy)!=count($result_tagy))&&($result_tagy != -1))) ) {
-                        return '05';
+                    elseif (($pomocna02 == true) && (($result_tagy == null)) ) {
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
-                    elseif (($stable['idFakulta'] == $fakulta) && (($result_tagy == null)||(($result_tagy !=null)&&(count($tagy)!=count($result_tagy))&&($result_tagy != -1))) ) {
-                        return '06';
+                    elseif (($stable['idFakulta'] == $fakulta) && (($result_tagy == null)) ) {
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
@@ -135,7 +128,7 @@ class AdvancedSearchController extends Controller
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
-                    elseif (($result_tagy == null)||(($result_tagy !=null)&&(count($tagy)!=count($result_tagy)))) {
+                    elseif (($result_tagy == null)) {
                         $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                             'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                     }
@@ -165,6 +158,7 @@ class AdvancedSearchController extends Controller
         $meno=$request->meno;
         $katedra=$request->katedra;
         $fakulta=$request->fakulta;
+        $tagy=$request->tagy;
         $finaltable=[];
 
 
@@ -175,20 +169,62 @@ class AdvancedSearchController extends Controller
             $cis01=0;
             $cis02=0;
             $cis03=0;
+            $cis04=0;
+            $tag_array=[];
+
+            $tag01=Zamestnanec_tag::select('tag_id')->where('zamestnanec_id',$stable['id'])->get();
+            foreach ($tag01 as $tag02):
+                $tag_array[]= $tag02->tag_id;
+            endforeach;
 
             if ($meno != null ){ $cis01=1; }
             if ($katedra != null ){ $cis02=1; }
             if ($fakulta != 0 ){ $cis03=1; }
+            if ($tagy != null ){
+                $cis04=1;
+                $result_tagy=array_diff($tagy,$tag_array);}
+            else{
+                $result_tagy=-1;
+            }
 
-
-            if(($cis01==1)&&($cis02==1)&&($cis03==1)) {
-                if (($pomocna01 == true) && ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)) {
+            if(($cis01==1)&&($cis02==1)&&($cis03==1)&&($cis04==1)) {
+                if ( ($pomocna01 == true) && ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta) && ($result_tagy == null) )
+                {
                     $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                         'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                 }
             }
 
-            if((($cis01!=1)&&($cis02==1)&&($cis03==1))||(($cis01==1)&&($cis02!=1)&&($cis03==1))||(($cis01==1)&&($cis02==1)&&($cis03!=1))) {
+            if( (($cis01!=1)&&($cis02==1)&&($cis03==1)&&($cis04==1))||
+                (($cis01==1)&&($cis02!=1)&&($cis03==1)&&($cis04==1))||
+                (($cis01==1)&&($cis02==1)&&($cis03!=1)&&($cis04==1))||
+                (($cis01==1)&&($cis02==1)&&($cis03==1)&&($cis04!=1)) )
+            {
+                if (($pomocna01 == true) && ($pomocna02 == true)&& ($stable['idFakulta'] == $fakulta)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif ( ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)&&(($result_tagy == null)) ) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif (($pomocna01 == true) && ($stable['idFakulta'] == $fakulta) && (($result_tagy == null)) ) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif (($pomocna01 == true) && ($pomocna02 == true) && (($result_tagy == null)) ) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+            }
+
+            if( (($cis01!=1)&&($cis02!=1)&&($cis03==1)&&($cis04==1))||
+                (($cis01!=1)&&($cis02==1)&&($cis03!=1)&&($cis04==1))||
+                (($cis01!=1)&&($cis02==1)&&($cis03==1)&&($cis04!=1))||
+                (($cis01==1)&&($cis02!=1)&&($cis03!=1)&&($cis04==1))||
+                (($cis01==1)&&($cis02!=1)&&($cis03==1)&&($cis04!=1))||
+                (($cis01==1)&&($cis02==1)&&($cis03!=1)&&($cis04!=1)) )
+            {
                 if (($pomocna01 == true) && ($pomocna02 == true)) {
                     $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                         'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
@@ -197,13 +233,28 @@ class AdvancedSearchController extends Controller
                     $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                         'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                 }
-                elseif (($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)) {
+                elseif ( ($pomocna01 == true) && (($result_tagy == null)) ) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif ( ($pomocna02 == true) && ($stable['idFakulta'] == $fakulta)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif (($pomocna02 == true) && (($result_tagy == null)) ) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
+                elseif (($stable['idFakulta'] == $fakulta) && (($result_tagy == null)) ) {
                     $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                         'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                 }
             }
 
-            if((($cis01==1)&&($cis02!=1)&&($cis03!=1)))
+            if( (($cis01==1)&&($cis02!=1)&&($cis03!=1)&&($cis04!=1))||
+                (($cis01!=1)&&($cis02==1)&&($cis03!=1)&&($cis04!=1))||
+                (($cis01!=1)&&($cis02!=1)&&($cis03==1)&&($cis04!=1))||
+                (($cis01!=1)&&($cis02!=1)&&($cis03!=1)&&($cis04==1)) )
             {
                 if (($pomocna01 == true)) {
                     $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
@@ -217,17 +268,27 @@ class AdvancedSearchController extends Controller
                     $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
                         'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
                 }
+                elseif (($result_tagy == null)) {
+                    $finaltable[] = ['id' => $stable['id'], 'meno' => $stable['meno'], 'email' => $stable['email'],
+                        'katedra' => $stable['katedra'], 'rola' => $stable['rola'], 'profil' => $stable['profil'], 'fakulta' => $stable['fakulta']];
+                }
             }
         endforeach;
 
-        if(($meno == null) && ($katedra == null) && ($fakulta == 0)){
-            return view('Zam.ZProfilov',['zamestnanec' => $searchtable, 'test' => 1, 'ifakulta'=>0, 'fakulta' =>$this->fakulty()]);
+        $tag02=Tag::all();
+        $tag=[];
+        foreach ($tag02 as $t) {
+            $tag[$t->id]= $t->name;
+        }
+
+        if(($meno == null) && ($katedra == null) && ($fakulta == 0) && ($tagy == null)){
+            return view('Zam.ZProfilov',['zamestnanec' => $searchtable, 'test' => 1, 'ifakulta'=>0, 'fakulta' =>$this->fakulty(),'tags'=> $tag, 'tagy'=>$this->tagy()]);
         }
         elseif(count($finaltable) == 0){
-            return view('Zam.ZProfilov',[ 'test' => 0, 'ifakulta'=>0, 'fakulta' =>$this->fakulty()]);
+            return view('Zam.ZProfilov',[ 'test' => 0, 'ifakulta'=>0, 'fakulta' =>$this->fakulty(), 'tags'=> $tag, 'tagy'=>$this->tagy()]);
         }
         else{
-            return view('Zam.ZProfilov',['zamestnanec' => $finaltable, 'test' => 1, 'ifakulta'=>0, 'fakulta' =>$this->fakulty()]);
+            return view('Zam.ZProfilov',['zamestnanec' => $finaltable, 'test' => 1, 'ifakulta'=>0, 'fakulta' =>$this->fakulty(), 'tags'=> $tag, 'tagy'=>$this->tagy()]);
         }
     }
 
