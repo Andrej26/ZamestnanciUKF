@@ -66,7 +66,7 @@
             </ul>
 
         <div style='float: right; margin-left: auto;'>
-            <a class="btn btn-dark float-right" href="{{ route('zames.logout') }}">Odhasit</a>
+            <a class="btn btn-dark float-right" href="{{ route('zames.logout') }}">Odhlásiť sa</a>
             &nbsp; &nbsp;
             <a class="btn btn-success float-left" href="{{ route('zames.profil') }}">Profil</a>
         </div>
