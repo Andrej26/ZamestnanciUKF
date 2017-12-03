@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\DBControllers;
 
+use App\Model\Zamestnanec_tag;
 use Illuminate\Http\Request;
 use App\Model\Tag;
 use App\Http\Controllers\Controller;
@@ -69,6 +70,10 @@ class DBTag extends Controller
 
     public function destroy($id)
     {
+        foreach (Zamestnanec_tag::all() as $zam_tag):
+            if ($zam_tag->tag_id == $id)
+                $zam_tag->delete();
+            endforeach;
         Tag::find($id)->delete();
         return redirect()->route('TabTag.index')
             ->with('success','Tag bol úspešne odstránený');
