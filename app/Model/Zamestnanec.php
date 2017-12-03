@@ -30,6 +30,11 @@ class Zamestnanec extends Authenticatable
         return $this->belongsTo('App\Model\RolaPouzivatela','rolaPouzivatela_idrolaPouzivatela');
     }
 
+    public function tags()
+    {
+        return $this->belongsToMany('App\Model\Tag', 'zamestnanec_tag', 'zamestnanec_id', 'tag_id');
+    }
+
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new ZamesResetPasswordNotification($token));

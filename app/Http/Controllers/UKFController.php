@@ -13,6 +13,8 @@ use App\Model\Projekt;
 use App\Model\Publikacia;
 use App\Model\Zamestnanec;
 use App\Model\Komentare;
+use App\Model\Tag;
+use App\Model\Zamestnanec_tag;
 use Illuminate\Http\Request;
 
 
@@ -21,12 +23,17 @@ class UKFController extends Controller
 
     public function index()
     {
-        return view('index', ['fakulta' =>$this->fakulty()]);
+        $tag02=Tag::all();
+        $tag=[];
+        foreach ($tag02 as $t) {
+            $tag[$t->id]= $t->name;
+        }
+        return view('index', ['fakulta' =>$this->fakulty(),'tags'=> $tag]);
     }
 
      public function profil($idprofil)
      {
-         return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil)]);
+         return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil), 'tagy'=>$this->tagy()]);
      }
 
     public function chart()
@@ -39,22 +46,21 @@ class UKFController extends Controller
 
         switch ($idkatedra) {
             case "1":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             case "2":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             case "3":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             case "5":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             case "7":
-                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1, 'fakulta' =>$this->fakulty()]);
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy()]);
                 break;
             default:
-              //  echo "Your favorite color is neither red, blue, nor green!";
         }
     }
 
@@ -109,6 +115,8 @@ class UKFController extends Controller
             ->orderBy('idzamestnanec', 'asc')
             ->get();
 
+
+
         foreach ($zames as $zam):
             foreach ($kat01 as $kats):
                 if($kats['katedra'] == $zam['nazov'])
@@ -119,6 +127,26 @@ class UKFController extends Controller
         endforeach;
 
         return $pom;
+    }
+
+    public function tagy(){
+        $tag =Zamestnanec_tag::select('*')
+            ->join('tags','tags.id','=','tag_id')
+            ->get();
+
+        $tagy=[];
+
+        foreach (Zamestnanec::all() as $zam): {
+            foreach ($tag as $ta):{
+                if($ta->zamestnanec_id == $zam->idzamestnanec){
+                   $tagy[]= ['id'=>$zam->idzamestnanec, 'name'=>$ta->name];
+                }
+            }
+            endforeach;
+        }
+        endforeach;
+
+        return $tagy;
     }
 
    public function profily($id)

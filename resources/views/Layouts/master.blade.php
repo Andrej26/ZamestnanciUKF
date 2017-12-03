@@ -12,9 +12,6 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
     <link href="{{asset('css/font-awesome.css')}}" rel="stylesheet" type="text/css">
 
-
-
-
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -26,6 +23,7 @@
 
     <!-- Loading main css file -->
     <link rel="stylesheet" type="text/css" href="{{URL::to('/')}}/style.css">
+    @yield('stylesheet')
 
     <!--[if lt IE 9]>
     <script src="{{URL::to('/')}}/js/ie-support/html5.js"></script>
@@ -148,8 +146,6 @@
             }
 
 
-
-
     /* highlight results */
     .ui-autocomplete span.hl_results {
         background-color: #ffff66;
@@ -180,9 +176,6 @@
      html .ui-autocomplete {
         height: 250px;
     }
-
-
-
 
 
 </style>
@@ -218,6 +211,7 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+@yield('script')
 
 
 

@@ -1,19 +1,15 @@
 @extends('Layouts.master')
 
-@section('stylesheet')
-    {!! Html::style('css/select2.min.css') !!}
-@endsection
-
 @section('content')
     <br>
     <div class="row">
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 margin-tb">
             <div class="float-left">
-                <h2>Uprav zamestnanca</h2>
+                <h2>Upravenie tagu</h2>
             </div>
 
             <div class="float-right">
-                <a class="btn btn-primary" href="{{ route('TabZamestnanci.index') }}"> Späť</a>
+                <a class="btn btn-primary" href="{{ route('TabTag.index') }}"> Späť</a>
             </div>
         </div>
     </div>
@@ -29,19 +25,12 @@
         </div>
     @endif
 
-    {!! Form::model($zam01, ['method' => 'PATCH','route' => ['TabZamestnanci.update', $zam01->idzamestnanec]]) !!}
-    @include('Admin_DBtables.Zamestnanci.updateform')
+    {!! Form::model($tagy, ['method' => 'PATCH','route' => ['TabTag.update', $tagy->id]]) !!}
+    @include('Admin_DBtables.Tagy.updateform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        {!! Form::submit('Upravenie zamestnanca',['class' => 'btn btn-primary']) !!}
+        {!! Form::submit('Upravenie tagu',['class' => 'btn btn-primary']) !!}
     </div>
     {!! Form::close() !!}
 
 
-@endsection
-
-@section('script')
-    {!! Html::script('js/select2.min.js') !!}
-    <script>
-        $('.select2-multi').select2();
-    </script>
 @endsection

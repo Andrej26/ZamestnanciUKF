@@ -1,5 +1,9 @@
 @extends('Layouts.master')
 
+@section('stylesheet')
+    {!! Html::style('css/select2.min.css') !!}
+@endsection
+
 @section('header')
     @include('Layouts.Navigacia.navbar')
 @endsection
@@ -156,6 +160,11 @@
 <script src="{{URL::to('/')}}/js/jquery-1.11.1.min.js"></script>
 <script src="{{URL::to('/')}}/js/plugins.js"></script>
 <script src="{{URL::to('/')}}/js/app.js"></script>
+@endsection
 
-
+@section('script')
+    {!! Html::script('js/select2.min.js') !!}
+    <script>
+        $('.select2-multi').select2();
+    </script>
 @endsection

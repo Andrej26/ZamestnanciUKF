@@ -1,5 +1,9 @@
 @extends('Layouts.master')
 
+@section('stylesheet')
+    {!! Html::style('css/select2.min.css') !!}
+@endsection
+
 @section('header')
     @include('Layouts.Navigacia.zamestnanec_navbar')
 @endsection
@@ -58,6 +62,19 @@
                                         <li>Rola: <strong>{{ $zam['rola']}}</strong></li>
                                         <li>Katedra: <strong>{{ $zam['katedra']}}</strong></li>
                                         <li>Fakulta: <strong>{{ $zam['fakulta']}}</strong></li>
+                                        <li>Tagy: <strong>
+                                                <?php $i = 0; ?>
+                                                @foreach($tagy as $ta)
+                                                    @if((count($ta)!=0)&&($zam['id']== $ta['id']))
+                                                        <?php $i = 1; ?>
+                                                        <span class="badge badge-primary">{{$ta['name']}}</span>
+                                                    @endif
+                                                @endforeach
+                                                @if($i == 0)
+                                                    <span>žiadne</span>
+                                                @endif
+                                            </strong>
+                                        </li>
                                     </ul>
                                     <br>
                                     <p>Profil: <strong>{{ $zam['profil']}} </strong></p>
@@ -76,4 +93,11 @@
 
     <script src="{{URL::to('/')}}/js/Image-modal.js"></script>
 
+@endsection
+
+@section('script')
+    {!! Html::script('js/select2.min.js') !!}
+    <script>
+        $('.select2-multi').select2();
+    </script>
 @endsection

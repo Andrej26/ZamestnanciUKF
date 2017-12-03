@@ -36,7 +36,7 @@
         <th style="text-align: center; vertical-align: middle;">titul</th>
         <th style="text-align: center; vertical-align: middle;">Rola</th>
         <th style="text-align: center; vertical-align: middle;">Katedra</th>
-        <th style="text-align: center; vertical-align: middle;">stav</th>
+        <th style="text-align: center; vertical-align: middle;">Stav</th>
         <th style="text-align: center; vertical-align: middle;" width="280px">Action</th>
     </tr>
 
@@ -48,7 +48,13 @@
             <td style="text-align: center; vertical-align: middle;">{{ $zam->profil}}</td>
             <td style="text-align: center; vertical-align: middle;">{{ $zam->rola}}</td>
             <td style="text-align: center; vertical-align: middle;">{{ $zam->nazov}}</td>
-            <td style="text-align: center; vertical-align: middle;">{{ $zam->aktivny}}</td>
+            <td style="text-align: center; vertical-align: middle;">
+                @if($zam->aktivny !=0)
+                    aktívne konto
+                @else
+                    deaktivované konto
+                @endif
+            </td>
             <td class="btn-group" >
 
                 <a class="btn btn-info" href="{{ route('TabZamestnanci.show', $zam->idzamestnanec) }}">Ukáž</a>

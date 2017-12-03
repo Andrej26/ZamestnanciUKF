@@ -13,8 +13,10 @@ use App\Model\Katedra;
 use App\Model\Zamestnanec;
 use App\Model\RolaPouzivatela;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Model\Tag;
+use App\Model\Zamestnanec_tag;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 
 class DBZamestnanci extends Controller
@@ -26,14 +28,30 @@ class DBZamestnanci extends Controller
         ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
                 ->orderBy('idzamestnanec', 'asc')
-                    ->paginate(15);
+                        ->paginate(15);
         return view('Admin_DBtables.Zamestnanci.DBtable',['zamestnanciss' =>$table]);
     }
 
+// DOKONCIT SEARCH PRE ADMINA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    public function search(Request $request){
+        $katedra=$request->katedra;
+
+       // $pomocna01=stripos(,$katedra);
+        $table = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+           // ->where('Katedra_idKatedra',)
+           // ->paginate(15);
+            ->get();
+
+        return view('Admin_DBtables.Zamestnanci.DBtable',['zamestnanciss' =>$table]);
+    }
 
     public function create()
     {
-        return view('Admin_DBtables.Zamestnanci.create',['katedra' =>$this->katedry(), 'rola' => $this->roly()]);
+        $tag=Tag::all();
+        return view('Admin_DBtables.Zamestnanci.create',['katedra' =>$this->katedry(), 'rola' => $this->roly(), 'tags'=> $tag]);
     }
 
     public function store(Request $request)
@@ -48,19 +66,26 @@ class DBZamestnanci extends Controller
            // 'rola' => 'required|max:30',
         ]);
 
-        Zamestnanec::create([
+         Zamestnanec::create([
             'idzamestnanec' => $this->idgenerator(),
             'meno' => $request->meno,
             'email' => $request->email,
-            'password' => Hash::make($request->heslo),
+            'password' => Hash::make($request->password),
             'profil' => $request->profil,
             'aktivny' => '1',
             'Katedra_idKatedra' => $request->katedra,
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,
             ]);
+
+        for ($i=0;$i<count($request->tagy);$i++)
+        {
+            Zamestnanec_tag::create([
+                'zamestnanec_id' => $this->idback(),
+                'tag_id' => $request->tagy[$i],
+            ]);
+        }
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Zamestnanec bol vytvorený.');
-
     }
 
     public function show($id)
@@ -70,7 +95,13 @@ class DBZamestnanci extends Controller
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->where('idzamestnanec', $id)
             ->first();
-        return view('Admin_DBtables.Zamestnanci.show',compact('zam'));
+
+        $tag =Zamestnanec_tag::select('tags.*')
+            ->join('tags','tags.id','=','tag_id')
+            ->where('zamestnanec_id',$id)
+            ->get();
+
+        return view('Admin_DBtables.Zamestnanci.show',['zam' =>$zam, 'tag' => $tag]);
     }
 
 
@@ -78,7 +109,13 @@ class DBZamestnanci extends Controller
     {
         $zam01 = Zamestnanec::find($id);
 
-        return view('Admin_DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly()]);
+        $tag02=Tag::all();
+        $tag=[];
+        foreach ($tag02 as $t) {
+            $tag[$t->id]= $t->name;
+        }
+
+        return view('Admin_DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly(), 'tags'=> $tag, 'select'=> $this->tagy($id)]);
     }
 
     public function update(Request $request, $id)
@@ -94,11 +131,24 @@ class DBZamestnanci extends Controller
         Zamestnanec::find($id)->update([
             'meno' => $request->meno,
             'email' => $request->email,
-            'password' => Hash::make($request->heslo),
+            'password' => Hash::make($request->password),
             'profil' => $request->profil,
             'Katedra_idKatedra' => $request->nazov,
             'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]
         );
+
+        Zamestnanec_tag::select('*')
+           ->where('zamestnanec_id', $id)
+           ->delete();
+
+        for ($i=0;$i<count($request->tagy);$i++)
+        {
+            Zamestnanec_tag::create([
+                'zamestnanec_id' => $id,
+                'tag_id' => $request->tagy[$i],
+            ]);
+        }
+
         return redirect()->route('TabZamestnanci.index')
             ->with('success','Zamestnanec bol úspešne upravený');
     }
@@ -164,10 +214,34 @@ class DBZamestnanci extends Controller
         return $rola01;
     }
 
+    public function tagy($id){
+        $tag =Zamestnanec_tag::select('*')
+            ->join('tags','tags.id','=','tag_id')
+            ->get();
+
+        $tagy01=[];
+
+            foreach ($tag as $ta):{
+                if($ta->zamestnanec_id == $id){
+                    $tagy01[]= $ta->tag_id;
+                }
+            }
+            endforeach;
+
+        return $tagy01;
+    }
+
     public function idgenerator()
     {
         $idgen01=Zamestnanec::max('idzamestnanec');
         $idgen02=$idgen01+1;
         return $idgen02;
     }
+
+    public function idback()
+    {
+        $idgen01=Zamestnanec::max('idzamestnanec');
+        return $idgen01;
+    }
+
 }
