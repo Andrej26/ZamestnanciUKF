@@ -9,7 +9,7 @@
         <ul class="navbar-nav mr-auto">
             <li>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Hľadať" aria-label="Search" id="tags">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Hľadať" aria-label="Search" id="fulltext_input">
                     <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
                         <!--  <span class="fa fa-search" aria-hidden="true"></span>   -->
                         Vyhľadať
