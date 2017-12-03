@@ -8,8 +8,8 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav mr-auto">
                 <li>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Hľadať" aria-label="Search" id="fulltext_input">
+                    <form class="form-inline my-2 my-lg-0" action="{{URL::to('Zamestnanec/getfulltextresultsAsEmp')}}">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Hľadať" aria-label="Search" id="fulltext_input" name="fulltext_input_emp">
                         <button class="btn btn-outline-info my-2 my-sm-0" type="submit">
                             <!--  <span class="fa fa-search" aria-hidden="true"></span>   -->
                             Vyhľadať
