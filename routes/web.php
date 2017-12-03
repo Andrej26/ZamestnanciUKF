@@ -27,6 +27,8 @@ Route::prefix('UKF')->group(function() {
 
     Route::post('/search', 'AdvancedSearchController@advancesearch')->name('advanced_search');
     Route::get('/fulltextsearch', 'VyhladajZamestnancaC@fulltext')->name('fulltextsearch');
+    Route::get('/getfulltextresults', 'VyhladajZamestnancaC@zobraz')->name('getfulltextresults');
+
 
     // View-y Fakúlt
     Route::get('/fpv', function(){
@@ -87,6 +89,7 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::post('/PridanieKomentaru/{id}', 'ZamestnanecController@pridaniekomentaru')->name('komentar.store');
 
     Route::post('/search', 'AdvancedSearchController@advancesearch01')->name('advanced_search_zam');
+    Route::get('/getfulltextresultsAsEmp', 'VyhladajZamestnancaC@zobrazAkoZamestnanec')->name('getfulltextresultsAsEmp');
 
     // View-y Fakúlt
     Route::get('/fpv', function(){

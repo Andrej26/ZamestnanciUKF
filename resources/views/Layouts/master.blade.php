@@ -218,7 +218,7 @@
 <script>
     $(function() {
 
-        $("#tags" ).autocomplete({
+        $("#fulltext_input" ).autocomplete({
             source: function( request, response ) {
                 //tu definujete kde ma ten autocomplete hladat data
                 //v nasom pripade volame PHP script na URL domena.sk/order-pipeline/search
