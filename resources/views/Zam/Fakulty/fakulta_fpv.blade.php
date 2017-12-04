@@ -5,12 +5,7 @@
 @endsection
 
 @section('content')
-    <!-- Toto vypisuje hlasku, ked je zablokovaný prístup k zamestancovmu kontu -->
-    @if ($message = Session::get('danger'))
-        <div class="alert alert-danger">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+    @include('Layouts.alerts')
 
 
     <div class="site-content">

@@ -6,7 +6,6 @@
 
 @section('content')
 
-
     <div class="site-content">
         <div class="container">
             <main class="main-content">

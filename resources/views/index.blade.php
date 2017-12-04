@@ -9,25 +9,7 @@
 @endsection
 
 @section('content')
-    <!-- Toto vypisuje hlasku, ked je zablokovaný prístup k zamestancovmu kontu -->
-    @if ($message = Session::get('danger'))
-        <div class="alert alert-danger" style="text-align: center">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="color: red">
-                <span aria-hidden="true" >&times;</span>
-            </button>
-            <p class="message">{{ $message }}</p>
-        </div>
-    @endif
-
-    <!-- Toto vypisuje hlasku, ked je niečo dobre alebo sa zamestnanec odhlási. -->
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success" style="text-align: center">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" style="color: red">
-                <span aria-hidden="true" >&times;</span>
-            </button>
-            <p class="message">{{ $message }}</p>
-        </div>
-    @endif
+    @include('Layouts.alerts')
 
 <div class="site-content">
     <div class="container">
@@ -113,44 +95,79 @@
         </main>
 
         <div class="graduates">
-            <ul class="slides">
-                <li>
-                    <div class="student-data">
-                        <div class="student-image">
-                            <img src="{{URL::to('/')}}/public/dummy/person-1.jpg" alt="">
-                        </div>
-                        <div class="student-details">
-                            <h2 class="student-name">Howard Brown</h2>
-                            <ul class="student-info">
-                                <li>Graduation: <strong>2011</strong></li>
-                                <li>Course: <strong>Management</strong></li>
-                                <li>Current job: <strong>Micro System INC.</strong></li>
-                            </ul>
+                    <ul class="slides">
 
-                            <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum.</p>
-                        </div>
+                        <li>
+                            @foreach ($zamestnanec as $zam)
+                            <div class="student-data">
+                                <div class="student-image">
+                                    <a href="{{route('profil', $zam['id'])}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="25%" width="auto"></a>
+                                </div>
+                                <div class="student-details">
+                                    <a href="{{route('profil', $zam['id'])}}" style="color: inherit;"><h2 class="student-name" >{{ $zam['meno']}}</h2></a>
+                                    <ul class="student-info">
+                                        <li style="color: inherit;">e-mail: <strong>{{ $zam['email']}}</strong></li>
+                                        <li>Rola: <strong>{{ $zam['rola']}}</strong></li>
+                                        <li>Katedra: <strong>{{ $zam['katedra']}}</strong></li>
+                                        <li>Fakulta: <strong>{{ $zam['fakulta']}}</strong></li>
 
-                    </div>
-                </li>
-                <li>
-                    <div class="student-data">
-                        <div class="student-image">
-                            <img src="{{URL::to('/')}}/dummy/person-1.jpg" alt="">
-                        </div>
-                        <div class="student-details">
-                            <h2 class="student-name">Howard Brown</h2>
-                            <ul class="student-info">
-                                <li>Graduation: <strong>2011</strong></li>
-                                <li>Course: <strong>Management</strong></li>
-                                <li>Current job: <strong>Micro System INC.</strong></li>
-                            </ul>
+                                        <li>Tagy: <strong>
+                                                <?php $i = 0; ?>
+                                                @foreach($tagy as $ta)
+                                                    @if((count($ta)!=0)&&($zam['id']== $ta['id']))
+                                                        <?php $i = 1; ?>
+                                                        <span class="badge badge-primary">{{$ta['name']}}</span>
+                                                    @endif
+                                                @endforeach
+                                                @if($i == 0)
+                                                    <span>žiadne</span>
+                                                @endif
+                                            </strong>
+                                        </li>
+                                    </ul>
+                                    <br>
+                                    <p>Profil: <strong>{{ $zam['profil']}} </strong></p>
+                                </div>
+                            </div>
+                            @endforeach
+                        </li>
 
-                            <p>Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime facilis ducimus quibusdam quisquam minus dolore, illo, sequi reprehenderit ex ab officia laborum? Ipsam officiis delectus vel vitae nulla modi rerum.</p>
-                        </div>
+                        <li>
+                            @foreach ($zamestnanec01 as $zam)
+                                <div class="student-data">
+                                    <div class="student-image">
+                                        <a href="{{route('profil', $zam['id'])}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="25%" width="auto"></a>
+                                    </div>
+                                    <div class="student-details">
+                                        <a href="{{route('profil', $zam['id'])}}" style="color: inherit;"><h2 class="student-name" >{{ $zam['meno']}}</h2></a>
+                                        <ul class="student-info">
+                                            <li style="color: inherit;">e-mail: <strong>{{ $zam['email']}}</strong></li>
+                                            <li>Rola: <strong>{{ $zam['rola']}}</strong></li>
+                                            <li>Katedra: <strong>{{ $zam['katedra']}}</strong></li>
+                                            <li>Fakulta: <strong>{{ $zam['fakulta']}}</strong></li>
 
-                    </div>
-                </li>
-            </ul>
+                                            <li>Tagy: <strong>
+                                                    <?php $i = 0; ?>
+                                                    @foreach($tagy as $ta)
+                                                        @if((count($ta)!=0)&&($zam['id']== $ta['id']))
+                                                            <?php $i = 1; ?>
+                                                            <span class="badge badge-primary">{{$ta['name']}}</span>
+                                                        @endif
+                                                    @endforeach
+                                                    @if($i == 0)
+                                                        <span>žiadne</span>
+                                                    @endif
+                                                </strong>
+                                            </li>
+                                        </ul>
+                                        <br>
+                                        <p>Profil: <strong>{{ $zam['profil']}} </strong></p>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </li>
+
+                    </ul>
         </div>
 
     </div>

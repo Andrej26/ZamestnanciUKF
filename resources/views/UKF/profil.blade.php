@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+    @include('Layouts.alerts')
+
     <div class="site-content">
         <div class="container">
             <main class="main-content">

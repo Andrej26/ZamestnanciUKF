@@ -38,7 +38,7 @@ class ZamestnanecController extends Controller
         foreach ($tag02 as $t) {
             $tag[$t->id]= $t->name;
         }
-        return view('zamestnanec', ['fakulta' =>$this->fakulty(), 'tags' => $tag]);
+        return view('zamestnanec', ['zamestnanec' => $this->spojenie2tabuliek(),'zamestnanec01' => $this->spojenie2tabuliek(), 'fakulta' =>$this->fakulty(), 'tags' => $tag, 'tagy'=>$this->tagy()]);
     }
 
     public function adminn()
@@ -149,10 +149,7 @@ class ZamestnanecController extends Controller
         return $pom;
     }
 
-    public function chart()
-    {
-        return view('charts');
-    }
+
 
     public function tagy(){
         $tag =Zamestnanec_tag::select('*')
@@ -250,5 +247,48 @@ class ZamestnanecController extends Controller
         endforeach;
 
         return $fak01;
+    }
+
+    public function chart()
+    {
+        return view('charts');
+    }
+
+    public function spojenie2tabuliek()
+    {
+        $pom=[];
+        $id=array_random($this->random_id());
+
+        $kat01 = Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
+            ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
+            ->orderBy('idKatedra', 'asc')
+            ->get();
+
+        $zames = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+            ->get();
+
+        foreach ($zames as $zam):
+            foreach ($kat01 as $kat):
+                if(($kat['nazov'] == $zam['nazov']) && ($zam['idzamestnanec']== $id)) {
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov,
+                        'rola'=> $zam->rola, 'profil'=> $zam->profil,'idFakulta'=>$kat->Fakulta_idFakulta,'fakulta'=>$kat->nazov01];
+                }
+            endforeach;
+        endforeach;
+
+        return $pom;
+    }
+
+    public function random_id()
+    {
+        $zam_id=[];
+        foreach (Zamestnanec::all() as $zam):
+            $zam_id[]= $zam->idzamestnanec;
+        endforeach;
+
+        return $zam_id;
     }
 }
