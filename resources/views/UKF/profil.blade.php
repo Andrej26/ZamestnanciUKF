@@ -111,22 +111,26 @@
 
             <!-- Vypis komentarov -->
             <h1>Komentáre</h1>
-            <div class="profil">
+            <div class="komentar" >
                 @foreach ($komentare as $kom)
-                    <ul class="slides">
-                        <div class="student-data">
+                    <div class="komentare">
+                        <div class="autor" >
+                            <a href="{{route('profil', $kom['id'])}}"><img id="zam-img" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="auto" width="100%" style="border-radius: 50%    "></a>
+                        </div>
+                        <div class="koment" style="border: none; background-color: inherit">
                             <div class="student-details">
                                 <ul class="student-info">
-                                    <li>Autor: <strong>{{ $kom['autor']}}</strong></li>
-                                    <li>Text: <strong>{{ $kom['komentar']}}</strong></li>
+                                    <li><a href="{{route('profil', $kom['id'])}}"><strong>{{ $kom['autor']}}</strong></a></li>
+                                    <li>{{$kom['komentar']}}</li>
                                 </ul>
                             </div>
                         </div>
-                        </li>
-                    </ul>
+                            <div class="koment01" style="border: none; background-color: inherit">
+                                        <strong style="font-size: 18px;">#{{$kom['por']}}</strong>
+                            </div>
+                    </div>
                 @endforeach
             </div>
-
         </div>
     </div>
     <script type="text/javascript" src="{{URL::to('/')}}/js/Image-modal.js"></script>
