@@ -129,18 +129,15 @@
                     </div>
                 @endforeach
             </div>
-
             <!-- pridavanie kOmentarov -->
             <div class="komentare">
                 <h1>Komentáre</h1>
-
                 {!! Form::model($prof, ['method' => 'POST','route' => ['komentar.store', $prof['id']]]) !!}
                 @include('Zam.Pridavanie_komentarov.createform')
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                     {!! Form::submit('Odoslať komentár',['class' => 'btn btn-primary']) !!}
                 </div>
                 {!! Form::close() !!}
-
             </div>
             @endforeach
         </div>
