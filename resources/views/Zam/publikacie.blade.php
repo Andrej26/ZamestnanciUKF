@@ -31,8 +31,6 @@
                         <a class="btn btn-success "  href="{{ route('zames.dashboard') }}"> Odstrániť publikáciu</a>
 
 
-
-
                 </div>
                 <!-- Vyhladavanie -->
                 <div class="aside">

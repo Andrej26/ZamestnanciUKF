@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+    @include('Layouts.alerts')
+
     <div class="zarovnanie">
         <a class="btn btn-outline-dark but01" href="{{ url('Admin/TabZamestnanci')}}">
             <input  src="{{URL::to('/')}}/images/zamestnanci.png" alt="Tabulka01" type="image" class="img-thumbnail_01" />
