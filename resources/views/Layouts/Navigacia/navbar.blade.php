@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #3a454b; border-radius: 0px 0px 6px 6px">
-    <a class="navbar-brand" href="{{route('ukf')}}">Domov</a>
+    <a class="navbar-brand" href="{{route('ukf')}}"><i class="fa fa-home" aria-hidden="true" style="font-size: 160%"></i></a>
 
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

@@ -53,6 +53,7 @@
             @if($test === 1)
                 @foreach ($zamestnanec as $zam)
                         <ul class="slides">
+                            <li>
                             <div class="student-data">
                                 <div class="student-image">
                                     <a href="{{route('profil', $zam['id'])}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="25%" width="auto"></a>
