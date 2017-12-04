@@ -115,7 +115,7 @@
                             <div class="student-data">
                                 <div class="student-details">
                                     <ul class="student-info">
-                                        <li>Autor: <strong>{{ $kom['autor']}}</strong></li>
+                                        <li>Autor: <strong>{{ $kom['meno']}}</strong></li>
                                         <li>Text: <strong>{{ $kom['komentar']}}</strong></li>
                                     </ul>
                                 </div>

@@ -218,17 +218,15 @@ class ZamestnanecController extends Controller
 
     public function komentare($idprof)
     {
-        $pm=[];
         $koment = Komentare::select('*')
             ->join('zamestnanec','idzamestnanec','=','autor')
-            ->get();
+            ->where([
+                ['okomentovanyId', '=', $idprof],
+                ['odsuhlaseny', '=', 1],
+                ])
+            ->paginate(3);
 
-        foreach ($koment as $kom):
-            if  (($kom['okomentovanyId'] == $idprof)&&($kom['odsuhlaseny'] == 1)) {
-                $pm[] = ['komentar' => $kom->komentar, 'autor' => $kom->meno];
-            }
-        endforeach;
-        return $pm;
+        return $koment;
     }
 
     public function fakulty()

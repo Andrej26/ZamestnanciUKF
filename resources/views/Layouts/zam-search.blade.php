@@ -28,7 +28,7 @@
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong class="vyhladanie">Fakulta:</strong>
+                <strong class="vyhladanie">Tagy:</strong>
                 {!! Form::select('tagy[]',$tags,null, ['class' => 'form-control select2-multi', 'multiple' => 'multiple']) !!}
             </div>
         </div>
