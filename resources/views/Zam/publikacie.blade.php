@@ -12,7 +12,7 @@
             <main class="main-content">
                 <div class="content">
                     <header class="site-header">
-                        <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_UKF5.png" alt=""></a>
+                        <a href="zames.dashboard" class="logo"><img src="{{URL::to('/')}}/images/logo_UKF5.png" alt=""></a>
                         <div class="header-type">
                             <h1><strong>Univerzita Konštantína Filozofa v Nitre</strong></h1>
                         </div>

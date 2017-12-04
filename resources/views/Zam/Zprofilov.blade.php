@@ -16,7 +16,7 @@
             <main class="main-content">
                 <div class="content">
                     <header class="site-header">
-                        <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
+                        <a href="{{route('zames.dashboard')}}" class="logo"><img src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
 
                     </header> <!-- .site-header -->
 
@@ -47,6 +47,9 @@
             @endif
             @if($ifakulta == 5)
                 <h1>Zoznam Profilov zamestnancov Fakulta socialnych vied a zdravotnictva</h1>
+            @endif
+            @if($ifakulta == 6)
+                <h1>Zoznam Profilov zamestnancov ostatných častí univerzity</h1>
             @endif
 
             <div class="profil">

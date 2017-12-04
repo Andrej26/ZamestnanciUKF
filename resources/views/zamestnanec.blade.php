@@ -16,7 +16,7 @@
             <main class="main-content">
                 <div class="content">
                     <header class="site-header">
-                        <a class="logo" href="{{route('ukf')}}" ><img  src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
+                        <a class="logo" href="{{route('zames.dashboard')}}" ><img  src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
                     </header> <!-- .site-header -->
 
                     <div class="banner">
@@ -77,7 +77,7 @@
                             </div>
 
                             <div class="feature rounded-icon">
-                                <a href="#">
+                                <a href="{{ route('zozprofil', 0)}}">
                                     <div class="feature-icon" ><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Ostatné časti </h3>
                                 </a>

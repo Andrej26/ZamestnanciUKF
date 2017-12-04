@@ -13,7 +13,7 @@
             <main class="main-content">
                 <div class="content">
                     <header class="site-header">
-                        <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
+                        <a href="zames.dashboard" class="logo"><img src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
                         <div class="header-type">
 
                             <h2 class="nadpis_fakult">Pedagogická fakulta</h2>

@@ -12,7 +12,7 @@
             <main class="main-content">
                 <div class="content">
                     <header class="site-header">
-                        <a href="" class="logo"><img src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
+                        <a href="zames.dashboard" class="logo"><img src="{{URL::to('/')}}/images/logo_ukf.png" alt=""></a>
 
                     </header> <!-- .site-header -->
 

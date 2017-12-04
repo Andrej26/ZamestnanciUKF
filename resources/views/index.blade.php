@@ -77,7 +77,7 @@
                         </div>
 
                         <div class="feature rounded-icon">
-                            <a href="#">
+                            <a href="{{ route('zprofil', 0)}}">
                                 <div class="feature-icon" ><i class="icon-owl"></i></div>
                                 <h3 class="feature-title">Ostatné časti </h3>
                             </a>

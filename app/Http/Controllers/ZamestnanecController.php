@@ -104,7 +104,8 @@ class ZamestnanecController extends Controller
                 return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
                 break;
             default:
-                //  echo "Your favorite color is neither red, blue, nor green!";
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->ostatne_miesta()],['ifakulta'=>6, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                break;
         }
     }
 
@@ -149,7 +150,40 @@ class ZamestnanecController extends Controller
         return $pom;
     }
 
+    public function ostatne_miesta()
+    {
+        $kat01=[];
+        $pom=[];
 
+        $kat= Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
+            ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
+            ->orderBy('idKatedra', 'asc')
+            ->get();
+
+        foreach ( $kat as $katedra):
+            if(($katedra['Fakulta_idFakulta'] == 4)||($katedra['Fakulta_idFakulta'] == 6)||($katedra['Fakulta_idFakulta'] == 8)||($katedra['Fakulta_idFakulta'] == 9))
+            {
+                $kat01[] = ['katedra'=>$katedra->nazov, 'fakulta'=>$katedra->nazov01];
+            }
+        endforeach;
+
+        $zames = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+            ->get();
+
+        foreach ($zames as $zam):
+            foreach ($kat01 as $kats):
+                if($kats['katedra'] == $zam['nazov'])
+                {
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil, 'fakulta'=> $kats['fakulta'] ];
+                }
+            endforeach;
+        endforeach;
+
+        return $pom;
+    }
 
     public function tagy(){
         $tag =Zamestnanec_tag::select('*')
