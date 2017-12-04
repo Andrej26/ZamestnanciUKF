@@ -100,12 +100,12 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/pf', function(){
         return View('Zam/Fakulty/fakulta_pf');});
 
-   // Route::get('/FPV', 'ZamestnanecController@fpv')->name('Katedry.FPV');
-   // Route::get('/FF', 'ZamestnanecController@ff')->name('Katedry.FF');
-   // Route::get('/FSVaZ', 'ZamestnanecController@fsvaz')->name('Katedry.FSVaZ');
-   // Route::get('/FSŠ', 'ZamestnanecController@fsš')->name('Katedry.FSŠ');
-   // Route::get('/PF', 'ZamestnanecController@pf')->name('Katedry.PF');
-   // Route::get('/Ostatne', 'ZamestnanecController@ostatne')->name('Katedry.Ostatne');
+    // Route::get('/FPV', 'ZamestnanecController@fpv')->name('Katedry.FPV');
+    // Route::get('/FF', 'ZamestnanecController@ff')->name('Katedry.FF');
+    // Route::get('/FSVaZ', 'ZamestnanecController@fsvaz')->name('Katedry.FSVaZ');
+    // Route::get('/FSŠ', 'ZamestnanecController@fsš')->name('Katedry.FSŠ');
+    // Route::get('/PF', 'ZamestnanecController@pf')->name('Katedry.PF');
+    // Route::get('/Ostatne', 'ZamestnanecController@ostatne')->name('Katedry.Ostatne');
 
     //Zmena hesla
     Route::post('/heslo/email', 'Auth\ZamestnanecForgotPasswordController@sendResetLinkEmail')->name('zame.password.email');
@@ -203,5 +203,5 @@ Route::get('/dbApi', [
 ]);
 
 Route::get('/parseTest', [
-        'as' => 'parseTest', 'uses' => 'DbConnectTest@RozparsujMenoNaMail'
-        ]);
+    'as' => 'parseTest', 'uses' => 'DbConnectTest@RozparsujMenoNaMail'
+]);
