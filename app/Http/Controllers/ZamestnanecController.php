@@ -257,7 +257,8 @@ class ZamestnanecController extends Controller
             ->where([
                 ['okomentovanyId', '=', $idprof],
                 ['odsuhlaseny', '=', 1],
-                ])
+            ])
+            ->orderBy('komentar.created_at','asc')
             ->paginate(3);
 
         return $koment;

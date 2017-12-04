@@ -1,4 +1,4 @@
-<div class="paginate-box">
+<div class="paginate-box" style="margin-right: auto !important; margin-left: auto !important; width: 10%;">
 @if ($paginator->hasPages())
     <ul class="pagination">
         {{-- Previous Page Link --}}

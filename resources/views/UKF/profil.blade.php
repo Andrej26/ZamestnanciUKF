@@ -114,6 +114,7 @@
             <!-- Vypis komentarov -->
             <h1>Komentáre</h1>
             <div class="komentar" >
+                <?php $i = 1; ?>
                 @foreach ($komentare as $kom)
                     <div class="komentare">
                         <div class="autor" >
@@ -122,19 +123,25 @@
                         <div class="koment" style="border: none; background-color: inherit">
                             <div class="student-details">
                                 <ul class="student-info">
-                                    <li><a href="{{route('profil', $kom['id'])}}"><strong>{{ $kom['autor']}}</strong></a></li>
+                                    <li><a href="{{route('profil', $kom->idzamestnanec)}}"><strong>{{ $kom->meno}}</strong></a></li>
                                     <li>{{$kom['komentar']}}</li>
                                 </ul>
                             </div>
                         </div>
                             <div class="koment01" style="border: none; background-color: inherit">
-                                        <strong style="font-size: 18px;">#{{$kom['por']}}</strong>
+                                        <strong style="font-size: 18px;">#{{$i}}</strong>
+                                <?php $i++; ?>
                             </div>
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
+
+    <div class='col-xs-12 col-sm-12 col-md-12'>
+        {{ $komentare->links('vendor.pagination.bootstrap-4') }}
+    </div>
+
     <script type="text/javascript" src="{{URL::to('/')}}/js/Image-modal.js"></script>
     <script type="text/javascript" src="{{URL::to('/')}}/js/dropdownScript.js"></script>
 @endsection

@@ -34,7 +34,6 @@ class UKFController extends Controller
 
      public function profil($idprofil)
      {
-
          return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil), 'tagy'=>$this->tagy()]);
      }
 
