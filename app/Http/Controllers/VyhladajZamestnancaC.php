@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Fakulta;
+use App\Model\Katedra;
 use App\Model\Tag;
 use App\Model\Zamestnanec_tag;
 use Illuminate\Http\Request;
@@ -14,7 +15,10 @@ class VyhladajZamestnancaC extends Controller
     {
 
         $term = $request->get('fulltext_input');
-        $users = Zamestnanec::where('meno','LIKE', '%'.$term.'%')->get();
+       // $users = Zamestnanec::where('meno','LIKE', '%'.$term.'%')->get();
+      //  $users = Zamestnanec::select('meno, idzamestnanec as id, ')
+
+        $users = $this->spojenie2tabuliek($term);
 
 
         $tag02=Tag::all();
@@ -31,7 +35,8 @@ class VyhladajZamestnancaC extends Controller
     {
 
         $term = $request->get('fulltext_input_emp');
-        $users = Zamestnanec::where('meno','LIKE', '%'.$term.'%')->get();
+        $users = $this->spojenie2tabuliek($term);
+       // $users = Zamestnanec::where('meno','LIKE', '%'.$term.'%')->get();
 
 
         $tag02=Tag::all();
@@ -63,6 +68,36 @@ class VyhladajZamestnancaC extends Controller
     }
 
 
+
+    public function spojenie2tabuliek($term)
+    {
+       $pom=[];
+
+        $kat01 = Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
+            ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
+            ->orderBy('idKatedra', 'asc')
+            ->get();
+
+        $zames = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->where('meno','LIKE', '%'.$term.'%')
+            ->orderBy('idzamestnanec', 'asc')
+            ->get();
+
+        foreach ($zames as $zam):
+            foreach ($kat01 as $kat):
+                if($kat['nazov'] == $zam['nazov']) {
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov,
+                        'rola'=> $zam->rola, 'profil'=> $zam->profil,'idFakulta'=>$kat->Fakulta_idFakulta,'fakulta'=>$kat->nazov01];
+                }
+            endforeach;
+        endforeach;
+
+        return $pom;
+
+
+    }
 
 
     public function fakulty()
