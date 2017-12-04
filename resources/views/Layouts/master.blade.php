@@ -214,7 +214,6 @@
 @yield('script')
 
 
-
 <script>
     $(function() {
 
@@ -223,7 +222,7 @@
                 //tu definujete kde ma ten autocomplete hladat data
                 //v nasom pripade volame PHP script na URL domena.sk/order-pipeline/search
                 $.ajax({
-                    url : '/TimovyProjekt/ZamestnanciUKF/public/UKF/fulltextsearch',
+                    url : '/ZamestnanciUKF02/public/UKF/fulltextsearch',
                     type    : 'GET',
                     dataType: "json",
                     data: {
@@ -244,8 +243,6 @@
             select:function (key,value) {
 
             }
-
-
         });
     });
 
