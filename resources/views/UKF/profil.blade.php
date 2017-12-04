@@ -117,7 +117,7 @@
                 @foreach ($komentare as $kom)
                     <div class="komentare">
                         <div class="autor" >
-                            <a href="{{route('profil', $kom['id'])}}"><img id="zam-img" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="auto" width="100%" style="border-radius: 50%    "></a>
+                            <a href="{{route('profil', $kom->idzamestnanec)}}"><img id="zam-img" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="auto" width="100%" style="border-radius: 50%    "></a>
                         </div>
                         <div class="koment" style="border: none; background-color: inherit">
                             <div class="student-details">

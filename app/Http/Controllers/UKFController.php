@@ -218,20 +218,25 @@ class UKFController extends Controller
 
     public function komentare($idprof)
     {
-        $pm=[];
-        $i = 0;
+      //  $pm=[];
+       // $i = 0;
         $koment = Komentare::select('*')
             ->join('zamestnanec','idzamestnanec','=','autor')
+            ->where([
+                ['okomentovanyId', '=', $idprof],
+                ['odsuhlaseny', '=', 1],
+            ])
             ->orderBy('komentar.created_at','asc')
-            ->get();
+            ->paginate(3);
 
-        foreach ($koment as $kom):
-            if  (($kom['okomentovanyId'] == $idprof)&&($kom['odsuhlaseny'] == 1)) {
-                $i+=1;
-                $pm[] = ['komentar' => $kom->komentar, 'autor' => $kom->meno, 'id' => $kom->idzamestnanec, 'por'=>$i];
-            }
-        endforeach;
-        return $pm;
+      //  foreach ($koment as $kom):
+       //     if  (($kom['okomentovanyId'] == $idprof)&&($kom['odsuhlaseny'] == 1)) {
+       //         $i+=1;
+        //        $pm[] = ['komentar' => $kom->komentar, 'autor' => $kom->meno, 'id' => $kom->idzamestnanec, 'por'=>$i];
+       //     }
+       // endforeach;
+        return $koment;
+
     }
 
     public function projekty($idss)
