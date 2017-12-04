@@ -34,6 +34,7 @@ class UKFController extends Controller
 
      public function profil($idprofil)
      {
+
          return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil), 'tagy'=>$this->tagy()]);
      }
 
@@ -217,15 +218,20 @@ class UKFController extends Controller
 
     public function komentare($idprof)
     {
+        $pm=[];
+        $i = 0;
         $koment = Komentare::select('*')
             ->join('zamestnanec','idzamestnanec','=','autor')
-            ->where([
-                ['okomentovanyId', '=', $idprof],
-                ['odsuhlaseny', '=', 1],
-            ])
-            ->paginate(3);
+            ->orderBy('komentar.created_at','asc')
+            ->get();
 
-        return $koment;
+        foreach ($koment as $kom):
+            if  (($kom['okomentovanyId'] == $idprof)&&($kom['odsuhlaseny'] == 1)) {
+                $i+=1;
+                $pm[] = ['komentar' => $kom->komentar, 'autor' => $kom->meno, 'id' => $kom->idzamestnanec, 'por'=>$i];
+            }
+        endforeach;
+        return $pm;
     }
 
     public function projekty($idss)
