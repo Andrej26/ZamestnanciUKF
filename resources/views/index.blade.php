@@ -184,4 +184,38 @@
     <script>
         $('.select2-multi').select2();
     </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $(document).on('change','.fakultaa', function () {
+                //console.log("juchuuu som tu");
+
+                var cat_id=$(this).val();
+                //console.log(cat_id);
+                var div=$(this).parent();
+
+                var op="";
+
+                $.ajax({
+                    type:'get',
+                    url:'{!! route('findKatedry') !!}',
+                    data:{'id':cat_id},
+                    success:function(data){
+                        //console.log('succes');
+                       // console.log(data);
+                        op+='<option value="0" selected disabled> chose katedra' +
+                            '</option>';
+                        for(var i=0; i<data.length;i++){
+                            op+='<option value="'+data[i].idKatedra+'">'+data[i].nazov+'</option>';
+                        }
+                        div.find('.kated').html(" ");
+                        div.find('.kated').append(op);
+                    },
+                    error:function () {
+                        
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

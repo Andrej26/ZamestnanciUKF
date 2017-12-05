@@ -41,14 +41,14 @@
              }
 
             .but01{
-                margin:3px;
+                margin:10px;
             }
 
             .img-thumbnail_01{
                 display: inline-block;
-                width: 330px;
-                height: 310px;
-                margin: 1px;
+                width: 260px;
+                height: 240px;
+                margin: 10px;
             }
             .odh {
                 text-align: right;

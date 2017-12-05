@@ -29,7 +29,25 @@ class UKFController extends Controller
             $tag[$t->id]= $t->name;
         }
 
-        return view('index', ['zamestnanec' => $this->spojenie2tabuliek(),'zamestnanec01' => $this->spojenie2tabuliek(), 'fakulta' =>$this->fakulty(),'tags'=> $tag, 'tagy'=>$this->tagy()]);
+        return view('index', ['zamestnanec' => $this->spojenie2tabuliek(),'zamestnanec01' => $this->spojenie2tabuliek(),'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(),'tags'=> $tag, 'tagy'=>$this->tagy()]);
+    }
+
+    public function findkatedry(Request $request){
+        //$kat01 =[];
+
+        $data =Katedra::select('idKatedra' , 'nazov')
+            ->where('Fakulta_idFakulta', $request->id)
+            ->groupBy('nazov','idKatedra')
+            ->get();
+
+       // $kat01[0] = '...';
+
+      //  foreach ( $kat02 as $katedra):
+      //      $kat01[$katedra->idKatedra] = $katedra->nazov;
+      //  endforeach;
+
+        return response()->json($data);
+
     }
 
      public function profil($idprofil)
@@ -88,6 +106,23 @@ class UKFController extends Controller
         endforeach;
 
         return $fak01;
+    }
+
+    public function katedry_zoz()
+    {
+        $kat01 =[];
+
+        $kat02 =Katedra::select('idKatedra' , 'nazov')
+            ->groupBy('nazov','idKatedra')
+            ->get();
+
+        $kat01[0] = '...';
+
+        foreach ( $kat02 as $katedra):
+            $kat01[$katedra->idKatedra] = $katedra->nazov;
+        endforeach;
+
+        return $kat01;
     }
 
     /**

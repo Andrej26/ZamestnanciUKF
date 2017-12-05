@@ -26,6 +26,8 @@ Route::prefix('UKF')->group(function() {
     Route::get('/ZoznamProfilov/{id}', 'UKFController@zprofil')->name('zprofil');
 
     Route::post('/search', 'AdvancedSearchController@advancesearch')->name('advanced_search');
+    Route::get('/findKatedry', 'UKFController@findkatedry')->name('findKatedry');
+
     Route::get('/fulltextsearch', 'VyhladajZamestnancaC@fulltext')->name('fulltextsearch');
     Route::get('/getfulltextresults', 'VyhladajZamestnancaC@zobraz')->name('getfulltextresults');
 

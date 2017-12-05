@@ -15,14 +15,14 @@
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong class="vyhladanie">Katedra:</strong>
-                {!! Form::text('katedra', null, array('placeholder' => 'katedra','class' => 'form-control')) !!}
+                {!! Form::select('katedra', $katedra, null,['class' => 'kated']) !!}
             </div>
         </div>
 
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong class="vyhladanie">Fakulta:</strong>
-                {!! Form::select('fakulta',$fakulta,null, ['class' => 'form-control']) !!}
+                {!! Form::select('fakulta',$fakulta,null, ['class' => 'fakultaa', 'id' => 'faku']) !!}
             </div>
         </div>
 
