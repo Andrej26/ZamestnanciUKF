@@ -18,7 +18,7 @@
        </div>
 
         <div style='float: right; margin-left: auto;'>
-            <a class="btn btn-dark" style="display: inline-block" href="{{ route('zames.logout') }}">Odhasit</a>
+            <a class="btn btn-dark" style="display: inline-block" href="{{ route('zames.logout') }}">Odhlásiť sa</a>
         </div>
 
     </div>
