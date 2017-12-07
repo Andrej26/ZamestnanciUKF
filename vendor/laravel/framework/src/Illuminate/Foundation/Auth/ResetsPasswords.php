@@ -23,11 +23,11 @@ trait ResetsPasswords
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showResetForm(Request $request, $token = null)
-{
-    return view('auth.passwords.reset')->with(
-        ['token' => $token, 'email' => $request->email]
-    );
-}
+    {
+        return view('auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
 
     /**
      * Reset the given user's password.
@@ -128,7 +128,7 @@ trait ResetsPasswords
     /**
      * Get the response for a failed password reset.
      *
-     * @param  \Illuminate\Http\Request
+     * @param  \Illuminate\Http\Request  $request
      * @param  string  $response
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Http\JsonResponse
      */
