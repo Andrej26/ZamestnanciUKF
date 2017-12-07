@@ -29,8 +29,11 @@
             @if($kom->odsuhlaseny == 0)
             <td style="text-align: center; vertical-align: middle;">nový</td>
 
-            @else
+            @elseif($kom->odsuhlaseny == 1)
             <td style="text-align: center; vertical-align: middle;">schválený</td>
+
+            @else
+                <td style="text-align: center; vertical-align: middle;">neschválený</td>
 
             @endif
             <td class="btn-group" >

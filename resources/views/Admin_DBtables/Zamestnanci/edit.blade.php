@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-lg-12 col-xs-12 col-sm-12 col-md-12 margin-tb">
             <div class="float-left">
-                <h2>Uprav zamestnanca</h2>
+                <h2>Úprava zamestnanca</h2>
             </div>
 
             <div class="float-right">

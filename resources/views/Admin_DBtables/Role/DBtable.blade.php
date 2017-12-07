@@ -15,7 +15,7 @@
 </div>
 <br>
 
-<@include('Layouts.alerts')
+@include('Layouts.alerts')
 
 <table class="table table-bordered col-xs-12 col-sm-12 col-md-12 text-center">
     <tr>

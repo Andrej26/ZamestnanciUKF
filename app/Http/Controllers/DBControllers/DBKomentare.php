@@ -33,8 +33,9 @@ class DBKomentare extends Controller
         $pom=Komentare::find($id,['odsuhlaseny']);
 
         if ($pom['odsuhlaseny'] == '1'){
+            Komentare::find($id)->update(['odsuhlaseny'=>'-1']);
             return redirect()->route('TabKomentar.index')
-                ->with('success','Daný komentár už bol schválený.');
+                ->with('success','Komentár je neschválený. Na stránke sa nezobrazí.');
         }
         else {
             Komentare::find($id)->update(['odsuhlaseny'=>'1']);
@@ -51,25 +52,21 @@ class DBKomentare extends Controller
     }
 
 
-
-
-
-
     public function edit($id)
     {
-        $fakulta01 = Fakulta::find($id);
+        $koment = Komentare::find($id);
 
-        return view('Admin_DBtables.Fakulty.edit',compact('fakulta01'));
+        return view('Admin_DBtables.Komentare.edit',compact('koment'));
     }
 
     public function update(Request $request, $id)
     {
         request()->validate([
-            'nazov' => 'required|max:60',
+            'komentar' => 'required|max:60',
         ]);
 
-        Fakulta::find($id)->update($request->all());
-        return redirect()->route('TabFakulta.index')
-            ->with('success','Fakulta bola upravená');
+        Komentare::find($id)->update($request->all());
+        return redirect()->route('TabKomentar.index')
+            ->with('success','Komentár bol upravený');
     }
 }

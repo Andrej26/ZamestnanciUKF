@@ -22,7 +22,7 @@
     <tr>
         <th style="text-align: center; vertical-align: middle;">id</th>
         <th style="text-align: center; vertical-align: middle;">Nazov</th>
-        <th style="text-align: center; vertical-align: middle;">meno</th>
+        <th style="text-align: center; vertical-align: middle;">Autor</th>
         <th style="text-align: center; vertical-align: middle;" width="280px">Action</th>
     </tr>
 
