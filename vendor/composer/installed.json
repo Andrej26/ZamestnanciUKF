@@ -4322,149 +4322,39 @@
         ]
     },
     {
-        "name": "umpirsky/language-list",
-        "version": "v1.0",
-        "version_normalized": "1.0.0.0",
+        "name": "laravelnews/laravel-twbs4",
+        "version": "1.1.0",
+        "version_normalized": "1.1.0.0",
         "source": {
             "type": "git",
-            "url": "https://github.com/umpirsky/language-list.git",
-            "reference": "3079e6ea4d908bd9f8e0b07477c7d8ad3b1d8c8c"
+            "url": "https://github.com/laravelnews/laravel-twbs4.git",
+            "reference": "1e89f61adb57ebb6f2815e859a8602229451610d"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/umpirsky/language-list/zipball/3079e6ea4d908bd9f8e0b07477c7d8ad3b1d8c8c",
-            "reference": "3079e6ea4d908bd9f8e0b07477c7d8ad3b1d8c8c",
+            "url": "https://api.github.com/repos/laravelnews/laravel-twbs4/zipball/1e89f61adb57ebb6f2815e859a8602229451610d",
+            "reference": "1e89f61adb57ebb6f2815e859a8602229451610d",
             "shasum": ""
         },
         "require": {
-            "php": ">=5.4"
+            "laravel/framework": "~5.5.0"
         },
-        "require-dev": {
-            "symfony/locale": "^2.7|^3.0",
-            "umpirsky/list-generator": "^1.1"
-        },
-        "time": "2016-09-26T14:12:15+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Saša Stamenković",
-                "email": "umpirsky@gmail.com"
-            }
-        ],
-        "description": "List of all languages with names and ISO 639-1 codes in all languages and all data formats."
-    },
-    {
-        "name": "intervention/image",
-        "version": "2.4.1",
-        "version_normalized": "2.4.1.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/Intervention/image.git",
-            "reference": "3603dbcc9a17d307533473246a6c58c31cf17919"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/Intervention/image/zipball/3603dbcc9a17d307533473246a6c58c31cf17919",
-            "reference": "3603dbcc9a17d307533473246a6c58c31cf17919",
-            "shasum": ""
-        },
-        "require": {
-            "ext-fileinfo": "*",
-            "guzzlehttp/psr7": "~1.1",
-            "php": ">=5.4.0"
-        },
-        "require-dev": {
-            "mockery/mockery": "~0.9.2",
-            "phpunit/phpunit": "^4.8 || ^5.7"
-        },
-        "suggest": {
-            "ext-gd": "to use GD library based image processing.",
-            "ext-imagick": "to use Imagick based image processing.",
-            "intervention/imagecache": "Caching extension for the Intervention Image library"
-        },
-        "time": "2017-09-21T16:29:17+00:00",
+        "time": "2017-11-10T21:16:12+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "2.3-dev"
+                "dev-master": "1.0-dev"
             },
             "laravel": {
                 "providers": [
-                    "Intervention\\Image\\ImageServiceProvider"
-                ],
-                "aliases": {
-                    "Image": "Intervention\\Image\\Facades\\Image"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Intervention\\Image\\": "src/Intervention/Image"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Oliver Vogel",
-                "email": "oliver@olivervogel.com",
-                "homepage": "http://olivervogel.com/"
-            }
-        ],
-        "description": "Image handling and manipulation library with support for Laravel integration",
-        "homepage": "http://image.intervention.io/",
-        "keywords": [
-            "gd",
-            "image",
-            "imagick",
-            "laravel",
-            "thumbnail",
-            "watermark"
-        ]
-    },
-    {
-        "name": "consoletvs/support",
-        "version": "2.4.0",
-        "version_normalized": "2.4.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ConsoleTVs/Support.git",
-            "reference": "b60c87f54f05d5ec2853b19062b6475e04abce79"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ConsoleTVs/Support/zipball/b60c87f54f05d5ec2853b19062b6475e04abce79",
-            "reference": "b60c87f54f05d5ec2853b19062b6475e04abce79",
-            "shasum": ""
-        },
-        "require": {
-            "ext-bcmath": "*",
-            "illuminate/support": "5.*",
-            "intervention/image": "^2.4",
-            "php": ">=7.0",
-            "umpirsky/language-list": "^1.0"
-        },
-        "time": "2017-11-03T13:51:40+00:00",
-        "type": "library",
-        "extra": {
-            "laravel": {
-                "providers": [
-                    "ConsoleTVs\\Support\\SupportServiceProvider"
+                    "LaravelNews\\Presets\\BootstrapFour\\BootstrapPresetServiceProvider"
                 ]
             }
         },
         "installation-source": "dist",
         "autoload": {
             "psr-4": {
-                "ConsoleTVs\\Support\\": "."
+                "LaravelNews\\Presets\\BootstrapFour\\": "src/"
             }
         },
         "notification-url": "https://packagist.org/downloads/",
@@ -4473,174 +4363,10 @@
         ],
         "authors": [
             {
-                "name": "Erik Campobadal",
-                "email": "soc@erik.cat"
+                "name": "Paul Redmond",
+                "email": "paulrredmond@gmail.com"
             }
         ],
-        "description": "ConsoleTVs support library"
-    },
-    {
-        "name": "jenssegers/date",
-        "version": "v3.2.12",
-        "version_normalized": "3.2.12.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/jenssegers/date.git",
-            "reference": "1db4d580d1d45085a48fd4a332697619b9a3851c"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/jenssegers/date/zipball/1db4d580d1d45085a48fd4a332697619b9a3851c",
-            "reference": "1db4d580d1d45085a48fd4a332697619b9a3851c",
-            "shasum": ""
-        },
-        "require": {
-            "nesbot/carbon": "^1.0",
-            "php": ">=5.4",
-            "symfony/translation": "^2.7|^3.0"
-        },
-        "require-dev": {
-            "phpunit/phpunit": "^4.0|^5.0|^6.0",
-            "satooshi/php-coveralls": "^1.0"
-        },
-        "time": "2017-06-30T11:51:03+00:00",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "3.1-dev"
-            },
-            "laravel": {
-                "providers": [
-                    "Jenssegers\\Date\\DateServiceProvider"
-                ],
-                "aliases": {
-                    "Date": "Jenssegers\\Date\\Date"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "Jenssegers\\Date\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Jens Segers",
-                "homepage": "https://jenssegers.com"
-            }
-        ],
-        "description": "A date library to help you work with dates in different languages",
-        "homepage": "https://github.com/jenssegers/date",
-        "keywords": [
-            "carbon",
-            "date",
-            "datetime",
-            "i18n",
-            "laravel",
-            "time",
-            "translation"
-        ]
-    },
-    {
-        "name": "jlawrence/eos",
-        "version": "v3.2.2",
-        "version_normalized": "3.2.2.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/jlawrence11/eos.git",
-            "reference": "25e3d0f2316cb4636000f452a8e7dcc83725a32a"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/jlawrence11/eos/zipball/25e3d0f2316cb4636000f452a8e7dcc83725a32a",
-            "reference": "25e3d0f2316cb4636000f452a8e7dcc83725a32a",
-            "shasum": ""
-        },
-        "require-dev": {
-            "codeclimate/php-test-reporter": "dev-master",
-            "phpunit/phpunit": "4.*"
-        },
-        "time": "2016-03-02T22:35:41+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "jlawrence\\eos\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.1+"
-        ],
-        "authors": [
-            {
-                "name": "Jon Lawrence",
-                "email": "jon@jon-lawrence.com"
-            }
-        ],
-        "description": "Parse and solve math equations without using 'eval()'.",
-        "keywords": [
-            "eos",
-            "equations",
-            "math",
-            "solve"
-        ]
-    },
-    {
-        "name": "consoletvs/charts",
-        "version": "5.4.0",
-        "version_normalized": "5.4.0.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/ConsoleTVs/Charts.git",
-            "reference": "353039ae19488c0ddd33213f5506548ef8b77558"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/ConsoleTVs/Charts/zipball/353039ae19488c0ddd33213f5506548ef8b77558",
-            "reference": "353039ae19488c0ddd33213f5506548ef8b77558",
-            "shasum": ""
-        },
-        "require": {
-            "consoletvs/support": "^2.1.2",
-            "illuminate/support": "5.*",
-            "jenssegers/date": "v3.*",
-            "jlawrence/eos": "3.*",
-            "php": ">=7.0.0"
-        },
-        "time": "2017-09-28T14:44:56+00:00",
-        "type": "library",
-        "extra": {
-            "laravel": {
-                "providers": [
-                    "ConsoleTVs\\Charts\\ChartsServiceProvider"
-                ],
-                "aliases": {
-                    "Charts": "ConsoleTVs\\Charts\\Facades\\Charts"
-                }
-            }
-        },
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "ConsoleTVs\\Charts\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Erik Campobadal",
-                "email": "soc@erik.cat"
-            }
-        ],
-        "description": "Create charts for laravel using different charts libraries"
+        "description": "Laravel 5 frontend preset for Twitter Bootstrap 4"
     }
 ]

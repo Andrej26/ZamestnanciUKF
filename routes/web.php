@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Charts','ChartsC@index')->name('charts');
+Route::get('/Charts','UKFController@chart')->name('charts');
 
 Route::prefix('UKF')->group(function() {
     Route::get('/', 'UKFController@index')->name('ukf');
@@ -93,8 +93,6 @@ Route::prefix('Zamestnanec')->group(function(){
 
     Route::post('/search', 'AdvancedSearchController@advancesearch01')->name('advanced_search_zam');
     Route::get('/getfulltextresultsAsEmp', 'VyhladajZamestnancaC@zobrazAkoZamestnanec')->name('getfulltextresultsAsEmp');
-
-    Route::get('/charts','ChartsC@showAllZ')->name('chartsemp');
 
     // View-y Fakúlt
     Route::get('/fpv', function(){

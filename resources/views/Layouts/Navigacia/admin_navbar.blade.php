@@ -8,7 +8,7 @@
    <div class="collapse navbar-collapse nav02" id="navbarTogglerDemo02">
 
         <div style='float: right; margin-left: auto;'>
-            <a class="btn btn-dark" style="display: inline-block" href="{{ route('zames.logout') }}">Odhlásiť sa</a>
+            <a class="btn btn-dark" style="display: inline-block" href="{{ route('zames.logout') }}">Odhasit</a>
         </div>
 
     </div>
