@@ -38,14 +38,30 @@ class ZamestnanecController extends Controller
         foreach ($tag02 as $t) {
             $tag[$t->id]= $t->name;
         }
-        return view('zamestnanec', ['zamestnanec' => $this->spojenie2tabuliek(),'zamestnanec01' => $this->spojenie2tabuliek(), 'fakulta' =>$this->fakulty(), 'tags' => $tag, 'tagy'=>$this->tagy()]);
+        return view('zamestnanec', ['zamestnanec' => $this->spojenie2tabuliek(),'zamestnanec01' => $this->spojenie2tabuliek(), 'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tags' => $tag, 'tagy'=>$this->tagy()]);
+    }
+
+    public function findkatedry(Request $request)
+    {
+        if ($request->id != 0) {
+            $data = Katedra::select('idKatedra', 'nazov')
+                ->where('Fakulta_idFakulta', $request->id)
+                ->groupBy('nazov', 'idKatedra')
+                ->get();
+        }
+        else {
+            $data = Katedra::select('idKatedra', 'nazov')
+                ->groupBy('nazov', 'idKatedra')
+                ->get();
+        }
+
+        return response()->json($data);
     }
 
     public function adminn()
     {
         return view('admin');
     }
-
 
     public function logout()
     {
@@ -89,22 +105,22 @@ class ZamestnanecController extends Controller
 
         switch ($idkatedra) {
             case "1":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
                 break;
             case "2":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
                 break;
             case "3":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
                 break;
             case "5":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
                 break;
             case "7":
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
                 break;
             default:
-                return view('Zam.ZProfilov',['zamestnanec' =>$this->ostatne_miesta()],['ifakulta'=>6, 'test'=> 1, 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                return view('Zam.ZProfilov',['zamestnanec' =>$this->ostatne_miesta()],['ifakulta'=>6, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
                 break;
         }
     }
@@ -148,6 +164,23 @@ class ZamestnanecController extends Controller
         endforeach;
 
         return $pom;
+    }
+
+    public function katedry_zoz()
+    {
+        $kat01 =[];
+
+        $kat02 =Katedra::select('idKatedra' , 'nazov')
+            ->groupBy('nazov','idKatedra')
+            ->get();
+
+        $kat01[0] = '...';
+
+        foreach ( $kat02 as $katedra):
+            $kat01[$katedra->idKatedra] = $katedra->nazov;
+        endforeach;
+
+        return $kat01;
     }
 
     public function ostatne_miesta()

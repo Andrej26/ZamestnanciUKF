@@ -192,9 +192,9 @@
 
                 var cat_id=$(this).val();
                 //console.log(cat_id);
-                var div=$(this).parent();
+                //var div=$(this).parent();
 
-                var op="";
+                var op=" ";
 
                 $.ajax({
                     type:'get',
@@ -203,13 +203,15 @@
                     success:function(data){
                         //console.log('succes');
                        // console.log(data);
-                        op+='<option value="0" selected disabled> chose katedra' +
-                            '</option>';
+                        $('select[class="kated"]').empty();
+
+                            op+='<option value="0" selected disabled>...</option>';
                         for(var i=0; i<data.length;i++){
                             op+='<option value="'+data[i].idKatedra+'">'+data[i].nazov+'</option>';
                         }
-                        div.find('.kated').html(" ");
-                        div.find('.kated').append(op);
+                       // console.log(div.find('.kated').append(op));
+
+                        $('select[class="kated"]').append(op);
                     },
                     error:function () {
                         

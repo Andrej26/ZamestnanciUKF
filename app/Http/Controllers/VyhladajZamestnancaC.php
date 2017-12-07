@@ -27,7 +27,7 @@ class VyhladajZamestnancaC extends Controller
             $tag[$t->id]= $t->name;
         }
 
-        return view('UKF.ZProfilov',['zamestnanec' => $users, 'test' => 1, 'ifakulta'=>0, 'fakulta' =>$this->fakulty(), 'tags'=> $tag, 'tagy'=>$this->tagy()]);
+        return view('UKF.ZProfilov',['zamestnanec' => $users, 'test' => 1, 'katedra'=>$this->katedry_zoz(), 'ifakulta'=>0, 'fakulta' =>$this->fakulty(), 'tags'=> $tag, 'tagy'=>$this->tagy()]);
     }
 
 
@@ -45,7 +45,7 @@ class VyhladajZamestnancaC extends Controller
             $tag[$t->id]= $t->name;
         }
 
-        return view('Zam.ZProfilov',['zamestnanec' => $users, 'test' => 1, 'ifakulta'=>0, 'fakulta' =>$this->fakulty(), 'tags'=> $tag, 'tagy'=>$this->tagy()]);
+        return view('Zam.ZProfilov',['zamestnanec' => $users, 'test' => 1,'katedra'=>$this->katedry_zoz(), 'ifakulta'=>0, 'fakulta' =>$this->fakulty(), 'tags'=> $tag, 'tagy'=>$this->tagy()]);
     }
 
     public function fulltext(Request $request)
@@ -136,5 +136,22 @@ class VyhladajZamestnancaC extends Controller
         endforeach;
 
         return $tagy;
+    }
+
+    public function katedry_zoz()
+    {
+        $kat01 =[];
+
+        $kat02 =Katedra::select('idKatedra' , 'nazov')
+            ->groupBy('nazov','idKatedra')
+            ->get();
+
+        $kat01[0] = '...';
+
+        foreach ( $kat02 as $katedra):
+            $kat01[$katedra->idKatedra] = $katedra->nazov;
+        endforeach;
+
+        return $kat01;
     }
 }

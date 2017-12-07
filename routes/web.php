@@ -89,6 +89,7 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/Profil/{id}', 'ZamestnanecController@profil')->name('iny.profil');
     Route::get('/ZoznamProfilov/{id}', 'ZamestnanecController@zprofil')->name('zozprofil');
     Route::post('/PridanieKomentaru/{id}', 'ZamestnanecController@pridaniekomentaru')->name('komentar.store');
+    Route::get('/findKatedry', 'ZamestnanecController@findkatedry')->name('findKatedry_zam');
 
     Route::post('/search', 'AdvancedSearchController@advancesearch01')->name('advanced_search_zam');
     Route::get('/getfulltextresultsAsEmp', 'VyhladajZamestnancaC@zobrazAkoZamestnanec')->name('getfulltextresultsAsEmp');
