@@ -35,6 +35,7 @@
                                 </div>
                             </div>
                             <div class="student-details">
+
                                 <h2 class="student-name">{{$prof['mena']}}</h2>
                                 <ul class="student-info">
                                     <li>e-mail: <strong><a href="mailto:{{$prof['mail']}}" style="color: inherit;">{{$prof['mail']}}</a></strong></li>

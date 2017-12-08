@@ -1,3 +1,5 @@
+@inject('service', 'App\Http\Controllers\ZiskajUdajeZamestnanca.php')
+
 @extends('Layouts.master')
 
 @section('header')
@@ -5,7 +7,6 @@
 @endsection
 
 @section('content')
-
 
     <div class="site-content">
         <div class="container">
@@ -55,7 +56,9 @@
 
             </main>
 
+            <!-- profil zamestnanca --->
             <div class="profil">
+
                 <div class="slides">
                             <div class="student-image">
                                 <img src="{{URL::to('/')}}/dummy/person-1.jpg" alt="">

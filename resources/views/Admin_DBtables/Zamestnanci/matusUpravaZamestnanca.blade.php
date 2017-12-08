@@ -13,7 +13,7 @@
             </div>
 
             <div class="float-right">
-                <a class="btn btn-primary" href="{{ route('TabZamestnanci.index') }}"> Späť</a>
+                <a class="btn btn-success float-left" href="{{route('iny.profil', $zam01 -> idzamestnanec )}}">Späť</a>
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
         </div>
     @endif
 
-    {!! Form::model($zam01, ['method' => 'PATCH','route' => ['TabZamestnanci.update', $zam01->idzamestnanec]]) !!}
+    {!! Form::model($zam01, ['method' => 'PATCH','route' => ['TabZamestnanci.UpdateByMatus', $zam01->idzamestnanec]]) !!}
     @include('Admin_DBtables.Zamestnanci.updateform')
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">
         {!! Form::submit('Upravenie zamestnanca',['class' => 'btn btn-primary']) !!}

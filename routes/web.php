@@ -125,8 +125,13 @@ Route::prefix('Admin')->group(function() {
     Route::post('/TabZamestnanci', 'DBControllers\DBZamestnanci@store')->name('TabZamestnanci.store');
     Route::get('/TabZamestnanci/Vytvorenie_zamestnanca', 'DBControllers\DBZamestnanci@create')->name('TabZamestnanci.create');
     Route::get('/TabZamestnanci/{id}', 'DBControllers\DBZamestnanci@show')->name('TabZamestnanci.show');
+
     Route::match(['put','patch'],'/TabZamestnanci/{id}', 'DBControllers\DBZamestnanci@update')->name('TabZamestnanci.update');
+
     Route::get('/TabZamestnanci/{id}/Úprava_zamestnanca', 'DBControllers\DBZamestnanci@edit')->name('TabZamestnanci.edit');
+
+    Route::get('/TabZamestnanci/{id}/Úprava_zamestnanca', 'DBControllers\DBZamestnanci@UpravaZamestnancaBlade')->name('TabZamestnanci.uprav');
+    Route::match(['put','patch'],'/TabZamestnanci/{id}', 'DBControllers\DBZamestnanci@UpdateByMatus')->name('TabZamestnanci.UpdateByMatus');
 
     Route::get('Zmena_stavu0/{id}',[
         'as'=>'zmena_stavu0', 'uses'=>'DBControllers\DBZamestnanci@hide']);
