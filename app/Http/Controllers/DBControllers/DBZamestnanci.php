@@ -196,7 +196,7 @@ class DBZamestnanci extends Controller
                 'zamestnanec_id' => $id,
                 'tag_id' => $request->tagy[$i],
             ]);
-        } 
+        }
 
         return redirect()->route('iny.profil', $id)
             ->with('success','Zamestnanec bol úspešne upravený');
