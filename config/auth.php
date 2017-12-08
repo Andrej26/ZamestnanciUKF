@@ -45,6 +45,15 @@ return [
             'driver' => 'token',
             'provider' => 'users',
         ],
+        'zame' => [
+            'driver' => 'session',
+            'provider' => 'zames',
+        ],
+
+        'zame-api' => [
+            'driver' => 'token',
+            'provider' => 'zames',
+        ],
     ],
 
     /*
@@ -68,6 +77,10 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
+        ],
+        'zames' => [
+            'driver' => 'eloquent',
+            'model' => App\Model\Zamestnanec::class,
         ],
 
         // 'users' => [
@@ -96,6 +109,11 @@ return [
             'provider' => 'users',
             'table' => 'password_resets',
             'expire' => 60,
+        ],
+        'zames' => [
+            'provider' => 'zames',
+            'table' => 'password_resets',
+            'expire' => 15,
         ],
     ],
 

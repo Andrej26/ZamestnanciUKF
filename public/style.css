@@ -230,7 +230,7 @@ ul, ol {
 
 a {
   text-decoration: none;
-  color: #2f7fc2; }
+    color: #23b9ce; }
 
 address {
   font-style: normal; }
@@ -257,16 +257,16 @@ form textarea {
  * Reusable Components Style
  */
 .button, form input[type="submit"], form button, form input[type="reset"] {
-  background: #2f7fc2;
+  background: #23b9ce;
   color: white;
   padding: 10px;
   border-radius: 5px;
   -webkit-transition: .3s ease;
           transition: .3s ease; }
   .button:hover, form input[type="submit"]:hover, form button:hover, form input[type="reset"]:hover {
-    background: #5098d4; }
+    background: #23b9ce; }
   .button:active, form input[type="submit"]:active, form button:active, form input[type="reset"]:active {
-    background: #256499; }
+    background: #23b9ce; }
 
 .container {
   margin-right: auto;
@@ -314,7 +314,7 @@ form textarea {
     overflow: hidden;
     height: 0; }
 
-.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .graduates .student-image, .aside, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .content, .graduates .student-details, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .profil, .zoznam, .graduates .student-image, .aside, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .content, .graduates .student-details, .profil .student-details,.zoznam .student-details, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12, .popis {
   position: relative;
   min-height: 1px;
   padding-left: 15px;
@@ -633,7 +633,7 @@ form textarea {
   .col-sm-offset-12 {
     margin-left: 100%; } }
 @media (min-width: 992px) {
-  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .graduates .student-image, .aside, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .content, .graduates .student-details, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+  .col-md-1, .col-md-2, .col-md-3, .col-md-4, .graduates .student-image, .profil .student-image, .zoznam .student-image,.aside, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .content, .graduates .student-details, .profil .student-details, .zoznam .student-details, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
     float: left; }
 
   .col-md-1 {
@@ -645,7 +645,7 @@ form textarea {
   .col-md-3 {
     width: 25%; }
 
-  .col-md-4, .graduates .student-image, .aside {
+  .col-md-4, .graduates .student-image, .profil .student-image, .profil .zam-img , .zoznam .student-image,  .aside{
     width: 33.3333333333%; }
 
   .col-md-5 {
@@ -657,7 +657,7 @@ form textarea {
   .col-md-7 {
     width: 58.3333333333%; }
 
-  .col-md-8, .content, .graduates .student-details {
+  .col-md-8, .content, .graduates .student-details, .profil .student-details, .zoznam .student-details{
     width: 66.6666666667%; }
 
   .col-md-9 {
@@ -944,8 +944,6 @@ form textarea {
 
   .col-lg-offset-12 {
     margin-left: 100%; } }
-@-ms-viewport {
-  width: device-width; }
 .visible-xs, .visible-sm, .visible-md, .visible-lg {
   display: none !important; }
 
@@ -1164,14 +1162,14 @@ form textarea {
     left: 0;
     font-size: 48px;
     font-size: 3.2em;
-    color: #2f7fc2; }
+    color: #28b8ce; }
   .feature.rounded-icon {
     padding-top: 0;
     padding-bottom: 0;
     margin-bottom: 30px;
     border-top: none; }
     .feature.rounded-icon .feature-icon {
-      background: #2f7fc2;
+      background: #28b8ce;
       color: white;
       border-radius: 50%;
       width: 70px;
@@ -1180,13 +1178,13 @@ form textarea {
       font-size: 36px;
       font-size: 2.4em; }
     .feature.rounded-icon h3 {
-      color: #2f7fc2;
+      color: #28b8ce;
       margin-bottom: 15px;
       font-size: 15px;
       font-size: 1em;
       font-weight: 700; }
   .feature .feature-title {
-    color: #2f7fc2;
+    color: #28b8ce;
     font-weight: 300;
     margin: 0 0 15px;
     font-size: 30px;
@@ -1195,9 +1193,11 @@ form textarea {
 .graduates {
   background: #e2e2e2;
   border-radius: 5px;
-  overflow: hidden;
+  overflow: auto;
   padding: 30px;
-  position: relative; }
+  position: relative;
+  margin-right: 2%;
+}
   .graduates .slides {
     list-style: none;
     *zoom: 1; }
@@ -1205,7 +1205,7 @@ form textarea {
       content: " ";
       clear: both;
       display: block;
-      overflow: hidden;
+      overflow: auto;
       height: 0; }
     .graduates .slides .student-data {
       *zoom: 1; }
@@ -1213,13 +1213,13 @@ form textarea {
         content: " ";
         clear: both;
         display: block;
-        overflow: hidden;
+        overflow: auto;
         height: 0; }
   .graduates .student-image {
     padding-left: 0;
     text-align: center; }
     .graduates .student-image img {
-      max-width: 100%; }
+      max-width: 50%; }
   .graduates .student-name {
     font-size: 30px;
     font-size: 2em;
@@ -1233,7 +1233,7 @@ form textarea {
     padding: 15px 0;
     margin-bottom: 30px; }
     .graduates .student-info strong {
-      color: #2f7fc2; }
+      color: #28b8ce; }
   .graduates .flex-direction-nav {
     position: absolute;
     top: 30px;
@@ -1259,15 +1259,345 @@ form textarea {
                 transition: .3s ease;
         background-color: #e2e2e2; }
         .graduates .flex-direction-nav li a:hover {
-          border-color: #2f7fc2;
-          color: #2f7fc2; }
-
-.signup-form {
-  background: #2a2c2d;
+          border-color: #28b8ce;
+          color: #28b8ce; }
+.profil {
+  background: #e2e2e2;
   border-radius: 5px;
-  overflow: hidden; }
+  overflow: auto;
+  padding: 30px;
+  margin-right: 3% ;
+  position: relative;
+  height: 700px;
+  /*min-height: 700px;*/
+}
+.profil .slides {
+  list-style: none;
+  *zoom: 1; }
+.profil .slides:after {
+  content: " ";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  height: 0; }
+
+.profil .slides .student-data {
+  *zoom: 1; }
+.profil .slides02 .student-data {
+  *zoom: 1; }
+.profil .slides .student-data:after {
+  content: " ";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  height: 0; }
+.profil .slides02 .student-data:after {
+  content: " ";
+  clear: both;
+  display: block;
+  overflow: hidden;
+  height: 0; }
+.profil .student-image {
+  padding-left: 0;
+  text-align: center; }
+.profil .student-image img {
+  max-width: 80%;
+  padding: 15px 0;
+  margin-bottom: 30px; }
+.profil .student-info strong {
+  color: inherit; }
+.profil .flex-direction-nav {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 9;
+  list-style: none; }
+.profil .flex-direction-nav li {
+  display: inline-block;
+  margin-left: 5px;
+  color: inherit;
+}
+.profil .flex-direction-nav li a {
+  padding-top: 3px;
+  display: block;
+  color: #656c71;
+  outline: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid #c4c4c4;
+  text-align: center;
+  font-size: 24px;
+  font-size: 1.6em;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  background-color: #e2e2e2; }
+.profil .flex-direction-nav li a:hover {
+  border-color: #28b8ce;
+  color: #28b8ce; }
+
+.zoznam {
+  border-radius: 2px;
+  border: 2px solid lightgray;
+  overflow: hidden;
+  padding: 3px;
+  position: relative;
+  height: 300px;
+}
+.zoznam .flex-direction-nav {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 9;
+  list-style: none; }
+.zoznam .flex-direction-nav li {
+  display: inline-block;
+  margin-left: 5px; }
+.zoznam .flex-direction-nav li a {
+  padding-top: 3px;
+  display: block;
+  color: #656c71;
+  outline: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 1px solid #c4c4c4;
+  text-align: center;
+  font-size: 24px;
+  font-size: 1.6em;
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+  background-color: #e2e2e2; }
+.zoznam .flex-direction-nav li a:hover {
+  border-color: #28b8ce;
+  color: #28b8ce; }
+
+.profil .slides{
+    margin-bottom: 10px;
+    border:none;
+    border-radius: 5px;
+    background-color: #bbb;
+    padding: 20px;
+    overflow: hidden;
+    min-height: 300px;
+}
+.profil .slides02 {
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #bbb;
+  padding: 20px;
+  overflow: hidden;
+  min-height: 700px;
+  list-style: none;
+  *zoom: 1;
+  box-sizing: border-box;
+}
+.publ-dropdown{
+  position: relative;
+  display: inline-block;
+  color:  white;
+  background-color: #656c71;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+.proj-dropdown{
+  position: relative;
+  display: inline-block;
+  color:  white;
+  background-color: #959ca1;
+  border: none;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.publ-dropdown-content{
+    display: block;
+    position: absolute;
+    overflow: auto;
+    min-width: 90%;
+    padding: 12px 16px;
+    z-index: 1;
+    height: 180px;
+    border: none;
+    border-radius: 6px;
+    background-color:#7d7d7d;
+    color: white;
+    margin: 10px 10px 10px 10px;
+  -webkit-animation-name: unfold;
+  -webkit-animation-duration: 0.6s;
+  transform-origin: top;
+  animation-name: unfold;
+  animation-duration: 0.6s;
+}
+.proj-dropdown-content{
+  display: none;
+  position: absolute;
+  overflow: auto;
+  min-width: 90%;
+  padding: 12px 16px;
+  z-index: 1;
+  height: 180px;
+  border: none;
+  border-radius: 6px;
+  background-color:#7d7d7d;
+  color: white;
+  margin: 10px 10px 10px 10px;
+  -webkit-animation-name: unfold;
+  -webkit-animation-duration: 0.6s;
+  -webkit-transform-origin: top ;
+  transform-origin: top;
+  animation-name: unfold;
+  animation-duration: 0.6s;
+}
+.show{
+  display: block;
+}
+.hide{
+  display: none;
+}
+
+@-webkit-keyframes unfold {
+  from {-webkit-transform:scale(1,0)}
+  to {-webkit-transform:scale(1,1)}
+}
+
+@keyframes unfold {
+  from {transform:scale(1,0)}
+  to {transform:scale(1,1)}
+}
+@-webkit-keyframes hide {
+  from {-webkit-transform:scale(1,1)}
+  to {-webkit-transform:scale(1,0)}
+}
+
+@keyframes hide {
+  from {transform:scale(1,1)}
+  to {transform:scale(1,0)}
+}
+
+.publikacie-info{
+    list-style: none;
+    border:none;
+    padding: 15px 0;
+    margin-bottom: 30px;
+}
+.projekt-info{
+  list-style: none;
+  border:none;
+  padding: 0px;
+  margin-bottom: 30px;
+
+}
+#student-image{
+  max-width: 100%;
+  border-radius: 2px;
+  width: 70%;
+  border: none;
+  height: auto;
+}
+
+#student-image:hover {
+  opacity: 0.7;
+}
+#zam-img {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#zam-img:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 2; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 40%;
+  height: auto;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)}
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)}
+  to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+.student-info{
+  list-style: none;
+}
+.signup-form {
+  background: #2a2c24;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-right: 2.5%;}
   .signup-form .form-header {
-    background: #2f7fc2;
+    background: #28b8ce;
     padding: 40px 30px 10px;
     color: white;
     position: relative;
@@ -1309,7 +1639,6 @@ form textarea {
       .signup-form .control.select select {
         width: 110%;
         appearance: none;
-        border-radius: none;
         background: none; }
     .signup-form .control.radio input {
       display: none; }
@@ -1344,7 +1673,7 @@ form textarea {
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background: #2f7fc2;
+        background: #28b8ce;
         opacity: 0;
         -webkit-transition: .3s ease;
                 transition: .3s ease;
@@ -1358,7 +1687,223 @@ form textarea {
     .signup-form .columned input.small {
       width: 30%;
       margin-left: 3%; }
+ .zamestnanec{
 
+ }
+
+ .komentar{
+   width: 97%;
+   margin-right: 1%;
+   display: block;
+   margin-bottom: 1%;
+   height: auto;
+   background-color: inherit;
+   border: none;
+   border-radius: 2px;
+
+ }
+ .autor{
+   float: left;
+   width: 10%;
+   margin: 1%;
+   border: none;
+   border-radius: 2px;
+ }
+ .komentare{
+   display: block;
+   width: 100%;
+   overflow: hidden;
+   border: none;
+   padding: 0.5%;
+   min-height: 150px;
+   height: auto;
+   margin-bottom: 1%;
+   margin-top: 1%;
+   background-color: #eeeeee;
+   border-radius: 2px;
+ }
+  .koment{
+    margin: 0%;
+    width: 85%;
+    min-height: 100px;
+    height: auto;
+    padding:  5px ;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 2px;
+    background-color: #e4e4e4;
+    resize: none;
+    display: block;
+    float: left;
+
+ }
+.koment01{
+  margin: 0%;
+  width: 1%;
+  min-height: 100px;
+  height: auto;
+  padding:  5px ;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 2px;
+  background-color: #e4e4e4;
+  resize: none;
+  float: left;
+
+}
+  .button_k{
+   background-color: #28b8ce;
+   box-shadow: #2a2a2a;
+   box-sizing: border-box;
+   border: 2px;
+   border-radius: 2px;
+   color: white;
+   text-align: center;
+ }
+
+.paginate-box{
+  margin: auto;
+  width: 50%;
+}
+
+.zarovnanie{
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.but01{
+  margin:3px;
+}
+
+.img-thumbnail_01{
+  display: inline-block;
+  width: 330px;
+  height: 310px;
+  margin: 1px;
+}
+.odh {
+  text-align: right;
+}
+
+.info
+{
+  text-align: center;
+  margin:  5% 10%;
+}
+
+.logo
+{
+  height: 30%;
+  width: 30%;
+  margin-bottom: -4%;
+}
+
+.vyhladanie
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 135%;
+}
+
+.message
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 135%;
+}
+
+.site-footer
+{
+  text-align: center;
+  background-color: whitesmoke;
+  border-radius:  6px 6px 0px 0px
+}
+
+.fixed-bg {
+  background: #5a5f64;
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.nadpis_fakult
+{
+  font-family: Verdana, Geneva, sans-serif;
+  font-size: 300%;
+  color: #4a4a4a;
+  text-align: center;
+  text-shadow: 3px 2px #d0d0d0;
+}
+
+.nadpis_fakult01
+{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 300%;
+  color: black;
+  text-align: center;
+}
+
+.border_links01
+{
+
+  background-color: #3a454b;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border: none;
+  height: 100%;
+  color: white;
+  overflow: hidden;
+  border-radius: 6px;
+  margin-left: 10%;
+  padding-left: 10%;
+  text-align: center;
+}
+
+.border_text01
+{
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  color: black;
+  padding-left: 2%;
+  padding-right: 2%;
+  padding-top: 2%;
+  margin-left: -2.5%;
+  margin-top: -3%;
+  font-size: 115%;
+}
+
+.oddelovacia_ciara
+{
+  margin-top: 2%;
+  margin-bottom: -2%
+}
+
+ .columns{
+   overflow: auto;
+ }
+
+
+#style-1::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar
+{
+  width: 12px;
+  background-color: #F5F5F5;
+}
+
+#style-1::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
 /*
  * Footer Styles
  */
@@ -1386,3 +1931,6 @@ form textarea {
     background-color: #d3492c; }
   .social-links a.pinterest {
     background-color: #ca2128; }
+
+
+  /* reset hesla */

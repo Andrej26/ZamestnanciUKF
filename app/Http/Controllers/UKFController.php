@@ -7,8 +7,16 @@
  */
 
 namespace App\Http\Controllers;
-use App\Model\Zamestnanci;
+use App\Model\Fakulta;
+use App\Model\Katedra;
+use App\Model\Projekt;
+use App\Model\Publikacia;
+use App\Model\Zamestnanec;
+use App\Model\Komentare;
+use App\Model\Tag;
+use App\Model\Zamestnanec_tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class UKFController extends Controller
@@ -16,104 +24,308 @@ class UKFController extends Controller
 
     public function index()
     {
-        /*$table = Zamestnanci::all();*/
-        return view('index'/*,['zamestnanci' =>$table]*/);
+        $tag02=Tag::all();
+        $tag=[];
+        foreach ($tag02 as $t) {
+            $tag[$t->id]= $t->name;
+        }
+        return view('index', ['zamestnanec' => $this->spojenie2tabuliek(),'zamestnanec01' => $this->spojenie2tabuliek(),'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(),'tags'=> $tag, 'tagy'=>$this->tagy()]);
     }
 
-    public function login()
+    public function findkatedry(Request $request)
     {
-        return view('login');
+        if ($request->id != 0) {
+            $data = Katedra::select('idKatedra', 'nazov')
+                ->where('Fakulta_idFakulta', $request->id)
+                ->groupBy('nazov', 'idKatedra')
+                ->get();
+        }
+        else {
+            $data = Katedra::select('idKatedra', 'nazov')
+                ->groupBy('nazov', 'idKatedra')
+                ->get();
+        }
+        return response()->json($data);
+    }
+    //vracia jeden profil
+    public function profil($idprofil)
+    {
+        $id_prihlaseny=Auth::id();
+        return view('UKF.profil', ['profils' => $this->profily($idprofil), 'idcko'=>$id_prihlaseny], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil), 'tagy'=>$this->tagy()]);
     }
 
-    public function prihlas(Request $request)
+
+
+    public function chart()
     {
-        $username = $request->get('email');
-        $password = $request->get('heslo');
+        return view('charts');
+    }
 
-        $checkuser = Zamestnanci::selectRaw("Count(*) as Total")->from('Zamestnanec')->where('email','=',$username)->first();
-
-
-        if(intval($checkuser->Total) > 0){
-
-            $getpassword = Zamestnanci::select('heslo')->where('heslo','=',$username)->first();
-
-            if(password_verify($password,$getpassword->Password)){
-                $request->session()->set('username',$username);
-                return redirect('welcome');
-            }
-            else{
-                return redirect('login');
-            }
-
-        }else{
-           // return redirect('login');
-
-            echo "nie je tu nic";
+    public function zprofil($idkatedra)
+    {
+        $tag02=Tag::all();
+        $tag=[];
+        foreach ($tag02 as $t) {
+            $tag[$t->id]= $t->name;
         }
 
+        switch ($idkatedra) {
+            case "1":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(1),'ifakulta'=>1, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                break;
+            case "2":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(2)],['ifakulta'=>2, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                break;
+            case "3":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(3)],['ifakulta'=>3, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                break;
+            case "5":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(5)],['ifakulta'=>4, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                break;
+            case "7":
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->katedry(7)],['ifakulta'=>5, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                break;
+            default:
+                return view('UKF.ZProfilov',['zamestnanec' =>$this->ostatne_miesta()],['ifakulta'=>6, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
+                break;
+        }
     }
 
-    public function logout(Request $request)
+    public function fakulty()
     {
-        $request->session()->flush();
+        $fak01 =[];
+
+        $fak02 =Fakulta::select('idFakulta' , 'nazov')
+            ->groupBy('nazov','idFakulta')
+            ->limit('5')
+            ->get();
+
+        $fak01[0] = '...';
+
+        foreach ( $fak02 as $fakulta):
+            $fak01[$fakulta->idFakulta] = $fakulta->nazov;
+        endforeach;
+
+        return $fak01;
     }
 
-
-    public function create()
+    public function katedry_zoz()
     {
-        return view('DBControl.create');
+        $kat01 =[];
+
+        $kat02 =Katedra::select('idKatedra' , 'nazov')
+            ->groupBy('nazov','idKatedra')
+            ->get();
+
+        $kat01[0] = '...';
+
+        foreach ( $kat02 as $katedra):
+            $kat01[$katedra->idKatedra] = $katedra->nazov;
+        endforeach;
+
+        return $kat01;
     }
 
-    public function store(Request $request)
-
+    /**
+     * @param $id
+     * @return array
+     */
+    public function katedry($id)
     {
-        $this->validate($request,[
-            'meno' => 'required|max:20',
-            'priezvisko' => 'required|max:20',
-            'email' => 'required|max:50',
-            'heslo' => 'required|max:20',
-            'vek' => 'required|max:3'
-        ]);
+        $kat= Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
+            ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
+            ->orderBy('idKatedra', 'asc')
+            ->get();
 
-        DB::create($request->all());
+        $kat01=[];
+        $pom=[];
 
-        return redirect()->route('lolo.index')
-            ->with('success','Emploier created successfully');
+        foreach ( $kat as $katedra):
+            if($katedra['Fakulta_idFakulta'] == $id)
+            {
+                $kat01[] = ['katedra'=>$katedra->nazov, 'fakulta'=>$katedra->nazov01];
+            }
+        endforeach;
 
+        $zames = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+            ->get();
+
+        foreach ($zames as $zam):
+            foreach ($kat01 as $kats):
+                if($kats['katedra'] == $zam['nazov'])
+                {
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil, 'fakulta'=> $kats['fakulta'] ];
+                }
+            endforeach;
+        endforeach;
+
+        return $pom;
     }
 
-    public function show($id)
+    public function ostatne_miesta()
     {
-        $table = DB::find($id);
-        return view('DBControl.show',compact('table'));
+        $kat01=[];
+        $pom=[];
+
+        $kat= Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
+            ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
+            ->orderBy('idKatedra', 'asc')
+            ->get();
+
+        foreach ( $kat as $katedra):
+            if(($katedra['Fakulta_idFakulta'] == 4)||($katedra['Fakulta_idFakulta'] == 6)||($katedra['Fakulta_idFakulta'] == 8)||($katedra['Fakulta_idFakulta'] == 9))
+            {
+                $kat01[] = ['katedra'=>$katedra->nazov, 'fakulta'=>$katedra->nazov01];
+            }
+        endforeach;
+
+        $zames = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+            ->get();
+
+        foreach ($zames as $zam):
+            foreach ($kat01 as $kats):
+                if($kats['katedra'] == $zam['nazov'])
+                {
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov, 'rola'=> $zam->rola, 'profil'=> $zam->profil, 'fakulta'=> $kats['fakulta'] ];
+                }
+            endforeach;
+        endforeach;
+
+        return $pom;
     }
 
+    public function tagy(){
+        $tag =Zamestnanec_tag::select('*')
+            ->join('tags','tags.id','=','tag_id')
+            ->get();
 
-    public function edit($id)
+        $tagy=[];
+
+        foreach (Zamestnanec::all() as $zam): {
+            foreach ($tag as $ta):{
+                if($ta->zamestnanec_id == $zam->idzamestnanec){
+                   $tagy[]= ['id'=>$zam->idzamestnanec, 'name'=>$ta->name];
+                }
+            }
+            endforeach;
+        }
+        endforeach;
+
+        return $tagy;
+    }
+
+   public function profily($id)
     {
-        $table = DB::find($id);
-        return view('DBControl.edit',compact('table'));
+        $pm=[];
+        $profl = Zamestnanec::select('*','katedra.nazov as nazov01')
+            /*->join('publikacia','publikacia.Zamestnanec_idzamestnanec','=','zamestnanec.idzamestnanec')*/
+            ->join('katedra','idKatedra','=','Katedra_idKatedra')
+            ->get();
+
+        foreach ($profl as $prof):
+            if ($prof['idzamestnanec'] == $id) {
+                $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela, 'mail'=>$prof->email];
+            }
+        endforeach;
+        return $pm;
     }
 
-    public function update(Request $request, $id)
+    public function publikacie($ids)
     {
-        request()->validate([
-            'meno' => 'required',
-            'priezvisko' => 'required',
-            'email' => 'required',
-            'heslo' => 'required',
-            'vek' => 'required',
-        ]);
-        DB::find($id)->update($request->all());
-        return redirect()->route('lolo.index')
-            ->with('success','Emploier updated successfully');
+        $pm=[];
+        $publ = Publikacia::select('*')
+            ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
+            ->get();
+
+        foreach ($publ as $pub):
+            if  ($pub['Zamestnanec_idzamestnanec'] == $ids) {
+                $pm[] = ['nazov' => $pub->nazov, 'isbn' => $pub->isbn, 'autori' => $pub->autori, 'vydavatel' => $pub->vydavatel, 'podtitulok' => $pub->podtitulok];
+            }
+            endforeach;
+        return $pm;
     }
 
-    public function destroy($id)
+    public function komentare($idprof)
     {
-        DB::find($id)->delete();
-        return redirect()->route('lolo.index')
-            ->with('success','Emploier deleted successfully');
+      //  $pm=[];
+       // $i = 0;
+        $koment = Komentare::select('*')
+            ->join('zamestnanec','idzamestnanec','=','autor')
+            ->where([
+                ['okomentovanyId', '=', $idprof],
+                ['odsuhlaseny', '=', 1],
+            ])
+            ->orderBy('komentar.created_at','asc')
+            ->paginate(3);
+
+      //  foreach ($koment as $kom):
+       //     if  (($kom['okomentovanyId'] == $idprof)&&($kom['odsuhlaseny'] == 1)) {
+       //         $i+=1;
+        //        $pm[] = ['komentar' => $kom->komentar, 'autor' => $kom->meno, 'id' => $kom->idzamestnanec, 'por'=>$i];
+       //     }
+       // endforeach;
+        return $koment;
+
     }
+
+    public function projekty($idss)
+    {
+        $pm=[];
+        $publ = Projekt::select('*')
+            ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
+            ->get();
+
+        foreach ($publ as $pub):
+            if  ($pub['Zamestnanec_idzamestnanec'] == $idss) {
+                $pm[] = ['nazov' => $pub->nazov, 'zaciatok' => $pub->zaciatok, 'koniec' => $pub->koniec,'reg'=>$pub->regCislo];
+            }
+        endforeach;
+        return $pm;
+    }
+
+    public function spojenie2tabuliek()
+    {
+        $pom=[];
+        $id=array_random($this->random_id());
+
+        $kat01 = Katedra::select('katedra.*', 'Fakulta.nazov as nazov01')
+            ->join('Fakulta', 'idFakulta', '=', 'Fakulta_idFakulta')
+            ->orderBy('idKatedra', 'asc')
+            ->get();
+
+        $zames = Zamestnanec::select('*')
+            ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
+            ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->orderBy('idzamestnanec', 'asc')
+            ->get();
+
+        foreach ($zames as $zam):
+            foreach ($kat01 as $kat):
+                if(($kat['nazov'] == $zam['nazov']) && ($zam['idzamestnanec']== $id)) {
+                    $pom[] = ['id' => $zam->idzamestnanec, 'meno'=> $zam->meno, 'email'=> $zam->email, 'katedra'=> $zam->nazov,
+                        'rola'=> $zam->rola, 'profil'=> $zam->profil,'idFakulta'=>$kat->Fakulta_idFakulta,'fakulta'=>$kat->nazov01];
+                }
+            endforeach;
+        endforeach;
+
+        return $pom;
+    }
+
+    public function random_id()
+    {
+        $zam_id=[];
+        foreach (Zamestnanec::all() as $zam):
+            $zam_id[]= $zam->idzamestnanec;
+        endforeach;
+
+        return $zam_id;
+    }
+
 
 }
