@@ -29,7 +29,9 @@
                     <li>
                         <div class="student-data">
                             <div class="student-image">
+
                                 <img id="zam-img" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="auto" width="100%">
+
                                 <div id="zamModal" class="modal">
                                     <span class="close">&times;</span>
                                     <img class="modal-content" id="img01">

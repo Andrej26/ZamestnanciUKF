@@ -399,6 +399,7 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         'App\\Http\\Controllers\\UKFController' => __DIR__ . '/../..' . '/app/Http/Controllers/UKFController.php',
         'App\\Http\\Controllers\\VyhladajZamestnancaC' => __DIR__ . '/../..' . '/app/Http/Controllers/VyhladajZamestnancaC.php',
         'App\\Http\\Controllers\\ZamestnanecController' => __DIR__ . '/../..' . '/app/Http/Controllers/ZamestnanecController.php',
+        'App\\Http\\Controllers\\ZiskajUdajeZamestnanca' => __DIR__ . '/../..' . '/app/Http/Controllers/ZiskajUdajeZamestnanca.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\EncryptCookies' => __DIR__ . '/../..' . '/app/Http/Middleware/EncryptCookies.php',
         'App\\Http\\Middleware\\RedirectIfAuthenticated' => __DIR__ . '/../..' . '/app/Http/Middleware/RedirectIfAuthenticated.php',

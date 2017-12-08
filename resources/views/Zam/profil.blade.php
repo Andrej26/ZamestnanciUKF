@@ -29,7 +29,10 @@
                     <li>
                         <div class="student-data">
                             <div class="student-image">
-                                <img id="zam-img" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="auto" width="100%">
+
+                                <img src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($prof['id'])}}" alt="">
+
+
                                 <div id="zamModal" class="modal">
                                     <span class="close">&times;</span>
                                     <img class="modal-content" id="img01">
@@ -38,8 +41,18 @@
                             </div>
                             <div class="student-details">
 
+                                <!-- matusov kod na editaciu zamestnanca -->
                                 @if($prof['id'] != null && $prof['id'] > 0)
                                     <a class="button_k" href="{{route('TabZamestnanci.uprav', Auth::id())}}">Uprav svoj profil</a>
+
+                                    <h1>Upload fotky</h1>
+                                    <form action="{{ URL::to('upload', $prof['id']) }}" method="post" enctype="multipart/form-data">
+                                        <label>Select image to upload:</label>
+                                        <input type="file" name="file" id="file">
+                                        <input type="submit" value="Upload" name="submit">
+                                        <input type="hidden" value="{{ csrf_token() }}" name="_token">
+                                    </form>
+
                                 @endif
 
                                 <h2 class="student-name">{{$prof['mena']}}</h2>

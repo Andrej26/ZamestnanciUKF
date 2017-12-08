@@ -67,6 +67,8 @@ Route::get('/picture/{filename}', function ($filename)
     return $response;
 })->name('picture');
 
+Route::post('/upload/{idcko}', 'UploadController@upload');
+Route::post('/VratObrazokZamestnanca/{idcko}', 'UploadController@VratObrazokZamestnanca') ->name('VratObrazokZamestnanca');
 
 
 // Prihlasenie
