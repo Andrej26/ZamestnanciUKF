@@ -91,6 +91,7 @@
                 @endif
                 @if($test === 0)
                     <p>Nenašli sa žiadni zamestnanci, ktorý by obsahovali informácie podľa zadaných parametrov.</p>
+
                 @endif
             </div>
         </div>

@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/Charts','ChartsC@index')->name('charts');
+Route::get('/Charts','UKFController@chart')->name('charts');
 
 Route::prefix('UKF')->group(function() {
     Route::get('/', 'UKFController@index')->name('ukf');
@@ -26,8 +26,6 @@ Route::prefix('UKF')->group(function() {
     Route::get('/ZoznamProfilov/{id}', 'UKFController@zprofil')->name('zprofil');
 
     Route::post('/search', 'AdvancedSearchController@advancesearch')->name('advanced_search');
-    Route::get('/findKatedry', 'UKFController@findkatedry')->name('findKatedry');
-
     Route::get('/fulltextsearch', 'VyhladajZamestnancaC@fulltext')->name('fulltextsearch');
     Route::get('/getfulltextresults', 'VyhladajZamestnancaC@zobraz')->name('getfulltextresults');
 
@@ -89,12 +87,9 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/Profil/{id}', 'ZamestnanecController@profil')->name('iny.profil');
     Route::get('/ZoznamProfilov/{id}', 'ZamestnanecController@zprofil')->name('zozprofil');
     Route::post('/PridanieKomentaru/{id}', 'ZamestnanecController@pridaniekomentaru')->name('komentar.store');
-    Route::get('/findKatedry', 'ZamestnanecController@findkatedry')->name('findKatedry_zam');
 
     Route::post('/search', 'AdvancedSearchController@advancesearch01')->name('advanced_search_zam');
     Route::get('/getfulltextresultsAsEmp', 'VyhladajZamestnancaC@zobrazAkoZamestnanec')->name('getfulltextresultsAsEmp');
-
-    Route::get('/charts','ChartsC@showAllZ')->name('chartsemp');
 
     // View-y Fakúlt
     Route::get('/fpv', function(){
@@ -107,6 +102,13 @@ Route::prefix('Zamestnanec')->group(function(){
         return View('Zam/Fakulty/fakulta_fsvz');});
     Route::get('/pf', function(){
         return View('Zam/Fakulty/fakulta_pf');});
+
+    // Route::get('/FPV', 'ZamestnanecController@fpv')->name('Katedry.FPV');
+    // Route::get('/FF', 'ZamestnanecController@ff')->name('Katedry.FF');
+    // Route::get('/FSVaZ', 'ZamestnanecController@fsvaz')->name('Katedry.FSVaZ');
+    // Route::get('/FSŠ', 'ZamestnanecController@fsš')->name('Katedry.FSŠ');
+    // Route::get('/PF', 'ZamestnanecController@pf')->name('Katedry.PF');
+    // Route::get('/Ostatne', 'ZamestnanecController@ostatne')->name('Katedry.Ostatne');
 
     //Zmena hesla
     Route::post('/heslo/email', 'Auth\ZamestnanecForgotPasswordController@sendResetLinkEmail')->name('zame.password.email');
@@ -123,8 +125,13 @@ Route::prefix('Admin')->group(function() {
     Route::post('/TabZamestnanci', 'DBControllers\DBZamestnanci@store')->name('TabZamestnanci.store');
     Route::get('/TabZamestnanci/Vytvorenie_zamestnanca', 'DBControllers\DBZamestnanci@create')->name('TabZamestnanci.create');
     Route::get('/TabZamestnanci/{id}', 'DBControllers\DBZamestnanci@show')->name('TabZamestnanci.show');
+
     Route::match(['put','patch'],'/TabZamestnanci/{id}', 'DBControllers\DBZamestnanci@update')->name('TabZamestnanci.update');
+
     Route::get('/TabZamestnanci/{id}/Úprava_zamestnanca', 'DBControllers\DBZamestnanci@edit')->name('TabZamestnanci.edit');
+
+    Route::get('/TabZamestnanci/{id}/Úprava_zamestnanca', 'DBControllers\DBZamestnanci@UpravaZamestnancaBlade')->name('TabZamestnanci.uprav');
+    Route::match(['put','patch'],'/TabZamestnanci/{id}', 'DBControllers\DBZamestnanci@UpdateByMatus')->name('TabZamestnanci.UpdateByMatus');
 
     Route::get('Zmena_stavu0/{id}',[
         'as'=>'zmena_stavu0', 'uses'=>'DBControllers\DBZamestnanci@hide']);
@@ -204,5 +211,5 @@ Route::get('/dbApi', [
 ]);
 
 Route::get('/parseTest', [
-        'as' => 'parseTest', 'uses' => 'DbConnectTest@RozparsujMenoNaMail'
-        ]);
+    'as' => 'parseTest', 'uses' => 'DbConnectTest@RozparsujMenoNaMail'
+]);

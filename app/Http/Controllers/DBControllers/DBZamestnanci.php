@@ -70,7 +70,7 @@ class DBZamestnanci extends Controller
             'idzamestnanec' => $this->idgenerator(),
             'meno' => $request->meno,
             'email' => $request->email,
-            'password' => Hash::make('passwd'),
+            'password' => Hash::make($request->password),
             'profil' => $request->profil,
             'aktivny' => '1',
             'Katedra_idKatedra' => $request->katedra,
@@ -118,26 +118,42 @@ class DBZamestnanci extends Controller
         return view('Admin_DBtables.Zamestnanci.edit',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly(), 'tags'=> $tag, 'select'=> $this->tagy($id)]);
     }
 
+    public function UpravaZamestnancaBlade($id)
+    {
+        $zam01 = Zamestnanec::find($id);
+
+        $tag02=Tag::all();
+        $tag=[];
+        foreach ($tag02 as $t) {
+            $tag[$t->id]= $t->name;
+        }
+
+        // doteraz nechapem preco autor tohto kodu ktorym je andrej musi nazyvat premenne kde su ulozene zonamy katedier zam02 :D
+        return view('Admin_DBtables.Zamestnanci.matusUpravaZamestnanca',['zam01' =>$zam01, 'zam02' => $this->katedry(), 'zam03' => $this->roly(), 'tags'=> $tag, 'select'=> $this->tagy($id)]);
+    }
+
     public function update(Request $request, $id)
     {
         request()->validate([
             'meno' => 'required|max:50',
             'email' => 'required|max:60',
+            'password' => 'required|max:22',
             'profil' => 'required|max:50',
             'nazov' => 'required|max:100',
         ]);
 
         Zamestnanec::find($id)->update([
-            'meno' => $request->meno,
-            'email' => $request->email,
-            'profil' => $request->profil,
-            'Katedra_idKatedra' => $request->nazov,
-            'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]
+                'meno' => $request->meno,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'profil' => $request->profil,
+                'Katedra_idKatedra' => $request->nazov,
+                'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]
         );
 
         Zamestnanec_tag::select('*')
-           ->where('zamestnanec_id', $id)
-           ->delete();
+            ->where('zamestnanec_id', $id)
+            ->delete();
 
         for ($i=0;$i<count($request->tagy);$i++)
         {
@@ -148,6 +164,41 @@ class DBZamestnanci extends Controller
         }
 
         return redirect()->route('TabZamestnanci.index')
+            ->with('success','Zamestnanec bol úspešne upravený');
+    }
+
+    public function UpdateByMatus(Request $request, $id)
+    {
+        request()->validate([
+            'meno' => 'required|max:50',
+            'email' => 'required|max:60',
+            'password' => 'required|max:22',
+            'profil' => 'required|max:50',
+            'nazov' => 'required|max:100',
+        ]);
+
+        Zamestnanec::find($id)->update([
+                'meno' => $request->meno,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'profil' => $request->profil,
+                'Katedra_idKatedra' => $request->nazov,
+                'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]
+        );
+
+        Zamestnanec_tag::select('*')
+            ->where('zamestnanec_id', $id)
+            ->delete();
+
+        for ($i=0;$i<count($request->tagy);$i++)
+        {
+            Zamestnanec_tag::create([
+                'zamestnanec_id' => $id,
+                'tag_id' => $request->tagy[$i],
+            ]);
+        }
+
+        return redirect()->route('iny.profil', $id)
             ->with('success','Zamestnanec bol úspešne upravený');
     }
 

@@ -16,6 +16,7 @@ use App\Model\Komentare;
 use App\Model\Tag;
 use App\Model\Zamestnanec_tag;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class UKFController extends Controller
@@ -46,11 +47,14 @@ class UKFController extends Controller
         }
         return response()->json($data);
     }
+    //vracia jeden profil
+    public function profil($idprofil)
+    {
+        $id_prihlaseny=Auth::id();
+        return view('UKF.profil', ['profils' => $this->profily($idprofil), 'idcko'=>$id_prihlaseny], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil), 'tagy'=>$this->tagy()]);
+    }
 
-     public function profil($idprofil)
-     {
-         return view('UKF.profil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil), 'tagy'=>$this->tagy()]);
-     }
+
 
     public function chart()
     {

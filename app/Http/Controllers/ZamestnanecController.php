@@ -72,7 +72,7 @@ class ZamestnanecController extends Controller
 
     public function mojprofil()
     {
-        return view('Zam.profil');
+        return view('Zam.mojprofil');
     }
 
     public function profil($idprofil)

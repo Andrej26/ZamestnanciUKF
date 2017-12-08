@@ -37,6 +37,11 @@
                                 </div>
                             </div>
                             <div class="student-details">
+
+                                @if($prof['id'] != null && $prof['id'] > 0)
+                                    <a class="button_k" href="{{route('TabZamestnanci.uprav', Auth::id())}}">Uprav svoj profil</a>
+                                @endif
+
                                 <h2 class="student-name">{{$prof['mena']}}</h2>
                                 <ul class="student-info">
                                     <li>e-mail: <strong><a href="mailto:{{$prof['mail']}}" style="color: inherit;">{{$prof['mail']}}</a></strong></li>

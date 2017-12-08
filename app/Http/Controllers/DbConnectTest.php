@@ -82,7 +82,7 @@ class DbConnectTest extends Controller
             Zamestnanec::firstOrCreate([
                 'idzamestnanec' => $r->id,
                 'meno' => $r->name,
-                'heslo' => Hash::make('passwd'),
+                'password' => Hash::make('passwd'),
                 'profil' => $r->description,
                 'rolaPouzivatela_idrolaPouzivatela' => 1,
                 'Katedra_idKatedra' => $idKat -> idKatedra,
