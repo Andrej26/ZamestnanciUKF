@@ -198,7 +198,7 @@ class DBZamestnanci extends Controller
             ]);
         }
 
-        return redirect()->route('iny.profil', $id)
+        return redirect()->route('zames.profil', $id)
             ->with('success','Zamestnanec bol úspešne upravený');
     }
 

@@ -84,7 +84,7 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/', 'ZamestnanecController@index')->name('zames.dashboard');
 
     //Ostatné možnosti
-    Route::get('/moj_profil', 'ZamestnanecController@mojprofil')->name('zames.profil');
+    Route::get('/vlasný_profil_zamestnanca/{id}', 'ZamestnanecController@mojprofil')->name('zames.profil');
     Route::get('/publikacie', 'ZamestnanecController@publikacie')->name('zames.publikacie');
 
     Route::get('/Profil/{id}', 'ZamestnanecController@profil')->name('iny.profil');

@@ -136,7 +136,7 @@
                             @foreach ($zamestnanec01 as $zam)
                                 <div class="student-data">
                                     <div class="student-image">
-                                        <a href="{{route('profil', $zam['id'])}}"><img src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($prof['id'])}}" alt=""></a>
+                                        <a href="{{route('profil', $zam['id'])}}"><img src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($zam['id'])}}" alt=""></a>
                                     </div>
                                     <div class="student-details">
                                         <a href="{{route('profil', $zam['id'])}}" style="color: inherit;"><h2 class="student-name" >{{ $zam['meno']}}</h2></a>

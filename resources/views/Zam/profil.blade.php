@@ -41,20 +41,6 @@
                             </div>
                             <div class="student-details">
 
-                                <!-- matusov kod na editaciu zamestnanca -->
-                                @if($prof['id'] != null && $prof['id'] > 0)
-                                    <a class="button_k" href="{{route('TabZamestnanci.uprav', Auth::id())}}">Uprav svoj profil</a>
-
-                                    <h1>Upload fotky</h1>
-                                    <form action="{{ URL::to('upload', $prof['id']) }}" method="post" enctype="multipart/form-data">
-                                        <label>Select image to upload:</label>
-                                        <input type="file" name="file" id="file">
-                                        <input type="submit" value="Upload" name="submit">
-                                        <input type="hidden" value="{{ csrf_token() }}" name="_token">
-                                    </form>
-
-                                @endif
-
                                 <h2 class="student-name">{{$prof['mena']}}</h2>
                                 <ul class="student-info">
                                     <li>e-mail: <strong><a href="mailto:{{$prof['mail']}}" style="color: inherit;">{{$prof['mail']}}</a></strong></li>
