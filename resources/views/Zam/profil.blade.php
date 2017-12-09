@@ -30,7 +30,7 @@
                         <div class="student-data">
                             <div class="student-image">
 
-                                <img src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($prof['id'])}}" alt="">
+                                <img id="zam-img" src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($prof['id'])}}" alt="Profilova Fotografia" height="auto" width="100%">
 
 
                                 <div id="zamModal" class="modal">
