@@ -152,6 +152,7 @@ class ZamestnanecController extends Controller
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->orderBy('idzamestnanec', 'asc')
+            ->where('aktivny',1)
             ->get();
 
         foreach ($zames as $zam):
@@ -204,6 +205,7 @@ class ZamestnanecController extends Controller
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->orderBy('idzamestnanec', 'asc')
+            ->where('aktivny',1)
             ->get();
 
         foreach ($zames as $zam):
@@ -334,6 +336,7 @@ class ZamestnanecController extends Controller
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->orderBy('idzamestnanec', 'asc')
+            ->where('aktivny',1)
             ->get();
 
         foreach ($zames as $zam):
