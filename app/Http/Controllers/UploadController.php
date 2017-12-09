@@ -17,11 +17,12 @@ class UploadController extends Controller
             $rozdelenie = explode(".", $file->getClientOriginalName());
             $pripona = end($rozdelenie);
 
+            /*
             if($pripona != "jpg" || $pripona != "png")
             {
                 echo  "zla pripona suboru !";
                 return;
-            }
+            }*/
 
             // ak existuje jpg subor s danym menom
             if (file_exists('picture/'.$idcko.".jpg"))
