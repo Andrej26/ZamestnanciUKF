@@ -137,7 +137,6 @@ class DBZamestnanci extends Controller
         request()->validate([
             'meno' => 'required|max:50',
             'email' => 'required|max:60',
-            'password' => 'required|max:22',
             'profil' => 'required|max:50',
             'nazov' => 'required|max:100',
         ]);
@@ -145,7 +144,7 @@ class DBZamestnanci extends Controller
         Zamestnanec::find($id)->update([
                 'meno' => $request->meno,
                 'email' => $request->email,
-                'password' => Hash::make($request->password),
+                'password' => Hash::make('passwd'),
                 'profil' => $request->profil,
                 'Katedra_idKatedra' => $request->nazov,
                 'rolaPouzivatela_idrolaPouzivatela' => $request->rola,]

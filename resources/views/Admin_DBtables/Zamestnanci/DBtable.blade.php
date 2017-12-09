@@ -49,7 +49,7 @@
             <td class="btn-group" >
 
                 <a class="btn btn-info" href="{{ route('TabZamestnanci.show', $zam->idzamestnanec) }}">Ukáž</a>
-                <a class="btn btn-primary" href="{{ route('TabZamestnanci.edit',$zam->idzamestnanec) }}">Uprav</a>
+                <a class="btn btn-primary" href="{{ route('TabZamestnanci.edit', $zam->idzamestnanec) }}">Uprav</a>
                 <div class="dropdown">
                     <button type="button" class="btn btn-dark dropdown-toggle" data-toggle="dropdown"  title="Zmena stavu zamestnanca">
                         ZSZ

@@ -29,6 +29,7 @@ return array(
     'App\\Http\\Controllers\\UKFController' => $baseDir . '/app/Http/Controllers/UKFController.php',
     'App\\Http\\Controllers\\VyhladajZamestnancaC' => $baseDir . '/app/Http/Controllers/VyhladajZamestnancaC.php',
     'App\\Http\\Controllers\\ZamestnanecController' => $baseDir . '/app/Http/Controllers/ZamestnanecController.php',
+    'App\\Http\\Controllers\\ZiskajUdajeZamestnanca' => $baseDir . '/app/Http/Controllers/ZiskajUdajeZamestnanca.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
     'App\\Http\\Middleware\\EncryptCookies' => $baseDir . '/app/Http/Middleware/EncryptCookies.php',
     'App\\Http\\Middleware\\RedirectIfAuthenticated' => $baseDir . '/app/Http/Middleware/RedirectIfAuthenticated.php',
