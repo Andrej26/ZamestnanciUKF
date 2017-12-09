@@ -44,8 +44,7 @@ class UploadController extends Controller
                 $file->move('picture', $idcko.".".$pripona);
             }
 
-            return view('Zam.mojprofil', ['profils' => $this->profily($idcko)], ['publikacia' => $this->publikacie($idcko), 'projekt' => $this->projekty($idcko),
-                'komentare' =>$this->komentare($idcko), 'tagy'=>$this->tagy()])->with('success','Profilová fotografia bola úspešne zmenená.');
+            return redirect()->route('zames.profil', $idcko)->with('success','Profilová fotografia bola úspešne zmenená.');
         }
 
     }
@@ -66,83 +65,4 @@ class UploadController extends Controller
         }
     }
 
-
-    public function tagy(){
-        $tag =Zamestnanec_tag::select('*')
-            ->join('tags','tags.id','=','tag_id')
-            ->get();
-
-        $tagy=[];
-
-        foreach (Zamestnanec::all() as $zam): {
-            foreach ($tag as $ta):{
-                if($ta->zamestnanec_id == $zam->idzamestnanec){
-                    $tagy[]= ['id'=>$zam->idzamestnanec, 'name'=>$ta->name];
-                }
-            }
-            endforeach;
-        }
-        endforeach;
-
-        return $tagy;
-    }
-
-    public function profily($id)
-    {
-        $pm=[];
-        $profl = Zamestnanec::select('*','katedra.nazov as nazov01')
-            ->join('katedra','idKatedra','=','Katedra_idKatedra')
-            ->get();
-
-        foreach ($profl as $prof):
-            if ($prof['idzamestnanec'] == $id) {
-                $pm[] = ['id' => $prof->idzamestnanec, 'mena' => $prof->meno, 'rola1' => $prof->profil, 'katedra1' => $prof->nazov01, 'rol'=>$prof->rolaPouzivatela_idrolaPouzivatela, 'mail'=>$prof->email];
-            }
-        endforeach;
-        return $pm;
-    }
-
-    public function publikacie($ids)
-    {
-        $pm=[];
-        $publ = Publikacia::select('*')
-            ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
-            ->get();
-
-        foreach ($publ as $pub):
-            if  ($pub['Zamestnanec_idzamestnanec'] == $ids) {
-                $pm[] = ['nazov' => $pub->nazov, 'isbn' => $pub->isbn, 'autori' => $pub->autori, 'vydavatel' => $pub->vydavatel, 'podtitulok' => $pub->podtitulok];
-            }
-        endforeach;
-        return $pm;
-    }
-
-    public function projekty($idss)
-    {
-        $pm=[];
-        $publ = Projekt::select('*')
-            ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
-            ->get();
-
-        foreach ($publ as $pub):
-            if  ($pub['Zamestnanec_idzamestnanec'] == $idss) {
-                $pm[] = ['nazov' => $pub->nazov, 'zaciatok' => $pub->zaciatok, 'koniec' => $pub->koniec,'reg'=>$pub->regCislo];
-            }
-        endforeach;
-        return $pm;
-    }
-
-    public function komentare($idprof)
-    {
-        $koment = Komentare::select('*')
-            ->join('zamestnanec','idzamestnanec','=','autor')
-            ->where([
-                ['okomentovanyId', '=', $idprof],
-                ['odsuhlaseny', '=', 1],
-            ])
-            ->orderBy('komentar.created_at','asc')
-            ->paginate(3);
-
-        return $koment;
-    }
 }
