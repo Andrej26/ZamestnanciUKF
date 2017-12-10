@@ -21,11 +21,20 @@ class ChartsC extends Controller
             ->where('katedra.Fakulta_idFakulta',$idfakulty)
             ->get();
 
-        $chart = Charts::database($zames, 'pie', 'highcharts')
+        $publikacie = Publikacia::select('publikacia.*','zamestnanec.Katedra_idKatedra as katedra')
+            ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
+            ->get();
 
-            ->title("Rozdelenie podľa katedier")
+        $projekty = Projekt::select('projekt.*', 'zamestnanec.Katedra_idkatedra as katedra')
+            ->join('zamestnanec', 'Zamestnanec_idzamestnanec', '=', 'idzamestnanec')
+            ->orderBy('zaciatok')
+            ->get();
 
-            ->elementLabel("Total Users")
+        $chartZamKat = Charts::database($zames, 'pie', 'highcharts')
+
+            ->title("Rozdelenie zamestnancov podľa katedier")
+
+            ->elementLabel("Počet zamestnancov podľa katedry")
 
             ->dimensions(1000, 500)
 
@@ -33,7 +42,36 @@ class ChartsC extends Controller
 
             ->groupBy('katedra');
 
-        return view('showCharts',['chart'=> $chart, 'idfakulty'=>$idfakulty]);
+
+        $chartProjectsCount = Charts::database($projekty, 'bar', 'highcharts')
+
+            ->title("Počet uskutočnených projektov")
+
+            ->elementLabel("Počet projektov")
+
+            ->dimensions(1000, 500)
+
+            ->responsive(false)
+
+            ->groupBy('zaciatok');
+
+
+        $chartPubCount = Charts::database($publikacie, 'pie', 'highcharts')
+
+            ->title("Rozdelenie publikácií podľa katedier")
+
+            ->elementLabel("Počet publikácií")
+
+            ->dimensions(1000, 500)
+
+            ->responsive(false)
+
+            ->groupBy('typ');
+
+
+
+
+        return view('showCharts',['chartZamKat'=> $chartZamKat, 'chartProjectsCount' => $chartProjectsCount, 'chartPubCount' => $chartPubCount,'idfakulty'=>$idfakulty]);
 
     }
 
@@ -45,11 +83,20 @@ class ChartsC extends Controller
             ->where('katedra.Fakulta_idFakulta',$idfakulty)
             ->get();
 
-        $chart = Charts::database($zames, 'pie', 'highcharts')
+        $publikacie = Publikacia::select('publikacia.*','zamestnanec.Katedra_idKatedra as katedra')
+            ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
+            ->get();
 
-            ->title("Rozdelenie podľa katedier")
+        $projekty = Projekt::select('projekt.*', 'zamestnanec.Katedra_idkatedra as katedra')
+            ->join('zamestnanec', 'Zamestnanec_idzamestnanec', '=', 'idzamestnanec')
+            ->orderBy('zaciatok')
+            ->get();
 
-            ->elementLabel("Total Users")
+        $chartZamKat = Charts::database($zames, 'pie', 'highcharts')
+
+            ->title("Rozdelenie zamestnancov podľa katedier")
+
+            ->elementLabel("Počet zamestnancov podľa katedry")
 
             ->dimensions(1000, 500)
 
@@ -57,9 +104,38 @@ class ChartsC extends Controller
 
             ->groupBy('katedra');
 
-        return view('showCharts_zam',['chart'=> $chart, 'idfakulty'=>$idfakulty]);
-    }
 
+        $chartProjectsCount = Charts::database($projekty, 'bar', 'highcharts')
+
+            ->title("Počet uskutočnených projektov")
+
+            ->elementLabel("Počet projektov")
+
+            ->dimensions(1000, 500)
+
+            ->responsive(false)
+
+            ->groupBy('zaciatok');
+
+
+        $chartPubCount = Charts::database($publikacie, 'pie', 'highcharts')
+
+            ->title("Rozdelenie publikácií podľa katedier")
+
+            ->elementLabel("Počet publikácií")
+
+            ->dimensions(1000, 500)
+
+            ->responsive(false)
+
+            ->groupBy('typ');
+
+
+
+
+        return view('showCharts_zam',['chartZamKat'=> $chartZamKat, 'chartProjectsCount' => $chartProjectsCount, 'chartPubCount' => $chartPubCount,'idfakulty'=>$idfakulty]);
+
+    }
 
 
 }

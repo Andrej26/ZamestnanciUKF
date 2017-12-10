@@ -220,20 +220,18 @@
 
         $("#fulltext_input" ).autocomplete({
             source: function( request, response ) {
-                //tu definujete kde ma ten autocomplete hladat data
-                //v nasom pripade volame PHP script na URL domena.sk/order-pipeline/search
                 $.ajax({
-                    url : '{!! route('fulltextsearch') !!}',
+                    url : '{!! route('fulltextsearch') !!}',    // konkretna metoda pre realtime
                     type    : 'GET',
                     dataType: "json",
                     data: {
-                        search: request.term,
+                        search: request.term, // Slovo v textbare
 
                     },
-                    success: function( data ) {
+                    success: function( data ) { // Toto sa stane ak prebehne metóda z controllera úspešne
                         response(data);
                     },
-                    error   : function( xhr, err ) {
+                    error   : function( xhr, err ) {  // Toto sa stane ak prebehne metóda z controllera neúspešne
                         alert('Error:' + err);
                     }
                 });
