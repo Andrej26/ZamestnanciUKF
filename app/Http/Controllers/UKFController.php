@@ -17,6 +17,7 @@ use App\Model\Tag;
 use App\Model\Zamestnanec_tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Mockery\Exception;
 
 
 class UKFController extends Controller
@@ -89,6 +90,28 @@ class UKFController extends Controller
                 return view('UKF.ZProfilov',['zamestnanec' =>$this->ostatne_miesta()],['ifakulta'=>6, 'test'=> 1,'katedra'=>$this->katedry_zoz(), 'fakulta' =>$this->fakulty(), 'tagy'=>$this->tagy(), 'tags'=> $tag]);
                 break;
         }
+    }
+    public function createWordDoc($id)
+    {
+        $wordCreate = new \PhpOffice\PhpWord\PhpWord();
+
+        $newSection = $wordCreate->addSection();
+        $cont = Zamestnanec::select('*','katedra.nazov as nkat')
+            ->join('katedra','idKatedra','=','Katedra_idKatedra')
+            ->where('idzamestnanec','=',$id)
+            ->get();
+        $newSection->addText('PROFIL ZAMESTNANCA UKF', array('name'=>'Arial', 'size' => 20,'color'=>'black'));
+        $newSection->addText($cont[0]->meno, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
+        $newSection->addText($cont[0]->profil, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
+        $newSection->addText($cont[0]->email, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
+        $newSection->addText($cont[0]->nkat, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
+        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordCreate,'Word2007');
+        try{
+            $objectWriter->save(storage_path('Profil.docx'));
+        }catch (Exception $e){
+
+        }
+        return response()->download(storage_path('Profil.docx'));
     }
 
     public function fakulty()
@@ -319,6 +342,7 @@ class UKFController extends Controller
 
         return $zam_id;
     }
+
 
 
 }

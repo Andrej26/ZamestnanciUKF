@@ -39,8 +39,7 @@
                                 </div>
                             </div>
                             <div class="student-details">
-
-                                <h2 class="student-name">{{$prof['mena']}}</h2>
+                                <h2 class="student-name">{{$prof['mena']}} <a href="{{route('createdoc', $prof['id'])}}" class="p-dropdown"><strong style="font-size: 16px">Exportuj profil do docx</strong></a></h2>
                                 <ul class="student-info">
                                     <li>e-mail: <strong><a href="mailto:{{$prof['mail']}}" style="color: inherit;">{{$prof['mail']}}</a></strong></li>
                                     <li>katedra: <strong>{{$prof['katedra1']}}</strong></li>
@@ -57,7 +56,6 @@
                                              @endif
                                         </strong>
                                     </li>
-
                                     <li>Tagy: <strong>
                                             <?php $i = 0; ?>
                                             @foreach($tagy as $ta)
@@ -71,7 +69,6 @@
                                             @endif
                                         </strong>
                                     </li>
-                                    <br/>
                                     <li><p>Profil: <strong>{{ $prof['rola1']}} </strong></p></li>
                                 </ul>
                             </div>
@@ -113,7 +110,6 @@
                 </ul>
                 @endforeach
             </div>
-
             <!-- Vypis komentarov -->
             <h1>Komentáre</h1>
             <div class="komentar" >

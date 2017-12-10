@@ -30,6 +30,7 @@ Route::prefix('UKF')->group(function() {
     Route::get('/fulltextsearch', 'VyhladajZamestnancaC@fulltext')->name('fulltextsearch');
     Route::get('/getfulltextresults', 'VyhladajZamestnancaC@zobraz')->name('getfulltextresults');
     Route::get('/Charts/{id}','ChartsC@index')->name('ukf.charts');
+    Route::get('/createdoc/{id}',['as'=>'createdoc','uses'=>'UKFController@createWordDoc']);
 
 
     // View-y Fakúlt
