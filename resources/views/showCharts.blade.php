@@ -17,22 +17,34 @@
 
 
         @if($idfakulty == 1)
-            <h1>Katedry Filozofickej Fakulty</h1>
+            <h1>Štatistiky pre filozofickú fakultu</h1>
         @endif
         @if($idfakulty == 3)
-            <h1>Katedry Pedagogickej Fakulty</h1>
+            <h1>Štatistiky pre pedagogickú fakultu</h1>
         @endif
         @if($idfakulty == 2)
-            <h1>Katedry Fakulty stredoeuropskych studii</h1>
+            <h1>Štatistiky pre fakultu stredoeurópskych štúdií</h1>
         @endif
         @if($idfakulty == 5)
-            <h1>Katedry Fakulty Prirodnych vied</h1>
+            <h1>Štatistiky pre fakultu prírodných vied</h1>
         @endif
         @if($idfakulty == 7)
-            <h1>Katedry Fakulta socialnych vied a zdravotnictva</h1>
+            <h1>Štatistiky pre Fakultu sociálnych vied a zdravotníctva</h1>
         @endif
 
-        {!! $chart->render() !!}
+        {!! $chartZamKat->render() !!}
+
+    </div>
+
+    <div class="container">
+
+        {!! $chartProjectsCount->render() !!}
+
+    </div>
+
+    <div class="container">
+
+        {!! $chartPubCount->render() !!}
 
     </div>
 

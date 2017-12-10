@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Model\Katedra;
+use App\Model\Projekt;
+use App\Model\Publikacia;
 use App\Model\Zamestnanec;
 use ConsoleTVs\Charts\Facades\Charts;
 use Illuminate\Support\Facades\DB;
@@ -14,19 +16,6 @@ class ChartsC extends Controller
 
     public function index($idfakulty)
     {
-
-        // $tmp = $this->spojenie2tabuliek();
-
-        /* $users = Zamestnanec::where(DB::raw("(DATE_FORMAT(created_at,'%Y'))"),date('Y'))
-
-             ->get();*/
-
-        /*$users = Zamestnanec::where(DB::raw("katedra_idkatedra"),date('Y'))
-
-            ->get();*/
-
-        /*$users = $this->spojenie2tabuliek();*/
-
         $zames = Zamestnanec::select('Zamestnanec.*','Katedra.nazov as katedra')
             ->join('Katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->where('katedra.Fakulta_idFakulta',$idfakulty)
@@ -95,4 +84,6 @@ class ChartsC extends Controller
 
         return (object) $pom;
     }
+
+
 }
