@@ -30,7 +30,7 @@ Route::prefix('UKF')->group(function() {
     Route::get('/fulltextsearch', 'VyhladajZamestnancaC@fulltext')->name('fulltextsearch');
     Route::get('/getfulltextresults', 'VyhladajZamestnancaC@zobraz')->name('getfulltextresults');
     Route::get('/Charts/{id}','ChartsC@index')->name('ukf.charts');
-    Route::get('/createdoc/{id}',['as'=>'createdoc','uses'=>'UKFController@createWordDoc']);
+    Route::get('/createdoc/{id}','UKFController@createWordDoc')->name('createdoc');
 
 
     // View-y Fakúlt
@@ -95,7 +95,7 @@ Route::prefix('Zamestnanec')->group(function(){
 
     Route::post('/search', 'AdvancedSearchController@advancesearch01')->name('advanced_search_zam');
     Route::get('/getfulltextresultsAsEmp', 'VyhladajZamestnancaC@zobrazAkoZamestnanec')->name('getfulltextresultsAsEmp');
-    Route::get('/Charts /{id}','ChartsC@index')->name('zam.charts');
+    Route::get('/Charts /{id}','ChartsC@index_zam')->name('zam.charts');
 
     // View-y Fakúlt
     Route::get('/fpv', function(){

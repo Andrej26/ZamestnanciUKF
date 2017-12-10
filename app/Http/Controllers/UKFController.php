@@ -93,9 +93,9 @@ class UKFController extends Controller
     }
     public function createWordDoc($id)
     {
-        $wordCreate = new \PhpOffice\PhpWord\PhpWord();
+        $wordWord = new \PhpOffice\PhpWord\PhpWord();
 
-        $newSection = $wordCreate->addSection();
+        $newSection = $wordWord->addSection();
         $cont = Zamestnanec::select('*','katedra.nazov as nkat')
             ->join('katedra','idKatedra','=','Katedra_idKatedra')
             ->where('idzamestnanec','=',$id)
@@ -105,13 +105,14 @@ class UKFController extends Controller
         $newSection->addText($cont[0]->profil, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
         $newSection->addText($cont[0]->email, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
         $newSection->addText($cont[0]->nkat, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
-        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordCreate,'Word2007');
+        $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordWord,'Word2007');
         try{
             $objectWriter->save(storage_path('Profil.docx'));
         }catch (Exception $e){
 
         }
         return response()->download(storage_path('Profil.docx'));
+
     }
 
     public function fakulty()
