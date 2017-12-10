@@ -34,7 +34,7 @@
 
             <div class="col-md-10">
                 <a class="btn btn-info" href="{{route('zam.charts',7)}}">Štatistiky</a>
-                <a class="btn btn-link" href="{{ route('zozprofil', 7)}}">Zamestnanecké profily</a>
+                <a class="btn btn-info" href="{{ route('zozprofil', 7)}}">Zamestnanecké profily</a>
             </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12">
