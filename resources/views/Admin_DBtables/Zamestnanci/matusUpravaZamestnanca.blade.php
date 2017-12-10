@@ -13,7 +13,7 @@
             </div>
 
             <div class="float-right">
-                <a class="btn btn-success float-left" href="{{route('iny.profil', $zam01 -> idzamestnanec )}}">Späť</a>
+                <a class="btn btn-success float-left" href="{{route('zames.profil', $zam01 -> idzamestnanec )}}">Späť</a>
             </div>
         </div>
     </div>

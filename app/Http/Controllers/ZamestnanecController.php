@@ -70,9 +70,9 @@ class ZamestnanecController extends Controller
             ->with('success','Boli ste úspešne odhlásený.');
     }
 
-    public function mojprofil()
+    public function mojprofil($idprofil)
     {
-        return view('Zam.mojprofil');
+        return view('Zam.mojprofil', ['profils' => $this->profily($idprofil)], ['publikacia' => $this->publikacie($idprofil), 'projekt' => $this->projekty($idprofil), 'komentare' =>$this->komentare($idprofil), 'tagy'=>$this->tagy()]);
     }
 
     public function profil($idprofil)
@@ -152,6 +152,7 @@ class ZamestnanecController extends Controller
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->orderBy('idzamestnanec', 'asc')
+            ->where('aktivny',1)
             ->get();
 
         foreach ($zames as $zam):
@@ -204,6 +205,7 @@ class ZamestnanecController extends Controller
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->orderBy('idzamestnanec', 'asc')
+            ->where('aktivny',1)
             ->get();
 
         foreach ($zames as $zam):
@@ -334,6 +336,7 @@ class ZamestnanecController extends Controller
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->orderBy('idzamestnanec', 'asc')
+            ->where('aktivny',1)
             ->get();
 
         foreach ($zames as $zam):

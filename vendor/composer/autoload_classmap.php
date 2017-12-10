@@ -27,6 +27,7 @@ return array(
     'App\\Http\\Controllers\\DBControllers\\DBZamestnanci' => $baseDir . '/app/Http/Controllers/DBControllers/DBZamestnanci.php',
     'App\\Http\\Controllers\\DbConnectTest' => $baseDir . '/app/Http/Controllers/DbConnectTest.php',
     'App\\Http\\Controllers\\UKFController' => $baseDir . '/app/Http/Controllers/UKFController.php',
+    'App\\Http\\Controllers\\UploadController' => $baseDir . '/app/Http/Controllers/UploadController.php',
     'App\\Http\\Controllers\\VyhladajZamestnancaC' => $baseDir . '/app/Http/Controllers/VyhladajZamestnancaC.php',
     'App\\Http\\Controllers\\ZamestnanecController' => $baseDir . '/app/Http/Controllers/ZamestnanecController.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',

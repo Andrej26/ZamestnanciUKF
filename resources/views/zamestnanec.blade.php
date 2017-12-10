@@ -30,7 +30,7 @@
                         <div class="col-md-7">
                             <div class="feature rounded-icon">
                                 <a href="{{url::to('Zamestnanec/fpv')}}">
-                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <div class="feature-icon" style="background-image: url('{{Url::to('/')}}/images/Fakulty/fpv.png'); background-size: cover"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Fakulta Prírodných Vied </h3>
                                 </a>
                                 <p>FPV</p>
@@ -39,7 +39,7 @@
 
                             <div class="feature rounded-icon">
                                 <a href="{{URL::to('Zamestnanec/fsvz')}}">
-                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <div class="feature-icon" style="background-image: url('{{Url::to('/')}}/images/Fakulty/fsvaz.png'); background-size: cover"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Fakulta Sociálnych Vied a Zdravotníctva </h3>
                                 </a>
                                 <p>FSVaZ</p>
@@ -48,7 +48,7 @@
 
                             <div class="feature rounded-icon">
                                 <a href="{{URL::to('Zamestnanec/fss')}}">
-                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <div class="feature-icon" style="background-image: url('{{Url::to('/')}}/images/Fakulty/fss.png'); background-size: cover"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Fakulta Stredoeurópskych Štúdií </h3>
                                 </a>
                                 <p>FSŠ</p>
@@ -60,7 +60,7 @@
                         <div class="col-md-5">
                             <div class="feature rounded-icon">
                                 <a href="{{URL::to('Zamestnanec/ff')}}">
-                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <div class="feature-icon" style="background-image: url('{{Url::to('/')}}/images/Fakulty/ff.png'); background-size: cover"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Filozofická Fakulta </h3>
                                 </a>
                                 <p>FF</p>
@@ -69,7 +69,7 @@
 
                             <div class="feature rounded-icon">
                                 <a href="{{URL::to('Zamestnanec/pf')}}">
-                                    <div class="feature-icon"><i class="icon-owl"></i></div>
+                                    <div class="feature-icon" style="background-image: url('{{Url::to('/')}}/images/Fakulty/pf.png'); background-size: cover"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Pedagogická Fakulta </h3>
                                 </a>
                                 <p>PF</p>
@@ -78,7 +78,7 @@
 
                             <div class="feature rounded-icon">
                                 <a href="{{ route('zozprofil', 0)}}">
-                                    <div class="feature-icon" ><i class="icon-owl"></i></div>
+                                    <div class="feature-icon" style="background-image: url('{{Url::to('/')}}/images/Fakulty/ostatne.png'); background-size: cover"><i class="icon-owl"></i></div>
                                     <h3 class="feature-title">Ostatné časti </h3>
                                 </a>
                                 <p>Univerzity</p>
@@ -101,7 +101,7 @@
                         @foreach ($zamestnanec as $zam)
                             <div class="student-data">
                                 <div class="student-image">
-                                    <a href="{{route('iny.profil', $zam['id'])}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="25%" width="auto"></a>
+                                    <a href="{{route('iny.profil', $zam['id'])}}"><img id="student-image" src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($zam['id'])}}" alt="Profilova Fotografia" height="auto" width="100%"></a>
                                 </div>
                                 <div class="student-details">
                                     <a href="{{route('iny.profil', $zam['id'])}}" style="color: inherit;"><h2 class="student-name" >{{ $zam['meno']}}</h2></a>
@@ -136,7 +136,7 @@
                         @foreach ($zamestnanec01 as $zam)
                             <div class="student-data">
                                 <div class="student-image">
-                                    <a href="{{route('iny.profil', $zam['id'])}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="25%" width="auto"></a>
+                                    <a href="{{route('iny.profil', $zam['id'])}}"><img id="student-image" src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($zam['id'])}}" alt="Profilova Fotografia" height="auto" width="100%"></a>
                                 </div>
                                 <div class="student-details">
                                     <a href="{{route('iny.profil', $zam['id'])}}" style="color: inherit;"><h2 class="student-name" >{{ $zam['meno']}}</h2></a>

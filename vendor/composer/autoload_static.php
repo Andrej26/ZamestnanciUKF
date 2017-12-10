@@ -397,6 +397,7 @@ class ComposerStaticInit7c609bdf18dbc654ef16e56cb2cbeddd
         'App\\Http\\Controllers\\DBControllers\\DBZamestnanci' => __DIR__ . '/../..' . '/app/Http/Controllers/DBControllers/DBZamestnanci.php',
         'App\\Http\\Controllers\\DbConnectTest' => __DIR__ . '/../..' . '/app/Http/Controllers/DbConnectTest.php',
         'App\\Http\\Controllers\\UKFController' => __DIR__ . '/../..' . '/app/Http/Controllers/UKFController.php',
+        'App\\Http\\Controllers\\UploadController' => __DIR__ . '/../..' . '/app/Http/Controllers/UploadController.php',
         'App\\Http\\Controllers\\VyhladajZamestnancaC' => __DIR__ . '/../..' . '/app/Http/Controllers/VyhladajZamestnancaC.php',
         'App\\Http\\Controllers\\ZamestnanecController' => __DIR__ . '/../..' . '/app/Http/Controllers/ZamestnanecController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',

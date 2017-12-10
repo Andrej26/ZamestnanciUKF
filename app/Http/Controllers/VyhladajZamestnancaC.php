@@ -51,7 +51,10 @@ class VyhladajZamestnancaC extends Controller
     public function fulltext(Request $request)
     {
         $search = $request->get('search');
-        $users = Zamestnanec::where('meno','LIKE', '%'.$search.'%')->get();
+        $users = Zamestnanec::where([
+            ['meno','LIKE', '%'.$search.'%'],
+            ['aktivny', 1],
+            ])->get();
 
         $data = [];
 
@@ -59,8 +62,6 @@ class VyhladajZamestnancaC extends Controller
         {
             $data [] = ['label' =>  $value->meno, 'value' => $value->meno, 'id' => $value->idzamestnanec];
         }
-
-
 
         return response()->json(
             $data
@@ -81,7 +82,10 @@ class VyhladajZamestnancaC extends Controller
         $zames = Zamestnanec::select('*')
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
-            ->where('meno','LIKE', '%'.$term.'%')
+            ->where([
+                ['meno', 'LIKE', '%'.$term.'%'],
+                ['aktivny', '=', 1],
+            ])
             ->orderBy('idzamestnanec', 'asc')
             ->get();
 

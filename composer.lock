@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "759b834f51ccf04a3059d891017a1b17",
+    "content-hash": "a289d98464c97e87d0ca002f09f9ea8b",
     "packages": [
         {
             "name": "consoletvs/charts",

@@ -151,6 +151,7 @@ class UKFController extends Controller
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->orderBy('idzamestnanec', 'asc')
+            ->where('aktivny',1)
             ->get();
 
         foreach ($zames as $zam):
@@ -186,6 +187,7 @@ class UKFController extends Controller
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->orderBy('idzamestnanec', 'asc')
+            ->where('aktivny',1)
             ->get();
 
         foreach ($zames as $zam):
@@ -224,7 +226,6 @@ class UKFController extends Controller
     {
         $pm=[];
         $profl = Zamestnanec::select('*','katedra.nazov as nazov01')
-            /*->join('publikacia','publikacia.Zamestnanec_idzamestnanec','=','zamestnanec.idzamestnanec')*/
             ->join('katedra','idKatedra','=','Katedra_idKatedra')
             ->get();
 
@@ -253,8 +254,6 @@ class UKFController extends Controller
 
     public function komentare($idprof)
     {
-      //  $pm=[];
-       // $i = 0;
         $koment = Komentare::select('*')
             ->join('zamestnanec','idzamestnanec','=','autor')
             ->where([
@@ -263,13 +262,6 @@ class UKFController extends Controller
             ])
             ->orderBy('komentar.created_at','asc')
             ->paginate(3);
-
-      //  foreach ($koment as $kom):
-       //     if  (($kom['okomentovanyId'] == $idprof)&&($kom['odsuhlaseny'] == 1)) {
-       //         $i+=1;
-        //        $pm[] = ['komentar' => $kom->komentar, 'autor' => $kom->meno, 'id' => $kom->idzamestnanec, 'por'=>$i];
-       //     }
-       // endforeach;
         return $koment;
 
     }
@@ -303,6 +295,7 @@ class UKFController extends Controller
             ->join('rolaPouzivatela', 'idrolaPouzivatela', '=', 'rolaPouzivatela_idrolaPouzivatela')
             ->join('katedra', 'idKatedra', '=', 'Katedra_idKatedra')
             ->orderBy('idzamestnanec', 'asc')
+            ->where('aktivny',1)
             ->get();
 
         foreach ($zames as $zam):

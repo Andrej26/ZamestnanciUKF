@@ -29,7 +29,10 @@
                     <li>
                         <div class="student-data">
                             <div class="student-image">
-                                <img id="zam-img" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="auto" width="100%">
+
+                                <img id="zam-img" src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($prof['id'])}}" alt="Profilova Fotografia" height="auto" width="100%">
+
+
                                 <div id="zamModal" class="modal">
                                     <span class="close">&times;</span>
                                     <img class="modal-content" id="img01">
@@ -37,10 +40,6 @@
                                 </div>
                             </div>
                             <div class="student-details">
-
-                                @if($prof['id'] != null && $prof['id'] > 0)
-                                    <a class="button_k" href="{{route('TabZamestnanci.uprav', Auth::id())}}">Uprav svoj profil</a>
-                                @endif
 
                                 <h2 class="student-name">{{$prof['mena']}}</h2>
                                 <ul class="student-info">
@@ -119,7 +118,7 @@
                 @foreach ($komentare as $kom)
                     <div class="komentare">
                         <div class="autor" >
-                            <a href="{{route('iny.profil', $kom->idzamestnanec)}}"><img id="zam-img" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="auto" width="100%" style="border-radius: 50%    "></a>
+                            <a href="{{route('iny.profil', $kom['id'])}}"><img id="student-image" src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($kom['id'])}}" alt="Profilova Fotografia" height="25%" width="auto" style="border-radius: 50%"></a>
                         </div>
                         <div class="koment" style="border: none; background-color: inherit">
                             <div class="student-details">
@@ -135,6 +134,9 @@
                         </div>
                     </div>
                 @endforeach
+                @if($i == 1)
+                        <label> Žiadne komentáre. </label>
+                    @endif
             </div>
 
             <div class='col-xs-12 col-sm-12 col-md-12'>
@@ -143,7 +145,7 @@
 
             <!-- pridavanie kOmentarov -->
             <div class="komentare">
-                <h1>Komentáre</h1>
+                <h1>Pridanie komentára</h1>
                 {!! Form::model($prof, ['method' => 'POST','route' => ['komentar.store', $prof['id']]]) !!}
                 @include('Zam.Pridavanie_komentarov.createform')
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center">

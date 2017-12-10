@@ -59,7 +59,7 @@
                             <li>
                             <div class="student-data">
                                 <div class="student-image">
-                                    <a href="{{route('profil', $zam['id'])}}"><img id="student-image" src="{{URL::to("/")}}/dummy/person-1@2x.jpg" alt="Profilova Fotografia" height="25%" width="auto"></a>
+                                    <a href="{{route('profil', $zam['id'])}}"><img id="student-image" src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($zam['id'])}}" alt="Profilova Fotografia" height="25%" width="auto"></a>
                                 </div>
                                 <div class="student-details">
                                     <a href="{{route('profil', $zam['id'])}}" style="color: inherit;"><h2 class="student-name" >{{ $zam['meno']}}</h2></a>
