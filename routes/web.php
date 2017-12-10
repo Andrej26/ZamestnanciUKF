@@ -116,6 +116,8 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::get('/heslo/reset', 'Auth\ZamestnanecForgotPasswordController@showLinkRequestForm')->name('zame.password.request');
     Route::post('/heslo/reset', 'Auth\ZamestnanecResetPasswordController@reset');
     Route::get('/heslo/reset/{token}', 'Auth\ZamestnanecResetPasswordController@showResetForm')->name('zame.password.reset');
+
+    Route::get('/charts','ChartsC@showAllZ')->name('chartsemp');
 });
 
 
