@@ -58,7 +58,7 @@ class ChartsC extends Controller
 
         $chartPubCount = Charts::database($publikacie, 'pie', 'highcharts')
 
-            ->title("Rozdelenie publikácií podľa katedier")
+            ->title("Rozdelenie publikácií podľa typu väzby")
 
             ->elementLabel("Počet publikácií")
 
@@ -120,7 +120,7 @@ class ChartsC extends Controller
 
         $chartPubCount = Charts::database($publikacie, 'pie', 'highcharts')
 
-            ->title("Rozdelenie publikácií podľa katedier")
+            ->title("Rozdelenie publikácií podľa typu väzby")
 
             ->elementLabel("Počet publikácií")
 

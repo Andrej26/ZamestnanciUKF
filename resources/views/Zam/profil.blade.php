@@ -28,6 +28,7 @@
                 <ul class="slides02">
                     <li>
                         <div class="student-data">
+
                             <div class="student-image">
 
                                 <img id="zam-img" src="{{URL::to('/')}}/{{ \App\Http\Controllers\UploadController::VratObrazokZamestnanca($prof['id'])}}" alt="Profilova Fotografia" height="auto" width="100%">
@@ -41,7 +42,7 @@
                             </div>
                             <div class="student-details">
 
-                                <h2 class="student-name">{{$prof['mena']}}</h2>
+                                <h2 class="student-name">{{$prof['mena']}} <a href="{{route('createdoc', $prof['id'])}}" class="p-dropdown"><strong style="font-size: 16px">Exportuj profil do docx</strong></a></h2>
                                 <ul class="student-info">
                                     <li>e-mail: <strong><a href="mailto:{{$prof['mail']}}" style="color: inherit;">{{$prof['mail']}}</a></strong></li>
                                     <li>katedra: <strong>{{$prof['katedra1']}}</strong></li>

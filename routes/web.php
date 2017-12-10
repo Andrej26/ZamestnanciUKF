@@ -96,6 +96,7 @@ Route::prefix('Zamestnanec')->group(function(){
     Route::post('/search', 'AdvancedSearchController@advancesearch01')->name('advanced_search_zam');
     Route::get('/getfulltextresultsAsEmp', 'VyhladajZamestnancaC@zobrazAkoZamestnanec')->name('getfulltextresultsAsEmp');
     Route::get('/Charts /{id}','ChartsC@index_zam')->name('zam.charts');
+    //Route::get('/Createdoc/{id}','ZamestnanecController@createWordDoc')->name('createdoc_zam');
 
     // View-y Fakúlt
     Route::get('/fpv', function(){
