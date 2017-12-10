@@ -33,7 +33,7 @@
 
 
             <div class="col-md-10">
-                <a class="btn btn-link" href="#">Štatistiky</a>
+                <a class="btn btn-info" href="{{route('zam.charts',2)}}">Štatistiky</a>
                 <a class="btn btn-link" href="{{ route('zozprofil', 2)}}">Zamestnanecké profily</a>
             </div>
 

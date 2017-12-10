@@ -15,7 +15,22 @@
 
     <div class="container">
 
-        <h1>Katedry</h1>
+
+        @if($idfakulty == 1)
+            <h1>Katedry Filozofickej Fakulty</h1>
+        @endif
+        @if($idfakulty == 3)
+            <h1>Katedry Pedagogickej Fakulty</h1>
+        @endif
+        @if($idfakulty == 2)
+            <h1>Katedry Fakulty stredoeuropskych studii</h1>
+        @endif
+        @if($idfakulty == 5)
+            <h1>Katedry Fakulty Prirodnych vied</h1>
+        @endif
+        @if($idfakulty == 7)
+            <h1>Katedry Fakulta socialnych vied a zdravotnictva</h1>
+        @endif
 
         {!! $chart->render() !!}
 

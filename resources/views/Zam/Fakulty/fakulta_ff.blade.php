@@ -26,8 +26,9 @@
                 </div>
             </main>
             <div class="col-md-10">
-                <a class="btn btn-link" href="#">Štatistiky</a>
-                <a class="btn btn-link" href="{{ route('zozprofil', 1)}}">Zamestnanecké profily</a>
+                <a class="btn btn-info" href="{{route('zam.charts',1)}}">Štatistiky</a>
+                <a class="btn btn-info" href="{{ route('zozprofil', 1)}}">Zamestnanecké profily</a>
+
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12">

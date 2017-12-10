@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Model\Katedra;
 use App\Model\Zamestnanec;
 use ConsoleTVs\Charts\Facades\Charts;
@@ -13,7 +12,7 @@ class ChartsC extends Controller
 {
 
 
-    public function index()
+    public function index($idfakulty)
     {
 
         // $tmp = $this->spojenie2tabuliek();
@@ -30,9 +29,8 @@ class ChartsC extends Controller
 
         $zames = Zamestnanec::select('Zamestnanec.*','Katedra.nazov as katedra')
             ->join('Katedra', 'idKatedra', '=', 'Katedra_idKatedra')
+            ->where('katedra.Fakulta_idFakulta',$idfakulty)
             ->get();
-
-
 
         $chart = Charts::database($zames, 'pie', 'highcharts')
 
@@ -46,7 +44,7 @@ class ChartsC extends Controller
 
             ->groupBy('katedra');
 
-        return view('showCharts',compact('chart'));
+        return view('showCharts',['chart'=> $chart, 'idfakulty'=>$idfakulty]);
 
     }
 

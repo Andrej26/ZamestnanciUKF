@@ -30,8 +30,8 @@
 
 
             <div class="col-md-10">
-                    <a class="btn btn-link" href="{{route('charts')}}">Štatistiky</a>
-                    <a class="btn btn-link" href="{{ route('zprofil',5)}}">Zamestnanecké profily</a>
+                    <a class="btn btn-info" href="{{route('ukf.charts',5)}}">Štatistiky</a>
+                    <a class="btn btn-info" href="{{ route('zprofil',5)}}">Zamestnanecké profily</a>
                 </div>
 
 
