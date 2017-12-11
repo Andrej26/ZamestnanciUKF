@@ -294,7 +294,7 @@ class ZamestnanecController extends Controller
                 ['odsuhlaseny', '=', 1],
             ])
             ->orderBy('komentar.created_at','asc')
-            ->paginate(3);
+            ->paginate(6);
 
         return $koment;
     }

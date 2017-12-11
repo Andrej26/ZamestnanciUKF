@@ -100,11 +100,54 @@ class UKFController extends Controller
             ->join('katedra','idKatedra','=','Katedra_idKatedra')
             ->where('idzamestnanec','=',$id)
             ->get();
+
+        $publikacie = Publikacia::select('nazov','isbn','autori','vydavatel','podtitulok')
+                ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
+                ->where('idzamestnanec','=',$id)
+                ->get();
+
+        $projekty = Projekt::select('nazov','zaciatok','koniec','regCislo')
+            ->join('zamestnanec','idzamestnanec','=','Zamestnanec_idzamestnanec')
+            ->where('idzamestnanec','=',$id)
+            ->get();
+
         $newSection->addText('PROFIL ZAMESTNANCA UKF', array('name'=>'Arial', 'size' => 20,'color'=>'black'));
         $newSection->addText($cont[0]->meno, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
         $newSection->addText($cont[0]->profil, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
         $newSection->addText($cont[0]->email, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
         $newSection->addText($cont[0]->nkat, array('name'=>'Arial', 'size' => 14,'color'=>'black'));
+        $newSection->addText(' ', array('name'=>'Arial', 'size' => 20,'color'=>'black'));
+        $newSection->addText('PUBLIKÁCIE ZAMESTNANCA UKF', array('name'=>'Arial', 'size' => 20,'color'=>'black'));
+        foreach ($publikacie as $pub): {
+            $newSection->addText('Názov publikácie:', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText($pub->nazov, array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+           // $newSection->addText('Žiadne ISBN nebolo zadané.', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText('ISBN publikácie:', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            if ($pub->isbn == null){
+                $newSection->addText('Žiadne isbn nezadané.', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));}
+            else{
+                $newSection->addText($pub->isbn, array('name' => 'Arial', 'size' => 14, 'color' => 'black'));}
+            $newSection->addText('Autori:', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText($pub->autori, array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText('=======================================================', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+        }
+        endforeach;
+
+        $newSection->addText('', array('name'=>'Arial', 'size' => 20,'color'=>'black'));
+        $newSection->addText('PROJEKTY ZAMESTNANCA UKF', array('name'=>'Arial', 'size' => 20,'color'=>'black'));
+        foreach ($projekty as $pro): {
+            $newSection->addText('Názov projektu:', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText($pro->nazov, array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText('Žačiatok projektu:', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText($pro->zaciatok, array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText('Koniec projektu:', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText($pro->koniec, array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText('Registračné číslo:', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText($pro->regCislo, array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+            $newSection->addText('=======================================================', array('name' => 'Arial', 'size' => 14, 'color' => 'black'));
+        }
+        endforeach;
+
         $objectWriter = \PhpOffice\PhpWord\IOFactory::createWriter($wordWord,'Word2007');
         try{
             $objectWriter->save(storage_path('Profil.docx'));
@@ -285,7 +328,7 @@ class UKFController extends Controller
                 ['odsuhlaseny', '=', 1],
             ])
             ->orderBy('komentar.created_at','asc')
-            ->paginate(3);
+            ->paginate(6);
         return $koment;
 
     }
