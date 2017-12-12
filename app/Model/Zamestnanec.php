@@ -2,19 +2,41 @@
 
 namespace App\Model;
 
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use App\Notifications\ZamesResetPasswordNotification;
 
-class Zamestnanec extends Model
+class Zamestnanec extends Authenticatable
 {
-    protected $primaryKey = 'idzamestnanec'; // or null
+
+    use Notifiable;
+
+    protected $guard = 'zame';
+
+    protected $table = 'zamestnanec';
+    protected $primaryKey = 'idzamestnanec';
     public $incrementing = false;
 
-    // MASS ASSIGNMENT -------------------------------------------------------
-    // define which attributes are mass assignable (for security)
-    // we only want these 3 attributes able to be filled
-    protected $fillable = array('idzamestnanec', 'meno', 'heslo', 'profil', 'Katedra_idKatedra', 'rolaPouzivatela_idrolaPouzivatela', 'email');
 
-    // LINK THIS MODEL TO OUR DATABASE TABLE ---------------------------------
-    // since the plural of fish isnt what we named our database table we have to define it
-    protected $table = 'Zamestnanec';
+    protected $fillable = ['idzamestnanec', 'meno', 'password', 'profil',
+        'Katedra_idKatedra', 'rolaPouzivatela_idrolaPouzivatela', 'email','aktivny'];
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    public function rolaPouzivatela(){
+        return $this->belongsTo('App\Model\RolaPouzivatela','rolaPouzivatela_idrolaPouzivatela');
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany('App\Model\Tag', 'zamestnanec_tag', 'zamestnanec_id', 'tag_id');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ZamesResetPasswordNotification($token));
+    }
 }
